@@ -1,0 +1,1377 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="网络编程, Mr_poke">
+    <meta name="description" content="学好网络才能在web大杀四方">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>网络编程 | Mr_poke</title>
+    <link rel="icon" type="image/png" href="/blog/favicon.png">
+    
+
+
+    <!-- bg-cover style     -->
+
+
+
+<link rel="stylesheet" type="text/css" href="/blog/libs/awesome/css/all.min.css">
+<link rel="stylesheet" type="text/css" href="/blog/libs/materialize/materialize.min.css">
+<link rel="stylesheet" type="text/css" href="/blog/libs/aos/aos.css">
+<link rel="stylesheet" type="text/css" href="/blog/libs/animate/animate.min.css">
+<link rel="stylesheet" type="text/css" href="/blog/libs/lightGallery/css/lightgallery.min.css">
+<link rel="stylesheet" type="text/css" href="/blog/css/matery.css">
+<link rel="stylesheet" type="text/css" href="/blog/css/my.css">
+<link rel="stylesheet" type="text/css" href="/blog/css/dark.css" media="none" onload="if(media!='all')media='all'">
+
+
+
+
+    <link rel="stylesheet" href="/blog/libs/tocbot/tocbot.css">
+    <link rel="stylesheet" href="/blog/css/post.css">
+
+
+
+
+    
+
+
+
+    <script src="/blog/libs/jquery/jquery-3.6.0.min.js"></script>
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/blog/" class="waves-effect waves-light">
+                    
+                    <img src="/blog/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Mr_poke</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/blog/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/blog/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/blog/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/blog/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+  <li>
+    <a href="javascript:;" class="waves-effect waves-light" onclick="switchNightMode()" title="深色/浅色模式" >
+      <i id="sum-moon-icon" class="fas fa-sun" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/blog/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Mr_poke</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/blog/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/blog/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/blog/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/blog/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/blog/medias/featureimages/8.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">网络编程</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/blog/tags/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/">
+                                <span class="chip bg-color">网络编程</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/blog/categories/java%E9%AB%98%E7%BA%A7/" class="post-category">
+                                java高级
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2023-04-06
+                </div>
+                
+
+                
+
+                
+
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/blog/libs/prism/prism.min.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <p>w</p>
+<h1 id="网络编程"><a href="#网络编程" class="headerlink" title="网络编程"></a>网络编程</h1><h1 id="一、概述"><a href="#一、概述" class="headerlink" title="一、概述"></a>一、概述</h1><h2 id="1-软件架构"><a href="#1-软件架构" class="headerlink" title="1.软件架构"></a>1.软件架构</h2><h3 id="C-x2F-S架构"><a href="#C-x2F-S架构" class="headerlink" title="C&#x2F;S架构"></a>C&#x2F;S架构</h3><p>全称为Client&#x2F;Server结构，是指客户端和服务器结构。常见程序有QQ、美团app、360安全卫士等软件。</p>
+<h3 id="B-x2F-S架构"><a href="#B-x2F-S架构" class="headerlink" title="B&#x2F;S架构"></a>B&#x2F;S架构</h3><p><strong>B&#x2F;S架构</strong> ：全称为Browser&#x2F;Server结构，是指浏览器和服务器结构。常见浏览器有IE、谷歌、火狐等。</p>
+<h1 id="二、网络通信"><a href="#二、网络通信" class="headerlink" title="二、网络通信"></a>二、网络通信</h1><h2 id="1-三大问题"><a href="#1-三大问题" class="headerlink" title="1.三大问题"></a>1.三大问题</h2><p>如何定位网络的主机？</p>
+<p>如何定位为主机的应用？</p>
+<p>如何进行数据传输？</p>
+<h2 id="2-通信要素"><a href="#2-通信要素" class="headerlink" title="2.通信要素"></a>2.通信要素</h2><p>IP地址与域名、端口号、网络协议</p>
+<h3 id="IP地址与域名"><a href="#IP地址与域名" class="headerlink" title="IP地址与域名"></a>IP地址与域名</h3><h4 id="IP地址"><a href="#IP地址" class="headerlink" title="IP地址"></a>IP地址</h4><p><strong>IP地址：指互联网协议地址（Internet Protocol Address）</strong>，俗称IP。IP地址用来给网络中的一台计算机设备做唯一的编号。假如我们把“个人电脑”比作“一台电话”的话，那么“IP地址”就相当于“电话号码”。</p>
+<h5 id="1-分类"><a href="#1-分类" class="headerlink" title="1.分类"></a>1.分类</h5><h5 id="方式一：IPV4与IPV6"><a href="#方式一：IPV4与IPV6" class="headerlink" title="方式一：IPV4与IPV6"></a>方式一：IPV4与IPV6</h5><p><code>IPv4</code>：是一个32位的二进制数，通常被分为4个字节，表示成<code>a.b.c.d</code> 的形式，以点分<code>十进制</code>表示，例如<code>192.168.65.100</code> 。其中a、b、c、d都是0~255之间的十进制整数。</p>
+<p> <code>IPv6</code>：由于互联网的蓬勃发展，IP地址的需求量愈来愈大，但是网络地址资源有限，使得IP的分配越发紧张。</p>
+<p>为了扩大地址空间，拟通过IPv6重新定义地址空间，采用128位地址长度，共16个字节，写成8个无符号整数，每个整数用四个十六进制位表示，数之间用冒号（：）分开。比如：<code>ABCD:EF01:2345:6789:ABCD:EF01:2345:6789</code>，按保守方法估算IPv6实际可分配的地址，整个地球的每平方米面积上仍可分配1000多个地址，这样就解决了网络地址资源数量不够的问题。2012年6月6日，国际互联网协会举行了世界IPv6启动纪念日，这一天，全球IPv6网络正式启动。多家知名网站，如Google、Facebook和Yahoo等，于当天全球标准时间0点（北京时间8点整）开始永久性支持IPv6访问。2018年6月，三大运营商联合阿里云宣布，将全面对外提供IPv6服务，并计划在2025年前助推中国互联网真正实现“IPv6 Only”。</p>
+<p>在IPv6的设计过程中除了一劳永逸地解决了地址短缺问题以外，还考虑了在IPv4中解决不好的其它问题，主要有端到端IP连接、服务质量（QoS）、安全性、多播、移动性、即插即用等。</p>
+<h5 id="方式二：公网（万维网）与私网"><a href="#方式二：公网（万维网）与私网" class="headerlink" title="方式二：公网（万维网）与私网"></a>方式二：公网（万维网）与私网</h5><p>公网地址( 万维网使用）和 私有地址( 局域网使用）。192.168.开头的就是私有地址，范围即为192.168.0.0–192.168.255.255，专门为组织机构内部使用。</p>
+<p><strong>常用命令：</strong></p>
+<ul>
+<li>查看本机IP地址，在控制台输入：</li>
+</ul>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">ipconfig<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<ul>
+<li>检查网络是否连通，在控制台输入：</li>
+</ul>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">ping 空格 <span class="token constant">IP</span>地址
+ping <span class="token number">220.181</span><span class="token number">.57</span><span class="token number">.216</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p><strong>特殊的IP地址：</strong></p>
+<ul>
+<li>本地回环地址(hostAddress)：<code>127.0.0.1</code></li>
+<li>主机名(hostName)：<code>localhost</code></li>
+</ul>
+<h4 id="域名"><a href="#域名" class="headerlink" title="域名"></a>域名</h4><p>Internet上的主机有两种方式表示地址：</p>
+<ul>
+<li>域名(hostName)：<a target="_blank" rel="noopener" href="http://www.baidu.com/">www.baidu.com</a></li>
+<li>IP 地址(hostAddress)：202.108.35.210</li>
+</ul>
+<p><strong>域名解析：</strong>因为IP地址数字不便于记忆，因此出现了域名。域名容易记忆，当在连接网络时输入一个主机的域名后，域名服务器(DNS，Domain Name System，域名系统)负责将域名转化成IP地址，这样才能和主机建立连接。</p>
+<p>详细过程：</p>
+<ol>
+<li>在浏览器中输入www . qq .com 域名，操作系统会先检查自己本地的<code>hosts文件</code>是否有这个网址映射关系，如果有，就先调用这个IP地址映射，完成域名解析。</li>
+<li>如果hosts里没有这个域名的映射，则查找<code>本地DNS解析器缓存</code>，是否有这个网址映射关系，如果有，直接返回，完成域名解析。</li>
+<li>如果hosts与本地DNS解析器缓存都没有相应的网址映射关系，首先会找TCP&#x2F;IP参数中设置的首选DNS服务器，在此我们叫它<code>本地DNS服务器</code>，此服务器收到查询时，如果要查询的域名，包含在本地配置区域资源中，则返回解析结果给客户机，完成域名解析，此解析具有权威性。</li>
+<li>如果要查询的域名，不由本地DNS服务器区域解析，但该服务器已<code>缓存</code>了此网址映射关系，则调用这个IP地址映射，完成域名解析，此解析不具有权威性。</li>
+<li>如果本地DNS服务器本地区域文件与缓存解析都失效，则根据本地DNS服务器的设置（是否设置转发器）进行查询，如果未用转发模式，本地DNS就把请求发至13台根DNS，根DNS服务器收到请求后会判断这个域名(.com)是谁来授权管理，并会返回一个负责该顶级域名服务器的一个IP。本地DNS服务器收到IP信息后，将会联系负责.com域的这台服务器。这台负责.com域的服务器收到请求后，如果自己无法解析，它就会找一个管理.com域的下一级DNS服务器地址(<a target="_blank" rel="noopener" href="http://qq.com/">http://qq.com</a>)给本地DNS服务器。当本地DNS服务器收到这个地址后，就会找（<a target="_blank" rel="noopener" href="http://qq.com/">http://qq.com</a>)域服务器，重复上面的动作，进行查询，直至找到<a target="_blank" rel="noopener" href="http://www.qq.com主机./">www.qq.com主机。</a></li>
+<li>如果用的是转发模式，此DNS服务器就会把请求转发至上一级DNS服务器，由上一级服务器进行解析，上一级服务器如果不能解析，或找根DNS或把转请求转至上上级，以此循环。不管是本地DNS服务器用是是转发，还是根提示，最后都是把结果返回给本地DNS服务器，由此DNS服务器再返回给客户机。</li>
+</ol>
+<h3 id="端口号"><a href="#端口号" class="headerlink" title="端口号"></a>端口号</h3><p><strong>端口号</strong>：可以唯一标识设备中的进程（应用程序）。</p>
+<p>不同的进程，设置不同的端口号。</p>
+<ul>
+<li>端口号：用两个字节表示的整数，它的取值范围是0~65535<ul>
+<li>公认端口：0~1023。被预先定义的服务通信占用，如：HTTP（80），FTP（21），Telnet（23）</li>
+<li>注册端口：1024~49151。分配给用户进程或应用程序。如：Tomcat（8080），MySQL（3306），Oracle（1521）。</li>
+<li>动态&#x2F; 私有端口：49152~65535。</li>
+</ul>
+</li>
+</ul>
+<p><strong>端口号被占用，程序将启动失败</strong></p>
+<h3 id="网络协议"><a href="#网络协议" class="headerlink" title="网络协议"></a>网络协议</h3><p><code>网络通信协议</code>：在计算机网络中，这些连接和通信的规则被称为网络通信协议，它对数据的传输格式、传输速率、传输步骤、出错控制等做了统一规定，通信双方必须同时遵守才能完成数据交换。</p>
+<h4 id="两套参考模型"><a href="#两套参考模型" class="headerlink" title="两套参考模型"></a>两套参考模型</h4><ul>
+<li>OSI参考模型：模型过于理想化，未能在因特网上进行广泛推广。</li>
+<li>TCP&#x2F;IP参考模型(或TCP&#x2F;IP协议)：事实上的国际标准。</li>
+</ul>
+<p><img src="https://gitee.com/mr-poke/picture/raw/master/img/image-20220514172130459.png"></p>
+<p>上图中，OSI参考模型：模型<code>过于理想化</code>，未能在因特网上进行广泛推广。 TCP&#x2F;IP参考模型(或TCP&#x2F;IP协议)：事实上的<code>国际标准</code>。</p>
+<p><strong>TCP&#x2F;IP协议：</strong> 传输控制协议&#x2F;因特网互联协议( Transmission Control Protocol&#x2F;Internet Protocol)，TCP&#x2F;IP 以其两个主要协议：传输控制协议(TCP)和网络互联协议(IP)而得名，实际上是一组协议，包括多个具有不同功能且互为关联的协议。是Internet最基本、最广泛的协议。</p>
+<h4 id="TCP四层模型介绍"><a href="#TCP四层模型介绍" class="headerlink" title="TCP四层模型介绍"></a>TCP四层模型介绍</h4><p><strong>应用层：</strong> 提供服务</p>
+<p>基于网络构建应用服务。     （服务与应用程序）</p>
+<table>
+<thead>
+<tr>
+<th>协议</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>HTTP协议</td>
+<td>超文本传输协议</td>
+</tr>
+<tr>
+<td>FTF 协议</td>
+<td>文件传输协议</td>
+</tr>
+<tr>
+<td>SMTP协议</td>
+<td>简单邮件传输协议</td>
+</tr>
+<tr>
+<td>NNTP协议</td>
+<td>网上新闻传输协议</td>
+</tr>
+<tr>
+<td>DNS</td>
+<td>域名服务</td>
+</tr>
+<tr>
+<td>Telnet协议</td>
+<td>虚拟终端协议</td>
+</tr>
+</tbody></table>
+<p><strong>传输层：</strong>主机之间建立、管理、维护连接</p>
+<p>使网络程序进行通信。 （定义了数据协议和端口号，确认数据传输及错误处理）</p>
+<table>
+<thead>
+<tr>
+<th>协议</th>
+<th>作用</th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>TCP</td>
+<td>传输控制协议</td>
+<td>面向连接，基于字节流、可靠</td>
+</tr>
+<tr>
+<td>UDP</td>
+<td>用户数据报协议</td>
+<td>无连接，面向事务的简单不可靠的信息传送服务</td>
+</tr>
+</tbody></table>
+<p><strong>网络层</strong>     数据的封装处理以及传输的地址处理</p>
+<p>TCP&#x2F;IP的核心。    （对数据包的IP地址进行封装和解析，数据传输、路由、地址的选择）</p>
+<p>它主要用于将传输的数据进行分组，将分组数据发送到目标计算机或者网络。</p>
+<table>
+<thead>
+<tr>
+<th>协议</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>IP</td>
+<td>把数据从源传送到目的地。数据包：对数据大小的重新组装功能，以适应不同网络对包大小的要求。</td>
+</tr>
+</tbody></table>
+<p><strong>网络接口层（物理+数据链路层）</strong> 物理上如何传输</p>
+<p>用于定义物理传输通道，通常是对某些网络连接设备的驱动协议，例如针对光纤、网线提供的驱动。</p>
+<table>
+<thead>
+<tr>
+<th>协议</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ATM</td>
+<td></td>
+</tr>
+<tr>
+<td>RARP</td>
+<td></td>
+</tr>
+<tr>
+<td>FDDI</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id="3-再谈TCP与UDP协议"><a href="#3-再谈TCP与UDP协议" class="headerlink" title="3.再谈TCP与UDP协议"></a>3.再谈TCP与UDP协议</h2><h3 id="TCP协议特点："><a href="#TCP协议特点：" class="headerlink" title="TCP协议特点："></a>TCP协议特点：</h3><ol>
+<li>通信的应用 ： <code>客户端、服务端</code>。</li>
+<li>传输开始前，须先<code>建立TCP连接</code>,形成基于字节流的传输数据通道</li>
+<li>三次握手。<code>可靠的</code></li>
+<li>可<code>大数据量的传输</code></li>
+<li>传输完毕，释放连接。<code>效率低</code></li>
+</ol>
+<h3 id="UDP协议特点："><a href="#UDP协议特点：" class="headerlink" title="UDP协议特点："></a>UDP协议特点：</h3><ol>
+<li>通信的应用： <code>发送端、接收端</code>。</li>
+<li>将数据、源、目的封装为数据包（基本单位），<code>不需要建立连接</code></li>
+<li>只管发送，<code>不可靠</code></li>
+<li>数据包大小<code>限制64KB</code></li>
+<li>无需释放资源，<code>效率高</code></li>
+</ol>
+<h2 id="TCP的三次握手与四次挥手"><a href="#TCP的三次握手与四次挥手" class="headerlink" title="TCP的三次握手与四次挥手"></a>TCP的三次握手与四次挥手</h2><h3 id="三次握手"><a href="#三次握手" class="headerlink" title="三次握手"></a>三次握手</h3><ul>
+<li>第一次握手，客户端向服务器端发起TCP连接的请求 （客户端：同步已发送）</li>
+<li>第二次握手，服务器端发送针对客户端TCP连接请求的确认 （服务端：同步已接收）</li>
+<li>第三次握手，客户端发送确认的确认 （建立连接）</li>
+</ul>
+<p><img src="https://gitee.com/mr-poke/picture/raw/master/img/image-20220415010105484.png" alt="image-20220415010105484"></p>
+<p>完成三次握手，连接建立后，客户端和服务器就可以开始进行数据传输了。由于这种面向连接的特性，TCP协议可以保证传输数据的安全，所以应用十分广泛，例如下载文件、浏览网页等。</p>
+<h3 id="四次挥手"><a href="#四次挥手" class="headerlink" title="四次挥手"></a>四次挥手</h3><ul>
+<li>第一次挥手：<strong>客户端向服务器端提出结束连接</strong>，<code>让服务器做最后的准备工作</code>。此时，<strong>客户端处于半关闭状态</strong>，即表示不再向服务器发送数据了，但是还可以接受数据。</li>
+<li>第二次挥手：<strong>服务器接收到客户端释放连接的请</strong>求后，<code>会将最后的数据发给客户端</code>。并告知上层的应用进程不再接收数据。</li>
+<li>第三次挥手：<strong>服务器发送完数据后</strong>，会给客户端<code>发送一个释放连接的报文</code>。那么客户端接收后就知道可以正式释放连接了。</li>
+<li>第四次挥手：客户端接收到服务器最后的释放连接报文后，要<code>回复一个彻底断开的报文</code>。这样服务器收到后才会彻底释放连接。这里客户端，发送完最后的报文后，会等待2MSL，因为有可能服务器没有收到最后的报文，那么服务器迟迟没收到，就会再次给客户端发送释放连接的报文，此时客户端在等待时间范围内接收到，会重新发送最后的报文，并重新计时。如果等待2MSL后，没有收到，那么彻底断开。</li>
+</ul>
+<h1 id="三、Java的网络编程API"><a href="#三、Java的网络编程API" class="headerlink" title="三、Java的网络编程API"></a>三、Java的网络编程API</h1><h2 id="1-InetAddress类"><a href="#1-InetAddress类" class="headerlink" title="1. InetAddress类"></a>1. InetAddress类</h2><p>netAddress类主要表示IP地址，两个子类：Inet4Address、Inet6Address。</p>
+<p>InetAddress 类没有提供公共的构造器，而是提供了如下几个静态方法来获取InetAddress 实例</p>
+<ul>
+<li>public static InetAddress getLocalHost()</li>
+<li>public static InetAddress getByName(String host)</li>
+<li>public static InetAddress getByAddress(byte[] addr)</li>
+</ul>
+<p>InetAddress 提供了如下几个常用的方法</p>
+<ul>
+<li>public String getHostAddress() ：返回 IP 地址字符串（以文本表现形式）</li>
+<li>public String getHostName() ：获取此 IP 地址的主机名</li>
+<li>public boolean isReachable(int timeout)：测试是否可以达到该地址</li>
+</ul>
+<h2 id="2-Socket类"><a href="#2-Socket类" class="headerlink" title="2.Socket类"></a>2.Socket类</h2><ul>
+<li>网络上具有唯一标识的IP地址和端口号组合在一起构成唯一能识别的标识符套接字（Socket）。</li>
+<li>利用套接字(Socket)开发网络应用程序早已被广泛的采用，以至于成为事实上的标准。网络通信其实就是Socket间的通信。</li>
+<li>通信的两端都要有Socket，是两台机器间通信的端点。</li>
+<li>Socket允许程序把网络连接当成一个流，数据在两个Socket间通过IO传输。</li>
+<li>一般主动发起通信的应用程序属客户端，等待通信请求的为服务端。</li>
+<li>Socket分类：<ul>
+<li>流套接字（stream socket）：使用TCP提供可依赖的字节流服务<ul>
+<li>ServerSocket：此类实现TCP服务器套接字。服务器套接字等待请求通过网络传入。</li>
+<li>Socket：此类实现客户端套接字（也可以就叫“套接字”）。套接字是两台机器间通信的端点。</li>
+</ul>
+</li>
+<li>数据报套接字（datagram socket）：使用UDP提供“尽力而为”的数据报服务<ul>
+<li>DatagramSocket：此类表示用来发送和接收UDP数据报包的套接字。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-1-ServerSocket"><a href="#2-1-ServerSocket" class="headerlink" title="2.1 ServerSocket"></a>2.1 ServerSocket</h3><p><strong>ServerSocket类的构造方法：</strong></p>
+<ul>
+<li>ServerSocket(int port) ：创建绑定到特定端口的服务器套接字。</li>
+</ul>
+<p><strong>ServerSocket类的常用方法：</strong></p>
+<ul>
+<li>Socket accept()：侦听并接受到此套接字的连接。</li>
+</ul>
+<h3 id="2-2-Socket类"><a href="#2-2-Socket类" class="headerlink" title="2.2 Socket类"></a>2.2 Socket类</h3><p><strong>Socket类的常用构造方法</strong>：</p>
+<ul>
+<li>public Socket(InetAddress address,int port)：创建一个流套接字并将其连接到指定 IP 地址的指定端口号。</li>
+<li>public Socket(String host,int port)：创建一个流套接字并将其连接到指定主机上的指定端口号。</li>
+</ul>
+<p><strong>Socket类的常用方法</strong>：</p>
+<ul>
+<li>public InputStream getInputStream()：返回此套接字的输入流，可以用于接收消息</li>
+<li>public OutputStream getOutputStream()：返回此套接字的输出流，可以用于发送消息</li>
+<li>public InetAddress getInetAddress()：此套接字连接到的远程 IP 地址；如果套接字是未连接的，则返回 null。</li>
+<li>public InetAddress getLocalAddress()：获取套接字绑定的本地地址。</li>
+<li>public int getPort()：此套接字连接到的远程端口号；如果尚未连接套接字，则返回 0。</li>
+<li>public int getLocalPort()：返回此套接字绑定到的本地端口。如果尚未绑定套接字，则返回 -1。</li>
+<li>public void close()：关闭此套接字。套接字被关闭后，便不可在以后的网络连接中使用（即无法重新连接或重新绑定）。需要创建新的套接字对象。 关闭此套接字也将会关闭该套接字的 InputStream 和 OutputStream。</li>
+<li>public void shutdownInput()：如果在套接字上调用 shutdownInput() 后从套接字输入流读取内容，则流将返回 EOF（文件结束符）。 即不能在从此套接字的输入流中接收任何数据。</li>
+<li>public void shutdownOutput()：禁用此套接字的输出流。对于 TCP 套接字，任何以前写入的数据都将被发送，并且后跟 TCP 的正常连接终止序列。 如果在套接字上调用 shutdownOutput() 后写入套接字输出流，则该流将抛出 IOException。 即不能通过此套接字的输出流发送任何数据。</li>
+</ul>
+<p><strong>注意：</strong>先后调用Socket的shutdownInput()和shutdownOutput()方法，仅仅关闭了输入流和输出流，并不等于调用Socket的close()方法。在通信结束后，仍然要调用Scoket的close()方法，因为只有该方法才会释放Socket占用的资源，比如占用的本地端口号等。</p>
+<h3 id="2-3-DatagramPacket类"><a href="#2-3-DatagramPacket类" class="headerlink" title="2.3 DatagramPacket类"></a>2.3 DatagramPacket类</h3><p><strong>DatagramPacket类的常用方法：</strong></p>
+<ul>
+<li>public DatagramPacket(byte[] buf,int length)构造 DatagramPacket，用来接收长度为 length 的数据包。 length 参数必须小于等于 buf.length。</li>
+<li>public DatagramPacket(byte[] buf,int length,InetAddress address,int port)构造数据报包，用来将长度为 length 的包发送到指定主机上的指定端口号。length 参数必须小于等于 buf.length。</li>
+<li>public InetAddress getAddress()返回某台机器的 IP 地址，此数据报将要发往该机器或者是从该机器接收到的。</li>
+<li>public int getPort()返回某台远程主机的端口号，此数据报将要发往该主机或者是从该主机接收到的。</li>
+<li><code>public byte[] getData()</code>返回数据缓冲区。接收到的或将要发送的数据从缓冲区中的偏移量 offset 处开始，持续 length 长度。</li>
+<li><code>public int getLength()</code>返回将要发送或接收到的数据的长度。</li>
+</ul>
+<h1 id="四、TCP网络编程"><a href="#四、TCP网络编程" class="headerlink" title="四、TCP网络编程"></a>四、TCP网络编程</h1><p><img src="https://gitee.com/mr-poke/picture/raw/master/img/image-20220514172833216.png" alt="image-20220514172833216"></p>
+<h2 id="开发步骤"><a href="#开发步骤" class="headerlink" title="开发步骤"></a>开发步骤</h2><p><strong>客户端程序包含以下四个基本的步骤 ：</strong></p>
+<ul>
+<li>创建 Socket ：根据指定服务端的 IP 地址或端口号构造 Socket 类对象。若服务器端响应，则建立客户端到服务器的通信线路。若连接失败，会出现异常。</li>
+<li>打开连接到 Socket 的输入&#x2F; 出流： 使用 getInputStream()方法获得输入流，使用getOutputStream()方法获得输出流，进行数据传输</li>
+<li>按照一定的协议对 Socket 进行读&#x2F; 写操作：通过输入流读取服务器放入线路的信息（但不能读取自己放入线路的信息），通过输出流将信息写入线路。</li>
+<li>关闭 Socket ：断开客户端到服务器的连接，释放线路</li>
+</ul>
+<p><strong>服务器端程序包含以下四个基本的 步骤：</strong></p>
+<ul>
+<li>调用 ServerSocket(int port) ：创建一个服务器端套接字，并绑定到指定端口上。用于监听客户端的请求。</li>
+<li>调用 accept() ：监听连接请求，如果客户端请求连接，则接受连接，返回通信套接字对象。</li>
+<li>调用 该Socket 类对象的 getOutputStream() 和 getInputStream () ：获取输出流和输入流，开始网络数据的发送和接收。</li>
+<li>关闭Socket 对象：客户端访问结束，关闭通信套接字。</li>
+</ul>
+<h2 id="例题："><a href="#例题：" class="headerlink" title="例题："></a>例题：</h2><p><strong>客户端发送内容给服务端，服务端将内容打印到控制台上。</strong></p>
+<p><strong>1、服务器端示例代码</strong></p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">package</span> <span class="token namespace">com<span class="token punctuation">.</span>atguigu<span class="token punctuation">.</span>tcp<span class="token punctuation">.</span>one</span><span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">java<span class="token punctuation">.</span>io<span class="token punctuation">.</span></span><span class="token class-name">InputStream</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">java<span class="token punctuation">.</span>io<span class="token punctuation">.</span></span><span class="token class-name">OutputStream</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">java<span class="token punctuation">.</span>net<span class="token punctuation">.</span></span><span class="token class-name">InetAddress</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">java<span class="token punctuation">.</span>net<span class="token punctuation">.</span></span><span class="token class-name">ServerSocket</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">java<span class="token punctuation">.</span>net<span class="token punctuation">.</span></span><span class="token class-name">Socket</span></span><span class="token punctuation">;</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Server</span> <span class="token punctuation">&#123;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span><span class="token keyword">throws</span> <span class="token class-name">Exception</span> <span class="token punctuation">&#123;</span>
+        <span class="token comment">//1、准备一个ServerSocket对象，并绑定8888端口</span>
+        <span class="token class-name">ServerSocket</span> server <span class="token operator">=</span>  <span class="token keyword">new</span> <span class="token class-name">ServerSocket</span><span class="token punctuation">(</span><span class="token number">8888</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"等待连接...."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment">//2、在8888端口监听客户端的连接，该方法是个阻塞的方法，如果没有客户端连接，将一直等待</span>
+        <span class="token class-name">Socket</span> socket <span class="token operator">=</span> server<span class="token punctuation">.</span><span class="token function">accept</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">InetAddress</span> inetAddress <span class="token operator">=</span> socket<span class="token punctuation">.</span><span class="token function">getInetAddress</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>inetAddress<span class="token punctuation">.</span><span class="token function">getHostAddress</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">"客户端连接成功！！"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment">//3、获取输入流，用来接收该客户端发送给服务器的数据</span>
+        <span class="token class-name">InputStream</span> input <span class="token operator">=</span> socket<span class="token punctuation">.</span><span class="token function">getInputStream</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">//接收数据</span>
+        <span class="token keyword">byte</span><span class="token punctuation">[</span><span class="token punctuation">]</span> data <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token keyword">byte</span><span class="token punctuation">[</span><span class="token number">1024</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token class-name">StringBuilder</span> s <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">StringBuilder</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> len<span class="token punctuation">;</span>
+        <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>len <span class="token operator">=</span> input<span class="token punctuation">.</span><span class="token function">read</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">!=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            s<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">String</span><span class="token punctuation">(</span>data<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> len<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>inetAddress<span class="token punctuation">.</span><span class="token function">getHostAddress</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">"客户端发送的消息是："</span> <span class="token operator">+</span> s<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment">//4、获取输出流，用来发送数据给该客户端</span>
+        <span class="token class-name">OutputStream</span> out <span class="token operator">=</span> socket<span class="token punctuation">.</span><span class="token function">getOutputStream</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">//发送数据</span>
+        out<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span><span class="token string">"欢迎登录"</span><span class="token punctuation">.</span><span class="token function">getBytes</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        out<span class="token punctuation">.</span><span class="token function">flush</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment">//5、关闭socket，不再与该客户端通信</span>
+        <span class="token comment">//socket关闭，意味着InputStream和OutputStream也关闭了</span>
+        socket<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment">//6、如果不再接收任何客户端通信，可以关闭ServerSocket</span>
+        server<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><strong>2、客户端示例代码</strong></p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">package</span> <span class="token namespace">com<span class="token punctuation">.</span>atguigu<span class="token punctuation">.</span>tcp<span class="token punctuation">.</span>one</span><span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">java<span class="token punctuation">.</span>io<span class="token punctuation">.</span></span><span class="token class-name">InputStream</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">java<span class="token punctuation">.</span>io<span class="token punctuation">.</span></span><span class="token class-name">OutputStream</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">java<span class="token punctuation">.</span>net<span class="token punctuation">.</span></span><span class="token class-name">Socket</span></span><span class="token punctuation">;</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Client</span> <span class="token punctuation">&#123;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">Exception</span> <span class="token punctuation">&#123;</span>
+        <span class="token comment">// 1、准备Socket，连接服务器，需要指定服务器的IP地址和端口号</span>
+        <span class="token class-name">Socket</span> socket <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Socket</span><span class="token punctuation">(</span><span class="token string">"127.0.0.1"</span><span class="token punctuation">,</span> <span class="token number">8888</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment">// 2、获取输出流，用来发送数据给服务器</span>
+        <span class="token class-name">OutputStream</span> out <span class="token operator">=</span> socket<span class="token punctuation">.</span><span class="token function">getOutputStream</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">// 发送数据</span>
+        out<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span><span class="token string">"lalala"</span><span class="token punctuation">.</span><span class="token function">getBytes</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">//会在流末尾写入一个“流的末尾”标记，对方才能读到-1，否则对方的读取方法会一致阻塞</span>
+        socket<span class="token punctuation">.</span><span class="token function">shutdownOutput</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment">//3、获取输入流，用来接收服务器发送给该客户端的数据</span>
+        <span class="token class-name">InputStream</span> input <span class="token operator">=</span> socket<span class="token punctuation">.</span><span class="token function">getInputStream</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">// 接收数据</span>
+        <span class="token keyword">byte</span><span class="token punctuation">[</span><span class="token punctuation">]</span> data <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token keyword">byte</span><span class="token punctuation">[</span><span class="token number">1024</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token class-name">StringBuilder</span> s <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">StringBuilder</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> len<span class="token punctuation">;</span>
+        <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>len <span class="token operator">=</span> input<span class="token punctuation">.</span><span class="token function">read</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">!=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            s<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">String</span><span class="token punctuation">(</span>data<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> len<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"服务器返回的消息是："</span> <span class="token operator">+</span> s<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment">//4、关闭socket，不再与服务器通信，即断开与服务器的连接</span>
+        <span class="token comment">//socket关闭，意味着InputStream和OutputStream也关闭了</span>
+        socket<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h1 id="五、UDP网络编程"><a href="#五、UDP网络编程" class="headerlink" title="五、UDP网络编程"></a>五、UDP网络编程</h1><h2 id="开发步骤-1"><a href="#开发步骤-1" class="headerlink" title="开发步骤"></a>开发步骤</h2><p><strong>发送端程序包含以下四个基本的步骤：</strong></p>
+<ul>
+<li>创建DatagramSocket ：默认使用系统随机分配端口号。</li>
+<li>创建DatagramPacket：将要发送的数据用字节数组表示，并指定要发送的数据长度，接收方的IP地址和端口号。</li>
+<li>调用 该DatagramSocket 类对象的 send方法 ：发送数据报DatagramPacket对象。</li>
+<li>关闭DatagramSocket 对象：发送端程序结束，关闭通信套接字。</li>
+</ul>
+<p><strong>接收端程序包含以下四个基本的步骤 ：</strong></p>
+<ul>
+<li>创建DatagramSocket ：指定监听的端口号。</li>
+<li>创建DatagramPacket：指定接收数据用的字节数组，起到临时数据缓冲区的效果，并指定最大可以接收的数据长度。</li>
+<li>调用 该DatagramSocket 类对象的receive方法 ：接收数据报DatagramPacket对象。。</li>
+<li>关闭DatagramSocket ：接收端程序结束，关闭通信套接字。</li>
+</ul>
+<h2 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h2><p>发送端：</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">DatagramSocket</span> ds <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+<span class="token keyword">try</span> <span class="token punctuation">&#123;</span>
+    ds <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">DatagramSocket</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">byte</span><span class="token punctuation">[</span><span class="token punctuation">]</span> by <span class="token operator">=</span> <span class="token string">"hello,com"</span><span class="token punctuation">.</span><span class="token function">getBytes</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token class-name">DatagramPacket</span> dp <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">DatagramPacket</span><span class="token punctuation">(</span>by<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> by<span class="token punctuation">.</span>length<span class="token punctuation">,</span>     <span class="token class-name">InetAddress</span><span class="token punctuation">.</span><span class="token function">getByName</span><span class="token punctuation">(</span><span class="token string">"127.0.0.1"</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">10000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    ds<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span>dp<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">Exception</span> e<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    e<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span> <span class="token keyword">finally</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>ds <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span>
+        ds<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>接收端：</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">DatagramSocket</span> ds <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+<span class="token keyword">try</span> <span class="token punctuation">&#123;</span>
+    ds <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">DatagramSocket</span><span class="token punctuation">(</span><span class="token number">10000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">byte</span><span class="token punctuation">[</span><span class="token punctuation">]</span> by <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token keyword">byte</span><span class="token punctuation">[</span><span class="token number">1024</span><span class="token operator">*</span><span class="token number">64</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token class-name">DatagramPacket</span> dp <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">DatagramPacket</span><span class="token punctuation">(</span>by<span class="token punctuation">,</span> by<span class="token punctuation">.</span>length<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    ds<span class="token punctuation">.</span><span class="token function">receive</span><span class="token punctuation">(</span>dp<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token class-name">String</span> str <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">String</span><span class="token punctuation">(</span>dp<span class="token punctuation">.</span><span class="token function">getData</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> dp<span class="token punctuation">.</span><span class="token function">getLength</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>str <span class="token operator">+</span> <span class="token string">"--"</span> <span class="token operator">+</span> dp<span class="token punctuation">.</span><span class="token function">getAddress</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">Exception</span> e<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    e<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span> <span class="token keyword">finally</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>ds <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span>
+        ds<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h1 id="六、URL编程"><a href="#六、URL编程" class="headerlink" title="六、URL编程"></a>六、URL编程</h1><ul>
+<li>URL(Uniform Resource Locator)：统一资源定位符，它表示 Internet 上某一资源的地址。</li>
+<li>通过 URL 我们可以访问 Internet 上的各种网络资源，比如最常见的 www，ftp 站点。浏览器通过解析给定的 URL 可以在网络上查找相应的文件或其他资源。</li>
+<li>URL的基本结构由5部分组成：</li>
+</ul>
+<pre class="line-numbers language-http" data-language="http"><code class="language-http">&lt;传输协议>://&lt;主机名>:&lt;端口号>/&lt;文件名>#片段名?参数列表<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<ul>
+<li><ul>
+<li><p>public URL (String spec)：通过一个表示URL地址的字符串可以构造一个URL对象。例如：</p>
+<pre class="line-numbers language-http" data-language="http"><code class="language-http">URL url = new URL("http://www.baidu.com/"); <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+<li><p>public URL(URL context, String spec)：通过基 URL 和相对 URL 构造一个 URL 对象。例如：</p>
+<pre class="line-numbers language-http" data-language="http"><code class="language-http">URL downloadUrl = new URL(url, “download.html")<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>public URL(String protocol, String host, String file); 例如：</p>
+<pre class="line-numbers language-http" data-language="http"><code class="language-http">URL url = new URL("http", "www.baidu.com", “download. html");<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+<li><p>public URL(String protocol, String host, int port, String file); 例如:</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">URL</span> gamelan <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">URL</span><span class="token punctuation">(</span><span class="token string">"http"</span><span class="token punctuation">,</span> <span class="token string">"www.baidu.com"</span><span class="token punctuation">,</span> <span class="token number">80</span><span class="token punctuation">,</span> “download<span class="token punctuation">.</span>html"<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+</ul>
+</li>
+<li><p>URL类的构造器都声明抛出非运行时异常，必须要对这一异常进行处理，通常是用 try-catch 语句进行捕获。</p>
+</li>
+</ul>
+<h2 id="常用方法"><a href="#常用方法" class="headerlink" title="常用方法"></a>常用方法</h2><ul>
+<li>public String getProtocol( ) 获取该URL的协议名</li>
+<li>public String getHost( ) 获取该URL的主机名</li>
+<li>public String getPort( ) 获取该URL的端口号</li>
+<li>public String getPath( ) 获取该URL的文件路径</li>
+<li>public String getFile( ) 获取该URL的文件名</li>
+<li>public String getQuery( ) 获取该URL的查询名</li>
+</ul>
+<h2 id="针对HTTP协议的URLConnection类"><a href="#针对HTTP协议的URLConnection类" class="headerlink" title="针对HTTP协议的URLConnection类"></a>针对HTTP协议的URLConnection类</h2><ul>
+<li>URL的方法 openStream()：能从网络上读取数据</li>
+<li>若希望输出数据，例如向服务器端的 CGI （公共网关接口-Common Gateway Interface-的简称，是用户浏览器和服务器端的应用程序进行连接的接口）程序发送一些数据，则必须先与URL建立连接，然后才能对其进行读写，此时需要使用 URLConnection 。</li>
+<li>URLConnection：表示到URL所引用的远程对象的连接。当与一个URL建立连接时，首先要在一个 URL 对象上通过方法 openConnection() 生成对应的 URLConnection 对象。如果连接过程失败，将产生IOException.<ul>
+<li>URL netchinaren &#x3D; new URL (“<a target="_blank" rel="noopener" href="http://www.atguigu.com/index.shtml%E2%80%9D">http://www.atguigu.com/index.shtml”</a>);</li>
+<li>URLConnectonn u &#x3D; netchinaren.openConnection( );</li>
+</ul>
+</li>
+<li>通过URLConnection对象获取的输入流和输出流，即可以与现有的CGI程序进行交互。<ul>
+<li>public Object getContent( ) throws IOException</li>
+<li>public int getContentLength( )</li>
+<li>public String getContentType( )</li>
+<li>public long getDate( )</li>
+<li>public long getLastModified( )</li>
+<li><strong>public InputStream getInputStream ( ) throws IOException</strong></li>
+<li>public OutputSteram getOutputStream( )throws IOException</li>
+</ul>
+</li>
+</ul>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/blog/about" rel="external nofollow noreferrer">Mr_poke</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://gitee.com/mr-poke/blog.git/blog/2023/04/06/wang-luo-bian-cheng/">https://gitee.com/mr-poke/blog.git/blog/2023/04/06/wang-luo-bian-cheng/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/blog/about" target="_blank">Mr_poke</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/blog/tags/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/">
+                                    <span class="chip bg-color">网络编程</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/blog/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/blog/2023/04/06/wang-luo-bian-cheng/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/blog/medias/featureimages/8.jpg" class="responsive-img" alt="网络编程">
+                        
+                        <span class="card-title">网络编程</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            学好网络才能在web大杀四方
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-04-06
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/blog/categories/java%E9%AB%98%E7%BA%A7/" class="post-category">
+                                    java高级
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/blog/tags/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/">
+                        <span class="chip bg-color">网络编程</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/blog/2023/04/06/java-ji-chu/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/blog/medias/featureimages/0.jpg" class="responsive-img" alt="Java基础">
+                        
+                        <span class="card-title">Java基础</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            欲行其事，必利其器，请不要忽视任何基础
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-04-06
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/blog/categories/java%E5%9F%BA%E7%A1%80/" class="post-category">
+                                    java基础
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/blog/tags/java%E5%9F%BA%E7%A1%80/">
+                        <span class="chip bg-color">java基础</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('50')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE' || selection.getRangeAt(0).commonAncestorContainer.nodeName === 'CODE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: Mr_poke<br />'
+            + '文章作者: Mr_poke<br />'
+            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。 ---Mr_poke';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/blog/libs/codeBlock/codeBlockFuction.js"></script>
+
+
+  <!-- 是否加载使用自带的 prismjs. -->
+  <script type="text/javascript" src="/blog/libs/prism/prism.min.js"></script>
+
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/blog/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/blog/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/blog/libs/codeBlock/codeShrink.js"></script>
+
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/blog/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2023</span>
+            
+            <a href="/blog/about" target="_blank">Mr_poke</a>
+            <!-- |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a> -->
+            
+            <br>
+            
+            
+            
+                
+            
+            
+                <span id="busuanzi_container_site_pv">
+                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;
+                    <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+                <span id="busuanzi_container_site_uv">
+                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;
+                    <span id="busuanzi_value_site_uv" class="white-color"></span>
+            </span>
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/Mr-P0KE/" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:mr_poke@163.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=562073889" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 562073889" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/blog/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 白天和黑夜主题 -->
+<div class="stars-con">
+    <div id="stars"></div>
+    <div id="stars2"></div>
+    <div id="stars3"></div>  
+</div>
+
+<script>
+    function switchNightMode() {
+        $('<div class="Cuteen_DarkSky"><div class="Cuteen_DarkPlanet"></div></div>').appendTo($('body')),
+        setTimeout(function () {
+            $('body').hasClass('DarkMode') 
+            ? ($('body').removeClass('DarkMode'), localStorage.setItem('isDark', '0'), $('#sum-moon-icon').removeClass("fa-sun").addClass('fa-moon')) 
+            : ($('body').addClass('DarkMode'), localStorage.setItem('isDark', '1'), $('#sum-moon-icon').addClass("fa-sun").removeClass('fa-moon')),
+            
+            setTimeout(function () {
+            $('.Cuteen_DarkSky').fadeOut(1e3, function () {
+                $(this).remove()
+            })
+            }, 2e3)
+        })
+    }
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/blog/libs/materialize/materialize.min.js"></script>
+    <script src="/blog/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/blog/libs/aos/aos.js"></script>
+    <script src="/blog/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/blog/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/blog/js/matery.js"></script>
+
+    
+
+    
+    
+    
+
+    <!-- 雪花特效 -->
+    
+
+    <!-- 鼠标星星特效 -->
+     
+        <script type="text/javascript">
+            // 只在桌面版网页启用特效
+            var windowWidth = $(window).width();
+            if (windowWidth > 768) {
+                document.write('<script type="text/javascript" src="/blog/libs/others/star.js"><\/script>');
+            }
+        </script>
+    
+
+     
+        <script src="https://ssl.captcha.qq.com/TCaptcha.js"></script>
+        <script src="/blog/libs/others/TencentCaptcha.js"></script>
+        <button id="TencentCaptcha" data-appid="xxxxxxxxxx" data-cbfn="callback" type="button" hidden></button>
+    
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/blog/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/blog/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/blog/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
