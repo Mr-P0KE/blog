@@ -990,7 +990,7 @@ xiaoLi<span class="token operator">:</span>小李<span aria-hidden="true" class=
 <tr>
 <td>抛出异常</td>
 <td>不限</td>
-<td>小于等于</td>
+<td>编译时异常：小于等于父类，运行时异常无要求</td>
 </tr>
 <tr>
 <td>静态</td>
@@ -1634,8 +1634,8 @@ ArithmeticException（算数异常）
 </ol>
 <h4 id="2-throws-异常类型（不进行异常处理，扔给调用者，出现异常，代码不执行）"><a href="#2-throws-异常类型（不进行异常处理，扔给调用者，出现异常，代码不执行）" class="headerlink" title="2.throws + 异常类型（不进行异常处理，扔给调用者，出现异常，代码不执行）"></a>2.throws + 异常类型（不进行异常处理，扔给调用者，出现异常，代码不执行）</h4><h5 id="重点："><a href="#重点：" class="headerlink" title="重点："></a>重点：</h5><ul>
 <li>如果<strong>父类被重写方法的方法签名后面没有 “throws 编译时异常类</strong>型”，<strong>那么重写方法时，</strong>方法签名后面也<strong>不能出现“throws 编译时异常类型”。</strong></li>
-<li>如果<strong>父类被重写方法的方法签名后面有 “</strong>”，那么<strong>重写方法时</strong>，<strong>throws的编译时异常类型必须 &lt;&#x3D; 被重写方法throws的编译时异常类型，或者不throws编译时异常。</strong></li>
-<li>方法重写，对于“throws 运行时异常类型”没有要求。</li>
+<li>如果<strong>父类被重写方法的方法签名后面有 ，那么重写方法时，throws的编译时异常类型必须 &lt;&#x3D; 被重写方法throws的编译时异常类型，或者不throws编译时异常。</strong></li>
+<li>方法重写，对于“<strong>throws 运行时异常类型</strong>”没有要求。</li>
 </ul>
 <h4 id="3-两种异常处理方式的选择"><a href="#3-两种异常处理方式的选择" class="headerlink" title="3.两种异常处理方式的选择"></a>3.两种异常处理方式的选择</h4><ol>
 <li>涉及资源调用，使用try-catch</li>
@@ -1748,14 +1748,18 @@ ArithmeticException（算数异常）
 </li>
 <li><p>join()：<strong>在线程a中b.join()，a进入阻塞状态，直到b执行完毕，a继续执行。</strong></p>
 </li>
-<li><p>isAlive()：判断线程是否存活</p>
+<li><p>join（long millis）: <strong>等待该线程终止的时间最长为 millis 毫秒。如果millis时间到，将不再等待。</strong></p>
 </li>
-<li><p>stop() ： 结束线程执行，进入死亡状态</p>
+<li><p>isAlive()：<strong>判断线程是否存活</strong></p>
 </li>
-<li><p>suspend() 暂停线程，不释放锁资源 （过时）</p>
+<li><p>stop() ： <strong>结束线程执行，进入死亡状态</strong></p>
 </li>
-<li><p>resume（）：继续线程执行，8、9一块使用（过时）</p>
-<p><strong>线程优先级：</strong></p>
+<li><p>suspend() : <strong>暂停线程，不释放锁资源 （过时）</strong></p>
+</li>
+<li><p>resume（）：<strong>继续线程执行，8、9一块使用（过时）</strong></p>
+</li>
+</ol>
+<p>   <strong>线程优先级：</strong></p>
 <table>
 <thead>
 <tr>
@@ -1784,8 +1788,6 @@ ArithmeticException（算数异常）
 <li>getPriority() : 获取线程优先级</li>
 <li>setPriority()：修改线程优先级</li>
 </ol>
-</li>
-</ol>
 <p><strong>静态方法</strong>：</p>
 <ol>
 <li><p>currentThread()：<strong>获取当前执行代码对应的线程对象</strong></p>
@@ -1805,7 +1807,7 @@ ArithmeticException（算数异常）
 
 <h4 id="9-线程生命周期"><a href="#9-线程生命周期" class="headerlink" title="*9.线程生命周期"></a>*9.线程生命周期</h4><ol>
 <li><p><strong>jdk1.5之前</strong></p>
-<p><img src="F:\Typora\笔记\Image\线程生命周期1.5之前.png"></p>
+<p><img src="https://gitee.com/mr-poke/picture/raw/master/img/%E7%BA%BF%E7%A8%8B%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F1.5%E4%B9%8B%E5%89%8D.png"></p>
 </li>
 <li><p><strong>JDK1.6及以后</strong></p>
 </li>
@@ -1828,7 +1830,7 @@ ArithmeticException（算数异常）
     <span class="token constant">TERMINATED</span><span class="token punctuation">;</span>    <span class="token comment">//死亡 terminated</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p><img src="F:\Typora\笔记\Image\线程生命周期完整.png"></p>
+<p><img src="https://gitee.com/mr-poke/picture/raw/master/img/%E7%BA%BF%E7%A8%8B%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E5%AE%8C%E6%95%B4.png"></p>
 <h4 id="10-线程安全"><a href="#10-线程安全" class="headerlink" title="*10.线程安全"></a>*10.线程安全</h4><h5 id="1-synchronized"><a href="#1-synchronized" class="headerlink" title="1.synchronized"></a>1.synchronized</h5><ol>
 <li><p>同步代码块</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">synchronized</span> <span class="token punctuation">(</span>同步监视器<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>  <span class="token comment">//同步监视器也叫锁</span>
@@ -1969,7 +1971,7 @@ ArithmeticException（算数异常）
 </tr>
 </thead>
 <tbody><tr>
-<td>wait()</td>
+<td>wait(),wait(long time)</td>
 <td>线程进入等待状态</td>
 <td>释放锁</td>
 <td>1. 可以有参数 2. Object类中定义</td>
@@ -1987,6 +1989,12 @@ ArithmeticException（算数异常）
 <td></td>
 </tr>
 </tbody></table>
+<h5 id="区分sleep-和wait"><a href="#区分sleep-和wait" class="headerlink" title="区分sleep()和wait():"></a>区分sleep()和wait():</h5><p>相同点：一旦执行，都会使得当前线程结束执行状态，进入阻塞状态。</p>
+<p>不同点：</p>
+<p> ① 定义方法所属的类：sleep():Thread中定义。 wait():Object中定义</p>
+<p> ② 使用范围的不同：sleep()可以在任何需要使用的位置被调用； <strong>wait():必须使用在同步代码块或同步方法中</strong></p>
+<p> ③ 都在同步结构中使用的时候，是否释放同步监视器的操作不同：sleep():不会释放同步监视器 ;wait():会释放同步监视器</p>
+<p> ④ 结束等待的方式不同：sleep()：指定时间一到就结束阻塞。 wait():可以指定时间 也可以无限等待直到notify或notifyAll。</p>
 <p><strong>生产者消费者问题：</strong></p>
 <p>多线程：生产者，消费者</p>
 <h2 id="六、常用API"><a href="#六、常用API" class="headerlink" title="六、常用API"></a>六、常用API</h2><h3 id="1-String类（final修饰的类）"><a href="#1-String类（final修饰的类）" class="headerlink" title="1.String类（final修饰的类）"></a>1.String类（final修饰的类）</h3><h4 id="1-底层"><a href="#1-底层" class="headerlink" title="1.底层"></a>1.底层</h4><p>jdk9及以后，<strong>底层是字节数组</strong>（byte[] value）</p>
@@ -2040,7 +2048,7 @@ ArithmeticException（算数异常）
 
 <h4 id="3-String-s-x3D-“abc”-与String-s-x3D-new-String-“abc”-区别？"><a href="#3-String-s-x3D-“abc”-与String-s-x3D-new-String-“abc”-区别？" class="headerlink" title="3.String s &#x3D; “abc” 与String s &#x3D; new String(“abc”)区别？"></a>3.String s &#x3D; “abc” 与String s &#x3D; new String(“abc”)区别？</h4><p>String s &#x3D;”abc”,存放在字符串常量池中（1.6在方法区，1.8之后在本地内存中）</p>
 <p>String s &#x3D; new String（”abc”）在堆中创建String对象，然后指向了字符串常量池中的“abc”，最后返回了s的内存地址</p>
-<p><img src="F:\Typora\笔记\Image\String例子.png"></p>
+<p><img src="https://gitee.com/mr-poke/picture/raw/master/img/String%E4%BE%8B%E5%AD%90.png"></p>
 <h4 id="4-易错例子"><a href="#4-易错例子" class="headerlink" title="4. 易错例子"></a>4. 易错例子</h4><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">StringTest</span> <span class="token punctuation">&#123;</span>
 
     <span class="token class-name">String</span> str <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">String</span><span class="token punctuation">(</span><span class="token string">"good"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -2324,7 +2332,7 @@ ArithmeticException（算数异常）
 <span class="token class-name">StringBuffer</span> s2 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">StringBuffer</span><span class="token punctuation">(</span><span class="token string">"abc"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//  默认创建长度为16的数组，若有参数，则“abc”.length() +16</span>
 s2<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                     <span class="token comment">//长度超过最初定义的长度，默认扩容，扩容一倍+2， 如果还不够，扩容需要的长度</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
-<h5 id="2-StringBuffer与StringBuilder继承关系"><a href="#2-StringBuffer与StringBuilder继承关系" class="headerlink" title="2.StringBuffer与StringBuilder继承关系"></a>2.StringBuffer与StringBuilder继承关系</h5><p><img src="F:\Typora\笔记\Image\String继承关系图.png"></p>
+<h5 id="2-StringBuffer与StringBuilder继承关系"><a href="#2-StringBuffer与StringBuilder继承关系" class="headerlink" title="2.StringBuffer与StringBuilder继承关系"></a>2.StringBuffer与StringBuilder继承关系</h5><p><img src="https://gitee.com/mr-poke/picture/raw/master/img/String%E7%BB%A7%E6%89%BF%E5%85%B3%E7%B3%BB%E5%9B%BE.png"></p>
 <h5 id="3-常用方法"><a href="#3-常用方法" class="headerlink" title="3.常用方法"></a>3.常用方法</h5><pre class="line-numbers language-none"><code class="language-none">常用API
 
 （1）StringBuffer append(xx)：提供了很多的append()方法，用于进行字符串追加的方式拼接
@@ -2372,6 +2380,7 @@ parse(Charsequence text)	将指定格式的字符串解析为日期、时间<spa
 <th>排序规则</th>
 <th>方法</th>
 <th>用法</th>
+<th></th>
 </tr>
 </thead>
 <tbody><tr>
@@ -2379,12 +2388,14 @@ parse(Charsequence text)	将指定格式的字符串解析为日期、时间<spa
 <td>自然排序：java.lang.Comparable</td>
 <td>int compareTo(Object obj)</td>
 <td>在实体类中重写比较方法</td>
+<td></td>
 </tr>
 <tr>
 <td>Comparator</td>
 <td>定制排序：java.util.Comparator</td>
 <td>int compare(Object o1,Object o2)</td>
 <td>重新定义比较器</td>
+<td>（o1 -o2 为升序，o2-o1为降序）</td>
 </tr>
 </tbody></table>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java">    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
@@ -2429,10 +2440,24 @@ parse(Charsequence text)	将指定格式的字符串解析为日期、时间<spa
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
+<h3 id="5-BigDecimal"><a href="#5-BigDecimal" class="headerlink" title="5.BigDecimal"></a>5.BigDecimal</h3><ul>
+<li>构造器<ul>
+<li>public BigDecimal(double val)</li>
+<li>public BigDecimal(String val) –&gt; 推荐</li>
+</ul>
+</li>
+<li>常用方法<ul>
+<li>public BigDecimal <code>add</code>(BigDecimal augend)</li>
+<li>public BigDecimal <code>subtract</code>(BigDecimal subtrahend)</li>
+<li>public BigDecimal <code>multiply</code>(BigDecimal multiplicand)</li>
+<li>public BigDecimal <code>divide</code>(BigDecimal divisor, int scale, int roundingMode)：divisor是除数，scale指明保留几位小数，roundingMode指明舍入模式（ROUND_UP :向上加1、ROUND_DOWN :直接舍去、ROUND_HALF_UP:四舍五入）</li>
+</ul>
+</li>
+</ul>
 <h2 id="七、集合框架（Collenction和Map接口）"><a href="#七、集合框架（Collenction和Map接口）" class="headerlink" title="七、集合框架（Collenction和Map接口）"></a>七、集合框架（Collenction和Map接口）</h2><p><strong>Collection接口结构图：</strong></p>
-<p><img src="F:\Typora\笔记\Image\Collection.png"></p>
+<p><img src="https://gitee.com/mr-poke/picture/raw/master/img/Collection.png"></p>
 <p><strong>Map接口结构图：</strong></p>
-<p><img src="F:\Typora\笔记\Image\Map接口.png"></p>
+<p><img src="https://gitee.com/mr-poke/picture/raw/master/img/Map%E6%8E%A5%E5%8F%A3.png"></p>
 <h3 id="一、Collection接口"><a href="#一、Collection接口" class="headerlink" title="一、Collection接口"></a>一、Collection接口</h3><h4 id="1-常用方法"><a href="#1-常用方法" class="headerlink" title="1.常用方法"></a>1.常用方法</h4><h5 id="1-添加"><a href="#1-添加" class="headerlink" title="1.添加"></a>1.添加</h5><table>
 <thead>
 <tr>
@@ -2564,6 +2589,7 @@ parse(Charsequence text)	将指定格式的字符串解析为日期、时间<spa
 <th>可否存放null</th>
 <th>扩容机制</th>
 <th></th>
+<th>适用范围</th>
 </tr>
 </thead>
 <tbody><tr>
@@ -2574,6 +2600,7 @@ parse(Charsequence text)	将指定格式的字符串解析为日期、时间<spa
 <td>多个null</td>
 <td>扩容1.5倍，复制数组元素到新数组</td>
 <td>若知道长度，建议使用定义长度的构造器</td>
+<td>查询操作</td>
 </tr>
 <tr>
 <td>LinkedList</td>
@@ -2583,6 +2610,7 @@ parse(Charsequence text)	将指定格式的字符串解析为日期、时间<spa
 <td>多个null</td>
 <td></td>
 <td></td>
+<td>插入、删除操作</td>
 </tr>
 </tbody></table>
 <h4 id="3-Set接口（存取无序、不可重复）"><a href="#3-Set接口（存取无序、不可重复）" class="headerlink" title="3.Set接口（存取无序、不可重复）"></a>3.Set接口（存取无序、不可重复）</h4><table>
@@ -2670,20 +2698,66 @@ parse(Charsequence text)	将指定格式的字符串解析为日期、时间<spa
 </tr>
 </tbody></table>
 <p><strong>hashMap</strong></p>
+<h5 id="JDK8的HashMap底层"><a href="#JDK8的HashMap底层" class="headerlink" title="JDK8的HashMap底层"></a>JDK8的HashMap底层</h5><pre class="line-numbers language-java" data-language="java"><code class="language-java">map<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span>key1<span class="token punctuation">,</span>value1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">/*
+分析过程如下：
+
+将(key1,value1)添加到当前hashmap的对象中。首先会调用key1所在类的hashCode()方法，计算key1的哈希值1，
+此哈希值1再经过某种运算(hash())，得到哈希值2。此哈希值2再经过某种运算(indexFor())，确定在底层table数组中的索引位置i。
+   （1）如果数组索引为i上的数据为空，则(key1,value1)直接添加成功   ------位置1
+   （2）如果数组索引为i上的数据不为空，有(key2,value2)，则需要进一步判断：
+       判断key1的哈希值2与key2的哈希值是否相同：
+         （3） 如果哈希值不同，则(key1,value1)直接添加成功   ------位置2
+              如果哈希值相同，则需要继续调用key1所在类的equals()方法，将key2放入equals()形参进行判断
+                （4） equals方法返回false : 则(key1,value1)直接添加成功   ------位置3
+                      equals方法返回true : 默认情况下，value1会覆盖value2。
+
+位置1：直接将(key1,value1)以Node对象的方式存放到table数组索引i的位置。
+位置2、位置3：(key1,value1) 与现有的元素以链表的方式存储在table数组索引i的位置，新添加的元素指向旧添加的元素。
+
+...
+//扩容机制
+在不断的添加的情况下，满足如下条件的情况下，会进行扩容:
+if ((size >= threshold) &amp;&amp; (null != table[bucketIndex])) :
+默认情况下，当要添加的元素个数超过12(即：数组的长度（默认16） * loadFactor（加载因子0.75）得到的结果)时，就要考虑扩容。
+</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">/*
+①
+使用HashMap()的构造器创建对象时，并没有在底层初始化长度为16的table数组。
+
+②
+jdk8中添加的key,value封装到了HashMap.Node类的对象中。而非jdk7中的HashMap.Entry。
+
+③
+jdk8中新增的元素所在的索引位置如果有其他元素。在经过一系列判断后，如果能添加，则是旧的元素指向新的元素。而非jdk7中的新的元素指向旧的元素。“七上八下”
+
+④
+jdk7时底层的数据结构是：数组+单向链表。 而jdk8时，底层的数据结构是：数组+单向链表+红黑树。
+红黑树出现的时机：当某个索引位置i上的链表的长度达到8，且数组的长度超过64时，此索引位置上的元素要从单向链表改为红黑树。
+如果索引i位置是红黑树的结构，当不断删除元素的情况下，当前索引i位置上的元素的个数低于6时，要从红黑树改为单向链表。
+
+*/</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">HashMap</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">K</span><span class="token punctuation">,</span><span class="token class-name">V</span><span class="token punctuation">></span></span> map <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HashMap</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                       <span class="token comment">//未初始化数组</span>
 
 map<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                                             <span class="token comment">//第一次添加，初始化数组，长度16</span>
 <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
 map<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                                             <span class="token comment">//（默认加载因子0.75）当插入元素达到12时（16*0.75），扩容两倍，若当前计算出的数组下标的元素不为null时，用equals（）比较，若不一样，则存入，形成链表（新元素在老元素下面）</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-
-
+<h6 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h6><p><img src="https://gitee.com/mr-poke/picture/raw/master/img/image-20220524142524796-1661448231966.png" alt="image-20220524142524796-1661448231966"></p>
 <h3 id="三、Collections工具类"><a href="#三、Collections工具类" class="headerlink" title="三、Collections工具类"></a>三、Collections工具类</h3><h4 id="1-排序操作："><a href="#1-排序操作：" class="headerlink" title="1.排序操作："></a>1.排序操作：</h4><p>reverse(List)：反转 List 中元素的顺序<br>shuffle(List)：对 List 集合元素进行随机排序<br>sort(List)：根据元素的自然顺序对指定 List 集合元素按升序排序<br>sort(List，Comparator)：根据指定的 Comparator 产生的顺序对 List 集合元素进行排序<br>swap(List，int， int)：将指定 list 集合中的 i 处元素和 j 处元素进行交换</p>
 <h4 id="2-查找"><a href="#2-查找" class="headerlink" title="2.查找"></a>2.查找</h4><p>Object max(Collection)：根据元素的自然顺序，返回给定集合中的最大元素<br>Object max(Collection，Comparator)：根据 Comparator 指定的顺序，返回给定集合中的最大元素<br>Object min(Collection)：根据元素的自然顺序，返回给定集合中的最小元素<br>Object min(Collection，Comparator)：根据 Comparator 指定的顺序，返回给定集合中的最小元素<br>int binarySearch(List list,T key)在List集合中查找某个元素的下标，但是List的元素必须是T或T的子类对象，而且必须是可比较大小的，即支持自然排序的。而且集合也事先必须是有序的，否则结果不确定。<br>int binarySearch(List list,T key,Comparator c)在List集合中查找某个元素的下标，但是List的元素必须是T或T的子类对象，而且集合也事先必须是按照c比较器规则进行排序过的，否则结果不确定。<br>int frequency(Collection c，Object o)：返回指定集合中指定元素的出现次数</p>
 <h4 id="3-复制、替换"><a href="#3-复制、替换" class="headerlink" title="3.复制、替换"></a>3.复制、替换</h4><p>void copy(List dest,List src)：将src中的内容复制到dest中<br>boolean replaceAll(List list，Object oldVal，Object newVal)：使用新值替换 List 对象的所有旧值<br>提供了多个unmodifiableXxx()方法，该方法返回指定 Xxx的不可修改的视图。</p>
 <h4 id="4-添加"><a href="#4-添加" class="headerlink" title="4.添加"></a>4.添加</h4><p>boolean addAll(Collection c,T… elements)将所有指定元素添加到指定 collection 中。</p>
 <h4 id="5-同步"><a href="#5-同步" class="headerlink" title="5.同步"></a>5.同步</h4><p>Collections 类中提供了多个 synchronizedXxx() 方法，该方法可使将指定集合包装成线程同步的集合，从而可以解决多线程并发访问集合时的线程安全问题：</p>
 <h2 id="八、泛型"><a href="#八、泛型" class="headerlink" title="八、泛型"></a>八、泛型</h2><h3 id="1-目的"><a href="#1-目的" class="headerlink" title="1.目的"></a>1.目的</h3><p><strong>JAVA在之前使用Object接收，在具体使用方法时，需要强转，可能报错</strong>。Java泛型可以保证如果程序在编译时没有发出警告，运行时就不会产生<strong>ClassCastException异常</strong>。即，把不安全的因素在编译期间就排除了，而不是运行期；既然通过了编译，那么类型一定是符合要求的，就避免了类型转换。</p>
+<p><strong>把一个集合中的内容限制为一个特定的数据类型，这就是generic背后的核心思想</strong></p>
 <h3 id="2-自定义泛型类、接口（无法自定义泛型异常）"><a href="#2-自定义泛型类、接口（无法自定义泛型异常）" class="headerlink" title="2.自定义泛型类、接口（无法自定义泛型异常）"></a>2.自定义泛型类、接口（无法自定义泛型异常）</h3><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Person</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">T</span><span class="token punctuation">></span></span> <span class="token punctuation">&#123;</span>
     <span class="token comment">// 使用T类型定义变量</span>
     <span class="token keyword">private</span> <span class="token class-name">T</span> info<span class="token punctuation">;</span>
@@ -2713,7 +2787,7 @@ map<span class="token punctuation">.</span><span class="token function">put</spa
         <span class="token comment">//&#125;</span>
     <span class="token comment">//&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h3 id="4-自定义泛型方法"><a href="#4-自定义泛型方法" class="headerlink" title="4.自定义泛型方法"></a>4.自定义泛型方法</h3><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token punctuation">[</span>访问权限<span class="token punctuation">]</span>  <span class="token operator">&lt;</span>泛型<span class="token operator">></span>  返回值类型  方法名<span class="token punctuation">(</span><span class="token punctuation">[</span>泛型标识 参数名称<span class="token punctuation">]</span><span class="token punctuation">)</span>  <span class="token punctuation">[</span>抛出的异常<span class="token punctuation">]</span><span class="token punctuation">&#123;</span>
+<h3 id="4-自定义泛型方法"><a href="#4-自定义泛型方法" class="headerlink" title="4.自定义泛型方法"></a>4.自定义泛型方法</h3><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token punctuation">[</span>访问权限<span class="token punctuation">]</span> <span class="token punctuation">[</span><span class="token keyword">static</span><span class="token punctuation">]</span> <span class="token operator">&lt;</span>泛型<span class="token operator">></span>  返回值类型  方法名<span class="token punctuation">(</span><span class="token punctuation">[</span>泛型标识 参数名称<span class="token punctuation">]</span><span class="token punctuation">)</span>  <span class="token punctuation">[</span>抛出的异常<span class="token punctuation">]</span><span class="token punctuation">&#123;</span>
     
 <span class="token punctuation">&#125;</span>
 
@@ -3030,7 +3104,7 @@ map<span class="token punctuation">.</span><span class="token function">put</spa
 </tbody></table>
 <p><strong>flush()作用：</strong></p>
 <p>   把缓冲区的数据强行输出, 主要用在IO中，即清空缓冲区数据，一般在读写流(stream)的时候，数据是先被读到了内存中，再把数据写到文件中，当你数据读完的时候不代表你的数据已经写完了，因为还有一部分有可能会留在内存这个缓冲区中。这时候如果你调用了close()方法关闭了读写流，那么这部分数据就会丢失，所以应该在关闭读写流之前先flush()。</p>
-<h3 id="FileInputStream、FileOutputStream"><a href="#FileInputStream、FileOutputStream" class="headerlink" title="FileInputStream、FileOutputStream"></a>FileInputStream、FileOutputStream</h3><p>方与上述法一致。。。</p>
+<h3 id="FileInputStream、FileOutputStream"><a href="#FileInputStream、FileOutputStream" class="headerlink" title="FileInputStream、FileOutputStream"></a>FileInputStream、FileOutputStream</h3><p>方法与上述一致。。。</p>
 <h3 id="缓冲流（作用在节点流基础上）"><a href="#缓冲流（作用在节点流基础上）" class="headerlink" title="缓冲流（作用在节点流基础上）"></a>缓冲流（作用在节点流基础上）</h3><table>
 <thead>
 <tr>
