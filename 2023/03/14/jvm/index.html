@@ -281,8 +281,8 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="JVM"><a href="#JVM" class="headerlink" title="JVM"></a>JVM</h1><p><img src="F:\Typora\笔记\Image\JVM关系图.png"></p>
-<h2 id=""><a href="#" class="headerlink" title=""></a></h2><p><img src="F:\Typora\笔记\Image\JVM内存结构图.png"></p>
+                <h1 id="JVM"><a href="#JVM" class="headerlink" title="JVM"></a>JVM</h1><p><img src="https://gitee.com/mr-poke/picture/raw/master/img/JVM%E5%85%B3%E7%B3%BB%E5%9B%BE.png"></p>
+<p><img src="https://gitee.com/mr-poke/picture/raw/master/img/JVM%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84%E5%9B%BE.png"></p>
 <h2 id="1-JVM内存结构图"><a href="#1-JVM内存结构图" class="headerlink" title="1.JVM内存结构图"></a>1.JVM内存结构图</h2><h3 id="1-线程私有部分"><a href="#1-线程私有部分" class="headerlink" title="1.线程私有部分"></a>1.线程私有部分</h3><p><strong>程序计数器（无内存溢出）、虚拟机栈</strong></p>
 <table>
 <thead>
@@ -359,7 +359,7 @@
 <p>​       <strong>活动栈帧</strong>：一个栈只能有一个活动栈帧</p>
 </li>
 </ol>
-<p><img src="F:\Typora\笔记\Image\栈帧.png"></p>
+<p><img src="https://gitee.com/mr-poke/picture/raw/master/img/%E6%A0%88%E5%B8%A7.png"></p>
 <ol start="3">
 <li><p><strong>问题？</strong></p>
 <ol>
@@ -388,16 +388,14 @@
 <li><p>特点 ： 线程共享、有垃圾回收</p>
 </li>
 <li><p><strong>堆内存诊断</strong></p>
-<ol>
+</li>
 <li><p>jps工具查看当前Java进程</p>
-</li>
-<li><p>jmap工具查看堆内存占用情况 </p>
-</li>
-<li><p>jconnsole工具图形化查看堆内存占用情况： jconsole</p>
+<ol start="2">
+<li>jmap工具查看堆内存占用情况 </li>
+<li>jconnsole工具图形化查看堆内存占用情况： jconsole</li>
+</ol>
 </li>
 <li><p>jvisualvm  图形可视化工具</p>
-</li>
-</ol>
 </li>
 </ol>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">//命令行输入：</span>
@@ -407,7 +405,7 @@ jconsole                                      <span class="token comment">//图�
 
 
 
-<h3 id="5-方法区"><a href="#5-方法区" class="headerlink" title="5.方法区"></a>5.方法区</h3><p><img src="F:\Typora\笔记\Image\方法区.png"></p>
+<h3 id="5-方法区"><a href="#5-方法区" class="headerlink" title="5.方法区"></a>5.方法区</h3><p><img src="https://gitee.com/mr-poke/picture/raw/master/img/%E6%96%B9%E6%B3%95%E5%8C%BA.png"></p>
 <p><strong>常量池</strong>：一张表（存在*.Class文件中），虚拟机指令根据表找到类名，方法名，参数类型、字面量等</p>
 <p><strong>运行时常量池</strong>：当类被加载时，常量池信息会放入运行时常量池，并将符号地址变为真实地址</p>
 <p><strong>StringTable（串池）</strong></p>

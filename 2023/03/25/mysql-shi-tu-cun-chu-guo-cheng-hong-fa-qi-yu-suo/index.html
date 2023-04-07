@@ -746,7 +746,7 @@ mysqldump <span class="token operator">-</span>uroot –p1234 备份数据库 <s
 <li>索引上的范围查询(唯一索引)–会访问到不满足条件的第一个值为止。</li>
 </ol>
 <p><strong>注意：间隙锁唯一目的是防止其他事务插入间隙。间隙锁可以共存，一个事务采用的间隙锁不会 阻止另一个事务在同一间隙上采用间隙锁。</strong></p>
-<h1 id="六、InnoDB引擎"><a href="#六、InnoDB引擎" class="headerlink" title="六、InnoDB引擎"></a>六、InnoDB引擎</h1><h2 id="1-逻辑存储结构"><a href="#1-逻辑存储结构" class="headerlink" title="1.逻辑存储结构"></a>1.逻辑存储结构</h2><p><img src="F:\Typora\笔记\Image\逻辑存储结构mysql.png"></p>
+<h1 id="六、InnoDB引擎"><a href="#六、InnoDB引擎" class="headerlink" title="六、InnoDB引擎"></a>六、InnoDB引擎</h1><h2 id="1-逻辑存储结构"><a href="#1-逻辑存储结构" class="headerlink" title="1.逻辑存储结构"></a>1.逻辑存储结构</h2><p><img src="https://gitee.com/mr-poke/picture/raw/master/img/%E9%80%BB%E8%BE%91%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84mysql.png"></p>
 <h3 id="1-表空间"><a href="#1-表空间" class="headerlink" title="1.表空间"></a>1.表空间</h3><p>表空间是InnoDB存储引擎逻辑结构的最高层， 如果用户启用了参数 innodb_file_per_table(在 8.0版本中默认开启) ，则每<strong>张表都会有一个表空间（xxx.ibd）</strong>，一个mysql实例可以对应多个表空间，用于存储记录、索引等数据。</p>
 <h3 id="2-段"><a href="#2-段" class="headerlink" title="2.段"></a>2.段</h3><table>
 <thead>
@@ -784,7 +784,7 @@ mysqldump <span class="token operator">-</span>uroot –p1234 备份数据库 <s
 <li><p>Roll_pointer：每次对某条引记录进行改动时，都会把旧的版本写入到undo日志中，然后这个 隐藏列就相当于一个指针，可以通过它来找到该记录修改前的信息。</p>
 </li>
 </ol>
-<h2 id="2-架构"><a href="#2-架构" class="headerlink" title="2.架构"></a>2.架构</h2><p><img src="F:\Typora\笔记\Image\mysql架构.png"></p>
+<h2 id="2-架构"><a href="#2-架构" class="headerlink" title="2.架构"></a>2.架构</h2><p><img src="https://gitee.com/mr-poke/picture/raw/master/img/mysql%E6%9E%B6%E6%9E%84.png"></p>
 <h3 id="1-内存结构"><a href="#1-内存结构" class="headerlink" title="1.内存结构"></a>1.内存结构</h3><h4 id="1-缓冲池（Buffer-Pool）"><a href="#1-缓冲池（Buffer-Pool）" class="headerlink" title="1.缓冲池（Buffer Pool）"></a>1.缓冲池（Buffer Pool）</h4><p>主内存中的一个区域，里面可以<strong>缓存磁盘上经常操作的真实数据</strong>，在执行增 删改查操作时，先操作缓冲池中的数据（若缓冲池没有数据，则从磁盘加载并缓存），然后再以一定频 率刷新到磁盘，从而<strong>减少磁盘IO</strong>，加快处理速度。</p>
 <p>缓冲池以Page页为单位，底层采用链表数据结构管理Page。根据状态，将Page分为三种类型： </p>
 <p>• free page：空闲page，未被使用。</p>

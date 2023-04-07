@@ -281,7 +281,7 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="MySql进阶"><a href="#MySql进阶" class="headerlink" title="MySql进阶"></a>MySql进阶</h1><p><img src="F:\Typora\笔记\Image\Mysql存储引擎.png"></p>
+                <h1 id="MySql进阶"><a href="#MySql进阶" class="headerlink" title="MySql进阶"></a>MySql进阶</h1><p><img src="https://gitee.com/mr-poke/picture/raw/master/img/Mysql%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E.png"></p>
 <h1 id="一、存储引擎"><a href="#一、存储引擎" class="headerlink" title="一、存储引擎"></a>一、存储引擎</h1><ol>
 <li><p>概念：</p>
 <p>存储引擎就是存储数据、建立索引、更新&#x2F;查询数据等技术的实现方式 <strong>。存储引擎是基于表的，而不是 基于库的，所以存储引擎也可被称为表类型。</strong></p>
@@ -315,7 +315,7 @@
 </tr>
 </tbody></table>
 <p>文件位置：F:\JAVA\MYSQL\mysql-8.0.28-winx64\Data</p>
-<h3 id="3-逻辑存储结构"><a href="#3-逻辑存储结构" class="headerlink" title="3.逻辑存储结构"></a>3.逻辑存储结构</h3><p><img src="F:\Typora\笔记\Image\逻辑存储结构mysql.png"></p>
+<h3 id="3-逻辑存储结构"><a href="#3-逻辑存储结构" class="headerlink" title="3.逻辑存储结构"></a>3.逻辑存储结构</h3><p><img src="https://gitee.com/mr-poke/picture/raw/master/img/%E9%80%BB%E8%BE%91%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84mysql.png"></p>
 <p><strong>表空间</strong> : InnoDB存储引擎逻辑结构的最高层，ibd文件其实就是表空间文件，在表空间中可以 包含多个Segment段。</p>
 <p> <strong>段</strong> : 表空间是由各个段组成的， 常见的段有数据段、索引段、回滚段等。InnoDB中对于段的管 理，都是引擎自身完成，不需要人为对其控制，一个段中包含多个区。 </p>
 <p><strong>区</strong> : 区是表空间的单元结构，每个区的大小为1M。 默认情况下， InnoDB存储引擎页大小为 16K， 即一个区中一共有64个连续的页。 </p>
@@ -510,7 +510,7 @@
 <h2 id="4-数据结构"><a href="#4-数据结构" class="headerlink" title="4.数据结构"></a>4.数据结构</h2><h3 id="1-二叉树"><a href="#1-二叉树" class="headerlink" title="1.二叉树"></a>1.二叉树</h3><p>在进行数据顺序插入时，会形成一个链表，查询效率降低。</p>
 <p>红黑树（自平衡树）：大数据量情况下，层级较深，检索速度慢。</p>
 <h3 id="2-B-Tree（多路平衡查找树）"><a href="#2-B-Tree（多路平衡查找树）" class="headerlink" title="2.B-Tree（多路平衡查找树）"></a>2.B-Tree（多路平衡查找树）</h3><p>eg：以一个最大度数为5的B-Tree为例，每个节点最多存储4个Key，5个指针：</p>
-<p><img src="F:\Typora\笔记\Image\B树.png"></p>
+<p><img src="https://gitee.com/mr-poke/picture/raw/master/img/B%E6%A0%91.png"></p>
 <p><strong>特点：</strong></p>
 <ol>
 <li><p>5阶的B树，每个节点最多存储4个key，5个指针</p>
@@ -520,7 +520,7 @@
 <li><p>叶子节点和非叶子节点都会存放数据</p>
 </li>
 </ol>
-<h3 id="3-B-Tree（根节点常驻内存）"><a href="#3-B-Tree（根节点常驻内存）" class="headerlink" title="3.B+Tree（根节点常驻内存）"></a>3.B+Tree（根节点常驻内存）</h3><p><img src="F:\Typora\笔记\Image\B+tree.png"></p>
+<h3 id="3-B-Tree（根节点常驻内存）"><a href="#3-B-Tree（根节点常驻内存）" class="headerlink" title="3.B+Tree（根节点常驻内存）"></a>3.B+Tree（根节点常驻内存）</h3><p><img src="https://gitee.com/mr-poke/picture/raw/master/img/B%E6%A0%91.png"></p>
 <p><strong>特点：</strong></p>
 <ol>
 <li>所有数据存储在叶子节点。</li>
@@ -829,7 +829,7 @@ mysql –<span class="token operator">-</span><span class="token keyword">local<
 
 <h3 id="2-主键优化"><a href="#2-主键优化" class="headerlink" title="2.主键优化"></a>2.主键优化</h3><p>在InnoDB存储引擎中，表数据都是根据主键顺序组织存放的，这种存储方式的表称为索引组织表</p>
 <h4 id="2-1页分裂"><a href="#2-1页分裂" class="headerlink" title="2.1页分裂"></a>2.1页分裂</h4><p>主键乱序插入：</p>
-<p><img src="F:\Typora\笔记\Image\页分裂.png"></p>
+<p><img src="https://gitee.com/mr-poke/picture/raw/master/img/%E9%A1%B5%E5%88%86%E8%A3%82.png"></p>
 <h4 id="2-2页合并"><a href="#2-2页合并" class="headerlink" title="2.2页合并"></a>2.2页合并</h4><p>当页中删除的记录达到 MERGE_THRESHOLD（默认为页的50%），InnoDB会开始寻找最靠近的页（前 或后）看看是否可以将两个页合并以优化空间使用。</p>
 <h4 id="3-3优化"><a href="#3-3优化" class="headerlink" title="3.3优化"></a>3.3优化</h4><ol>
 <li>满足业务需求的前提下，尽量减少主键长度</li>
