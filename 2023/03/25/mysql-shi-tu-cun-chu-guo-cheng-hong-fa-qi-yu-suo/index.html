@@ -1,0 +1,1516 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="Mysql高级, Mr_poke">
+    <meta name="description" content="视图、存储过程、触发器、锁、InnoB引擎介绍">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>Mysql高级 | Mr_poke</title>
+    <link rel="icon" type="image/png" href="/blog/favicon.png">
+    
+
+
+    <!-- bg-cover style     -->
+
+
+
+<link rel="stylesheet" type="text/css" href="/blog/libs/awesome/css/all.min.css">
+<link rel="stylesheet" type="text/css" href="/blog/libs/materialize/materialize.min.css">
+<link rel="stylesheet" type="text/css" href="/blog/libs/aos/aos.css">
+<link rel="stylesheet" type="text/css" href="/blog/libs/animate/animate.min.css">
+<link rel="stylesheet" type="text/css" href="/blog/libs/lightGallery/css/lightgallery.min.css">
+<link rel="stylesheet" type="text/css" href="/blog/css/matery.css">
+<link rel="stylesheet" type="text/css" href="/blog/css/my.css">
+<link rel="stylesheet" type="text/css" href="/blog/css/dark.css" media="none" onload="if(media!='all')media='all'">
+
+
+
+
+    <link rel="stylesheet" href="/blog/libs/tocbot/tocbot.css">
+    <link rel="stylesheet" href="/blog/css/post.css">
+
+
+
+
+    
+
+
+
+    <script src="/blog/libs/jquery/jquery-3.6.0.min.js"></script>
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/blog/" class="waves-effect waves-light">
+                    
+                    <img src="/blog/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Mr_poke</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/blog/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/blog/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/blog/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/blog/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+  <li>
+    <a href="javascript:;" class="waves-effect waves-light" onclick="switchNightMode()" title="深色/浅色模式" >
+      <i id="sum-moon-icon" class="fas fa-sun" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/blog/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Mr_poke</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/blog/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/blog/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/blog/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/blog/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/blog/medias/featureimages/23.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">Mysql高级</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/blog/tags/SQL/">
+                                <span class="chip bg-color">SQL</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/blog/categories/SQL/" class="post-category">
+                                SQL
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2023-03-25
+                </div>
+                
+
+                
+
+                
+
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/blog/libs/prism/prism.min.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="MYSQL视图-x2F-存储过程-x2F-触发器与锁"><a href="#MYSQL视图-x2F-存储过程-x2F-触发器与锁" class="headerlink" title="MYSQL视图&#x2F;存储过程&#x2F;触发器与锁"></a>MYSQL视图&#x2F;存储过程&#x2F;触发器与锁</h1><h1 id="一、视图"><a href="#一、视图" class="headerlink" title="一、视图"></a>一、视图</h1><p>视图（View）是一种虚拟存在的表。</p>
+<h2 id="1-创建"><a href="#1-创建" class="headerlink" title="1.创建"></a>1.创建</h2><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">#创建或替换</span>
+<span class="token keyword">CREATE</span> <span class="token punctuation">[</span><span class="token operator">OR</span> <span class="token keyword">REPLACE</span><span class="token punctuation">]</span> <span class="token keyword">VIEW</span> 视图名称（列名列表） <span class="token keyword">AS</span> 
+<span class="token keyword">SELECT</span>语句 <span class="token punctuation">[</span><span class="token keyword">WITH</span> <span class="token punctuation">[</span><span class="token keyword">CASCADED</span> <span class="token operator">|</span> <span class="token keyword">LOCAL</span><span class="token punctuation">]</span> <span class="token keyword">CHECK</span> <span class="token keyword">OPTION</span><span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="2-查询"><a href="#2-查询" class="headerlink" title="2.查询"></a>2.查询</h2><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">#查询创建视图语句</span>
+<span class="token keyword">SHOW</span> <span class="token keyword">CREATE</span> <span class="token keyword">VIEW</span> 视图名称
+
+<span class="token comment">#查询视图数据</span>
+<span class="token keyword">SELECT</span> <span class="token operator">*</span> <span class="token keyword">FROM</span> 视图<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="3-修改"><a href="#3-修改" class="headerlink" title="3.修改"></a>3.修改</h2><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">#创建或替换     [WITH [CASCADED | LOCAL] CHECK OPTION]  用于检查插入的数据是否符合视图条件,不写任何插入均可插入</span>
+<span class="token keyword">CREATE</span> <span class="token operator">OR</span> <span class="token keyword">REPLACE</span> <span class="token keyword">VIEW</span> 视图名称（列名列表） <span class="token keyword">AS</span> 
+<span class="token keyword">SELECT</span>语句 <span class="token punctuation">[</span><span class="token keyword">WITH</span> <span class="token punctuation">[</span><span class="token keyword">CASCADED</span> <span class="token operator">|</span> <span class="token keyword">LOCAL</span><span class="token punctuation">]</span> <span class="token keyword">CHECK</span> <span class="token keyword">OPTION</span><span class="token punctuation">]</span>
+
+<span class="token comment">#修改</span>
+<span class="token keyword">ALTER</span> <span class="token keyword">VIEW</span>  <span class="token keyword">VIEW</span> 视图名称（列名列表） <span class="token keyword">AS</span> 
+<span class="token keyword">SELECT</span>语句 <span class="token punctuation">[</span><span class="token keyword">WITH</span> <span class="token punctuation">[</span><span class="token keyword">CASCADED</span> <span class="token operator">|</span> <span class="token keyword">LOCAL</span><span class="token punctuation">]</span> <span class="token keyword">CHECK</span> <span class="token keyword">OPTION</span><span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="4-删除"><a href="#4-删除" class="headerlink" title="4.删除"></a>4.删除</h2><pre class="line-numbers language-SQL" data-language="SQL"><code class="language-SQL">DROP VIEW [IF EXISTS] 视图名称 [,视图名称] ...<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h2 id="5-检查选项（CASCADED-LOCAL）"><a href="#5-检查选项（CASCADED-LOCAL）" class="headerlink" title="5.检查选项（CASCADED|LOCAL）"></a>5.检查选项（CASCADED|LOCAL）</h2><h3 id="1-CASCADED-–级联"><a href="#1-CASCADED-–级联" class="headerlink" title="1.CASCADED –级联"></a>1.CASCADED –级联</h3><p>比如，<strong>v2视图是基于v1视图的</strong>，如果在v2视图创建的时候指定了检查选项为 cascaded，但是v1视图 创建时未指定检查选项。 则在执行检查时，不仅会检查v2，还会级联检查v2的关联视图v1。</p>
+<pre class="line-numbers language-SQL" data-language="SQL"><code class="language-SQL">#视图1
+CREATE VIEW V1 AS SELECT * FROM STUDENT WHERE ID &gt;20 
+#视图2基于视图1创建
+CREATE VIEW V2 AS SELECT * FROM V1 WHERE ID &gt;10 WITH CASCADED CHECK OPTION
+
+插入数据id&#x3D; 15，无法插入<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="2-LOCAL–本地"><a href="#2-LOCAL–本地" class="headerlink" title="2.LOCAL–本地"></a>2.LOCAL–本地</h3><p>比如，v2视图是基于v1视图的，如果在v2视图创建的时候指定了检查选项为 local ，但是v1视图创 建时未指定检查选项。 则在执行检查时，知会检查v2，不会检查v2的关联视图v1</p>
+<h2 id="6-视图更新"><a href="#6-视图更新" class="headerlink" title="6.视图更新"></a>6.视图更新</h2><p>要使视图可更新，视图中的行与基础表中的行之间必须存在一对一的关系。如果视图包含以下任何一 项，则该视图不可更新：</p>
+<p> A. 聚合函数或窗口函数（SUM()、 MIN()、 MAX()、 COUNT()等） </p>
+<p>B. DISTINCT </p>
+<p>C. GROUP BY </p>
+<p>D. HAVING </p>
+<p>E. UNION 或者 UNION ALL</p>
+<h1 id="二、存储过程"><a href="#二、存储过程" class="headerlink" title="二、存储过程"></a>二、存储过程</h1><h2 id="1-介绍"><a href="#1-介绍" class="headerlink" title="1.介绍"></a>1.介绍</h2><p><strong>存储过程是事先经过编译并存储在数据库中的一段 SQL 语句的集合</strong>，调用存储过程可以简化应用开发 人员的很多工作，减少数据在数据库和应用服务器之间的传输，对于提高数据处理的效率是有好处的。 存储过程思想上很简单，就是数据库 SQL 语言层面的代码封装与重用。</p>
+<h2 id="2-特点"><a href="#2-特点" class="headerlink" title="2.特点"></a>2.特点</h2><ol>
+<li><p>封装，复用 ———————–&gt; 可以把某一业务SQL封装在存储过程中，需要用到 的时候直接调用即可。</p>
+</li>
+<li><p>可以接收参数，也可以返回数据 ——–&gt; 在存储过程中，可以传递参数，也可以接收返回 值。</p>
+</li>
+<li><p>减少网络交互，效率提升 ————-&gt; 如果涉及到多条SQL，每执行一次都是一次网络传 输。 而如果封装在存储过程中，我们只需要网络交互一次可能就可以了。</p>
+</li>
+</ol>
+<h2 id="3-语法-procedure-破c这"><a href="#3-语法-procedure-破c这" class="headerlink" title="3.语法(procedure 破c这)"></a>3.语法(procedure 破c这)</h2><h3 id="1-创建-1"><a href="#1-创建-1" class="headerlink" title="1.创建"></a>1.创建</h3><pre class="line-numbers language-SQL" data-language="SQL"><code class="language-SQL">CREATE PROCEDURE 存储过程（参数列表）
+BEGIN
+   -- SQL语句
+END
+
+#在命令行中，执行创建存储过程的SQL时，需要通过关键字 delimiter 指定SQL语句的结束符。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="2-调用"><a href="#2-调用" class="headerlink" title="2.调用"></a>2.调用</h3><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">CALL</span> 名称（参数列表）<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h3 id="3-查看"><a href="#3-查看" class="headerlink" title="3.查看"></a>3.查看</h3><pre class="line-numbers language-SQL" data-language="SQL"><code class="language-SQL">-- 查询指定数据库的存储过程及状态信息
+SELECT * FROM INFORMATION_SCHEMA.ROUTINES WHERE ROUTINE_SCHEMA &#x3D; &#39;数据库名&#39;; 
+
+-- 查询某个存储过程的定义
+SHOW CREATE PROCEDURE 存储过程名称 ;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="4-删除-1"><a href="#4-删除-1" class="headerlink" title="4.删除"></a>4.删除</h3><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">DROP</span> <span class="token keyword">PROCEDURE</span> <span class="token punctuation">[</span> <span class="token keyword">IF</span> <span class="token keyword">EXISTS</span> <span class="token punctuation">]</span> 存储过程名称 ；<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h2 id="4-变量"><a href="#4-变量" class="headerlink" title="4. 变量"></a>4. 变量</h2><p>在MySQL中变量分为三种类型: <strong>系统变量、用户定义变量、局部变量</strong>。</p>
+<h3 id="4-1系统变量"><a href="#4-1系统变量" class="headerlink" title="4.1系统变量"></a>4.1系统变量</h3><p><strong>mysql服务重新启动之后，所设置的全局参数会失效，要想不失效，可以在 &#x2F;etc&#x2F;my.cnf 中配置</strong></p>
+<p>1.查看</p>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SHOW</span> <span class="token punctuation">[</span> <span class="token keyword">SESSION</span> <span class="token operator">|</span> <span class="token keyword">GLOBAL</span> <span class="token punctuation">]</span> VARIABLES <span class="token punctuation">;</span> <span class="token comment">-- 查看所有系统变量</span>
+<span class="token keyword">SHOW</span> <span class="token punctuation">[</span> <span class="token keyword">SESSION</span> <span class="token operator">|</span> <span class="token keyword">GLOBAL</span> <span class="token punctuation">]</span> VARIABLES <span class="token operator">LIKE</span> <span class="token string">'......'</span><span class="token punctuation">;</span> <span class="token comment">-- 可以通过LIKE模糊匹配方式查找变量</span>
+<span class="token keyword">SELECT</span> @@<span class="token punctuation">[</span><span class="token keyword">SESSION</span> <span class="token operator">|</span> <span class="token keyword">GLOBAL</span><span class="token punctuation">]</span> 系统变量名<span class="token punctuation">;</span> <span class="token comment">-- 查看指定变量的值</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>2.设置</p>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SET</span> <span class="token punctuation">[</span> <span class="token keyword">SESSION</span> <span class="token operator">|</span> <span class="token keyword">GLOBAL</span> <span class="token punctuation">]</span> 系统变量名 <span class="token operator">=</span> 值 <span class="token punctuation">;</span>
+<span class="token keyword">SET</span> @@<span class="token punctuation">[</span><span class="token keyword">SESSION</span> <span class="token operator">|</span> <span class="token keyword">GLOBAL</span><span class="token punctuation">]</span> 系统变量名 <span class="token operator">=</span> 值 <span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h3 id="4-2用户定义变量"><a href="#4-2用户定义变量" class="headerlink" title="4.2用户定义变量"></a>4.2用户定义变量</h3><p>用户定义变量 是用户根据需要自己定义的变量，用户变量不用提前声明，在用的时候直接用 “@变量 名” 使用就可以。其作用域为当前连接（session）。</p>
+<h4 id="4-2-1赋值"><a href="#4-2-1赋值" class="headerlink" title="4.2.1赋值"></a>4.2.1赋值</h4><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SET</span> <span class="token variable">@var_name</span> <span class="token operator">=</span> expr <span class="token punctuation">[</span><span class="token punctuation">,</span> <span class="token variable">@var_name</span> <span class="token operator">=</span> expr<span class="token punctuation">]</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token punctuation">;</span>
+<span class="token keyword">SET</span> <span class="token variable">@var_name</span> :<span class="token operator">=</span> expr <span class="token punctuation">[</span><span class="token punctuation">,</span> <span class="token variable">@var_name</span> :<span class="token operator">=</span> expr<span class="token punctuation">]</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token punctuation">;</span>
+
+
+<span class="token keyword">SELECT</span> <span class="token variable">@var_name</span> :<span class="token operator">=</span> expr <span class="token punctuation">[</span><span class="token punctuation">,</span> <span class="token variable">@var_name</span> :<span class="token operator">=</span> expr<span class="token punctuation">]</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token punctuation">;</span>
+<span class="token comment">#查询表数据并赋值</span>
+<span class="token keyword">SELECT</span> 字段名 <span class="token keyword">INTO</span> <span class="token variable">@var_name</span> <span class="token keyword">FROM</span> 表名<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="4-2-2使用"><a href="#4-2-2使用" class="headerlink" title="4.2.2使用"></a>4.2.2使用</h4><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> <span class="token variable">@var_name</span> <span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><strong>注意: 用户定义的变量无需对其进行声明或初始化，只不过获取到的值为NULL。</strong></p>
+<h3 id="4-3局部变量"><a href="#4-3局部变量" class="headerlink" title="4.3局部变量"></a>4.3局部变量</h3><p>局部变量 是根据需要定义的在局部生效的变量，访问之前，需要DECLARE声明。<strong>可用作存储过程内的 局部变量和输入参数</strong>，局部变量的<strong>范围是在其内声明的BEGIN … END块。</strong></p>
+<h4 id="1-声明"><a href="#1-声明" class="headerlink" title="1.声明"></a>1.声明</h4><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">DECLARE</span> 变量名 变量类型 <span class="token punctuation">[</span><span class="token keyword">DEFAULT</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token punctuation">]</span> <span class="token punctuation">;</span>
+
+<span class="token comment">#变量类型就是数据库字段类型：INT、BIGINT、CHAR、VARCHAR、DATE、TIME等。</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="2-赋值"><a href="#2-赋值" class="headerlink" title="2.赋值"></a>2.赋值</h4><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SET</span> 变量名 <span class="token operator">=</span> 值；
+<span class="token keyword">SET</span> 变量名 ：<span class="token operator">=</span> 值；
+<span class="token keyword">SELECT</span> 字段名 <span class="token keyword">INTO</span> 变量名 <span class="token keyword">FROM</span> 表名 <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="4-4-if"><a href="#4-4-if" class="headerlink" title="4.4 if"></a>4.4 if</h3><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">IF</span> 条件<span class="token number">1</span> <span class="token keyword">THEN</span>
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token keyword">ELSEIF</span> 条件<span class="token number">2</span> <span class="token keyword">THEN</span> <span class="token comment">-- 可选</span>
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token keyword">ELSE</span> <span class="token comment">-- 可选</span>
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token keyword">END</span> <span class="token keyword">IF</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="4-5参数"><a href="#4-5参数" class="headerlink" title="4.5参数"></a>4.5参数</h3><h4 id="1-介绍-1"><a href="#1-介绍-1" class="headerlink" title="1.介绍"></a>1.介绍</h4><table>
+<thead>
+<tr>
+<th>类型</th>
+<th>含义</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>IN</td>
+<td>该类参数作为输入，也就是需要调用时传入值</td>
+<td>默认</td>
+</tr>
+<tr>
+<td>OUT</td>
+<td>该类参数作为输出，也就是该参数可以作为返回值</td>
+<td></td>
+</tr>
+<tr>
+<td>INOUT</td>
+<td>既可以作为输入参数，也可以作为输出参数</td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id="4-6-case"><a href="#4-6-case" class="headerlink" title="4.6 case"></a>4.6 case</h3><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">-- 含义： 当case_value的值为 when_value1时，执行statement_list1，当值为 when_value2时，执行statement_list2， 否则就执行 statement_list</span>
+<span class="token keyword">CASE</span> case_value
+<span class="token keyword">WHEN</span> when_value1 <span class="token keyword">THEN</span> statement_list1
+<span class="token punctuation">[</span> <span class="token keyword">WHEN</span> when_value2 <span class="token keyword">THEN</span> statement_list2<span class="token punctuation">]</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token punctuation">[</span> <span class="token keyword">ELSE</span> statement_list <span class="token punctuation">]</span>
+<span class="token keyword">END</span> <span class="token keyword">CASE</span><span class="token punctuation">;</span>
+
+<span class="token comment">-- 含义： 当条件search_condition1成立时，执行statement_list1，当条件search_condition2成立时，执行statement_list2， 否则就执行 statement_list</span>
+<span class="token keyword">CASE</span>
+<span class="token keyword">WHEN</span> search_condition1 <span class="token keyword">THEN</span> statement_list1
+<span class="token punctuation">[</span><span class="token keyword">WHEN</span> search_condition2 <span class="token keyword">THEN</span> statement_list2<span class="token punctuation">]</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token punctuation">[</span><span class="token keyword">ELSE</span> statement_list<span class="token punctuation">]</span>
+<span class="token keyword">END</span> <span class="token keyword">CASE</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="4-7-while循环（判断，符合执行）"><a href="#4-7-while循环（判断，符合执行）" class="headerlink" title="4.7 while循环（判断，符合执行）"></a>4.7 while循环（判断，符合执行）</h3><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">-- 先判定条件，如果条件为true，则执行逻辑，否则，不执行逻辑</span>
+
+<span class="token keyword">WHILE</span> 条件 <span class="token keyword">DO</span>
+<span class="token comment">-- SQL逻辑...</span>
+<span class="token keyword">END</span> <span class="token keyword">WHILE</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="4-8-repeat循环（执行判断。符合退出）"><a href="#4-8-repeat循环（执行判断。符合退出）" class="headerlink" title="4.8 repeat循环（执行判断。符合退出）"></a>4.8 repeat循环（执行判断。符合退出）</h3><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">-- 先执行一次逻辑，然后判定UNTIL条件是否满足，如果满足，则退出。如果不满足，则继续下一次循环</span>
+<span class="token keyword">REPEAT</span>
+<span class="token comment">-- SQL逻辑...</span>
+UNTIL 条件
+<span class="token keyword">END</span> <span class="token keyword">REPEAT</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="4-9-loop循环（配合if-，LEAVE）"><a href="#4-9-loop循环（配合if-，LEAVE）" class="headerlink" title="4.9 loop循环（配合if ，LEAVE）"></a>4.9 loop循环（配合if ，LEAVE）</h3><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">#[label:] 名称</span>
+label: <span class="token keyword">LOOP</span>
+	statement_list
+
+	<span class="token keyword">IF</span> exit_condition <span class="token keyword">THEN</span>
+		<span class="token keyword">LEAVE</span> label<span class="token punctuation">;</span> 
+	<span class="token keyword">END</span> <span class="token keyword">IF</span><span class="token punctuation">;</span> 
+<span class="token keyword">END</span> <span class="token keyword">LOOP</span> label<span class="token punctuation">;</span>
+
+<span class="token comment">#配合循环使用，退出循环。</span>
+<span class="token keyword">LEAVE</span> label<span class="token punctuation">;</span> <span class="token comment">-- 退出指定标记的循环体</span>
+<span class="token comment">#必须用在循环中，作用是跳过当前循环剩下的语句，直接进入下一次循环</span>
+<span class="token keyword">ITERATE</span> label<span class="token punctuation">;</span> <span class="token comment">-- 直接进入下一次循环 </span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="4-10-游标"><a href="#4-10-游标" class="headerlink" title="4.10 游标"></a>4.10 游标</h3><p>游标（CURSOR）是<strong>用来存储查询结果集的数据类型 , 在存储过程和函数中可以使用游标对结果集进 行循环的处理</strong></p>
+<h4 id="1-创建-2"><a href="#1-创建-2" class="headerlink" title="1.创建"></a>1.创建</h4><pre class="line-numbers language-SQL" data-language="SQL"><code class="language-SQL"># 声明游标
+DECLARE 名称 CURSOR FOR 查询语句。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h4 id="2-打开"><a href="#2-打开" class="headerlink" title="2.打开"></a>2.打开</h4><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">OPEN</span> 游标名称<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h4 id="3-获取游标记录"><a href="#3-获取游标记录" class="headerlink" title="3.获取游标记录"></a>3.获取游标记录</h4><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">FETCH</span> 游标名称 <span class="token keyword">INTO</span> 变量 <span class="token punctuation">[</span><span class="token punctuation">,</span> 变量 <span class="token punctuation">]</span> <span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h4 id="4-关闭游标"><a href="#4-关闭游标" class="headerlink" title="4.关闭游标"></a>4.关闭游标</h4><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">CLOSE</span> 游标名称 <span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">#创建</span>
+<span class="token keyword">declare</span> u_cursor <span class="token keyword">cursor</span> <span class="token keyword">for</span> <span class="token keyword">select</span> name<span class="token punctuation">,</span>profession <span class="token keyword">from</span> tb_user <span class="token keyword">where</span> age <span class="token operator">&lt;=</span>uage<span class="token punctuation">;</span>
+<span class="token comment">#遇到游标问题的处理</span>
+<span class="token keyword">declare</span> <span class="token keyword">exit</span> <span class="token keyword">handler</span> <span class="token keyword">for</span> SQLSTATE <span class="token string">'02000'</span> <span class="token keyword">close</span> u_cursor<span class="token punctuation">;</span>
+<span class="token comment">#打开</span>
+<span class="token keyword">open</span> u_cursor<span class="token punctuation">;</span>
+<span class="token comment">#创建</span>
+<span class="token keyword">while</span> <span class="token boolean">true</span> <span class="token keyword">do</span>
+<span class="token keyword">fetch</span> u_cursor <span class="token keyword">into</span> uname<span class="token punctuation">,</span>upro<span class="token punctuation">;</span>
+<span class="token keyword">insert</span> <span class="token keyword">into</span> tb_user_pro <span class="token keyword">values</span> <span class="token punctuation">(</span><span class="token boolean">null</span><span class="token punctuation">,</span> uname<span class="token punctuation">,</span> upro<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">end</span> <span class="token keyword">while</span><span class="token punctuation">;</span>
+<span class="token comment">#关闭</span>
+<span class="token keyword">close</span> u_cursor<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h1 id="三、存储函数"><a href="#三、存储函数" class="headerlink" title="三、存储函数"></a>三、存储函数</h1><h2 id="1-创建-3"><a href="#1-创建-3" class="headerlink" title="1.创建"></a>1.创建</h2><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">CREATE</span> <span class="token keyword">FUNCTION</span> 存储函数名称 <span class="token punctuation">(</span><span class="token punctuation">[</span> 参数列表 <span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token keyword">RETURNS</span> <span class="token keyword">type</span> <span class="token punctuation">[</span>characteristic <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">]</span>
+<span class="token keyword">BEGIN</span>
+<span class="token comment">-- SQL语句</span>
+<span class="token keyword">RETURN</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">;</span>
+<span class="token keyword">END</span> <span class="token punctuation">;</span>
+<span class="token comment">#characteristic说明</span>
+<span class="token comment">#DETERMINISTIC：相同的输入参数总是产生相同的结果</span>
+<span class="token comment"># NO SQL ：不包含 SQL 语句。</span>
+<span class="token comment">#READS SQL DATA：包含读取数据的语句，但不包含写入数据的语句。</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h1 id="四、触发器"><a href="#四、触发器" class="headerlink" title="四、触发器"></a>四、触发器</h1><h2 id="1-介绍-2"><a href="#1-介绍-2" class="headerlink" title="1.介绍"></a>1.介绍</h2><p>触发器是与表有关的数据库对象，指在insert&#x2F;update&#x2F;delete之前(BEFORE)或之后(AFTER)，触 发并执行触发器中定义的SQL语句集合。触发器的这种特性可以协助应用在数据库端确保数据的完整性 , 日志记录 , 数据校验等操作 。</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>NEW 与 OLD</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>INSERT 触发器</td>
+<td>new 表示将要或已经增加的数据</td>
+</tr>
+<tr>
+<td>UPDATE 触发器</td>
+<td>old表示修改前的数据，new表示将要或已经修改的数据</td>
+</tr>
+<tr>
+<td>DELETE 触发器</td>
+<td>OLD 表示将要或者已经删除的数据</td>
+</tr>
+</tbody></table>
+<h2 id="2-创建"><a href="#2-创建" class="headerlink" title="2.创建"></a>2.创建</h2><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">CREATE</span> <span class="token keyword">TRIGGER</span> 触发器名称
+BEFORE<span class="token operator">/</span><span class="token keyword">AFTER</span> <span class="token keyword">INSERT</span><span class="token operator">/</span><span class="token keyword">UPDATE</span><span class="token operator">/</span><span class="token keyword">DELETE</span>  <span class="token comment">#触发时机 之前，之后，增删改</span>
+<span class="token keyword">ON</span> 监控的表名 <span class="token keyword">FOR EACH ROW</span> <span class="token comment">-- 行级触发器</span>
+<span class="token keyword">BEGIN</span>
+trigger_stmt <span class="token punctuation">;</span>           <span class="token comment">#触发器的逻辑实现</span>
+<span class="token keyword">END</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="3-查看-1"><a href="#3-查看-1" class="headerlink" title="3.查看"></a>3.查看</h2><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SHOW</span> TRIGGERS <span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h1 id="五、锁"><a href="#五、锁" class="headerlink" title="五、锁"></a>五、锁</h1><table>
+<thead>
+<tr>
+<th>锁类型</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>全局锁</td>
+<td>锁定数据库整表</td>
+</tr>
+<tr>
+<td>表级锁</td>
+<td>每次操作锁住整张表</td>
+</tr>
+<tr>
+<td>行级锁</td>
+<td>每一次操作锁住对应数据</td>
+</tr>
+</tbody></table>
+<h2 id="1-全局锁"><a href="#1-全局锁" class="headerlink" title="1.全局锁"></a>1.全局锁</h2><p>全局锁就是对整个数据库实例加锁，<strong>加锁后整个实例就处于只读状态</strong></p>
+<h3 id="1-使用场景："><a href="#1-使用场景：" class="headerlink" title="1.使用场景："></a>1.使用场景：</h3><p>典型的使用场景是做<strong>全库的逻辑备份</strong>，对所有的表进行锁定，从而获取一致性视图，保证数据的完整 性。</p>
+<p>eg：订单表和库存表有关联，但是不使用全局锁可能数据不一致</p>
+<h3 id="2-语法"><a href="#2-语法" class="headerlink" title="2.语法"></a>2.语法</h3><h4 id="1-添加锁"><a href="#1-添加锁" class="headerlink" title="1.添加锁"></a>1.添加锁</h4><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">flush <span class="token keyword">tables</span> <span class="token keyword">with</span> <span class="token keyword">read</span> <span class="token keyword">lock</span> <span class="token punctuation">;</span>
+<span class="token comment">#数据备份</span>
+mysqldump <span class="token operator">-</span>uroot –p1234 备份数据库 <span class="token operator">></span> 存储的<span class="token keyword">sql</span>文件<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="2-释放锁"><a href="#2-释放锁" class="headerlink" title="2.释放锁"></a>2.释放锁</h4><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">unlock</span> <span class="token keyword">tables</span> <span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h2 id="2-表级锁"><a href="#2-表级锁" class="headerlink" title="2.表级锁"></a>2.表级锁</h2><h3 id="1-介绍-3"><a href="#1-介绍-3" class="headerlink" title="1.介绍"></a>1.介绍</h3><p>每次操作锁住整张表。锁定粒度大<strong>，发生锁冲突的概率最高，并发度最低</strong>。应用在MyISAM、 InnoDB、BDB等存储引擎中。</p>
+<h3 id="2-分类"><a href="#2-分类" class="headerlink" title="2.分类"></a>2.分类</h3><table>
+<thead>
+<tr>
+<th>表锁</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>元数据锁</td>
+</tr>
+<tr>
+<td>意向锁</td>
+</tr>
+</tbody></table>
+<h4 id="2-1表锁"><a href="#2-1表锁" class="headerlink" title="2.1表锁"></a>2.1表锁</h4><p>分类： 读锁（read lock），写锁（write lock）</p>
+<table>
+<thead>
+<tr>
+<th>锁</th>
+<th>区别</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>读锁</td>
+<td>多个用户均可读，但不可写</td>
+</tr>
+<tr>
+<td>写锁</td>
+<td>多个用户不可读，不可写</td>
+</tr>
+</tbody></table>
+<p>加锁</p>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">lock</span> <span class="token keyword">tables</span> 表名<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token keyword">read</span><span class="token operator">/</span><span class="token keyword">write</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>释放锁</p>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">unlock</span> <span class="token keyword">tables</span> <span class="token operator">/</span> 客户端断开连接 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h4 id="2-2元数据锁（MDL）"><a href="#2-2元数据锁（MDL）" class="headerlink" title="2.2元数据锁（MDL）"></a>2.2元数据锁（MDL）</h4><p>MDL加锁过程是系统自动控制，无需显式使用，在访问一张表的时候会自动加上。MDL锁主要作用是<strong>维护表元数据的数据一致性</strong>，在表上有活动事务的时候，不可以对元数据进行写入操作。为了<strong>避免DML与 DDL冲突，保证读写的正确性。</strong></p>
+<table>
+<thead>
+<tr>
+<th>元数据锁类型</th>
+<th>添加时机</th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>元数据共享锁</td>
+<td>DML（读锁）、DQL语句（SELECT、INSERT、UPDATE、DELETE）（写锁）</td>
+<td>阻塞元数据排他锁</td>
+</tr>
+<tr>
+<td>元数据排他锁</td>
+<td>DDL语句（修改表结构）</td>
+<td>阻塞元数据共享锁</td>
+</tr>
+</tbody></table>
+<p>在MySQL5.5中引入了MDL，当<strong>对一张表进行增删改查的时候，加MDL读锁(共享)<strong>；当</strong>对表结构进行变更操作的时候，加MDL写锁(排他)。</strong></p>
+<table>
+<thead>
+<tr>
+<th>sql语句</th>
+<th>锁类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>lock tables xxx read &#x2F; write</td>
+<td>SHARED_READ_ONLY （只读）&#x2F; SHARED_NO_READ_WRITE（写锁）</td>
+<td></td>
+</tr>
+<tr>
+<td>select 、select … lock in share mode</td>
+<td>SHARED_READ（读锁）</td>
+<td>与SHARED_READ、 SHARED_WRITE兼容，与 EXCLUSIVE互斥</td>
+</tr>
+<tr>
+<td>insert 、update、 delete、select … for update</td>
+<td>SHARED_WRITE（写锁）</td>
+<td>与SHARED_READ、 SHARED_WRITE兼容，与 EXCLUSIVE互斥</td>
+</tr>
+<tr>
+<td>alter table …</td>
+<td>EXCLUSIVE（写锁：排他）</td>
+<td>与其他的MDL都互斥</td>
+</tr>
+</tbody></table>
+<h4 id="2-3意向锁"><a href="#2-3意向锁" class="headerlink" title="2.3意向锁"></a>2.3意向锁</h4><p><strong>执行DML时，会对涉及的行加锁，然后对表加上意向锁</strong>，其他客户端想要加锁时，需要判断意向锁的状态</p>
+<table>
+<thead>
+<tr>
+<th>意向锁</th>
+<th>添加时机</th>
+<th>意向锁不会互斥</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>意向共享锁(IS)</td>
+<td>select … lock in share mode</td>
+<td>兼容表锁共享锁（read），互斥表锁排他锁（write）</td>
+</tr>
+<tr>
+<td>意向排他锁(IX)</td>
+<td>DML，select…for update</td>
+<td>互斥表锁共享锁（read）与排他锁（write）</td>
+</tr>
+</tbody></table>
+<h2 id="4-行级锁"><a href="#4-行级锁" class="headerlink" title="4.行级锁"></a>4.行级锁</h2><p><strong>每次操作锁住对应的行数据</strong>。<strong>锁定粒度最小，发生锁冲突的概率最低，并发度最高。应用在 InnoDB存储引擎中。</strong></p>
+<p>InnoDB的数据是基于索引组织的，<strong>行锁是通过对索引上的索引项加锁来实现的</strong>，而不是对记录加的锁。</p>
+<h3 id="1-分类"><a href="#1-分类" class="headerlink" title="1.分类"></a>1.分类</h3><table>
+<thead>
+<tr>
+<th>锁</th>
+<th></th>
+<th>RC（读已提交），RR（可重复读）</th>
+<th>默认启用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>行锁（Record Lock）</td>
+<td>锁定单个行记录的锁，防止其他事务对此行进行update和delete</td>
+<td>RC、RR隔离级别下都支持。</td>
+<td></td>
+</tr>
+<tr>
+<td>间隙锁（GAP）</td>
+<td>锁定索引记录间隙（不含该记录），确保索引记录间隙不变，防止其他事 务在这个间隙进行insert，产生幻读</td>
+<td>在RR隔离级别下都支持。</td>
+<td></td>
+</tr>
+<tr>
+<td>临键锁(NEXT-KEY)</td>
+<td>行锁和间隙锁组合，同时锁住数据，并锁住数据前面的间隙Gap。</td>
+<td>在RR隔离级别下支持。</td>
+<td>RR</td>
+</tr>
+</tbody></table>
+<h3 id="1-1行锁（RC-RR）"><a href="#1-1行锁（RC-RR）" class="headerlink" title="1.1行锁（RC,RR）"></a>1.1行锁（RC,RR）</h3><h4 id="1-类型即使用情况"><a href="#1-类型即使用情况" class="headerlink" title="1.类型即使用情况"></a>1.类型即使用情况</h4><table>
+<thead>
+<tr>
+<th>锁类型</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>共享锁（S）</td>
+<td>允许一个事务去读一行，阻止其他事务获得相同数据集的排它锁。</td>
+<td></td>
+</tr>
+<tr>
+<td>排他锁（X）</td>
+<td>允许获取排他锁的事务更新数据，阻止其他事务获得相同数据集的共享锁和排他 锁。</td>
+<td></td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>SQL</th>
+<th>行锁类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>INSERT</td>
+<td>排他锁</td>
+<td>自动加锁</td>
+</tr>
+<tr>
+<td>UPDATE</td>
+<td>排他锁</td>
+<td>自动加锁</td>
+</tr>
+<tr>
+<td>DELETE</td>
+<td>排他锁</td>
+<td>自动加锁</td>
+</tr>
+<tr>
+<td>SELECT</td>
+<td>不加锁</td>
+<td></td>
+</tr>
+<tr>
+<td>SELECT … LOCK IN SHARE MODE</td>
+<td>共享锁S</td>
+<td>需要手动在SELECT之后加LOCK IN SHARE MODE</td>
+</tr>
+<tr>
+<td>SELECT … FOR UPDATE</td>
+<td>排他锁</td>
+<td>需要手动在SELECT之后加FOR UPDATE</td>
+</tr>
+</tbody></table>
+<h4 id="2-何时开启行锁"><a href="#2-何时开启行锁" class="headerlink" title="2.何时开启行锁"></a>2.何时开启行锁</h4><p>默认情况下，InnoDB在 REPEATABLE READ（可重复读）事务隔离级别运行，InnoDB<strong>使用 next-key （临键锁）锁进行搜索和索引扫描。</strong></p>
+<p><strong>1.针对唯一索引进行检索时，对已存在的记录进行等值匹配时，将会自动优化为行锁。</strong></p>
+<p><strong>2.InnoDB的行锁是针对于索引加的锁，不通过索引条件检索数据，那么InnoDB将对表中的所有记录加锁，此时 就会升级为表锁。</strong></p>
+<h3 id="1-2-间隙锁与临键锁"><a href="#1-2-间隙锁与临键锁" class="headerlink" title="1.2 间隙锁与临键锁"></a>1.2 间隙锁与临键锁</h3><p>默认情况下，InnoDB在 REPEATABLE READ事务隔离级别运行，InnoDB使用 next-key 锁进行搜 索和索引扫描，以<strong>防止幻读</strong>。 </p>
+<ol>
+<li>索引上的等值查询(唯一索引)，给不存在的记录加锁时, 优化为间隙锁 。 </li>
+<li>索引上的等值查询(非唯一普通索引)，向右遍历时最后一个值不满足查询需求时，next-key lock 退化为间隙锁。 </li>
+<li>索引上的范围查询(唯一索引)–会访问到不满足条件的第一个值为止。</li>
+</ol>
+<p><strong>注意：间隙锁唯一目的是防止其他事务插入间隙。间隙锁可以共存，一个事务采用的间隙锁不会 阻止另一个事务在同一间隙上采用间隙锁。</strong></p>
+<h1 id="六、InnoDB引擎"><a href="#六、InnoDB引擎" class="headerlink" title="六、InnoDB引擎"></a>六、InnoDB引擎</h1><h2 id="1-逻辑存储结构"><a href="#1-逻辑存储结构" class="headerlink" title="1.逻辑存储结构"></a>1.逻辑存储结构</h2><p><img src="F:\Typora\笔记\Image\逻辑存储结构mysql.png"></p>
+<h3 id="1-表空间"><a href="#1-表空间" class="headerlink" title="1.表空间"></a>1.表空间</h3><p>表空间是InnoDB存储引擎逻辑结构的最高层， 如果用户启用了参数 innodb_file_per_table(在 8.0版本中默认开启) ，则每<strong>张表都会有一个表空间（xxx.ibd）</strong>，一个mysql实例可以对应多个表空间，用于存储记录、索引等数据。</p>
+<h3 id="2-段"><a href="#2-段" class="headerlink" title="2.段"></a>2.段</h3><table>
+<thead>
+<tr>
+<th>段</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>数据段</td>
+<td>B+Tree的叶子节点</td>
+<td></td>
+</tr>
+<tr>
+<td>索引段</td>
+<td>B+Tree的叶非子节点</td>
+<td></td>
+</tr>
+<tr>
+<td>回滚段</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>管理区</p>
+<h3 id="3-区"><a href="#3-区" class="headerlink" title="3.区"></a>3.区</h3><p>默认1M，一个页默认16K，所以一个区有64个连续的页</p>
+<h3 id="4-页"><a href="#4-页" class="headerlink" title="4.页"></a>4.页</h3><p>是<strong>InnoDB 存储引擎磁盘管理的最小单元</strong>，每个页的大小默认为 16KB。</p>
+<p>为了保证页的连续性， InnoDB 存储引擎每次从磁盘申请 4-5 个区。</p>
+<h3 id="5-行"><a href="#5-行" class="headerlink" title="5.行"></a>5.行</h3><p>行，InnoDB 存储引擎数据是按行进行存放的</p>
+<p>在行中，默认有两个隐藏字段：</p>
+<ol>
+<li><p>Trx_id：每次对某条记录进行改动时，都会把对应的事务id赋值给trx_id隐藏列。</p>
+</li>
+<li><p>Roll_pointer：每次对某条引记录进行改动时，都会把旧的版本写入到undo日志中，然后这个 隐藏列就相当于一个指针，可以通过它来找到该记录修改前的信息。</p>
+</li>
+</ol>
+<h2 id="2-架构"><a href="#2-架构" class="headerlink" title="2.架构"></a>2.架构</h2><p><img src="F:\Typora\笔记\Image\mysql架构.png"></p>
+<h3 id="1-内存结构"><a href="#1-内存结构" class="headerlink" title="1.内存结构"></a>1.内存结构</h3><h4 id="1-缓冲池（Buffer-Pool）"><a href="#1-缓冲池（Buffer-Pool）" class="headerlink" title="1.缓冲池（Buffer Pool）"></a>1.缓冲池（Buffer Pool）</h4><p>主内存中的一个区域，里面可以<strong>缓存磁盘上经常操作的真实数据</strong>，在执行增 删改查操作时，先操作缓冲池中的数据（若缓冲池没有数据，则从磁盘加载并缓存），然后再以一定频 率刷新到磁盘，从而<strong>减少磁盘IO</strong>，加快处理速度。</p>
+<p>缓冲池以Page页为单位，底层采用链表数据结构管理Page。根据状态，将Page分为三种类型： </p>
+<p>• free page：空闲page，未被使用。</p>
+<p> • clean page：被使用page，数据没有被修改过。</p>
+<p> • dirty page：脏页，被使用page，数据被修改过，也中数据与磁盘的数据产生了不一致。</p>
+<h4 id="2-更改缓存区（Change-Buffer）-针对于非唯一二级索引页"><a href="#2-更改缓存区（Change-Buffer）-针对于非唯一二级索引页" class="headerlink" title="2.更改缓存区（Change Buffer）-针对于非唯一二级索引页"></a>2.更改缓存区（Change Buffer）-针对于非唯一二级索引页</h4><p>在执行DML语句时，如果这些数据Page 没有在Buffer Pool中，不会直接操作磁盘，而会将数据变更 存在更改缓冲区 Change Buffer 中，在未来数据被读取时，再将数据合并恢复到Buffer Pool中，再将合并后的数据刷新到磁盘中。</p>
+<h4 id="3-Adaptive-Hash-Index-自适应Hash"><a href="#3-Adaptive-Hash-Index-自适应Hash" class="headerlink" title="3.Adaptive Hash Index(自适应Hash)"></a>3.Adaptive Hash Index(自适应Hash)</h4><p>用于优化对Buffer Pool数据的查询</p>
+<p>hash索引在进行等值匹配时，一般性能是要高于B+树的，因为hash索引一般只需要一次IO即可，而B+树，可能需 要几次匹配，所以hash索引的效率要高，但是hash索引又不适合做范围查询、模糊匹配等。</p>
+<p><strong>自适应哈希索引，无需人工干预，是系统根据情况自动完成。</strong></p>
+<h4 id="4-LogBuffer（日志缓存区）"><a href="#4-LogBuffer（日志缓存区）" class="headerlink" title="4.LogBuffer（日志缓存区）"></a>4.LogBuffer（日志缓存区）</h4><p>用来保存要写入到磁盘中的log日志数据（redo log 、undo log）， 默认大小为 16MB，日志缓冲区的日志会定期刷新到磁盘中。如果需要更新、插入或删除许多行的事 务，增加日志缓冲区的大小可以节省磁盘 I&#x2F;O。</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>作用</th>
+<th>值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>innodb_log_buffer_size</td>
+<td>缓冲区大小</td>
+<td></td>
+</tr>
+<tr>
+<td>innodb_flush_log_at_trx_commit</td>
+<td>日志刷新到磁盘时机</td>
+<td>1: 日志在每次事务提交时写入并刷新到磁盘，默认值。                                                                                       0: 每秒将日志写入并刷新到磁盘一次。                                                                                                                         2: 日志在每次事务提交后写入，并每秒刷新到磁盘一次。</td>
+</tr>
+</tbody></table>
+<h3 id="2-磁盘结构"><a href="#2-磁盘结构" class="headerlink" title="2.磁盘结构"></a>2.磁盘结构</h3><h2 id="3-事务原理"><a href="#3-事务原理" class="headerlink" title="3.事务原理"></a>3.事务原理</h2><p>四大特性：ACID</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>redo_log,undo_log</td>
+<td>原子性、一致性、持久性</td>
+<td></td>
+</tr>
+<tr>
+<td>锁、MVCC</td>
+<td>隔离性</td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id="1-redo-log-重做日志-持久性"><a href="#1-redo-log-重做日志-持久性" class="headerlink" title="1. redo_log(重做日志) -持久性"></a>1. redo_log(重做日志) -持久性</h3><p>记录的是事务提交时数据页的物理修改，是用来实现事务的持久性</p>
+<p>该日志文件由两部分组成：重做日志缓冲（redo log buffer）以及重做日志文件（redo log file）,</p>
+<p>前者是在内存中，后者在磁盘中。</p>
+<p>当事务提交之后会把所有修改信息都存到该日志文件中, 用于在刷新脏页到磁盘,发生错误时, 进行数据恢复使用。</p>
+<h3 id="2-undo-log"><a href="#2-undo-log" class="headerlink" title="2.undo_log"></a>2.undo_log</h3><p>回滚日志，用于记录数据被修改前的信息 , 作用包含两个 : 提供回滚(保证事务的原子性) 和 MVCC(多版本并发控制) 。</p>
+<h2 id="4-MVCC"><a href="#4-MVCC" class="headerlink" title="4.MVCC"></a>4.MVCC</h2><table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>当前读</td>
+<td>读取的是记录的最新版本，读取时还要保证其他并发事务不能修改当前记录，会对读取的记录进行加 锁。</td>
+<td>select … lock in share mode(共享锁)，select … for update、update、insert、delete</td>
+<td>正常情况innodb为可重复读，无法读取到其他事务的提交数据，当使用这些语句时，变为当前读</td>
+</tr>
+<tr>
+<td>快照读</td>
+<td>简单的select（不加锁）就是快照读，快照读，读取的是记录数据的可见版本，有可能是历史数据， 不加锁，是非阻塞读。</td>
+<td>简单的select</td>
+<td>Read Committed：每次select，都生成一个快照读。            • Repeatable Read：开启事务后第一个select语句才是快照读的地方。            • Serializable：快照读会退化为当前读。</td>
+</tr>
+<tr>
+<td>MVCC</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id="1-概念"><a href="#1-概念" class="headerlink" title="1.概念"></a>1.概念</h3><p>多版本并发控制。指维护一个数据的多个版本， 使得读写操作没有冲突，快照读为MySQL实现MVCC提供了一个非阻塞读功能。MVCC的具体实现，还需 要依赖于数据库记录中的<strong>三个隐式字段、undo log日志、readView。</strong></p>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/blog/about" rel="external nofollow noreferrer">Mr_poke</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://gitee.com/mr-poke/blog.git/blog/2023/03/25/mysql-shi-tu-cun-chu-guo-cheng-hong-fa-qi-yu-suo/">https://gitee.com/mr-poke/blog.git/blog/2023/03/25/mysql-shi-tu-cun-chu-guo-cheng-hong-fa-qi-yu-suo/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/blog/about" target="_blank">Mr_poke</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/blog/tags/SQL/">
+                                    <span class="chip bg-color">SQL</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/blog/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/blog/2023/03/30/spring/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/blog/medias/featureimages/19.jpg" class="responsive-img" alt="Spring框架">
+                        
+                        <span class="card-title">Spring框架</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            Spring框架的总结
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2023-03-30
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/blog/categories/Spring/" class="post-category">
+                                    Spring
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/blog/tags/Spring/">
+                        <span class="chip bg-color">Spring</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/blog/2023/03/22/mysql-jin-jie/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/blog/medias/featureimages/3.jpg" class="responsive-img" alt="Mysql进阶">
+                        
+                        <span class="card-title">Mysql进阶</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            存储引擎，索引，sql优化
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-03-22
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/blog/categories/SQL/" class="post-category">
+                                    SQL
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/blog/tags/SQL/">
+                        <span class="chip bg-color">SQL</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('50')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE' || selection.getRangeAt(0).commonAncestorContainer.nodeName === 'CODE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: Mr_poke<br />'
+            + '文章作者: Mr_poke<br />'
+            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。 ---Mr_poke';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/blog/libs/codeBlock/codeBlockFuction.js"></script>
+
+
+  <!-- 是否加载使用自带的 prismjs. -->
+  <script type="text/javascript" src="/blog/libs/prism/prism.min.js"></script>
+
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/blog/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/blog/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/blog/libs/codeBlock/codeShrink.js"></script>
+
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/blog/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2023</span>
+            
+            <a href="/blog/about" target="_blank">Mr_poke</a>
+            <!-- |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a> -->
+            
+            <br>
+            
+            
+            
+                
+            
+            
+                <span id="busuanzi_container_site_pv">
+                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;
+                    <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+                <span id="busuanzi_container_site_uv">
+                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;
+                    <span id="busuanzi_value_site_uv" class="white-color"></span>
+            </span>
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/Mr-P0KE/" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:mr_poke@163.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=562073889" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 562073889" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/blog/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 白天和黑夜主题 -->
+<div class="stars-con">
+    <div id="stars"></div>
+    <div id="stars2"></div>
+    <div id="stars3"></div>  
+</div>
+
+<script>
+    function switchNightMode() {
+        $('<div class="Cuteen_DarkSky"><div class="Cuteen_DarkPlanet"></div></div>').appendTo($('body')),
+        setTimeout(function () {
+            $('body').hasClass('DarkMode') 
+            ? ($('body').removeClass('DarkMode'), localStorage.setItem('isDark', '0'), $('#sum-moon-icon').removeClass("fa-sun").addClass('fa-moon')) 
+            : ($('body').addClass('DarkMode'), localStorage.setItem('isDark', '1'), $('#sum-moon-icon').addClass("fa-sun").removeClass('fa-moon')),
+            
+            setTimeout(function () {
+            $('.Cuteen_DarkSky').fadeOut(1e3, function () {
+                $(this).remove()
+            })
+            }, 2e3)
+        })
+    }
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/blog/libs/materialize/materialize.min.js"></script>
+    <script src="/blog/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/blog/libs/aos/aos.js"></script>
+    <script src="/blog/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/blog/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/blog/js/matery.js"></script>
+
+    
+
+    
+    
+    
+
+    <!-- 雪花特效 -->
+    
+
+    <!-- 鼠标星星特效 -->
+     
+        <script type="text/javascript">
+            // 只在桌面版网页启用特效
+            var windowWidth = $(window).width();
+            if (windowWidth > 768) {
+                document.write('<script type="text/javascript" src="/blog/libs/others/star.js"><\/script>');
+            }
+        </script>
+    
+
+     
+        <script src="https://ssl.captcha.qq.com/TCaptcha.js"></script>
+        <script src="/blog/libs/others/TencentCaptcha.js"></script>
+        <button id="TencentCaptcha" data-appid="xxxxxxxxxx" data-cbfn="callback" type="button" hidden></button>
+    
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/blog/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/blog/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/blog/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
