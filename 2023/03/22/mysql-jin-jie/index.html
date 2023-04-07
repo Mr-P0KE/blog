@@ -232,8 +232,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/blog/tags/SQL/">
-                                <span class="chip bg-color">SQL</span>
+                            <a href="/blog/tags/SQL%E9%AB%98%E7%BA%A7/">
+                                <span class="chip bg-color">SQL高级</span>
                             </a>
                         
                     </div>
@@ -266,14 +266,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    4.6k
+                    5.6k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    17 分
+                    20 分
                 </div>
                 
 
@@ -396,7 +396,7 @@
 </tr>
 <tr>
 <td>锁机制</td>
-<td><strong>行锁</strong></td>
+<td><strong>行锁</strong>（适合高并发的操作）</td>
 <td>表锁</td>
 <td>表锁</td>
 </tr>
@@ -420,12 +420,12 @@
 </tr>
 <tr>
 <td>空间使用</td>
-<td>高</td>
-<td>低</td>
+<td>高（缓存索引还要缓存真实数据）</td>
+<td>低（缓存索引）</td>
 <td>N&#x2F;A</td>
 </tr>
 <tr>
-<td>内存使用</td>
+<td>性能</td>
 <td>高</td>
 <td>低</td>
 <td>中等</td>
@@ -451,16 +451,16 @@
 <h2 id="2-特点"><a href="#2-特点" class="headerlink" title="2.特点"></a>2.特点</h2><table>
 <thead>
 <tr>
-<th>优点</th>
+<th align="left">优点</th>
 <th>缺点</th>
 </tr>
 </thead>
 <tbody><tr>
-<td>提高检索效率，降低数据库的IO成本</td>
+<td align="left">提高检索效率，降低数据库的IO成本</td>
 <td>占用一定内存空间</td>
 </tr>
 <tr>
-<td>通过索引对数据排序，降低排序成本，降低CPU消耗</td>
+<td align="left">通过索引对数据排序，降低排序成本，降低CPU消耗</td>
 <td>提高了查询效率，单降低了更新表的效率</td>
 </tr>
 </tbody></table>
@@ -547,9 +547,10 @@
 <p>若出现<strong>Hash冲突</strong>，则通过链表解决。</p>
 <p><strong>特点</strong>：</p>
 <ol>
-<li>只能等值匹配</li>
+<li>只能等值匹配，不能进行范围查询</li>
 <li>无法排序</li>
 <li>查询效率高（不存在Hash冲突的情况下）</li>
+<li>不支持联合索引的最左侧原则</li>
 </ol>
 <p><strong>InnoDB中具有自适应hash功能，hash索引是 InnoDB存储引擎根据B+Tree索引在指定条件下自动构建的。</strong></p>
 <h3 id="问题？"><a href="#问题？" class="headerlink" title="问题？"></a>问题？</h3><h4 id="1-为什么InnoDB存储引擎选择使用B-tree索引结构"><a href="#1-为什么InnoDB存储引擎选择使用B-tree索引结构" class="headerlink" title="1.为什么InnoDB存储引擎选择使用B+tree索引结构?"></a>1.为什么InnoDB存储引擎选择使用B+tree索引结构?</h4><p><strong>一个数据结构作为索引的优劣最重要的指标就是在查找过程中磁盘I&#x2F;O操作次数</strong></p>
@@ -558,9 +559,17 @@
 </li>
 <li><p>B-Tree（时间复杂度不确定）在叶子和非叶子节点都存储数据，而一个页的存储大小是一定的（默认16KB），B-Tree非叶子节点存储数据，会导致可存储的键值减少，进而导致树的高度增加，提高了磁盘IO，降低了查询效率，而且由于非叶子节点存储数据，范围为查询效率低。</p>
 </li>
-<li><p>Hash只支持精确查找，</p>
+<li><p>Hash只支持精确查找。</p>
 </li>
 </ol>
+<h4 id="2-为了减少IO，索引树会一次性加载吗？"><a href="#2-为了减少IO，索引树会一次性加载吗？" class="headerlink" title="2.为了减少IO，索引树会一次性加载吗？"></a><strong>2.为了减少IO，索引树会一次性加载吗？</strong></h4><blockquote>
+<p>1、数据库索引是存储在磁盘上的，如果数据量很大，必然导致索引的大小也会很大，超过几个G。</p>
+<p>2、当我们利用索引查询时候，是不可能将全部几个G的索引都加载进内存的，我们能做的只能是：逐一加载每一个磁盘页，因为磁盘页对应着索引树的节点。</p>
+</blockquote>
+<h4 id="3-B-树的存储能力如何？为何说一般查找行记录，最多只需1-3次磁盘IO"><a href="#3-B-树的存储能力如何？为何说一般查找行记录，最多只需1-3次磁盘IO" class="headerlink" title="3.B+树的存储能力如何？为何说一般查找行记录，最多只需1~3次磁盘IO"></a><strong>3.B+树的存储能力如何？为何说一般查找行记录，最多只需1~3次磁盘IO</strong></h4><blockquote>
+<p>InnoDB存储引擎中页的大小为16KB，一般表的主键类型为INT(占用4个字节)或BIGINT(占用8个字节)，指针类型也一般为4或8个字节，也就是说一个页（B+Tree中的一个节点）中大概存储16KB&#x2F;(8B+8B)&#x3D;1K个键值，因为是估算，为了方便计算，这里的K取值为10^3。也就是说一个深度为3的B+Tree索引可以维护10^3 * 10^3 * 10^3 &#x3D; 10亿条记录。（这里假定一个数据页也存储10^3条行记录数据了）</p>
+<p>实际情况中每个节点可能不能填充满，因此在数据库中，<code>B+Tree的高度一般都在2~4层</code>。MySQL的InnoDB存储引擎在设计时是将根节点常驻内存的，也就是说查找某一键值的行记录时最多只需要1~3次磁盘I&#x2F;O操作</p>
+</blockquote>
 <h3 id="5-索引类型"><a href="#5-索引类型" class="headerlink" title="5.索引类型"></a>5.索引类型</h3><table>
 <thead>
 <tr>
@@ -666,9 +675,9 @@ SHOW GLOBAL&#x2F;SESSION  STATUS LIKE &#39;Com_______&#39;;<span aria-hidden="tr
 
 <p>开启慢查询日志，要在MySQL的配置文件（&#x2F;etc&#x2F;my.cnf）中配置如下信息：</p>
 <pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment"># 开启MySQL慢日志查询开关</span>
-slow_query_log<span class="token operator">=</span><span class="token number">1</span>
+<span class="token keyword">set</span> <span class="token keyword">global</span> long_query_time <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> 
 <span class="token comment"># 设置慢日志的时间为2秒，SQL语句执行时间超过2秒，就会视为慢查询，记录慢查询日志</span>
-long_query_time<span class="token operator">=</span><span class="token number">2</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token keyword">set</span> long_query_time<span class="token operator">=</span><span class="token number">2</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h3 id="3-profile（了解时间耗费）"><a href="#3-profile（了解时间耗费）" class="headerlink" title="3.profile（了解时间耗费）"></a>3.profile（了解时间耗费）</h3><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">#查看：YES 支持</span>
 <span class="token keyword">SELECT</span> @<span class="token variable">@have_profiling</span>
@@ -713,11 +722,11 @@ long_query_time<span class="token operator">=</span><span class="token number">2
 <tr>
 <td>type</td>
 <td>表示连接类型，性能由好到差的连接类型为NULL、system、const、 eq_ref、ref、range、 index、all 。</td>
-<td>***</td>
+<td><strong>SQL性能优化的目标：至少要达到 range级别，要求是ref级别，最好是consts级别。（阿里巴巴开发手册要求）</strong></td>
 </tr>
 <tr>
 <td>possible_key</td>
-<td>示可能应用在这张表上的索引，一个或多个。</td>
+<td>表示可能应用在这张表上的索引，一个或多个。</td>
 <td>***</td>
 </tr>
 <tr>
@@ -727,7 +736,7 @@ long_query_time<span class="token operator">=</span><span class="token number">2
 </tr>
 <tr>
 <td>key_len</td>
-<td>表示索引中使用的字节数， 该值为索引字段最大可能长度，并非实际使用长 度，在不损失精确性的前提下， 长度越短越好 。</td>
+<td>实际使用到的索引长度， 该值为索引字段最大可能长度，并非实际使用长度，在不损失精确性的前提下， 长度越短越好 。</td>
 <td>***</td>
 </tr>
 <tr>
@@ -746,10 +755,12 @@ long_query_time<span class="token operator">=</span><span class="token number">2
 <td></td>
 </tr>
 </tbody></table>
-<h2 id="四、索引使用"><a href="#四、索引使用" class="headerlink" title="四、索引使用"></a>四、索引使用</h2><h3 id="1-最左前缀原则（联合索引）"><a href="#1-最左前缀原则（联合索引）" class="headerlink" title="1.最左前缀原则（联合索引）"></a>1.最左前缀原则（联合索引）</h3><p><strong>查询从索引的最左列开始， 并且不跳过索引中的列。如果跳跃某一列，索引将会部分失效(后面的字段索引失效)。</strong></p>
+<h2 id="四、索引使用"><a href="#四、索引使用" class="headerlink" title="四、索引使用"></a>四、索引使用</h2><p><strong>SQL语句是否使用索引，跟数据库版本、数据量、数据选择度都有关系。</strong></p>
+<h3 id="1-最左前缀原则（联合索引）"><a href="#1-最左前缀原则（联合索引）" class="headerlink" title="1.最左前缀原则（联合索引）"></a>1.最左前缀原则（联合索引）</h3><p><strong>查询从索引的最左列开始， 并且不跳过索引中的列。如果跳跃某一列，索引将会部分失效(后面的字段索引失效)。</strong></p>
 <p>注意 ： 最左前缀法则中指的最左边的列，是指在查询时，联合索引的最左边的字段(即是 第一个字段)必须存在，与我们编写SQL时，条件编写的先后顺序无关。</p>
 <h3 id="2-范围查询（联合索引）"><a href="#2-范围查询（联合索引）" class="headerlink" title="2.范围查询（联合索引）"></a>2.范围查询（联合索引）</h3><p><strong>出现范围查询(&gt;,&lt;)，范围查询右侧的列索引失效。</strong></p>
 <p>注意 ：尽可能的使用类似于 &gt;&#x3D; 或 &lt;&#x3D; 这类的范围查询，而避免使用 &gt; 或 &lt;</p>
+<p>​           尽量将范围查询的条件放到最后（创建的联合索引中，务必把范围涉及到的字段写在最后）</p>
 <h3 id="3-索引失效情况"><a href="#3-索引失效情况" class="headerlink" title="3.索引失效情况"></a>3.索引失效情况</h3><table>
 <thead>
 <tr>
@@ -758,7 +769,7 @@ long_query_time<span class="token operator">=</span><span class="token number">2
 </tr>
 </thead>
 <tbody><tr>
-<td>索引列上进行运算操作</td>
+<td>计算、函数、类型转换(自动或手动）</td>
 <td></td>
 </tr>
 <tr>
@@ -766,7 +777,7 @@ long_query_time<span class="token operator">=</span><span class="token number">2
 <td></td>
 </tr>
 <tr>
-<td>头部模糊匹配、not like</td>
+<td>like以通配符%开头索引失效、not like</td>
 <td>‘’%word’</td>
 </tr>
 <tr>
@@ -778,7 +789,7 @@ long_query_time<span class="token operator">=</span><span class="token number">2
 <td>可能失效</td>
 </tr>
 <tr>
-<td>用 &lt;&gt; 或者 !&#x3D;</td>
+<td>不等于（用 &lt;&gt; 或者 !&#x3D;）</td>
 <td></td>
 </tr>
 <tr>
@@ -786,12 +797,12 @@ long_query_time<span class="token operator">=</span><span class="token number">2
 <td>可能失效（查询时MySQL会评估，走索引快，还是全表扫描快）</td>
 </tr>
 <tr>
-<td></td>
+<td>范围查询右边的列</td>
 <td></td>
 </tr>
 <tr>
-<td></td>
-<td></td>
+<td>数据库和表的字符集不统一</td>
+<td>不同的<code>字符集</code>进行比较前需要进行<code>转换</code>会造成索引失效。</td>
 </tr>
 </tbody></table>
 <h3 id="4-SQL提示"><a href="#4-SQL提示" class="headerlink" title="4.SQL提示"></a>4.SQL提示</h3><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">#语法</span>
@@ -806,6 +817,8 @@ long_query_time<span class="token operator">=</span><span class="token number">2
 
 <h3 id="5-覆盖索引（不需要回表）"><a href="#5-覆盖索引（不需要回表）" class="headerlink" title="5.覆盖索引（不需要回表）"></a>5.覆盖索引（不需要回表）</h3><p><strong>查询使用了索引，并 且需要返回的列，在该索引中已经全部能够找到（查询字段尽量为索引字段） 。</strong></p>
 <h3 id="6-前缀索引"><a href="#6-前缀索引" class="headerlink" title="6.前缀索引"></a>6.前缀索引</h3><p>当字段类型为字符串（varchar，text，longtext等）时，有时候需要索引很长的字符串，这会让 索引变得很大，查询时，浪费大量的磁盘IO， 影响查询效率。此时可以只将字符串的一部分前缀，建 立索引，这样可以大大节约索引空间，从而提高索引效率。</p>
+<p><strong>拓展：Alibaba《Java开发手册》</strong></p>
+<p>【<code>强制</code>】在 varchar 字段上建立索引时，必须指定索引长度，没必要对全字段建立索引，根据实际文本区分度决定索引长度。</p>
 <pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">CREATE</span> <span class="token keyword">INDEX</span> 索引名 <span class="token keyword">ON</span> 表名<span class="token punctuation">(</span>cloumn（n）<span class="token punctuation">)</span>
 
 <span class="token comment">#如何计算n的值（截取）：n尽可能小，计算的值尽可能大</span>
@@ -814,12 +827,12 @@ long_query_time<span class="token operator">=</span><span class="token number">2
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h2 id="五、索引设计原则"><a href="#五、索引设计原则" class="headerlink" title="五、索引设计原则"></a>五、索引设计原则</h2><ol>
-<li>针对于数据量较大，且查询比较频繁的表建立索引。</li>
-<li>针对于常作为查询条件（where）、排序（order by）、分组（group by）操作的字段建立索 引。</li>
-<li>尽量选择区分度高的列作为索引，尽量建立唯一索引，区分度越高，使用索引的效率越高。</li>
-<li>如果是字符串类型的字段，字段的长度较长，可以针对于字段的特点，建立前缀索引。</li>
-<li>尽量使用联合索引，减少单列索引，查询时，联合索引很多时候可以覆盖索引，节省存储空间， 避免回表，提高查询效率。</li>
-<li>要控制索引的数量，索引并不是多多益善，索引越多，维护索引结构的代价也就越大，会影响增 删改的效率。</li>
+<li>针对于<strong>数据量较大，且查询比较频繁的表</strong>建立索引。</li>
+<li>针对于常作为<strong>查询条件（where）、排序（order by）、分组（group by）操作</strong>的字段建立索 引。</li>
+<li>尽量选择<strong>区分度高的列作为索引，尽量建立唯一索引，区分度越高</strong>，使用索引的效率越高。</li>
+<li>如果是<strong>字符串类型的字段，</strong>字段的长度较长，可以针对于字段的特点，<strong>建立前缀索引。</strong></li>
+<li><strong>尽量使用联合索引</strong>，减少单列索引，查询时，<strong>联合索引很多时候可以覆盖索引</strong>，节省存储空间， 避免回表，提高查询效率。</li>
+<li>要<strong>控制索引的数量</strong>，索引并不是多多益善，索引越多，维护索引结构的代价也就越大，会影响增 删改的效率。</li>
 <li>如果索引列不能存储NULL值，请在创建表时使用NOT NULL约束它。当优化器知道每列是否包含 NULL值时，它可以更好地确定哪个索引最有效地用于查询</li>
 </ol>
 <h2 id="六、SQL优化"><a href="#六、SQL优化" class="headerlink" title="六、SQL优化"></a>六、SQL优化</h2><h3 id="1-插入数据"><a href="#1-插入数据" class="headerlink" title="1.插入数据"></a>1.插入数据</h3><h4 id="1-1插入多条数据："><a href="#1-1插入多条数据：" class="headerlink" title="1.1插入多条数据："></a>1.1插入多条数据：</h4><p><strong>1.批量插入</strong></p>
@@ -871,23 +884,29 @@ mysql –<span class="token operator">-</span><span class="token keyword">local<
 <td>高</td>
 </tr>
 </tbody></table>
-<p>创建索引时默认升序，在降序时也会使用索引 Backward index scan，这个代表反向扫描索引</p>
+<p><strong>创建索引时默认升序，在降序时也会使用索引 Backward index scan，这个代表反向扫描索引</strong></p>
 <p>指定索引排序：</p>
 <pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">create</span> <span class="token keyword">index</span> idx_user_age_phone_ad <span class="token keyword">on</span> tb_user<span class="token punctuation">(</span>age <span class="token keyword">asc</span> <span class="token punctuation">,</span>phone <span class="token keyword">desc</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <h4 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h4><ol>
 <li>根据排序字段创建合适的索引，多字段排序，遵循最左前缀原则</li>
 <li>尽量使用覆盖索引</li>
-<li>多字段排序，一个升序，一个降序，此时需要注意联合索引在创建时的规则（ASC&#x2F;DESC）。</li>
+<li><strong>多字段排序，一个升序，一个降序，此时需要注意联合索引在创建时的规则（ASC&#x2F;DESC）。</strong></li>
 <li>如果不可避免的出现filesort，大数据量排序时，可以适当增大排序缓冲区大小 sort_buffer_size(默认256k)。</li>
+<li><strong>减少使用order by，和业务沟通能不排序就不排序，或将排序放到程序端去做</strong>。Order by、group by、distinct这些语句较为耗费CPU，数据库的CPU资源是极其宝贵的。</li>
 </ol>
 <h3 id="4-Group-by"><a href="#4-Group-by" class="headerlink" title="4.Group by"></a>4.Group by</h3><p>Using temporary出现效率低</p>
 <h4 id="优化："><a href="#优化：" class="headerlink" title="优化："></a>优化：</h4><ol>
 <li>在分组操作时，可以通过索引来提高效率。</li>
 <li>分组操作时，索引的使用也是满足最左前缀法则的。</li>
+<li>where效率高于having，能写在where限定的条件就不要写在having中了</li>
 </ol>
 <h3 id="5-limit优化"><a href="#5-limit优化" class="headerlink" title="5.limit优化"></a>5.limit优化</h3><p>在数据量比较大时，如果进行limit分页查询，在查询时，越往后，分页查询效率越低。</p>
-<h4 id="优化：-1"><a href="#优化：-1" class="headerlink" title="优化："></a>优化：</h4><p>一般分页查询时，通过创建 覆盖索引 能够比较好地提高性能，可以通过覆盖索引   加子查询形式进行优化。</p>
+<h4 id="优化：-1"><a href="#优化：-1" class="headerlink" title="优化："></a>优化：</h4><p>一般分页查询时，通过创建 覆盖索引 能够比较好地提高性能，可以通过覆盖索引   加子查询形式进行优化</p>
+<p><strong>优化思路二</strong></p>
+<p>该方案适用于主键自增的表，可以把Limit 查询转换成某个位置的查询。</p>
+<pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">EXPLAIN SELECT * FROM student WHERE id &gt; 2000000 LIMIT 10;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <h3 id="6-count优化"><a href="#6-count优化" class="headerlink" title="6.count优化"></a>6.count优化</h3><p>InnoDB 引擎，它执行 count(*) 的时候，需要把数据一行一行地从引擎里面读出 来，然后累积计数。</p>
 <h4 id="优化：-2"><a href="#优化：-2" class="headerlink" title="优化："></a>优化：</h4><p>自己计数(可以借助于redis这样的数据库进行,但是如果是带条件的count又比较麻烦了)。</p>
 <h4 id="6-1-count用法"><a href="#6-1-count用法" class="headerlink" title="6.1 count用法"></a>6.1 count用法</h4><table>
@@ -917,6 +936,12 @@ mysql –<span class="token operator">-</span><span class="token keyword">local<
 <p>按照效率排序的话，count(字段) &lt; count(主键 id) &lt; count(1) ≈ count(*)，所以尽 量使用 count(**)。</p>
 <h3 id="7-update优化"><a href="#7-update优化" class="headerlink" title="7.update优化"></a>7.update优化</h3><p>InnoDB的行锁是针对索引加的锁，不是针对记录加的锁 ,并且该索引不能失效，否则会从行锁 升级为表锁 。</p>
 <h4 id="优化：-3"><a href="#优化：-3" class="headerlink" title="优化："></a>优化：</h4><p>根据索引字段进行更新（条件为索引）。</p>
+<h3 id="8-关联查询优化"><a href="#8-关联查询优化" class="headerlink" title="8.关联查询优化"></a>8.关联查询优化</h3><blockquote>
+<p>结论1：对于内连接来说，查询优化器可以决定谁来作为驱动表，谁作为被驱动表出现</p>
+<p>结论2：对于内连接来讲，如果表的连接条件中只能有一个字段有索引，则有索引的字段所在的表会被作为被驱动表</p>
+<p>结论3：对于内连接来说，在两个表的连接条件都存在索引的情况下，会选择小表作为驱动表。<code>小表驱动大表</code></p>
+</blockquote>
+<h5 id="9-子查询优化"><a href="#9-子查询优化" class="headerlink" title="9.子查询优化"></a>9.子查询优化</h5><p><strong>在MySQL中，可以使用连接（JOIN）查询来替代子查询。</strong>连接查询<code>不需要建立临时表</code>，其<code>速度比子查询要快</code>，如果查询中使用索引的话，性能就会更好。</p>
 
                 
             </div>
@@ -981,8 +1006,8 @@ mysql –<span class="token operator">-</span><span class="token keyword">local<
                     
                         <div class="article-tag">
                             
-                                <a href="/blog/tags/SQL/">
-                                    <span class="chip bg-color">SQL</span>
+                                <a href="/blog/tags/SQL%E9%AB%98%E7%BA%A7/">
+                                    <span class="chip bg-color">SQL高级</span>
                                 </a>
                             
                         </div>
@@ -1063,8 +1088,8 @@ mysql –<span class="token operator">-</span><span class="token keyword">local<
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/blog/tags/SQL/">
-                        <span class="chip bg-color">SQL</span>
+                    <a href="/blog/tags/SQL%E9%AB%98%E7%BA%A7/">
+                        <span class="chip bg-color">SQL高级</span>
                     </a>
                     
                 </div>
@@ -1112,8 +1137,8 @@ mysql –<span class="token operator">-</span><span class="token keyword">local<
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/blog/tags/SQL/">
-                        <span class="chip bg-color">SQL</span>
+                    <a href="/blog/tags/SQL%E5%9F%BA%E7%A1%80/">
+                        <span class="chip bg-color">SQL基础</span>
                     </a>
                     
                 </div>
@@ -1294,7 +1319,7 @@ mysql –<span class="token operator">-</span><span class="token keyword">local<
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">49.1k</span>
+                        class="white-color">60k</span>
             
             
             

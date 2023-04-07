@@ -4,8 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Docker, Mr_poke">
-    <meta name="description" content="Docker配置部署等">
+    <meta name="keywords" content="Mysql逻辑架构与存储引擎, Mr_poke">
+    <meta name="description" content="MySql的逻辑架构分析，SQL语句是怎么执行的，以及常见的引擎介绍">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Docker | Mr_poke</title>
+    <title>Mysql逻辑架构与存储引擎 | Mr_poke</title>
     <link rel="icon" type="image/png" href="/blog/favicon.png">
     
 
@@ -203,12 +203,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/blog/medias/featureimages/0.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/blog/medias/featureimages/7.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Docker</h1>
+                    <h1 class="description center-align post-title">Mysql逻辑架构与存储引擎</h1>
                 </div>
             </div>
         </div>
@@ -232,8 +232,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/blog/tags/%E8%BF%90%E7%BB%B4/">
-                                <span class="chip bg-color">运维</span>
+                            <a href="/blog/tags/SQL%E9%AB%98%E7%BA%A7/">
+                                <span class="chip bg-color">SQL高级</span>
                             </a>
                         
                     </div>
@@ -244,8 +244,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/blog/categories/Dcoker/" class="post-category">
-                                Dcoker
+                            <a href="/blog/categories/SQL/" class="post-category">
+                                SQL
                             </a>
                         
                     </div>
@@ -257,7 +257,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-12-31
+                    2023-04-07
                 </div>
                 
 
@@ -266,14 +266,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.3k
+                    2.7k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    5 分
+                    9 分
                 </div>
                 
 
@@ -296,260 +296,237 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="Docker命令"><a href="#Docker命令" class="headerlink" title="Docker命令"></a>Docker命令</h1><h2 id="基本"><a href="#基本" class="headerlink" title="基本"></a>基本</h2><ol>
-<li><p>开启Docker： systemctl start docker</p>
-</li>
-<li><p>关闭Docker:    systemctl stop docker</p>
-</li>
-<li><p>查看状态：     systemctl status docker</p>
-</li>
-<li><p>重启：             systemctl restart docker</p>
-</li>
-</ol>
-<h2 id="Docker镜像"><a href="#Docker镜像" class="headerlink" title="Docker镜像"></a>Docker镜像</h2><ol>
-<li><p>查看镜像：  docker images</p>
-<h3 id="下载镜像："><a href="#下载镜像：" class="headerlink" title="下载镜像："></a>下载镜像：</h3><ol>
-<li>搜索镜像 ： docker search （name）</li>
-<li>下载镜像：  docker pull (name ： 版本号)</li>
-</ol>
-</li>
-<li><p>删除镜像 ： docker rmi (Image ID)</p>
-</li>
-</ol>
-<h2 id="Docker容器"><a href="#Docker容器" class="headerlink" title="Docker容器"></a>Docker容器</h2><ol>
-<li>查看所有容器 ： docker ps -a</li>
-<li>查看运行容器： docker ps</li>
-<li>运行容器 ： docker run  -   –name&#x3D; (name)      &#x2F; (参数)&#x2F;（参数）【表示进入容器命令】   i 【一直运行】  -t 【分配终端，直接进入容器】 ImageID</li>
-</ol>
-<p>​                                                                                                                                                                                     -d【后台运行】</p>
-<ol start="4">
-<li><p>进入容器： docker exec -it  (name)  （command）【进入命令】</p>
-</li>
-<li><p>退出容器：  exit</p>
-</li>
-<li><p>启动容器： docker start (name || id)</p>
-</li>
-<li><p>停止容器： docker stop (name)</p>
-</li>
-<li><p>删除容器(运行中的必须停止)： docker rm (name || id)</p>
-</li>
-<li><p>查看容器信息： docker  inspect (name)</p>
-</li>
-</ol>
-<h1 id="Docker数据卷"><a href="#Docker数据卷" class="headerlink" title="Docker数据卷"></a>Docker数据卷</h1><ol>
-<li><p>概念： 是宿主机中的一个目录或文件（需将容器中的目录与宿主机的目录挂载起来）</p>
-</li>
-<li><p>作用：1.  修改同步<br>          2. 保存数据（容器删除，数据卷仍在）<br>          3. 与外界机器通信</p>
-</li>
-<li><p>一个数据卷可同时被多个容器挂载，一个容器可挂载多个数据卷</p>
-</li>
-</ol>
-<h2 id="配置数据卷"><a href="#配置数据卷" class="headerlink" title="配置数据卷"></a>配置数据卷</h2><ol>
-<li>创建容器时配置： docker run .. -v  (宿主机目录文件)： （容器内目录文件）</li>
-</ol>
-<h2 id="数据卷容器"><a href="#数据卷容器" class="headerlink" title="数据卷容器"></a>数据卷容器</h2><h2 id=""><a href="#" class="headerlink" title=""></a><img src="https://gitee.com/mr-poke/picture/raw/master/img/2023-01-02%20124618.png"></h2><ol>
-<li>配置数据卷容器：  docker run - –name （别名） -v &#x2F;volume  </li>
-<li>配置其他容器： docker run –name (别名) –volumes-from (数据卷容器名)</li>
-</ol>
-<h1 id="安装MYSQL"><a href="#安装MYSQL" class="headerlink" title="安装MYSQL"></a>安装MYSQL</h1><ol>
-<li><p>下载镜像： docker pull mysql</p>
-</li>
-<li><pre><code class="bash">docker run -v $PWD/conf:/etc/mysql/conf.d                                  //设置数据卷映射   **配置文件**
-
-                                  -v $PWD/logs:/logs                        //设置数据卷映射   **日志**
-                                  -v $PWD/data:/var/lib/mysql               //设置数据卷映射   **数据文件**
-                                  -e MYSQL_ROOT_PASSWORD=(密码)                 
-                                  -p3306:3306                               
-                                  -id           
-                                  --name(名字 )        
-                                  mysql
-<pre class="line-numbers language-none"><code class="language-none">
-   运行：
-
-3. 进入MYSQL: docker exec -it mysql &#x2F;bin&#x2F;bash
-
-# 安装Nginx
-
-1. 下载镜像
-
-2. 运行： 
-
-   &#96;&#96;&#96;bash
-   docker run -id --name&#x3D;c_nginx \
-   -p 80:80 \
-   -v $PWD&#x2F;conf&#x2F;nginx.conf:&#x2F;etc&#x2F;nginx&#x2F;nginx.conf \
-   -v $PWD&#x2F;logs:&#x2F;var&#x2F;log&#x2F;nginx \
-   -v $PWD&#x2F;html:&#x2F;usr&#x2F;share&#x2F;nginx&#x2F;html \
-   nginx<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-</code></pre>
-</li>
-</ol>
-<p>实例配置：</p>
-<pre class="line-numbers language-nginx" data-language="nginx"><code class="language-nginx"><span class="token directive"><span class="token keyword">user</span>  nginx</span><span class="token punctuation">;</span>
-<span class="token directive"><span class="token keyword">worker_processes</span>  <span class="token number">1</span></span><span class="token punctuation">;</span>
-
-<span class="token directive"><span class="token keyword">error_log</span>  /var/log/nginx/error.log warn</span><span class="token punctuation">;</span>
-<span class="token directive"><span class="token keyword">pid</span>        /var/run/nginx.pid</span><span class="token punctuation">;</span>
-
-
-<span class="token directive"><span class="token keyword">events</span></span> <span class="token punctuation">&#123;</span>
-    <span class="token directive"><span class="token keyword">worker_connections</span>  <span class="token number">1024</span></span><span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span>
-
-
-<span class="token directive"><span class="token keyword">http</span></span> <span class="token punctuation">&#123;</span>
-    <span class="token directive"><span class="token keyword">include</span>       /etc/nginx/mime.types</span><span class="token punctuation">;</span>
-    <span class="token directive"><span class="token keyword">default_type</span>  application/octet-stream</span><span class="token punctuation">;</span>
-
-    <span class="token directive"><span class="token keyword">log_format</span>  main  <span class="token string">'<span class="token variable">$remote_addr</span> - <span class="token variable">$remote_user</span> [<span class="token variable">$time_local]</span> "<span class="token variable">$request</span>" '</span>
-                      <span class="token string">'<span class="token variable">$status</span> <span class="token variable">$body_bytes_sent</span> "<span class="token variable">$http_referer</span>" '</span>
-                      <span class="token string">'"<span class="token variable">$http_user_agent</span>" "<span class="token variable">$http_x_forwarded_for</span>"'</span></span><span class="token punctuation">;</span>
-
-    <span class="token directive"><span class="token keyword">access_log</span>  /var/log/nginx/access.log  main</span><span class="token punctuation">;</span>
-
-    <span class="token directive"><span class="token keyword">sendfile</span>        <span class="token boolean">on</span></span><span class="token punctuation">;</span>
-    <span class="token comment">#tcp_nopush     on;</span>
-
-    <span class="token directive"><span class="token keyword">keepalive_timeout</span>  <span class="token number">65</span></span><span class="token punctuation">;</span>
-
-    <span class="token comment">#gzip  on;</span>
-
-    <span class="token directive"><span class="token keyword">include</span> /etc/nginx/conf.d/*.conf</span><span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h1 id="Docker镜像-1"><a href="#Docker镜像-1" class="headerlink" title="Docker镜像"></a>Docker镜像</h1><p><img src="https://gitee.com/mr-poke/picture/raw/master/img/2023-01-03%20112342.png"></p>
-<ol>
-<li>镜像本质： 一个分层文件系统</li>
-</ol>
-<h2 id="如何制作镜像？"><a href="#如何制作镜像？" class="headerlink" title="如何制作镜像？"></a>如何制作镜像？</h2><ol>
-<li><p>容器转镜像</p>
-<ol>
-<li>docker commit  （容器ID）  （镜像名称）         容器转镜像</li>
-<li>docker save -o  (压缩文件名称)   （镜像名称）  ： 压缩文件</li>
-<li>docker load - i  （压缩文件名称）</li>
-</ol>
-</li>
-<li><p><strong>DockerFile</strong></p>
-<ol>
-<li>是一个文本文件</li>
-<li>参数</li>
-</ol>
-</li>
-</ol>
+                <h1 id="MySql逻辑架构"><a href="#MySql逻辑架构" class="headerlink" title="MySql逻辑架构"></a>MySql逻辑架构</h1><h2 id="1-逻辑架构剖析"><a href="#1-逻辑架构剖析" class="headerlink" title="1.逻辑架构剖析"></a>1.逻辑架构剖析</h2><h3 id="服务器处理客户端请求"><a href="#服务器处理客户端请求" class="headerlink" title="服务器处理客户端请求"></a>服务器处理客户端请求</h3><p>Mysql是典型的<code>C/S</code>架构，即<code>Client/Server架构</code>，服务端使用<code>mysqld</code></p>
+<p>客户端发送文本（sql语句），服务器进程处理后再向客户端发送一段文本（处理结果）</p>
+<p><img src="https://gitee.com/mr-poke/picture/raw/master/img/image-20230407213918517.png"></p>
+<p><strong>具体架构图</strong></p>
+<p><img src="https://gitee.com/mr-poke/picture/raw/master/img/9e860b34212846379af50abe60b59dca.png" alt="具体架构图"></p>
 <table>
 <thead>
 <tr>
-<th>关键字</th>
+<th>组件</th>
+<th>中文介绍</th>
 <th>作用</th>
-<th>备注</th>
+<th></th>
 </tr>
 </thead>
 <tbody><tr>
-<td>FROM</td>
-<td>指定父镜像</td>
-<td>指定dockerfile基于那个image构建</td>
+<td>Connectors</td>
+<td>客户端服务程序</td>
+<td>保证数据库的连接</td>
+<td></td>
 </tr>
 <tr>
-<td>MAINTAINER</td>
-<td>作者信息</td>
-<td>用来标明这个dockerfile谁写的</td>
+<td><strong>服务器端</strong></td>
+<td></td>
+<td></td>
+<td></td>
 </tr>
 <tr>
-<td>LABEL</td>
-<td>标签</td>
-<td>用来标明dockerfile的标签 可以使用Label代替Maintainer 最终都是在docker image基本信息中可以查看</td>
+<td>Management Services &amp; Utilities</td>
+<td>基础服务组件</td>
+<td></td>
+<td></td>
 </tr>
 <tr>
-<td>RUN</td>
-<td>执行命令</td>
-<td>执行一段命令 默认是&#x2F;bin&#x2F;sh 格式: RUN command 或者 RUN [“command” , “param1”,”param2”]</td>
+<td>Connection Pool</td>
+<td>数据库连接池</td>
+<td>提供多个用于客户端与服务器交互的线程</td>
+<td></td>
 </tr>
 <tr>
-<td>CMD</td>
-<td>容器启动命令</td>
-<td>提供启动容器时候的默认命令 和ENTRYPOINT配合使用.格式 CMD command param1 param2 或者 CMD [“command” , “param1”,”param2”]</td>
+<td>SQL Interface</td>
+<td>SQL接口</td>
+<td>接收SQL指令，返回SQL接口</td>
+<td></td>
 </tr>
 <tr>
-<td>ENTRYPOINT</td>
-<td>入口</td>
-<td>一般在制作一些执行就关闭的容器中会使用</td>
+<td>Parser</td>
+<td>解析器</td>
+<td>语法解析语义解析，创建语法树</td>
+<td></td>
 </tr>
 <tr>
-<td>COPY</td>
-<td>复制文件</td>
-<td>build的时候复制文件到image中</td>
+<td>Optimizer</td>
+<td>查询优化器</td>
+<td>确定 SQL 语句的执行路径，生成一个<code>执行计划</code>。</td>
+<td>核心组件</td>
 </tr>
 <tr>
-<td>ADD</td>
-<td>添加文件</td>
-<td>build的时候添加文件到image中 不仅仅局限于当前build上下文 可以来源于远程服务</td>
+<td>Caches &amp;Buffers</td>
+<td>查询缓存组件</td>
+<td>缓存查询结果</td>
+<td>8.0删除</td>
 </tr>
 <tr>
-<td>ENV</td>
-<td>环境变量</td>
-<td>指定build时候的环境变量 可以在启动的容器的时候 通过-e覆盖 格式ENV name&#x3D;value</td>
+<td>Pluggable Storage Engines</td>
+<td>插件式存储引擎</td>
+<td>负责MySQL数据的存储和提取（与文件系统交互）</td>
+<td></td>
 </tr>
 <tr>
-<td>ARG</td>
-<td>构建参数</td>
-<td>构建参数 只在构建的时候使用的参数 如果有ENV 那么ENV的相同名字的值始终覆盖arg的参数</td>
+<td>File System</td>
+<td>文件系统</td>
+<td>存储数据</td>
+<td></td>
 </tr>
 <tr>
-<td>VOLUME</td>
-<td>定义外部可以挂载的数据卷</td>
-<td>指定build的image那些目录可以启动的时候挂载到文件系统中 启动容器的时候使用 -v 绑定 格式 VOLUME [“目录”]</td>
-</tr>
-<tr>
-<td>EXPOSE</td>
-<td>暴露端口</td>
-<td>定义容器运行的时候监听的端口 启动容器的使用-p来绑定暴露端口 格式: EXPOSE 8080 或者 EXPOSE 8080&#x2F;udp</td>
-</tr>
-<tr>
-<td>WORKDIR</td>
-<td>工作目录</td>
-<td>指定容器内部的工作目录 如果没有创建则自动创建 如果指定&#x2F; 使用的是绝对地址 如果不是&#x2F;开头那么是在上一条workdir的路径的相对路径</td>
-</tr>
-<tr>
-<td>USER</td>
-<td>指定执行用户</td>
-<td>指定build或者启动的时候 用户 在RUN CMD ENTRYPONT执行的时候的用户</td>
-</tr>
-<tr>
-<td>HEALTHCHECK</td>
-<td>健康检查</td>
-<td>指定监测当前容器的健康监测的命令 基本上没用 因为很多时候 应用本身有健康监测机制</td>
-</tr>
-<tr>
-<td>ONBUILD</td>
-<td>触发器</td>
-<td>当存在ONBUILD关键字的镜像作为基础镜像的时候 当执行FROM完成之后 会执行 ONBUILD的命令 但是不影响当前镜像 用处也不怎么大</td>
-</tr>
-<tr>
-<td>STOPSIGNAL</td>
-<td>发送信号量到宿主机</td>
-<td>该STOPSIGNAL指令设置将发送到容器的系统调用信号以退出。</td>
-</tr>
-<tr>
-<td>SHELL</td>
-<td>指定执行脚本的shell</td>
-<td>指定RUN CMD ENTRYPOINT 执行命令的时候 使用的shell</td>
+<td>File &amp; Logs</td>
+<td>日志文件</td>
+<td>存储日志</td>
+<td></td>
 </tr>
 </tbody></table>
-<h2 id="步骤："><a href="#步骤：" class="headerlink" title="步骤："></a><strong>步骤：</strong></h2><ol>
-<li>创建dockerfile文件并编辑</li>
-</ol>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">FROM java:8
-MAINTAINER itheima <span class="token operator">&lt;</span>itheima@itcast.cn<span class="token operator">></span>
-ADD HelloDocker-0.0.1-SNAPSHOT.jar app.jar
-CMD <span class="token function">java</span> <span class="token parameter variable">-jar</span> app.jar<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="1-1-第1层：连接层"><a href="#1-1-第1层：连接层" class="headerlink" title="1.1 第1层：连接层"></a>1.1 第1层：连接层</h3><p>系统（客户端）访问<code>MySQL</code>服务器前，做的第一件事就是建立<code>TCP</code>连接。</p>
+<p>经过三次握手建立连接成功后，<code>MySQL</code>服务器对<code>TCP</code>传输过来的账号密码做身份认证、权限获取。</p>
+<ul>
+<li><strong>用户名或密码不对，会收到一个Access denied for user错误，客户端程序结束执行</strong></li>
+<li><strong>用户名密码认证通过，会从权限表查出账号拥有的权限与连接关联，之后的权限判断逻辑，都将依赖于此时读到的权限</strong></li>
+</ul>
+<p>MySQL服务器针对TCP连接有<code>TCP连接池</code>控制连接数量。</p>
+<p><code>TCP</code>连接收到请求后，必须要分配给一个线程专门与这个客户端的交互。所以还会有个线程池（Connection Pool），去走后面的流程。每一个连接从线程池中获取线程，省去了创建和销毁线程的开销。</p>
+<h3 id="1-2第2层：服务层"><a href="#1-2第2层：服务层" class="headerlink" title="1.2第2层：服务层"></a>1.2第2层：服务层</h3><p><strong>SQL Interface: SQL接口</strong></p>
+<ul>
+<li>接收用户的SQL命令，并且返回用户需要查询的结果。比如SELECT … FROM就是调用SQL Interface </li>
+<li>MySQL支持DML（数据操作语言）、DDL（数据定义语言）、存储过程、视图、触发器、自定义函数等多种SQL语言接口</li>
+</ul>
+<p><strong>Parser:</strong> <strong>解析器</strong></p>
+<ul>
+<li>在解析器中对 SQL 语句进行语法分析、语义分析。将SQL语句分解成数据结构，并将这个结构传递到后续步骤，以后SQL语句的传递和处理就是基于这个结构的。如果在分解构成中遇到错误，那么就说明这个SQL语句是不合理的。</li>
+<li>在SQL命令传递到解析器的时候会被解析器验证和解析，并为其创建<code>语法树</code>，并根据数据字典丰富查询语法树，会<code>验证该客户端是否具有执行该查询的权限</code>。创建好语法树后，MySQL还会对SQL查询进行语法上的优化，进行查询重写。</li>
+</ul>
+<p><strong>设计模式中的解释器模式</strong></p>
+<p><strong>Optimizer:</strong> <strong>查询优化器</strong></p>
+<ul>
+<li>SQL语句在语法解析之后、查询之前会使用查询优化器确定 SQL 语句的执行路径，生成一个**<code>执行计划</code>。**</li>
+<li>这个执行计划表明应该**<code>使用哪些索引</code><strong>进行查询（全表检索还是使用索引检索），</strong>表之间的连接顺序<strong>如何，最后会按照执</strong>行计划中的步骤调用存储引擎提供的方法来真正的执行查询**，并将查询结果返回给用户。</li>
+<li>它使用“<code>选取-投影-连接</code>”策略进行查询。例如：</li>
+</ul>
+<pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">SELECT id,name FROM student WHERE gender &#x3D; &#39;女&#39;;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<ol start="2">
-<li><p>根据dockerfile制作镜像</p>
-<pre class="line-numbers language-none"><code class="language-none">docker build -f .&#x2F;springboot_dockerfile  （文件位置 -f当前）
-               -t app                        （别名）
-                .                          （版本信息）<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></li>
-</ol>
+<p>这个SELECT查询先根据WHERE语句进行<code>选取</code>，而不是将表全部查询出来以后再进行gender过滤。 这个SELECT查询先根据id和name进行属性<code>投影</code>，而不是将属性全部取出以后再进行过滤，将这两个查询条件<code>连接</code>起来生成最终查询结果。</p>
+<p><strong>Caches &amp; Buffers： 查询缓存组件</strong></p>
+<ul>
+<li>MySQL内部维持着一些Cache和Buffer，比如Query Cache用来缓存一条SELECT语句的执行结果，如果能够在其中找到对应的查询结果，那么就不必再进行查询解析、优化和执行的整个过程了，直接将结果反馈给客户端。</li>
+<li>这个缓存机制是由一系列小缓存组成的。比如表缓存，记录缓存，key缓存，权限缓存等 。</li>
+<li>这个查询缓存可以在<code>不同客户端之间共享</code>。 </li>
+<li>从MySQL 5.7.20开始，不推荐使用查询缓存，并在<code>MySQL 8.0中删除</code>。</li>
+</ul>
+<h3 id="1-3-第3层：引擎层"><a href="#1-3-第3层：引擎层" class="headerlink" title="1.3 第3层：引擎层"></a><strong>1.3</strong> 第3层：引擎层</h3><p>插件式存储引擎层（ Storage Engines），<strong>真正的负责了MySQL中数据的存储和提取，对物理服务器级别维护的底层数据执行操作</strong>，服务层通过API与存储引擎进行通信。</p>
+<h2 id="2-SQL执行流程"><a href="#2-SQL执行流程" class="headerlink" title="2.SQL执行流程"></a>2.SQL执行流程</h2><pre class="line-numbers language-mermaid" data-language="mermaid"><code class="language-mermaid"><span class="token keyword">graph</span> LR
+	客户端与服务器创建连接 <span class="token arrow operator">---></span>线程池分配线程 <span class="token arrow operator">---></span> SQL接口接收SQL <span class="token arrow operator">---></span> 8.0之前查询缓存 <span class="token arrow operator">---></span>解析器解析
+	SQL接口接收SQL <span class="token arrow operator">---></span> 8.0<span class="token arrow operator">---></span>解析器解析<span class="token arrow operator">---></span> 优化器优化查询 <span class="token arrow operator">---></span> 调用存储引擎相关API <span class="token arrow operator">---></span>文件系统查询<span class="token arrow operator">---></span>8.0之前缓存数据<span class="token arrow operator">---></span> SQL接口返回数据
+	文件系统查询<span class="token arrow operator">---></span>不缓存<span class="token arrow operator">---></span>SQL接口返回数据<span class="token arrow operator">---></span>线程返回数据<span class="token arrow operator">---></span>线程放回连接池<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><img src="https://gitee.com/mr-poke/picture/raw/master/img/image-20230407222956838.png"></p>
+<h3 id="1-查询缓存"><a href="#1-查询缓存" class="headerlink" title="1.查询缓存"></a>1.查询缓存</h3><p>SQL先查询缓存，找到返回结果。现在可使用NoSql数据库实现。</p>
+<p><strong>因为查询缓存往往效率不高，所以在 MySQL8.0 之后就抛弃了这个功能。</strong></p>
+<p><strong>缓存失效</strong>：表的结构或者数据被修改</p>
+<h3 id="2-解析器解析"><a href="#2-解析器解析" class="headerlink" title="*2.解析器解析"></a>*2.解析器解析</h3><p>分析器先做“<code>词法分析</code>“，分析每个字符串的关键字和表名字段名等。</p>
+<p>再做“<code>语法分析</code>”，判断语法是否有误（SQL编写是否正确），正确：生成语法树。错误：返回</p>
+<h3 id="3-优化器确定执行路径"><a href="#3-优化器确定执行路径" class="headerlink" title="*3. 优化器确定执行路径"></a>*<strong>3.</strong> <strong>优化器确定执行路径</strong></h3><p>在优化器中会确定 SQL 语句的执行路径，</p>
+<p><strong>比如是根据<code>全表检索</code>，还是根据<code>索引检索</code>，多表关联查询的表连接顺序，子查询是否转化内连接等，</strong></p>
+<p>在查询优化器中：可以分为**<code>逻辑查询</code>优化阶段和<code>物理查询</code>优化阶段。<strong>最终</strong>生成执行计划**。</p>
+<p>物理查询优化：通过索引和表连接方式等。</p>
+<p>逻辑查询优化：<strong>SQL等价变换</strong>提高效率（换一种查询语句写法效率更好）</p>
+<p><strong>具体优化请看SQL优化篇。</strong></p>
+<h3 id="4-执行器执行"><a href="#4-执行器执行" class="headerlink" title="4.执行器执行"></a>4.执行器执行</h3><p>在执行之前需要判断该用户是否<code>具备权限</code>。如果没有，就会返回权限错误。如果具备权限，就执行 SQL查询并返回结果。在 MySQL8.0 以下的版本，如果设置了查询缓存，这时会将查询结果进行缓存。</p>
+<h2 id="3-数据库缓冲池（Buffer-Pool）"><a href="#3-数据库缓冲池（Buffer-Pool）" class="headerlink" title="3.数据库缓冲池（Buffer Pool）"></a>3.数据库缓冲池（Buffer Pool）</h2><p><strong>缓冲池 ！&#x3D; 查询缓存</strong></p>
+<p>主内存中的一个区域，里面可以<strong>缓存磁盘上经常操作的真实数据</strong>，在执行增 删改查操作时，先操作缓冲池中的数据（若缓冲池没有数据，则从磁盘加载并缓存），然后再以一定频率刷新到磁盘，从而<strong>减少磁盘IO</strong>，加快处理速度。</p>
+<p><img src="https://gitee.com/mr-poke/picture/raw/master/img/image-20230407230200208.png"></p>
+<p>缓冲池以Page页为单位，底层采用链表数据结构管理Page。根据状态，将Page分为三种类型： </p>
+<p>• free page：空闲page，未被使用。</p>
+<p> • clean page：被使用page，数据没有被修改过。</p>
+<p> • dirty page：脏页，被使用page，数据被修改过，也中数据与磁盘的数据产生了不一致。</p>
+<p><strong>肮页会定期将数据存储到磁盘中。</strong></p>
+<p><strong>缓冲池默认：128M</strong></p>
+<h1 id="MySQL引擎"><a href="#MySQL引擎" class="headerlink" title="MySQL引擎"></a>MySQL引擎</h1><h2 id="1-InnoDB引擎：具备外键支持功能的事务存储引擎"><a href="#1-InnoDB引擎：具备外键支持功能的事务存储引擎" class="headerlink" title="*1.InnoDB引擎：具备外键支持功能的事务存储引擎"></a>*1.InnoDB引擎：具备外键支持功能的事务存储引擎</h2><ul>
+<li><p>InnoDB是MySQL的<code>默认事务型引擎</code>，它被设计用来处理大量的短期(short-lived)事务。可以确保事务的完整提交(Commit)和回滚(Rollback)。</p>
+</li>
+<li><p><strong>除了增加和查询外，还需要更新、删除操作，那么，应优先选择InnoDB存储引擎。</strong></p>
+</li>
+<li><p>InnoDB是<code>为处理巨大数据量的最大性能设计</code>。</p>
+</li>
+<li><p>数据文件结构：</p>
+<ul>
+<li>表名.frm 存储表结构（MySQL8.0时，合并在表名.ibd中）</li>
+<li>表名.ibd 存储数据和索引</li>
+</ul>
+</li>
+<li><p><strong>对比MyISAM的存储引擎，<code>InnoDB写的处理效率差一些</code>，并且会占用更多的磁盘空间以保存数据和索引。</strong></p>
+</li>
+<li><p><strong>MyISAM只缓存索引，不缓存真实数据；InnoDB不仅缓存索引还要缓存真实数据，<code>对内存要求较高</code>，而且内存大小对性能有决定性的影响。</strong></p>
+</li>
+</ul>
+<h2 id="2-MyISAM-引擎：主要的非事务处理存储引擎"><a href="#2-MyISAM-引擎：主要的非事务处理存储引擎" class="headerlink" title="2.MyISAM 引擎：主要的非事务处理存储引擎"></a>2.MyISAM <strong>引擎：主要的非事务处理存储引擎</strong></h2><ul>
+<li>MyISAM提供了大量的特性，包括全文索引、压缩、空间函数(GIS)等，但<strong>MyISAM<code>不支持事务、行级锁、外键</code><strong>，有一个毫无疑问的缺陷就是</strong><code>崩溃后无法安全恢复</code>。</strong> </li>
+<li><code>5.5之前默认的存储引擎</code></li>
+<li>优势是**访问的<code>速度快</code>**，对事务完整性没有要求或者以SELECT、INSERT为主的应用</li>
+<li>针对<strong>数据统计有额外的常数存</strong>储。故而 <strong>count(*) 的查询效率很高</strong></li>
+<li>数据文件结构：<ul>
+<li>表名.frm 存储表结构</li>
+<li>表名.MYD 存储数据 (MYData)</li>
+<li>表名.MYI 存储索引 (MYIndex)</li>
+</ul>
+</li>
+<li>应用场景：<strong>只读应用或者以读为主的业务</strong></li>
+</ul>
+<h2 id="3-其他引擎"><a href="#3-其他引擎" class="headerlink" title="3.其他引擎"></a>3.其他引擎</h2><p><strong>3.Archive 引擎：用于数据存档</strong></p>
+<p><strong>4. Blackhole</strong> <strong>引擎：丢弃写操作，读操作会返回空内容</strong> </p>
+<p><strong>5.CSV</strong> <strong>引擎：存储数据时，以逗号分隔各个数据项</strong></p>
+<p><strong>6. Memory</strong> <strong>引擎：置于内存的表</strong></p>
+<p><strong>7. Federated</strong> <strong>引擎：访问远程表</strong> </p>
+<p><strong>8. Merge引擎：管理多个MyISAM表构成的表集合</strong> </p>
+<p><strong>9. NDB引擎：MySQL集群专用存储引擎</strong></p>
+<h2 id="4-MyISAM和InnoDB"><a href="#4-MyISAM和InnoDB" class="headerlink" title="4. MyISAM和InnoDB"></a><strong>4. MyISAM和InnoDB</strong></h2><table>
+<thead>
+<tr>
+<th>对比项</th>
+<th><strong>MyISAM</strong></th>
+<th><strong>InnoDB</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>外键</td>
+<td>不支持</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>事务</td>
+<td>不支持</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>行表锁</td>
+<td>表锁，即使操作一条记录也会锁住整个表，不适合高并发的操作</td>
+<td>行锁，操作时只锁某一行，不对其它行有影响，适合高并发的操作</td>
+</tr>
+<tr>
+<td>缓存</td>
+<td>只缓存索引，不缓存真实数据</td>
+<td>不仅缓存索引还要缓存真实数据，对内存要求较高，而且内存大小对性能有决定性的影响</td>
+</tr>
+<tr>
+<td>自带系统表使用</td>
+<td>Y</td>
+<td>N</td>
+</tr>
+<tr>
+<td>关注点</td>
+<td>性能：节省资源、消耗少、简单业务</td>
+<td>事务：并发写、事务、更大资源</td>
+</tr>
+<tr>
+<td>默认安装</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+<tr>
+<td>默认使用</td>
+<td>N</td>
+<td>Y</td>
+</tr>
+</tbody></table>
 
                 
             </div>
@@ -576,7 +553,7 @@ CMD <span class="token function">java</span> <span class="token parameter variab
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://gitee.com/mr-poke/blog.git/blog/2022/12/31/docker-ming-ling/">https://gitee.com/mr-poke/blog.git/blog/2022/12/31/docker-ming-ling/</a>
+                    <a href="https://gitee.com/mr-poke/blog.git/blog/2023/04/07/mysql-luo-ji-jia-gou/">https://gitee.com/mr-poke/blog.git/blog/2023/04/07/mysql-luo-ji-jia-gou/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -614,8 +591,8 @@ CMD <span class="token function">java</span> <span class="token parameter variab
                     
                         <div class="article-tag">
                             
-                                <a href="/blog/tags/%E8%BF%90%E7%BB%B4/">
-                                    <span class="chip bg-color">运维</span>
+                                <a href="/blog/tags/SQL%E9%AB%98%E7%BA%A7/">
+                                    <span class="chip bg-color">SQL高级</span>
                                 </a>
                             
                         </div>
@@ -662,31 +639,31 @@ CMD <span class="token function">java</span> <span class="token parameter variab
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/blog/2023/01/08/nginx/">
+                <a href="/blog/2023/04/07/innodb-yin-qing/">
                     <div class="card-image">
                         
                         
-                        <img src="/blog/medias/featureimages/18.jpg" class="responsive-img" alt="Nginx">
+                        <img src="/blog/medias/featureimages/13.jpg" class="responsive-img" alt="InnoDB引擎">
                         
-                        <span class="card-title">Nginx</span>
+                        <span class="card-title">InnoDB引擎</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Nginx
+                            InnoDB引擎的介绍
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-01-08
+                            <i class="far fa-clock fa-fw icon-date"></i>2023-04-07
                         </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/blog/categories/Nginx/" class="post-category">
-                                    Nginx
+                            <a href="/blog/categories/SQL/" class="post-category">
+                                    SQL
                                 </a>
                             
                             
@@ -696,8 +673,8 @@ CMD <span class="token function">java</span> <span class="token parameter variab
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/blog/tags/Nginx/">
-                        <span class="chip bg-color">Nginx</span>
+                    <a href="/blog/tags/SQL%E9%AB%98%E7%BA%A7/">
+                        <span class="chip bg-color">SQL高级</span>
                     </a>
                     
                 </div>
@@ -711,31 +688,31 @@ CMD <span class="token function">java</span> <span class="token parameter variab
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/blog/2022/12/28/spring-mvc/">
+                <a href="/blog/2023/04/06/wang-luo-bian-cheng/">
                     <div class="card-image">
                         
                         
-                        <img src="/blog/medias/featureimages/11.jpg" class="responsive-img" alt="SpringMVC">
+                        <img src="/blog/medias/featureimages/8.jpg" class="responsive-img" alt="网络编程">
                         
-                        <span class="card-title">SpringMVC</span>
+                        <span class="card-title">网络编程</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            SpringMVC复习
+                            学好网络才能在web大杀四方
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-12-28
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-04-06
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/blog/categories/SpringMVC/" class="post-category">
-                                    SpringMVC
+                            <a href="/blog/categories/java%E9%AB%98%E7%BA%A7/" class="post-category">
+                                    java高级
                                 </a>
                             
                             
@@ -745,8 +722,8 @@ CMD <span class="token function">java</span> <span class="token parameter variab
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/blog/tags/Spring/">
-                        <span class="chip bg-color">Spring</span>
+                    <a href="/blog/tags/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/">
+                        <span class="chip bg-color">网络编程</span>
                     </a>
                     
                 </div>
