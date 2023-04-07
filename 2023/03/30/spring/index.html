@@ -283,7 +283,7 @@
             <div id="articleContent">
                 <h1 id="Spring"><a href="#Spring" class="headerlink" title="Spring"></a>Spring</h1><p>此为Spring框架总结，若要具体了解底层实现，请配合黑马的spring高级49讲食用（QaQ）。在BeanDefinition阶段，我自己也写了相关的简单实现（<a href="https://gitee.com/mr-poke/demo_-she-ji">Demo_SheJi: 设计模式入门 (gitee.com)</a>），其中包括PropertyValues、MutablePropertyValues、BeanDefinition、BeanFactory、BeanDefinitionReader、BeanDefinitionRegistry 、ApplicationContext等类。</p>
 <p>在项目中，Spring_Defined模块中打包。并在Spring_Demo中导入测试。</p>
-<h1 id="1-BeanFactory-与-ApplicationContext"><a href="#1-BeanFactory-与-ApplicationContext" class="headerlink" title="1. BeanFactory 与 ApplicationContext"></a>1. BeanFactory 与 ApplicationContext</h1><table>
+<h1 id="一、BeanFactory-与-ApplicationContext"><a href="#一、BeanFactory-与-ApplicationContext" class="headerlink" title="一、BeanFactory 与 ApplicationContext"></a>一、BeanFactory 与 ApplicationContext</h1><table>
 <thead>
 <tr>
 <th></th>
@@ -312,7 +312,7 @@
 <td>多语言处理、资源匹配、事件发布、环境信息处理</td>
 </tr>
 </tbody></table>
-<h1 id="2-Bean"><a href="#2-Bean" class="headerlink" title="2. Bean"></a>2. Bean</h1><h2 id="1-Bean注入"><a href="#1-Bean注入" class="headerlink" title="1.Bean注入"></a>1.Bean注入</h2><table>
+<h1 id="二、-Bean"><a href="#二、-Bean" class="headerlink" title="二、 Bean"></a>二、 Bean</h1><h2 id="1-Bean注入"><a href="#1-Bean注入" class="headerlink" title="1.Bean注入"></a>1.Bean注入</h2><table>
 <thead>
 <tr>
 <th>Bean注入方式</th>
@@ -608,7 +608,7 @@
 <td>2</td>
 </tr>
 </tbody></table>
-<h1 id="3-BeanFactoryPostProcessor（需要注入容器）"><a href="#3-BeanFactoryPostProcessor（需要注入容器）" class="headerlink" title="3.BeanFactoryPostProcessor（需要注入容器）"></a>3.BeanFactoryPostProcessor（需要注入容器）</h1><table>
+<h1 id="三、BeanFactoryPostProcessor（需要注入容器）"><a href="#三、BeanFactoryPostProcessor（需要注入容器）" class="headerlink" title="三、BeanFactoryPostProcessor（需要注入容器）"></a>三、BeanFactoryPostProcessor（需要注入容器）</h1><table>
 <thead>
 <tr>
 <th>常见的bean工厂后处理器</th>
@@ -686,7 +686,7 @@
 </ul>
 </li>
 </ul>
-<h1 id="4-BeanPostProcessor（需要注入容器）"><a href="#4-BeanPostProcessor（需要注入容器）" class="headerlink" title="4.BeanPostProcessor（需要注入容器）"></a>4.BeanPostProcessor（需要注入容器）</h1><h2 id="1-源码"><a href="#1-源码" class="headerlink" title="1.源码"></a>1.源码</h2><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">BeanPostProcessor</span> <span class="token punctuation">&#123;</span>
+<h1 id="四、BeanPostProcessor（需要注入容器）"><a href="#四、BeanPostProcessor（需要注入容器）" class="headerlink" title="四、BeanPostProcessor（需要注入容器）"></a>四、BeanPostProcessor（需要注入容器）</h1><h2 id="1-源码"><a href="#1-源码" class="headerlink" title="1.源码"></a>1.源码</h2><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">BeanPostProcessor</span> <span class="token punctuation">&#123;</span>
     <span class="token comment">//先执行，在bean实例化后，属性注入前</span>
     <span class="token annotation punctuation">@Nullable</span>
     <span class="token keyword">default</span> <span class="token class-name">Object</span> <span class="token function">postProcessBeforeInitialization</span><span class="token punctuation">(</span><span class="token class-name">Object</span> bean<span class="token punctuation">,</span> <span class="token class-name">String</span> beanName<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">BeansException</span> <span class="token punctuation">&#123;</span>
@@ -705,7 +705,7 @@
 <li>CommonAnnotationBeanPostProcessor         解析 @Resource、@PostConstruct、@PreDestroy</li>
 <li>ConfigurationPropertiesBindingPostProcessor     解析 @ConfigurationProperties</li>
 </ul>
-<h1 id="5-Aware接口"><a href="#5-Aware接口" class="headerlink" title="5.Aware接口"></a>5.Aware接口</h1><table>
+<h1 id="五、Aware接口"><a href="#五、Aware接口" class="headerlink" title="五、Aware接口"></a>五、Aware接口</h1><table>
 <thead>
 <tr>
 <th>常见的Aware接口</th>
@@ -729,7 +729,7 @@
 <td>注入${}解析器</td>
 </tr>
 </tbody></table>
-<h1 id="6-注解"><a href="#6-注解" class="headerlink" title="6.注解"></a>6.注解</h1><h2 id="Comment"><a href="#Comment" class="headerlink" title="@Comment"></a>@Comment</h2><table>
+<h1 id="六、注解"><a href="#六、注解" class="headerlink" title="六、注解"></a>六、注解</h1><h2 id="Comment"><a href="#Comment" class="headerlink" title="@Comment"></a>@Comment</h2><table>
 <thead>
 <tr>
 <th>注解</th>
@@ -851,7 +851,7 @@
 <h2 id="其他注解"><a href="#其他注解" class="headerlink" title="其他注解"></a>其他注解</h2><h3 id="Primary"><a href="#Primary" class="headerlink" title="@Primary"></a>@Primary</h3><p>作用：多个同类型的Bean使用时，提高使用的优先级</p>
 <h3 id="Profile"><a href="#Profile" class="headerlink" title="@Profile"></a>@Profile</h3><p>作用：标识Bean所的环境，在此环境下才会使用</p>
 <p>使用：类、方法</p>
-<h1 id="AOP切面"><a href="#AOP切面" class="headerlink" title="AOP切面"></a>AOP切面</h1><h2 id="相关名词"><a href="#相关名词" class="headerlink" title="相关名词"></a>相关名词</h2><table>
+<h1 id="七、AOP切面"><a href="#七、AOP切面" class="headerlink" title="七、AOP切面"></a>七、AOP切面</h1><h2 id="相关名词"><a href="#相关名词" class="headerlink" title="相关名词"></a>相关名词</h2><table>
 <thead>
 <tr>
 <th>概念</th>
@@ -985,7 +985,7 @@
     <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"前置增强"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h2 id="一、-AOP底层实现"><a href="#一、-AOP底层实现" class="headerlink" title="一、 AOP底层实现"></a><strong>一、 AOP底层实现</strong></h2><h3 id="1-代理模式"><a href="#1-代理模式" class="headerlink" title="1.代理模式"></a>1.代理模式</h3><p>JDK代理： 为实现接口，代理与被代理对象可以视为平级关系。</p>
+<h2 id="AOP底层实现"><a href="#AOP底层实现" class="headerlink" title="AOP底层实现"></a>AOP底层实现</h2><h3 id="1-代理模式"><a href="#1-代理模式" class="headerlink" title="1.代理模式"></a>1.代理模式</h3><p>JDK代理： 为实现接口，代理与被代理对象可以视为平级关系。</p>
 <p>CGLib代理：为继承接口，代理与被代理对象视为继承关系。</p>
 <h4 id="1-1-jdk代理"><a href="#1-1-jdk代理" class="headerlink" title="1.1 jdk代理"></a><strong>1.1 jdk代理</strong></h4><h5 id="1-1-1-jdk代理的简单实现"><a href="#1-1-1-jdk代理的简单实现" class="headerlink" title="1.1.1 jdk代理的简单实现"></a>1.1.1 jdk代理的简单实现</h5><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">JdkProxy</span> <span class="token punctuation">&#123;</span>
     <span class="token keyword">interface</span> <span class="token class-name">Foo</span><span class="token punctuation">&#123;</span>
@@ -1077,7 +1077,7 @@
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h4 id="1-2-CGLib代理"><a href="#1-2-CGLib代理" class="headerlink" title="1.2 CGLib代理"></a>1.2 CGLib代理</h4><h2 id="二、代理创建时机"><a href="#二、代理创建时机" class="headerlink" title="二、代理创建时机"></a>二、代理创建时机</h2><ol>
+<h4 id="1-2-CGLib代理"><a href="#1-2-CGLib代理" class="headerlink" title="1.2 CGLib代理"></a>1.2 CGLib代理</h4><h2 id="代理创建时机"><a href="#代理创建时机" class="headerlink" title="代理创建时机"></a>代理创建时机</h2><ol>
 <li>代理的创建时机<ul>
 <li>初始化之后 (无循环依赖时)</li>
 <li>实例创建后, 依赖注入前 (有循环依赖时), 并暂存于二级缓存</li>
@@ -1085,7 +1085,7 @@
 </li>
 <li>依赖注入与初始化不应该被增强, 仍应被施加于原始对象</li>
 </ol>
-<h1 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h1><h2 id="1-概念"><a href="#1-概念" class="headerlink" title="1.概念"></a>1.概念</h2><p>事务传播行为用来描述由某<strong>一个事务传播行为修饰的方法被嵌套进另一个方法的时事务如何传播</strong>。</p>
+<h1 id="八、事务"><a href="#八、事务" class="headerlink" title="八、事务"></a>八、事务</h1><h2 id="1-概念"><a href="#1-概念" class="headerlink" title="1.概念"></a>1.概念</h2><p>事务传播行为用来描述由某<strong>一个事务传播行为修饰的方法被嵌套进另一个方法的时事务如何传播</strong>。</p>
 <h2 id="2-事务传播行为"><a href="#2-事务传播行为" class="headerlink" title="2.事务传播行为"></a>2.事务传播行为</h2><table>
 <thead>
 <tr>
