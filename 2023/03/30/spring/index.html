@@ -1,0 +1,1845 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="Spring框架, Mr_poke">
+    <meta name="description" content="Spring框架的总结">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>Spring框架 | Mr_poke</title>
+    <link rel="icon" type="image/png" href="/blog/favicon.png">
+    
+
+
+    <!-- bg-cover style     -->
+
+
+
+<link rel="stylesheet" type="text/css" href="/blog/libs/awesome/css/all.min.css">
+<link rel="stylesheet" type="text/css" href="/blog/libs/materialize/materialize.min.css">
+<link rel="stylesheet" type="text/css" href="/blog/libs/aos/aos.css">
+<link rel="stylesheet" type="text/css" href="/blog/libs/animate/animate.min.css">
+<link rel="stylesheet" type="text/css" href="/blog/libs/lightGallery/css/lightgallery.min.css">
+<link rel="stylesheet" type="text/css" href="/blog/css/matery.css">
+<link rel="stylesheet" type="text/css" href="/blog/css/my.css">
+<link rel="stylesheet" type="text/css" href="/blog/css/dark.css" media="none" onload="if(media!='all')media='all'">
+
+
+
+
+    <link rel="stylesheet" href="/blog/libs/tocbot/tocbot.css">
+    <link rel="stylesheet" href="/blog/css/post.css">
+
+
+
+
+    
+
+
+
+    <script src="/blog/libs/jquery/jquery-3.6.0.min.js"></script>
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/blog/" class="waves-effect waves-light">
+                    
+                    <img src="/blog/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Mr_poke</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/blog/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/blog/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/blog/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/blog/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+  <li>
+    <a href="javascript:;" class="waves-effect waves-light" onclick="switchNightMode()" title="深色/浅色模式" >
+      <i id="sum-moon-icon" class="fas fa-sun" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/blog/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Mr_poke</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/blog/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/blog/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/blog/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/blog/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/blog/medias/featureimages/19.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">Spring框架</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/blog/tags/Spring/">
+                                <span class="chip bg-color">Spring</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/blog/categories/Spring/" class="post-category">
+                                Spring
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2023-03-30
+                </div>
+                
+
+                
+
+                
+
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/blog/libs/prism/prism.min.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="Spring"><a href="#Spring" class="headerlink" title="Spring"></a>Spring</h1><p>此为Spring框架总结，若要具体了解底层实现，请配合黑马的spring高级49讲食用（QaQ）。在BeanDefinition阶段，我自己也写了相关的简单实现（<a href="https://gitee.com/mr-poke/demo_-she-ji">Demo_SheJi: 设计模式入门 (gitee.com)</a>），其中包括PropertyValues、MutablePropertyValues、BeanDefinition、BeanFactory、BeanDefinitionReader、BeanDefinitionRegistry 、ApplicationContext等类。</p>
+<p>在项目中，Spring_Defined模块中打包。并在Spring_Demo中导入测试。</p>
+<h1 id="1-BeanFactory-与-ApplicationContext"><a href="#1-BeanFactory-与-ApplicationContext" class="headerlink" title="1. BeanFactory 与 ApplicationContext"></a>1. BeanFactory 与 ApplicationContext</h1><table>
+<thead>
+<tr>
+<th></th>
+<th>BeanFactory</th>
+<th>ApplicationContext</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>默认实现</td>
+<td>DefaultListableBeanFactory</td>
+<td>四种分别对应                                                                                                                                                                                          xml（ClassPathXmlApplicationContext），                      配置类（AnnotationConfigApplicationContext），磁盘下的配置类，web容器。</td>
+</tr>
+<tr>
+<td>加载方式</td>
+<td>延迟加载（首次调用getBean（）加载），因为beanFactory不会自动注册BeanFactory后处理器和Bean后处理器</td>
+<td>立即加载（耗时，耗资源）饿汉式</td>
+</tr>
+<tr>
+<td>关系</td>
+<td>AOP的核心</td>
+<td>继承并引用BeanFactory</td>
+</tr>
+<tr>
+<td>功能</td>
+<td>控制反转、基本的依赖注入、声明周期的功能</td>
+<td>多语言处理、资源匹配、事件发布、环境信息处理</td>
+</tr>
+</tbody></table>
+<h1 id="2-Bean"><a href="#2-Bean" class="headerlink" title="2. Bean"></a>2. Bean</h1><h2 id="1-Bean注入"><a href="#1-Bean注入" class="headerlink" title="1.Bean注入"></a>1.Bean注入</h2><table>
+<thead>
+<tr>
+<th>Bean注入方式</th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>xml</td>
+<td></td>
+</tr>
+<tr>
+<td>配置类（注解）</td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id="1-xml-配置Bean"><a href="#1-xml-配置Bean" class="headerlink" title="1. xml 配置Bean"></a>1. xml 配置Bean</h3><table>
+<thead>
+<tr>
+<th>属性</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>id &#x3D; class&#x3D;</td>
+<td>bean的id和全限定类名</td>
+</tr>
+<tr>
+<td>name</td>
+<td>bean的别名</td>
+</tr>
+<tr>
+<td>scope</td>
+<td>bean的作用域</td>
+</tr>
+<tr>
+<td>lazy-int</td>
+<td>加载时机（beanFactory容器无效）</td>
+</tr>
+<tr>
+<td>init-method</td>
+<td>初始化方法</td>
+</tr>
+<tr>
+<td>destroy-method</td>
+<td>销毁方法，（需要显式关闭容器才会执行）</td>
+</tr>
+<tr>
+<td>autowire</td>
+<td>自动注入方式，byType || byName</td>
+</tr>
+<tr>
+<td>factory-bean&#x3D;  factory-method</td>
+<td>指定工厂bean的方法完成bean的创建</td>
+</tr>
+</tbody></table>
+<h2 id="2-Bean的实例化"><a href="#2-Bean的实例化" class="headerlink" title="2.Bean的实例化"></a>2.Bean的实例化</h2><table>
+<thead>
+<tr>
+<th>方式</th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>构造方法（默认无参，使用构造方法注入属性时，变为有参）</td>
+<td></td>
+</tr>
+<tr>
+<td>工厂方法实例化Bean</td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id="2-1工厂实例化Bean"><a href="#2-1工厂实例化Bean" class="headerlink" title="2.1工厂实例化Bean"></a>2.1工厂实例化Bean</h3><table>
+<thead>
+<tr>
+<th>工厂实例化Bean</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>静态工厂实例化</td>
+</tr>
+<tr>
+<td>实例工厂实例化</td>
+</tr>
+<tr>
+<td>FactoryBean 延迟实例化</td>
+</tr>
+</tbody></table>
+<p><strong>静态工厂</strong></p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token class-name">UserService</span> <span class="token function">userService</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">UserServiceImpl</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token comment">//在xml中配置： &lt;bean id="userService" class="factory.MyFactory1" factory-method="userService"/></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><strong>实例工厂</strong></p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span>  <span class="token class-name">UserMapper</span> <span class="token function">userMapper</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">UserMapper</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token comment">// &lt;bean id="myFactory2" class="factory.MyFactory2"/></span>
+ <span class="token comment">//   &lt;bean id="mapper" factory-bean="myFactory2" factory-method="userMapper"/></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><strong>实现FactoryBean接口</strong></p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">//FactoryBean接口</span>
+<span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">FactoryBean</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">T</span><span class="token punctuation">></span></span> <span class="token punctuation">&#123;</span>
+    <span class="token class-name">String</span> <span class="token constant">OBJECT_TYPE_ATTRIBUTE</span> <span class="token operator">=</span> <span class="token string">"factoryBeanObjectType"</span><span class="token punctuation">;</span>
+
+    <span class="token annotation punctuation">@Nullable</span>
+    <span class="token class-name">T</span> <span class="token function">getObject</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">Exception</span><span class="token punctuation">;</span>
+
+    <span class="token annotation punctuation">@Nullable</span>
+    <span class="token class-name">Class</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token operator">?</span><span class="token punctuation">></span></span> <span class="token function">getObjectType</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">default</span> <span class="token keyword">boolean</span> <span class="token function">isSingleton</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token comment">//实现---------------</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MyFactory3</span> <span class="token keyword">implements</span> <span class="token class-name">FactoryBean</span> <span class="token punctuation">&#123;</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token class-name">UserMapper</span> <span class="token function">getObject</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">Exception</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">UserMapper</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token class-name">Class</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token operator">?</span><span class="token punctuation">></span></span> <span class="token function">getObjectType</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> <span class="token class-name">UserMapper</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">isSingleton</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> <span class="token class-name">FactoryBean</span><span class="token punctuation">.</span><span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">isSingleton</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="FactoryBean与普通Bean的区别？"><a href="#FactoryBean与普通Bean的区别？" class="headerlink" title="FactoryBean与普通Bean的区别？"></a>FactoryBean与普通Bean的区别？</h3><table>
+<thead>
+<tr>
+<th></th>
+<th>普通Bean</th>
+<th>FactoryBean</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>实现</td>
+<td></td>
+<td>实现FactoryBean接口</td>
+</tr>
+<tr>
+<td>存放位置</td>
+<td>SingletonObjects池中</td>
+<td>factoryBeanObjectCache池中</td>
+</tr>
+<tr>
+<td>加载</td>
+<td>ApplicationContext中默认立即加载</td>
+<td>延迟加载</td>
+</tr>
+</tbody></table>
+<h2 id="3-Bean的依赖注入方式"><a href="#3-Bean的依赖注入方式" class="headerlink" title="3.Bean的依赖注入方式"></a>3.Bean的依赖注入方式</h2><table>
+<thead>
+<tr>
+<th>方式</th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>set</td>
+<td>&lt;property name&#x3D;”userMapper” ref&#x3D;”userMapper” || value &#x3D;””&#x2F;&gt;</td>
+</tr>
+<tr>
+<td>构造方法</td>
+<td>&lt;constructor-arg name&#x3D;”” ref&#x3D;”” ||value&gt;</td>
+</tr>
+</tbody></table>
+<h2 id="4-Bean作用域"><a href="#4-Bean作用域" class="headerlink" title="4.Bean作用域"></a>4.Bean作用域</h2><table>
+<thead>
+<tr>
+<th>作用域</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Single -单例</td>
+<td>创建一个</td>
+<td>在singleObjects（单例池）</td>
+</tr>
+<tr>
+<td>prototype -多例（原型）</td>
+<td>每次获取均创建一个(延迟加载)</td>
+<td>俺也不清楚QAQ</td>
+</tr>
+<tr>
+<td><strong>Web中</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>request-一次请求</td>
+<td>一次请求创建一个</td>
+<td></td>
+</tr>
+<tr>
+<td>session-会话</td>
+<td>每次会话创建一个</td>
+<td></td>
+</tr>
+<tr>
+<td>global session-全局</td>
+<td>全局</td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id="1-配置"><a href="#1-配置" class="headerlink" title="1.配置"></a>1.配置</h3><table>
+<thead>
+<tr>
+<th>配置</th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>xml</td>
+<td>bean  id &#x3D; “”  scope&#x3D;””</td>
+</tr>
+<tr>
+<td>注解（@Scope）</td>
+<td>value &#x3D; “”</td>
+</tr>
+</tbody></table>
+<h2 id="5-生命周期"><a href="#5-生命周期" class="headerlink" title="*5.生命周期"></a>*5.生命周期</h2><p>简单的：</p>
+<pre class="line-numbers language-mermaid" data-language="mermaid"><code class="language-mermaid"><span class="token keyword">graph</span> LR
+
+创建 <span class="token arrow operator">--></span> 依赖注入
+依赖注入 <span class="token arrow operator">--></span> 初始化
+初始化 <span class="token arrow operator">--></span> 可用
+可用 <span class="token arrow operator">--></span> 销毁<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><strong>简单的大概流程</strong>：</p>
+<p><img src="https://gitee.com/mr-poke/picture/raw/master/img/%E7%AE%80%E5%8D%95%E7%9A%84bean%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.png"></p>
+<p><strong>加入BeanFactoryPostProcesssor与BeanPostProcessor的流程：</strong></p>
+<p><img src="https://gitee.com/mr-poke/picture/raw/master/img/Spring%E5%AE%8C%E6%95%B4%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.png"></p>
+<h3 id="1-创建（实例化）"><a href="#1-创建（实例化）" class="headerlink" title="1.创建（实例化）"></a>1.创建（实例化）</h3><p>取出BeanDefinition，并进行判断：<strong>是否为单例、是否延迟加载、是否FactoryBean等</strong>，最终将普通的单例Bean通过反射实例化。</p>
+<h3 id="2-依赖注入"><a href="#2-依赖注入" class="headerlink" title="2.依赖注入"></a>2.依赖注入</h3><p>属性在BeanDefinition中封装在PropertyValue中。</p>
+<h4 id="2-1注入普通属性"><a href="#2-1注入普通属性" class="headerlink" title="2.1注入普通属性"></a>2.1注入普通属性</h4><p>set()方法注入</p>
+<h4 id="2-2注入单向引用对象"><a href="#2-2注入单向引用对象" class="headerlink" title="2.2注入单向引用对象"></a>2.2注入单向引用对象</h4><p>从容器中通过getBean()获取，然后set()注入，若容器中没有，先创建，在注入</p>
+<h4 id="2-3注入双向引用对象（循环依赖）"><a href="#2-3注入双向引用对象（循环依赖）" class="headerlink" title="2.3注入双向引用对象（循环依赖）"></a>2.3注入双向引用对象（循环依赖）</h4><p><strong>问题概述</strong>：对象A有属性B，对象B有属性A。</p>
+<p><strong>解决方法</strong>：三级缓存</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">//一级缓存  存储单例Bean成品，实例化与初始化完成</span>
+<span class="token keyword">private</span> <span class="token keyword">final</span> <span class="token class-name">Map</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">Object</span><span class="token punctuation">></span></span> singletonObjects <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ConcurrentHashMap</span><span class="token punctuation">(</span><span class="token number">256</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">//二级缓存  缓存半成品对象且被引用</span>
+<span class="token keyword">private</span> <span class="token keyword">final</span> <span class="token class-name">Map</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">ObjectFactory</span><span class="token punctuation">&lt;</span><span class="token operator">?</span><span class="token punctuation">></span><span class="token punctuation">></span></span> singletonFactories <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HashMap</span><span class="token punctuation">(</span><span class="token number">16</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">//三级缓存  缓存半成品对象且未被引用，</span>
+ <span class="token keyword">private</span> <span class="token keyword">final</span> <span class="token class-name">Map</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">Object</span><span class="token punctuation">></span></span> earlySingletonObjects <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ConcurrentHashMap</span><span class="token punctuation">(</span><span class="token number">16</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><img src="https://gitee.com/mr-poke/picture/raw/master/img/%E4%B8%89%E7%BA%A7%E7%BC%93%E5%AD%98.png" alt=" "></p>
+<h3 id="3-初始化"><a href="#3-初始化" class="headerlink" title="3.初始化"></a>3.初始化</h3><p>半成品，进行<strong>属性注入、Aware接口方法、Bean后处理器的before（）、InitializingBean接口的初始化方法、自定义的初始化方法init（），Bean后处理器的aftrer（）等</strong></p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>优先级</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>bean标签中 init -method （或@Bean中的init-method属性）</td>
+<td>3</td>
+</tr>
+<tr>
+<td>@PreConstruct注解</td>
+<td>1</td>
+</tr>
+<tr>
+<td>InitializingBean接口重写afterPropertiesSet（）</td>
+<td>2</td>
+</tr>
+</tbody></table>
+<h3 id="4-销毁"><a href="#4-销毁" class="headerlink" title="4.销毁"></a>4.销毁</h3><table>
+<thead>
+<tr>
+<th>方法</th>
+<th>优先级</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>bean标签中的（或@Bean中的destroy-method）</td>
+<td>3</td>
+</tr>
+<tr>
+<td>@PreDestory</td>
+<td>1</td>
+</tr>
+<tr>
+<td>实现DesposableBean接口，重写destroy（）</td>
+<td>2</td>
+</tr>
+</tbody></table>
+<h1 id="3-BeanFactoryPostProcessor（需要注入容器）"><a href="#3-BeanFactoryPostProcessor（需要注入容器）" class="headerlink" title="3.BeanFactoryPostProcessor（需要注入容器）"></a>3.BeanFactoryPostProcessor（需要注入容器）</h1><table>
+<thead>
+<tr>
+<th>常见的bean工厂后处理器</th>
+<th>区别</th>
+<th>继承关系</th>
+<th>作用</th>
+<th>执行顺序</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>BeanFactoryPostProcessor（接口）</td>
+<td>不带注册功能</td>
+<td>顶级接口</td>
+<td>补充beanDefinition</td>
+<td>2</td>
+</tr>
+<tr>
+<td>BeanDefinitionRegistryPostProcessor（接口）</td>
+<td>带注册功能</td>
+<td>继承BeanFactoryPostProcessor（次顶级接口）</td>
+<td>添加beanDefinition</td>
+<td>1（带注册的方法、然后执行不带注册的方法）</td>
+</tr>
+</tbody></table>
+<h2 id="1-两者源码"><a href="#1-两者源码" class="headerlink" title="1.两者源码"></a>1.两者源码</h2><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">BeanFactoryPostProcessor</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">void</span> <span class="token function">postProcessBeanFactory</span><span class="token punctuation">(</span><span class="token class-name">ConfigurableListableBeanFactory</span> var1<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">BeansException</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token comment">//===========================</span>
+<span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">BeanDefinitionRegistryPostProcessor</span> <span class="token keyword">extends</span> <span class="token class-name">BeanFactoryPostProcessor</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">void</span> <span class="token function">postProcessBeanDefinitionRegistry</span><span class="token punctuation">(</span><span class="token class-name">BeanDefinitionRegistry</span> var1<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">BeansException</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><strong>使用</strong></p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Comment</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MyBeanDefinitionRegistryPostProcessor</span> <span class="token keyword">implements</span> <span class="token class-name">BeanDefinitionRegistryPostProcessor</span> <span class="token punctuation">&#123;</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">postProcessBeanFactory</span><span class="token punctuation">(</span><span class="token class-name">ConfigurableListableBeanFactory</span> beanFactory<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">BeansException</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token class-name">String</span> name<span class="token operator">:</span>beanFactory<span class="token punctuation">.</span><span class="token function">getBeanDefinitionNames</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token string">"lifeCycleBean"</span><span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                log<span class="token punctuation">.</span><span class="token function">debug</span><span class="token punctuation">(</span><span class="token string">"BeanDefinitionRegistryPostProcessor-->bean工厂后置处理器>>>>>>> bean定义之后，实例化之前执行,对bean做一些改变"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">postProcessBeanDefinitionRegistry</span><span class="token punctuation">(</span><span class="token class-name">BeanDefinitionRegistry</span> beanDefinitionRegistry<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">BeansException</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token class-name">String</span> name<span class="token operator">:</span>beanDefinitionRegistry<span class="token punctuation">.</span><span class="token function">getBeanDefinitionNames</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token string">"lifeCycleBean"</span><span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                log<span class="token punctuation">.</span><span class="token function">debug</span><span class="token punctuation">(</span><span class="token string">"BeanDefinitionRegistryPostProcessor-->bean工厂后置处理器>>>>>>> bean定义之后，实例化之前执行，注册更多的bean到容器"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="2-常见的工厂后处理器"><a href="#2-常见的工厂后处理器" class="headerlink" title="2.常见的工厂后处理器"></a>2.常见的工厂后处理器</h2><pre class="line-numbers language-mermaid" data-language="mermaid"><code class="language-mermaid"><span class="token keyword">graph</span> LR
+
+创建 <span class="token arrow operator">--></span> 依赖注入
+依赖注入 <span class="token arrow operator">--></span> 初始化
+初始化 <span class="token arrow operator">--></span> 可用
+可用 <span class="token arrow operator">--></span> 销毁<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<ul>
+<li>ConfigurationClassPostProcessor 可以解析<ul>
+<li>@ComponentScan</li>
+<li>@Bean</li>
+<li>@Import</li>
+<li>@ImportResource</li>
+</ul>
+</li>
+<li>MapperScannerConfigurer 可以解析<ul>
+<li>Mapper 接口</li>
+</ul>
+</li>
+</ul>
+<h1 id="4-BeanPostProcessor（需要注入容器）"><a href="#4-BeanPostProcessor（需要注入容器）" class="headerlink" title="4.BeanPostProcessor（需要注入容器）"></a>4.BeanPostProcessor（需要注入容器）</h1><h2 id="1-源码"><a href="#1-源码" class="headerlink" title="1.源码"></a>1.源码</h2><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">BeanPostProcessor</span> <span class="token punctuation">&#123;</span>
+    <span class="token comment">//先执行，在bean实例化后，属性注入前</span>
+    <span class="token annotation punctuation">@Nullable</span>
+    <span class="token keyword">default</span> <span class="token class-name">Object</span> <span class="token function">postProcessBeforeInitialization</span><span class="token punctuation">(</span><span class="token class-name">Object</span> bean<span class="token punctuation">,</span> <span class="token class-name">String</span> beanName<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">BeansException</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> bean<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token comment">//后执行，在bean初始化后</span>
+    <span class="token annotation punctuation">@Nullable</span>
+    <span class="token keyword">default</span> <span class="token class-name">Object</span> <span class="token function">postProcessAfterInitialization</span><span class="token punctuation">(</span><span class="token class-name">Object</span> bean<span class="token punctuation">,</span> <span class="token class-name">String</span> beanName<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">BeansException</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> bean<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="2-常见的Bean后处理器"><a href="#2-常见的Bean后处理器" class="headerlink" title="2.常见的Bean后处理器"></a>2.常见的Bean后处理器</h2><p>* </p>
+<ul>
+<li>AutowiredAnnotationBeanPostProcessor     解析 @Autowired 与 @Value</li>
+<li>CommonAnnotationBeanPostProcessor         解析 @Resource、@PostConstruct、@PreDestroy</li>
+<li>ConfigurationPropertiesBindingPostProcessor     解析 @ConfigurationProperties</li>
+</ul>
+<h1 id="5-Aware接口"><a href="#5-Aware接口" class="headerlink" title="5.Aware接口"></a>5.Aware接口</h1><table>
+<thead>
+<tr>
+<th>常见的Aware接口</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>BeanNameAware</td>
+<td>注入Bean名</td>
+</tr>
+<tr>
+<td>BeanFactoryAware</td>
+<td>注入BeanFactory容器</td>
+</tr>
+<tr>
+<td>ApplicationContextAware</td>
+<td>注入ApplicationContext容器</td>
+</tr>
+<tr>
+<td>EmbeddedValueResolverAware</td>
+<td>注入${}解析器</td>
+</tr>
+</tbody></table>
+<h1 id="6-注解"><a href="#6-注解" class="headerlink" title="6.注解"></a>6.注解</h1><h2 id="Comment"><a href="#Comment" class="headerlink" title="@Comment"></a>@Comment</h2><table>
+<thead>
+<tr>
+<th>注解</th>
+<th>作用域</th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>@Comment</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>衍生注解</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>@Service</td>
+<td>Service</td>
+<td></td>
+</tr>
+<tr>
+<td>@Mapper</td>
+<td>Dao</td>
+<td></td>
+</tr>
+<tr>
+<td>@Controller</td>
+<td>Controller</td>
+<td></td>
+</tr>
+</tbody></table>
+<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>!--注解需配合配置使用--</span><span class="token punctuation">/></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token namespace">context:</span>component-scan</span> <span class="token attr-name">base-package</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>poke<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span> 或者@CommentScan<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h2 id="组件扫描"><a href="#组件扫描" class="headerlink" title="组件扫描"></a>组件扫描</h2><h3 id="CommpentScan"><a href="#CommpentScan" class="headerlink" title="@CommpentScan"></a>@CommpentScan</h3><p>ConfigurationClassPostProcessor：继承BeanDefinitionRegistryPostProcessor</p>
+<h2 id="Scope"><a href="#Scope" class="headerlink" title="@Scope"></a>@Scope</h2><p>作用：声明Bean作用范围</p>
+<h2 id="Lazy"><a href="#Lazy" class="headerlink" title="@Lazy"></a>@Lazy</h2><p>作用：是否延迟加载</p>
+<p>参数：true 延时加载</p>
+<p>​           false 立即加载</p>
+<h2 id="PostConstruct"><a href="#PostConstruct" class="headerlink" title="@PostConstruct"></a>@PostConstruct</h2><p>作用：声明初始化方法</p>
+<h2 id="PreDestroy"><a href="#PreDestroy" class="headerlink" title="@PreDestroy"></a>@PreDestroy</h2><p>作用：声明销毁方法</p>
+<h2 id="依赖注入注解"><a href="#依赖注入注解" class="headerlink" title="依赖注入注解"></a>依赖注入注解</h2><table>
+<thead>
+<tr>
+<th>注解</th>
+<th>作用</th>
+<th></th>
+<th>写在哪里</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>@Value</td>
+<td>注入普通数据</td>
+<td></td>
+<td>属性、方法、参数</td>
+<td>在给静态变量注入会失败，需要在set（）上写才会成功</td>
+<td>@Value（”${jdbc.driver}”）</td>
+</tr>
+<tr>
+<td>@Autowired</td>
+<td>类型-名称（添加@Qualifier）-报错</td>
+<td>spring</td>
+<td>属性和方法、参数</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>@Qualifier</td>
+<td>指定名称</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>@Resource</td>
+<td>名称-类型 -报错</td>
+<td>JDK</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id="Bean（类需要注入）"><a href="#Bean（类需要注入）" class="headerlink" title="@Bean（类需要注入）"></a>@Bean（类需要注入）</h2><p>使用：方法上</p>
+<p>作用：获取工厂Bean（非自定义的Bean）</p>
+<h2 id="Configuration"><a href="#Configuration" class="headerlink" title="@Configuration"></a>@Configuration</h2><p>作用：配置类</p>
+<p>一般配合：@CommentScan 配合使用（完全注解开发），ApplicationContext需要使用类：AnnotationConfigApplicationContext</p>
+<table>
+<thead>
+<tr>
+<th>区别</th>
+<th>@Comment</th>
+<th>@Configuration</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>是否单例</td>
+<td>不是</td>
+<td>通过动态代理来代理@Bean方法的调用的，因此调用该方法返回的都是同一个实例</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id="PropertySource（“位置”）"><a href="#PropertySource（“位置”）" class="headerlink" title="@PropertySource（“位置”）"></a>@PropertySource（“位置”）</h2><p>作用：加载配置文件 </p>
+<p>使用：类上</p>
+<h2 id="Import（A-class）"><a href="#Import（A-class）" class="headerlink" title="@Import（A.class）"></a>@Import（A.class）</h2><p>作用：导入某个Class         加入BeanDefinition</p>
+<h2 id="其他注解"><a href="#其他注解" class="headerlink" title="其他注解"></a>其他注解</h2><h3 id="Primary"><a href="#Primary" class="headerlink" title="@Primary"></a>@Primary</h3><p>作用：多个同类型的Bean使用时，提高使用的优先级</p>
+<h3 id="Profile"><a href="#Profile" class="headerlink" title="@Profile"></a>@Profile</h3><p>作用：标识Bean所的环境，在此环境下才会使用</p>
+<p>使用：类、方法</p>
+<h1 id="AOP切面"><a href="#AOP切面" class="headerlink" title="AOP切面"></a>AOP切面</h1><h2 id="相关名词"><a href="#相关名词" class="headerlink" title="相关名词"></a>相关名词</h2><table>
+<thead>
+<tr>
+<th>概念</th>
+<th>单词</th>
+<th>解释</th>
+<th>简述</th>
+<th>注解</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>目标对象</td>
+<td>Target</td>
+<td>要增强的对象</td>
+<td>对象A</td>
+<td></td>
+</tr>
+<tr>
+<td>代理对象</td>
+<td>Proxy</td>
+<td>被增强的对象</td>
+<td>生成的代理对象B</td>
+<td></td>
+</tr>
+<tr>
+<td>连接点</td>
+<td>JoinPoint</td>
+<td>可以被增强方法</td>
+<td>对象A的所有可被增强方法</td>
+<td></td>
+</tr>
+<tr>
+<td>切入点</td>
+<td>PointCut</td>
+<td>实际被增强的方法</td>
+<td>对象A的要增强的方法</td>
+<td>@Pointcut:标识切入点</td>
+</tr>
+<tr>
+<td>通知（增强）</td>
+<td>Adive</td>
+<td>增强方法</td>
+<td>增强部分的代码逻辑</td>
+<td>五个通知类型</td>
+</tr>
+<tr>
+<td>*切面</td>
+<td>Aspect</td>
+<td>增强与切入点的组合</td>
+<td>对象B的增强方法</td>
+<td>@Aspect标识切面，同时也要注入容器（@Comment）</td>
+</tr>
+<tr>
+<td>织入</td>
+<td>Weaving</td>
+<td>通知与切入点组合的过程</td>
+<td>过程，即代理生成过程</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id="通知类型"><a href="#通知类型" class="headerlink" title="通知类型"></a>通知类型</h2><p>必须开启aop控制</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@EnableAspectJAutoProxy</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>方式</th>
+<th>执行实际</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>前置通知</td>
+<td>before</td>
+<td>方法之前执行</td>
+</tr>
+<tr>
+<td>后置通知</td>
+<td>after-returning</td>
+<td>方法之后执行，有异常不执行</td>
+</tr>
+<tr>
+<td>环绕通知</td>
+<td>around</td>
+<td>方法前后执行，方法异常，后方法不执行</td>
+</tr>
+<tr>
+<td>异常通知</td>
+<td>after-throwing</td>
+<td>有异常执行</td>
+</tr>
+<tr>
+<td>最终通知</td>
+<td>after</td>
+<td>方法之后执行</td>
+</tr>
+</tbody></table>
+<h2 id="顶级接口：AopProxy"><a href="#顶级接口：AopProxy" class="headerlink" title="顶级接口：AopProxy"></a>顶级接口：AopProxy</h2><h2 id="实现接口"><a href="#实现接口" class="headerlink" title="实现接口"></a>实现接口</h2><table>
+<thead>
+<tr>
+<th>代理</th>
+<th>底层</th>
+<th>使用条件</th>
+<th>生成的代理对象</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>JdkDynamicAopProxy</td>
+<td>jdk代理</td>
+<td>目标有接口</td>
+<td>接口的实现类，与被代理对象平级</td>
+</tr>
+<tr>
+<td>CglibAopProxy</td>
+<td>CGlib代理</td>
+<td>目标无接口且未用final修饰</td>
+<td>子类，与被代理对象是继承的关系</td>
+</tr>
+</tbody></table>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">//方式1</span>
+ <span class="token annotation punctuation">@Before</span><span class="token punctuation">(</span><span class="token string">"execution(* poke.Service.impl.*.*(..))"</span><span class="token punctuation">)</span>
+  <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">before</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+      <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"前置增强"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token comment">//可以抽取到一个方法上</span>
+
+<span class="token annotation punctuation">@Pointcut</span><span class="token punctuation">(</span><span class="token string">"execution(* poke.Service.impl.*.*(..))"</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">method</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>
+
+   <span class="token annotation punctuation">@Before</span><span class="token punctuation">(</span><span class="token string">"Myadvice.method()"</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">before</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"前置增强"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="一、-AOP底层实现"><a href="#一、-AOP底层实现" class="headerlink" title="一、 AOP底层实现"></a><strong>一、 AOP底层实现</strong></h2><h3 id="1-代理模式"><a href="#1-代理模式" class="headerlink" title="1.代理模式"></a>1.代理模式</h3><p>JDK代理： 为实现接口，代理与被代理对象可以视为平级关系。</p>
+<p>CGLib代理：为继承接口，代理与被代理对象视为继承关系。</p>
+<h4 id="1-1-jdk代理"><a href="#1-1-jdk代理" class="headerlink" title="1.1 jdk代理"></a><strong>1.1 jdk代理</strong></h4><h5 id="1-1-1-jdk代理的简单实现"><a href="#1-1-1-jdk代理的简单实现" class="headerlink" title="1.1.1 jdk代理的简单实现"></a>1.1.1 jdk代理的简单实现</h5><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">JdkProxy</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">interface</span> <span class="token class-name">Foo</span><span class="token punctuation">&#123;</span>
+        <span class="token keyword">void</span> <span class="token function">m</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">static</span> <span class="token keyword">class</span> <span class="token class-name">Target</span> <span class="token keyword">implements</span> <span class="token class-name">Foo</span><span class="token punctuation">&#123;</span>
+        <span class="token annotation punctuation">@Override</span>
+        <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">m</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"方法执行"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token class-name">Target</span> target <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Target</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">Foo</span> o <span class="token operator">=</span><span class="token punctuation">(</span><span class="token class-name">Foo</span><span class="token punctuation">)</span> <span class="token class-name">Proxy</span><span class="token punctuation">.</span><span class="token function">newProxyInstance</span><span class="token punctuation">(</span><span class="token class-name">JdkProxy</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">.</span><span class="token function">getClassLoader</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                <span class="token class-name">Target</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">.</span><span class="token function">getInterfaces</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+<span class="token comment">//                new InvocationHandler(参数...) 的Lambda表达式写法</span>
+                 <span class="token punctuation">(</span>proxy<span class="token punctuation">,</span> method<span class="token punctuation">,</span> args1<span class="token punctuation">)</span> <span class="token operator">-></span> <span class="token punctuation">&#123;</span>
+                    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"执行前"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    <span class="token class-name">Object</span> o1 <span class="token operator">=</span> method<span class="token punctuation">.</span><span class="token function">invoke</span><span class="token punctuation">(</span>target<span class="token punctuation">,</span> args1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    <span class="token keyword">return</span> o1<span class="token punctuation">;</span>
+                <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        o<span class="token punctuation">.</span><span class="token function">m</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h5 id="1-1-2-JDK代理在spring中的模拟实现"><a href="#1-1-2-JDK代理在spring中的模拟实现" class="headerlink" title="1.1.2 JDK代理在spring中的模拟实现"></a><strong>1.1.2 JDK代理在spring中的模拟实现</strong></h5><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Main</span> <span class="token punctuation">&#123;</span>
+    <span class="token comment">//接口，被代理对象</span>
+    <span class="token keyword">interface</span> <span class="token class-name">Foo</span><span class="token punctuation">&#123;</span>
+        <span class="token keyword">void</span> <span class="token function">m</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">NoSuchMethodException</span><span class="token punctuation">,</span> <span class="token class-name">InvocationTargetException</span><span class="token punctuation">,</span> <span class="token class-name">IllegalAccessException</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> <span class="token function">s</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">NoSuchMethodException</span><span class="token punctuation">,</span> <span class="token class-name">InvocationTargetException</span><span class="token punctuation">,</span> <span class="token class-name">IllegalAccessException</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token comment">//被代理对象</span>
+    <span class="token keyword">static</span> <span class="token keyword">class</span> <span class="token class-name">Target</span> <span class="token keyword">implements</span> <span class="token class-name">Foo</span> <span class="token punctuation">&#123;</span>
+        <span class="token annotation punctuation">@Override</span>
+        <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">m</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"方法执行mmmm"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+
+        <span class="token annotation punctuation">@Override</span>
+        <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">s</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"方法执行ssss"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">return</span> <span class="token number">100</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token comment">//接口，确定调用的方法</span>
+    <span class="token keyword">interface</span> <span class="token class-name">InvocationHandler</span><span class="token punctuation">&#123;</span>
+        <span class="token class-name">Object</span> <span class="token function">invoke</span><span class="token punctuation">(</span><span class="token class-name">Object</span> proxy<span class="token punctuation">,</span><span class="token class-name">Method</span> method<span class="token punctuation">,</span> <span class="token class-name">Object</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">InvocationTargetException</span><span class="token punctuation">,</span> <span class="token class-name">IllegalAccessException</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> argss<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">NoSuchMethodException</span><span class="token punctuation">,</span> <span class="token class-name">InvocationTargetException</span><span class="token punctuation">,</span> <span class="token class-name">IllegalAccessException</span> <span class="token punctuation">&#123;</span>
+        $<span class="token class-name">Proxy0</span> proxy0 <span class="token operator">=</span> <span class="token keyword">new</span> $<span class="token class-name">Proxy0</span><span class="token punctuation">(</span><span class="token punctuation">(</span>proxy<span class="token punctuation">,</span> method<span class="token punctuation">,</span> args<span class="token punctuation">)</span> <span class="token operator">-></span>  <span class="token punctuation">&#123;</span>
+            <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"功能增强"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token comment">//反射</span>
+            <span class="token keyword">return</span> method<span class="token punctuation">.</span><span class="token function">invoke</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Target</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> args<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        proxy0<span class="token punctuation">.</span><span class="token function">m</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>proxy0<span class="token punctuation">.</span><span class="token function">s</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">//模拟：代理对象        有点像装饰器模式</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> $<span class="token class-name">Proxy0</span> <span class="token keyword">extends</span> <span class="token class-name">Proxy</span> <span class="token keyword">implements</span> <span class="token class-name">Main<span class="token punctuation">.</span>Foo</span><span class="token punctuation">&#123;</span>
+    <span class="token keyword">static</span> <span class="token class-name">Method</span> m<span class="token punctuation">;</span>
+    <span class="token keyword">static</span> <span class="token class-name">Method</span> s<span class="token punctuation">;</span>
+    <span class="token keyword">static</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">try</span> <span class="token punctuation">&#123;</span>
+             m <span class="token operator">=</span> <span class="token class-name">Main<span class="token punctuation">.</span>Foo</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">.</span><span class="token function">getMethod</span><span class="token punctuation">(</span><span class="token string">"m"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+             s <span class="token operator">=</span> <span class="token class-name">Main<span class="token punctuation">.</span>Foo</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">.</span><span class="token function">getMethod</span><span class="token punctuation">(</span><span class="token string">"s"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">NoSuchMethodException</span> e<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">NoSuchMethodError</span><span class="token punctuation">(</span>e<span class="token punctuation">.</span><span class="token function">getMessage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+    
+    <span class="token keyword">public</span> $<span class="token class-name">Proxy0</span><span class="token punctuation">(</span><span class="token class-name">InvocationHandler</span> h<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">super</span><span class="token punctuation">(</span>h<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">m</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">Throwable</span> <span class="token punctuation">&#123;</span>
+        h<span class="token punctuation">.</span><span class="token function">invoke</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span>m<span class="token punctuation">,</span><span class="token keyword">new</span> <span class="token class-name">Object</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">s</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">Throwable</span> <span class="token punctuation">&#123;</span>
+
+        <span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span> h<span class="token punctuation">.</span><span class="token function">invoke</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span>s<span class="token punctuation">,</span><span class="token keyword">new</span> <span class="token class-name">Object</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="1-2-CGLib代理"><a href="#1-2-CGLib代理" class="headerlink" title="1.2 CGLib代理"></a>1.2 CGLib代理</h4><h2 id="二、代理创建时机"><a href="#二、代理创建时机" class="headerlink" title="二、代理创建时机"></a>二、代理创建时机</h2><ol>
+<li>代理的创建时机<ul>
+<li>初始化之后 (无循环依赖时)</li>
+<li>实例创建后, 依赖注入前 (有循环依赖时), 并暂存于二级缓存</li>
+</ul>
+</li>
+<li>依赖注入与初始化不应该被增强, 仍应被施加于原始对象</li>
+</ol>
+<h1 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h1><h2 id="1-概念"><a href="#1-概念" class="headerlink" title="1.概念"></a>1.概念</h2><p>事务传播行为用来描述由某<strong>一个事务传播行为修饰的方法被嵌套进另一个方法的时事务如何传播</strong>。</p>
+<h2 id="2-事务传播行为"><a href="#2-事务传播行为" class="headerlink" title="2.事务传播行为"></a>2.事务传播行为</h2><table>
+<thead>
+<tr>
+<th>传播属性</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Required</td>
+<td>如果当前存在事务，则加入该事务，如果当前不存在事务，则创建一个新的事务。</td>
+</tr>
+<tr>
+<td>Requied_new</td>
+<td>重新创建一个新的事务，如果当前存在事务，延缓当前的事务。</td>
+</tr>
+<tr>
+<td>supports</td>
+<td>如果当前存在事务，则加入该事务；如果当前不存在事务，则以非事务的方式继续运行。</td>
+</tr>
+<tr>
+<td>no_supported</td>
+<td>以非事务的方式运行，如果当前存在事务，暂停当前的事务。</td>
+</tr>
+<tr>
+<td>mandatory</td>
+<td>如果当前存在事务，则加入该事务；如果当前不存在事务，则抛出异常。</td>
+</tr>
+<tr>
+<td>Never</td>
+<td>以非事务的方式运行，如果当前存在事务，则抛出异常。</td>
+</tr>
+<tr>
+<td>Nested</td>
+<td>如果没有，就新建一个事务；如果有，就在当前事务中嵌套其他事务。</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>事务传播行为类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>PROPAGATION_REQUIRED</td>
+<td>如果当前没有事务，就新建一个事务，如果已经存在一个事务中，加入到这个事务中。这是最常见的选择。</td>
+</tr>
+<tr>
+<td>PROPAGATION_SUPPORTS</td>
+<td>支持当前事务，如果当前没有事务，就以非事务方式执行。</td>
+</tr>
+<tr>
+<td>PROPAGATION_MANDATORY</td>
+<td>使用当前的事务，如果当前没有事务，就抛出异常。</td>
+</tr>
+<tr>
+<td>PROPAGATION_REQUIRES_NEW</td>
+<td>新建事务，如果当前存在事务，把当前事务挂起。</td>
+</tr>
+<tr>
+<td>PROPAGATION_NOT_SUPPORTED</td>
+<td>以非事务方式执行操作，如果当前存在事务，就把当前事务挂起。</td>
+</tr>
+<tr>
+<td>PROPAGATION_NEVER</td>
+<td>以非事务方式执行，如果当前存在事务，则抛出异常。</td>
+</tr>
+<tr>
+<td>PROPAGATION_NESTED</td>
+<td>如果当前存在事务，则在嵌套事务内执行。如果当前没有事务，则执行与PROPAGATION_REQUIRED类似的操作。</td>
+</tr>
+</tbody></table>
+<h2 id="3-注解声明事务"><a href="#3-注解声明事务" class="headerlink" title="3.注解声明事务"></a>3.注解声明事务</h2><h3 id="EnableTransactionManagement：开始声明式事务"><a href="#EnableTransactionManagement：开始声明式事务" class="headerlink" title="@EnableTransactionManagement：开始声明式事务"></a>@EnableTransactionManagement：开始声明式事务</h3><h3 id="Transactional-开启事务控制"><a href="#Transactional-开启事务控制" class="headerlink" title="@Transactional: 开启事务控制"></a>@Transactional: 开启事务控制</h3><table>
+<thead>
+<tr>
+<th>参数</th>
+<th>作用</th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>propagation</td>
+<td>传播行为</td>
+<td></td>
+</tr>
+<tr>
+<td>ioslation</td>
+<td>隔离级别</td>
+<td></td>
+</tr>
+<tr>
+<td>timeout</td>
+<td>超时时间：指定超时时间，不提交则回滚</td>
+<td></td>
+</tr>
+<tr>
+<td>readOnly</td>
+<td>只读</td>
+<td></td>
+</tr>
+<tr>
+<td>rollbackFor</td>
+<td>出现异常回滚</td>
+<td></td>
+</tr>
+<tr>
+<td>notRollbackFor</td>
+<td>出现异常不回滚</td>
+<td></td>
+</tr>
+</tbody></table>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/blog/about" rel="external nofollow noreferrer">Mr_poke</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://gitee.com/mr-poke/blog.git/blog/2023/03/30/spring/">https://gitee.com/mr-poke/blog.git/blog/2023/03/30/spring/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/blog/about" target="_blank">Mr_poke</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/blog/tags/Spring/">
+                                    <span class="chip bg-color">Spring</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/blog/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/blog/2023/03/30/jdbc/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/blog/medias/featureimages/11.jpg" class="responsive-img" alt="JDBC">
+                        
+                        <span class="card-title">JDBC</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            java操作MySql数据库的API
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2023-03-30
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/blog/categories/java%E9%AB%98%E7%BA%A7/" class="post-category">
+                                    java高级
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/blog/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                        <span class="chip bg-color">数据库</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/blog/2022/12/28/spring-mvc/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/blog/medias/featureimages/11.jpg" class="responsive-img" alt="SpringMVC">
+                        
+                        <span class="card-title">SpringMVC</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            SpringMVC复习
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-12-28
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/blog/categories/SpringMVC/" class="post-category">
+                                    SpringMVC
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/blog/tags/Spring/">
+                        <span class="chip bg-color">Spring</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('50')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE' || selection.getRangeAt(0).commonAncestorContainer.nodeName === 'CODE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: Mr_poke<br />'
+            + '文章作者: Mr_poke<br />'
+            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。 ---Mr_poke';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/blog/libs/codeBlock/codeBlockFuction.js"></script>
+
+
+  <!-- 是否加载使用自带的 prismjs. -->
+  <script type="text/javascript" src="/blog/libs/prism/prism.min.js"></script>
+
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/blog/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/blog/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/blog/libs/codeBlock/codeShrink.js"></script>
+
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/blog/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2023</span>
+            
+            <a href="/blog/about" target="_blank">Mr_poke</a>
+            <!-- |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a> -->
+            
+            <br>
+            
+            
+            
+                
+            
+            
+                <span id="busuanzi_container_site_pv">
+                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;
+                    <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+                <span id="busuanzi_container_site_uv">
+                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;
+                    <span id="busuanzi_value_site_uv" class="white-color"></span>
+            </span>
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/Mr-P0KE/" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:mr_poke@163.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=562073889" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 562073889" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/blog/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 白天和黑夜主题 -->
+<div class="stars-con">
+    <div id="stars"></div>
+    <div id="stars2"></div>
+    <div id="stars3"></div>  
+</div>
+
+<script>
+    function switchNightMode() {
+        $('<div class="Cuteen_DarkSky"><div class="Cuteen_DarkPlanet"></div></div>').appendTo($('body')),
+        setTimeout(function () {
+            $('body').hasClass('DarkMode') 
+            ? ($('body').removeClass('DarkMode'), localStorage.setItem('isDark', '0'), $('#sum-moon-icon').removeClass("fa-sun").addClass('fa-moon')) 
+            : ($('body').addClass('DarkMode'), localStorage.setItem('isDark', '1'), $('#sum-moon-icon').addClass("fa-sun").removeClass('fa-moon')),
+            
+            setTimeout(function () {
+            $('.Cuteen_DarkSky').fadeOut(1e3, function () {
+                $(this).remove()
+            })
+            }, 2e3)
+        })
+    }
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/blog/libs/materialize/materialize.min.js"></script>
+    <script src="/blog/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/blog/libs/aos/aos.js"></script>
+    <script src="/blog/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/blog/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/blog/js/matery.js"></script>
+
+    
+
+    
+    
+    
+
+    <!-- 雪花特效 -->
+    
+
+    <!-- 鼠标星星特效 -->
+     
+        <script type="text/javascript">
+            // 只在桌面版网页启用特效
+            var windowWidth = $(window).width();
+            if (windowWidth > 768) {
+                document.write('<script type="text/javascript" src="/blog/libs/others/star.js"><\/script>');
+            }
+        </script>
+    
+
+     
+        <script src="https://ssl.captcha.qq.com/TCaptcha.js"></script>
+        <script src="/blog/libs/others/TencentCaptcha.js"></script>
+        <button id="TencentCaptcha" data-appid="xxxxxxxxxx" data-cbfn="callback" type="button" hidden></button>
+    
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/blog/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/blog/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/blog/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
