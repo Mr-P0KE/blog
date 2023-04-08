@@ -922,15 +922,24 @@ SELECT 字段 FROM 表2...;<span aria-hidden="true" class="line-numbers-rows"><s
 </ol>
 <h2 id="4-并发下的事务问题"><a href="#4-并发下的事务问题" class="headerlink" title="4.并发下的事务问题"></a>4.并发下的事务问题</h2><ol>
 <li><p>脏读</p>
-<p>一个事务读取到另一个事务的未提交的数据。</p>
+<p>概念：一个事务A读取到另一个事务B的未提交的数据。</p>
+<p>解决：</p>
+<p>1.事务B写操作加行锁X</p>
+<p>2.MVCC</p>
 </li>
 <li><p>不可重复读</p>
 <p>一个事务先后读取一条记录，但是两次读取不一致。</p>
 <p>eg: A事务读取数据，然后B事务修改并提交，A事务再读数据，出现不一致</p>
+<p>解决：</p>
+<p>1.事务A读取时加读锁S</p>
+<p>2.MVCC</p>
 </li>
 <li><p>幻读</p>
 <p>一个事务按照条件查询数据时，没有对应的数据行，但是在插入数据时，又发现这行数据 已经存在，好像出现了 “幻影”。</p>
 <p>eg： A事务读取主键为1的数据，数据库没有，然后进行插入，在此期间，B事务插入主键为1的数据并提交，A事务提交不成功。</p>
+<p>解决：</p>
+<p>1.A事务加数据时加间隙锁</p>
+<p>2.MVCC</p>
 </li>
 </ol>
 <h2 id="5-事务隔离级别"><a href="#5-事务隔离级别" class="headerlink" title="5.事务隔离级别"></a>5.事务隔离级别</h2><table>
@@ -978,6 +987,7 @@ SELECT 字段 FROM 表2...;<span aria-hidden="true" class="line-numbers-rows"><s
 </tr>
 </tbody></table>
 <p><strong>数据安全性越高，性能越差</strong></p>
+<p><strong>InnoDB引擎的MVCC解决了幻读问题。</strong></p>
 
                 
             </div>
@@ -1355,7 +1365,7 @@ SELECT 字段 FROM 表2...;<span aria-hidden="true" class="line-numbers-rows"><s
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">52.8k</span>
+                        class="white-color">59.9k</span>
             
             
             

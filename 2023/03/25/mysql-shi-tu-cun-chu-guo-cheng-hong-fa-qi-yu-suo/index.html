@@ -266,14 +266,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    4.9k
+                    5.5k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    18 分
+                    20 分
                 </div>
                 
 
@@ -296,7 +296,7 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="MYSQL视图-x2F-存储过程-x2F-触发器与锁"><a href="#MYSQL视图-x2F-存储过程-x2F-触发器与锁" class="headerlink" title="MYSQL视图&#x2F;存储过程&#x2F;触发器与锁"></a>MYSQL视图&#x2F;存储过程&#x2F;触发器与锁</h1><h1 id="一、视图"><a href="#一、视图" class="headerlink" title="一、视图"></a>一、视图</h1><p>视图（View）是一种虚拟存在的表。</p>
+                <h1 id="MYSQL视图-x2F-存储过程-x2F-触发器、InnoB引擎"><a href="#MYSQL视图-x2F-存储过程-x2F-触发器、InnoB引擎" class="headerlink" title="MYSQL视图&#x2F;存储过程&#x2F;触发器、InnoB引擎"></a>MYSQL视图&#x2F;存储过程&#x2F;触发器、InnoB引擎</h1><h1 id="一、视图"><a href="#一、视图" class="headerlink" title="一、视图"></a>一、视图</h1><p>视图（View）是一种虚拟存在的表。</p>
 <h2 id="1-创建"><a href="#1-创建" class="headerlink" title="1.创建"></a>1.创建</h2><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">#创建或替换</span>
 <span class="token keyword">CREATE</span> <span class="token punctuation">[</span><span class="token operator">OR</span> <span class="token keyword">REPLACE</span><span class="token punctuation">]</span> <span class="token keyword">VIEW</span> 视图名称（列名列表） <span class="token keyword">AS</span> 
 <span class="token keyword">SELECT</span>语句 <span class="token punctuation">[</span><span class="token keyword">WITH</span> <span class="token punctuation">[</span><span class="token keyword">CASCADED</span> <span class="token operator">|</span> <span class="token keyword">LOCAL</span><span class="token punctuation">]</span> <span class="token keyword">CHECK</span> <span class="token keyword">OPTION</span><span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
@@ -547,6 +547,24 @@ trigger_stmt <span class="token punctuation">;</span>           <span class="tok
 <td>每一次操作锁住对应数据</td>
 </tr>
 </tbody></table>
+<h2 id="MySQL并发事务访问相同记录的情况"><a href="#MySQL并发事务访问相同记录的情况" class="headerlink" title="MySQL并发事务访问相同记录的情况"></a>MySQL并发事务访问相同记录的情况</h2><h3 id="1-1读-读情况"><a href="#1-1读-读情况" class="headerlink" title="1.1读-读情况"></a>1.1读-读情况</h3><p>读读情况（多个事务同时访问一条数据），不会对记录产生影响。<strong>允许发生</strong></p>
+<h3 id="1-2写写情况"><a href="#1-2写写情况" class="headerlink" title="1.2写写情况"></a>1.2写写情况</h3><p>写写情况（多个事务同时修改一条记录），会发生<code>脏写</code>情况，不允许发生。多个未提交事务对同一数据修改时，<strong>排队执行</strong>，通过<strong>锁实现</strong>。<strong>锁其实是一种内存中的结构</strong></p>
+<p><strong>当一个事务A向进行数据改动时，首先查看该数据是否有锁结构，若没有，则生成一个锁结构。此时若有其他事务B修改该数据，发现该数据有锁结构，事务B会获取锁失败，进入阻塞状态，直到A事务提交，B事务才会获得锁。</strong></p>
+<h3 id="1-3读写、写读情况"><a href="#1-3读写、写读情况" class="headerlink" title="1.3读写、写读情况"></a>1.3读写、写读情况</h3><p>可能出现**<code>脏读、幻读、不可重复读</code>**的情况，MySQL在可重复读的情况下，解决了幻读问题。</p>
+<h3 id="1-4问题的解决方案"><a href="#1-4问题的解决方案" class="headerlink" title="1.4问题的解决方案"></a>1.4问题的解决方案</h3><h4 id="方案一：读操作利用多版本并发控制（MVCC），写操作进行加锁"><a href="#方案一：读操作利用多版本并发控制（MVCC），写操作进行加锁" class="headerlink" title="方案一：读操作利用多版本并发控制（MVCC），写操作进行加锁"></a>方案一：读操作利用多版本并发控制（<code>MVCC</code>），写操作进行<code>加锁</code></h4><p>MVCC：就是生成一个<code>ReadView</code>，通过ReadView找到符合条件的记录版本（历史版本由<code>undo日志</code>构建）。查询语句只能<code>读</code>到在生成ReadView之前<code>已提交事务所做的更改</code>，在生成ReadView之前未提交的事务或者之后才开启的事务所做的更改是看不到的。而<code>写操作</code>肯定针对的是<code>最新版本的记录</code>，读记录的历史版本和改动记录的最新版本本身并不冲突，也就是采用MVCC时，<code>读-写</code>操作并不冲突。</p>
+<blockquote>
+<p>普通的SELECT语句在<strong>READ COMMITTED和REPEATABLE READ</strong>隔离级别下会使用到MVCC读取记录。</p>
+<ul>
+<li>在<code>READ COMMITTED</code>隔离级别下，一个事务在执行过程中每次执行SELECT操作时都会生成一个ReadView，ReadView的存在本身就保证了<code>事务不可以读取到未提交的事务所做的更改</code>，也就是避免了脏读现象；</li>
+<li>在<code>REPEATABLE READ</code>隔离级别下，一个事务在执行过程中只有<code>第一次执行SELECT操作 </code>才会生成一个ReadView，之后的SELECT操作都<code>复用</code>这ReadView，这样也就避免了不可重复读和幻读的问题。</li>
+</ul>
+</blockquote>
+<h4 id="方案二：读、写操作都采用加锁的方式。"><a href="#方案二：读、写操作都采用加锁的方式。" class="headerlink" title="方案二：读、写操作都采用加锁的方式。"></a>方案二：读、写操作都采用<code>加锁</code>的方式。</h4><p>小结对比发现：</p>
+<ul>
+<li>采用<code>MVCC</code>方式的话，<code>读-写</code>操作彼此并不冲突，<code>性能更高</code>。</li>
+<li>采用<code>加锁</code>方式的话，<code>读-写</code>操作彼此需要<code>排队执行</code>，影响性能。</li>
+</ul>
+<h2 id="锁分类"><a href="#锁分类" class="headerlink" title="锁分类"></a>锁分类</h2><p><img src="https://gitee.com/mr-poke/picture/raw/master/img/image-20230408153835088.png"></p>
 <h2 id="1-全局锁"><a href="#1-全局锁" class="headerlink" title="1.全局锁"></a>1.全局锁</h2><p>全局锁就是对整个数据库实例加锁，<strong>加锁后整个实例就处于只读状态</strong></p>
 <h3 id="1-使用场景："><a href="#1-使用场景：" class="headerlink" title="1.使用场景："></a>1.使用场景：</h3><p>典型的使用场景是做<strong>全库的逻辑备份</strong>，对所有的表进行锁定，从而获取一致性视图，保证数据的完整 性。</p>
 <p>eg：订单表和库存表有关联，但是不使用全局锁可能数据不一致</p>
@@ -1260,7 +1278,7 @@ mysqldump <span class="token operator">-</span>uroot –p1234 备份数据库 <s
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">52.8k</span>
+                        class="white-color">59.9k</span>
             
             
             
