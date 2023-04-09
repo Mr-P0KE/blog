@@ -266,14 +266,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    15.7k
+                    16.6k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    63 分
+                    66 分
                 </div>
                 
 
@@ -1712,7 +1712,7 @@ ArithmeticException（算数异常）
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h3 id="六、多线程"><a href="#六、多线程" class="headerlink" title="六、多线程"></a>六、多线程</h3><h4 id="1-程序、进程与线程"><a href="#1-程序、进程与线程" class="headerlink" title="1.程序、进程与线程"></a>1.程序、进程与线程</h4><p><strong>程序</strong>：用某种语言编写的一组指令的集合。即指一段静态的代码，静态对象。</p>
+<h2 id="六、多线程"><a href="#六、多线程" class="headerlink" title="六、多线程"></a>六、多线程</h2><h4 id="1-程序、进程与线程"><a href="#1-程序、进程与线程" class="headerlink" title="1.程序、进程与线程"></a>1.程序、进程与线程</h4><p><strong>程序</strong>：用某种语言编写的一组指令的集合。即指一段静态的代码，静态对象。</p>
 <p><strong>进程</strong>：程序的一次执行过程，或是正在内存中运行的应用程序</p>
 <p>​           <strong>操作系统调度和分配资源的最小单位</strong></p>
 <p><strong>线程 ：</strong>一个进程同一时间若并行执行多个线程，就是支持多线程的。 <strong>CPU调度和执行的最小单位。</strong></p>
@@ -1749,6 +1749,27 @@ ArithmeticException（算数异常）
 <li><p><strong>实现Callable接口</strong>（call方法）</p>
 <p>相比Runnable接口<strong>优点</strong>：有返回值，可以抛出异常，支持泛型返回值（借助FutureTask类）</p>
 <p><strong>缺点</strong>： 效率较低</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MyTest</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">ExecutionException</span><span class="token punctuation">,</span> <span class="token class-name">InterruptedException</span> <span class="token punctuation">&#123;</span>
+        <span class="token class-name">MyCallable</span> myCallable <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">MyCallable</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">FutureTask</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">></span></span> future <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">FutureTask</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">></span></span><span class="token punctuation">(</span>myCallable<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">Thread</span> t1 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Thread</span><span class="token punctuation">(</span>future<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        t1<span class="token punctuation">.</span><span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">Integer</span> result <span class="token operator">=</span> future<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>result<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token keyword">class</span> <span class="token class-name">MyCallable</span> <span class="token keyword">implements</span> <span class="token class-name">Callable</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">></span></span><span class="token punctuation">&#123;</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token class-name">Integer</span> <span class="token function">call</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">Exception</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">int</span> sum <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;=</span><span class="token number">100</span><span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+            sum <span class="token operator">+=</span> i<span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token keyword">return</span> sum<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
 <li><p><strong>线程池</strong></p>
 </li>
@@ -2013,6 +2034,87 @@ ArithmeticException（算数异常）
 <p> ④ 结束等待的方式不同：sleep()：指定时间一到就结束阻塞。 wait():可以指定时间 也可以无限等待直到notify或notifyAll。</p>
 <p><strong>生产者消费者问题：</strong></p>
 <p>多线程：生产者，消费者</p>
+<h4 id="13-线程池"><a href="#13-线程池" class="headerlink" title="13.线程池"></a>13.线程池</h4><h5 id="ThearPoolExecutor"><a href="#ThearPoolExecutor" class="headerlink" title="ThearPoolExecutor"></a>ThearPoolExecutor</h5><h6 id="1-构造方法"><a href="#1-构造方法" class="headerlink" title="1.构造方法"></a>1.构造方法</h6><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token class-name">ThreadPoolExecutor</span><span class="token punctuation">(</span><span class="token keyword">int</span> corePoolSize<span class="token punctuation">,</span>                  <span class="token comment">//核心线程数量</span>
+                          <span class="token keyword">int</span> maximumPoolSize<span class="token punctuation">,</span>               <span class="token comment">//最大线程数</span>
+                          <span class="token keyword">long</span> keepAliveTime<span class="token punctuation">,</span>                <span class="token comment">//最大空闲时间</span>
+                          <span class="token class-name">TimeUnit</span> unit<span class="token punctuation">,</span>                     <span class="token comment">//时间单位</span>
+                          <span class="token class-name">BlockingQueue</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Runnable</span><span class="token punctuation">></span></span> workQueue<span class="token punctuation">,</span> <span class="token comment">//任务队列</span>
+                          <span class="token class-name">ThreadFactory</span> threadFactory<span class="token punctuation">,</span>       <span class="token comment">//线程工厂</span>
+                          <span class="token class-name">RejectedExecutionHandler</span> handler<span class="token punctuation">)</span>  <span class="token comment">//饱和处理机制</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ol>
+<li><p>int corePoolSize  核心线程数量</p>
+<p>当任务提交线程池，若线程数量未达到核心线程数量，则创建线程执行。</p>
+</li>
+<li><p>int maximunPoolSize  最大线程数</p>
+<p>任务队列加满，创建新线程。（控制最多可以创建多少线程）</p>
+</li>
+<li><p>long keepAliveTime   最大空闲时间</p>
+<p>设定任务的空闲时间，超时回收线程，核心线程默认不会回收</p>
+</li>
+<li><p>TimeUnit unit                  时间单位</p>
+<p>设置时间单位 </p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">//枚举类</span>
+<span class="token function">NANOSECONDS</span><span class="token punctuation">(</span><span class="token class-name">TimeUnit</span><span class="token punctuation">.</span><span class="token constant">NANO_SCALE</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token comment">/**
+     * Time unit representing one thousandth of a millisecond.
+     */</span>
+    <span class="token function">MICROSECONDS</span><span class="token punctuation">(</span><span class="token class-name">TimeUnit</span><span class="token punctuation">.</span><span class="token constant">MICRO_SCALE</span><span class="token punctuation">)</span><span class="token punctuation">,</span>            <span class="token comment">//微秒</span>
+    <span class="token comment">/**
+     * Time unit representing one thousandth of a second.
+     */</span>
+    <span class="token function">MILLISECONDS</span><span class="token punctuation">(</span><span class="token class-name">TimeUnit</span><span class="token punctuation">.</span><span class="token constant">MILLI_SCALE</span><span class="token punctuation">)</span><span class="token punctuation">,</span>           <span class="token comment">//毫秒</span>
+    <span class="token comment">/**
+     * Time unit representing one second.
+     */</span>
+    <span class="token function">SECONDS</span><span class="token punctuation">(</span><span class="token class-name">TimeUnit</span><span class="token punctuation">.</span><span class="token constant">SECOND_SCALE</span><span class="token punctuation">)</span><span class="token punctuation">,</span>              <span class="token comment">//秒</span>
+    <span class="token comment">/**
+     * Time unit representing sixty seconds.
+     * @since 1.6
+     */</span>
+    <span class="token function">MINUTES</span><span class="token punctuation">(</span><span class="token class-name">TimeUnit</span><span class="token punctuation">.</span><span class="token constant">MINUTE_SCALE</span><span class="token punctuation">)</span><span class="token punctuation">,</span>         <span class="token comment">//分钟</span>
+    <span class="token comment">/**
+     * Time unit representing sixty minutes.
+     * @since 1.6
+     */</span>
+    <span class="token function">HOURS</span><span class="token punctuation">(</span><span class="token class-name">TimeUnit</span><span class="token punctuation">.</span><span class="token constant">HOUR_SCALE</span><span class="token punctuation">)</span><span class="token punctuation">,</span>            <span class="token comment">//小时</span>
+    <span class="token comment">/**
+     * Time unit representing twenty four hours.
+     * @since 1.6
+     */</span>
+    <span class="token function">DAYS</span><span class="token punctuation">(</span><span class="token class-name">TimeUnit</span><span class="token punctuation">.</span><span class="token constant">DAY_SCALE</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         <span class="token comment">//日 </span>
+
+    <span class="token comment">// Scales as constants</span>
+    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token keyword">long</span> <span class="token constant">NANO_SCALE</span>   <span class="token operator">=</span> <span class="token number">1L</span><span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token keyword">long</span> <span class="token constant">MICRO_SCALE</span>  <span class="token operator">=</span> <span class="token number">1000L</span> <span class="token operator">*</span> <span class="token constant">NANO_SCALE</span><span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token keyword">long</span> <span class="token constant">MILLI_SCALE</span>  <span class="token operator">=</span> <span class="token number">1000L</span> <span class="token operator">*</span> <span class="token constant">MICRO_SCALE</span><span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token keyword">long</span> <span class="token constant">SECOND_SCALE</span> <span class="token operator">=</span> <span class="token number">1000L</span> <span class="token operator">*</span> <span class="token constant">MILLI_SCALE</span><span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token keyword">long</span> <span class="token constant">MINUTE_SCALE</span> <span class="token operator">=</span> <span class="token number">60L</span> <span class="token operator">*</span> <span class="token constant">SECOND_SCALE</span><span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token keyword">long</span> <span class="token constant">HOUR_SCALE</span>   <span class="token operator">=</span> <span class="token number">60L</span> <span class="token operator">*</span> <span class="token constant">MINUTE_SCALE</span><span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token keyword">long</span> <span class="token constant">DAY_SCALE</span>    <span class="token operator">=</span> <span class="token number">24L</span> <span class="token operator">*</span> <span class="token constant">HOUR_SCALE</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+</li>
+<li><p>BlockingQueue<Runnable> workQueue, 任务队列</p>
+<p>当核心线程均运行时，再添加任务，会添加到任务队列中，任务队列加满，创建新线程。</p>
+</li>
+<li><p>ThreadFactory threadFactory      线程工厂</p>
+<p>允许自己参与创建线程的过程，自定义线程</p>
+</li>
+<li><p>RejectedExecutionHandler handler        饱和处理机制</p>
+<p>任务队列满、线程达到了最大线程池数。如何处理任务。</p>
+</li>
+</ol>
+<h6 id="2-工作流程"><a href="#2-工作流程" class="headerlink" title="2.工作流程"></a>2.工作流程</h6><p><img src="https://gitee.com/mr-poke/picture/raw/master/img/image-20230409191419450.png"></p>
+<h5 id="ExecutorService常用方法"><a href="#ExecutorService常用方法" class="headerlink" title="ExecutorService常用方法"></a>ExecutorService常用方法</h5><p>void shutdown() :  <strong>执行完正在执行的任务和队列中等待的任务后,彻底关闭。</strong></p>
+<p>List<Runnable> shutdownNow() :   <strong>停止正在执行的任务，暂停等待的任务，并返回等待执行的任务列表</strong></p>
+<p><T> Future<T> submit(Callable<T> task) :  <strong>执行带返回值的任务，并返回Future对象</strong></p>
+<p>Future&lt;?&gt; submit(Runnable task) :   <strong>执行一个Runnable任务，并返回一个表示该任务的Future。</strong> </p>
+<p><T> Future<T> submit(Runnable task，T result) :  <strong>执行带返回值的任务，并返回Future对象</strong></p>
+<h5 id="通过Executors提供四种线程池："><a href="#通过Executors提供四种线程池：" class="headerlink" title="通过Executors提供四种线程池："></a>通过Executors提供四种线程池：</h5><h5 id="newCachedThreadPool："><a href="#newCachedThreadPool：" class="headerlink" title="newCachedThreadPool："></a>newCachedThreadPool：</h5><p><strong>创建一个可缓存的无界线程池</strong>，如果线程池长度超过处理需要，可灵活回收空线程，若无可回收，则新建线程。当<strong>线程池中的线程空闲时间超过60s，则会自动回收该线程，当任务超过线程池的线程数则创建新的线程</strong>，<strong>线程池的大小上限为Integer.MAX_VALUE,可看作无限大</strong>。</p>
+<h5 id="newFixedThreadPool："><a href="#newFixedThreadPool：" class="headerlink" title="newFixedThreadPool："></a>newFixedThreadPool：</h5><p><strong>创建一个指定大小的线程池</strong>，<strong>可控制线程的最大并发数</strong>，超出的线程会在LinkedBlockingQueue阻塞队列中等待</p>
+<h5 id="newScheduledThreadPool："><a href="#newScheduledThreadPool：" class="headerlink" title="newScheduledThreadPool："></a>newScheduledThreadPool：</h5><p>创建一个定长的线程池，可以指定线程池核心线程数，支持定时及周期性任务的执行</p>
+<h5 id="newSingleThreadExecutor："><a href="#newSingleThreadExecutor：" class="headerlink" title="newSingleThreadExecutor："></a>newSingleThreadExecutor：</h5><p>创建一个单线程化的线程池，它只有一个线程，用仅有的一个线程来执行任务，保证所有的任务按照指定顺序（FIFO，LIFO，优先级）执行，所有的任务都保存在队列LinkedBlockingQueue中，等待唯一的单线程来执行任务。</p>
 <h2 id="六、常用API"><a href="#六、常用API" class="headerlink" title="六、常用API"></a>六、常用API</h2><h3 id="1-String类（final修饰的类）"><a href="#1-String类（final修饰的类）" class="headerlink" title="1.String类（final修饰的类）"></a>1.String类（final修饰的类）</h3><h4 id="1-底层"><a href="#1-底层" class="headerlink" title="1.底层"></a>1.底层</h4><p>jdk9及以后，<strong>底层是字节数组</strong>（byte[] value）</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">final</span> <span class="token keyword">class</span> <span class="token class-name">String</span> <span class="token keyword">implements</span> <span class="token class-name"><span class="token namespace">java<span class="token punctuation">.</span>io<span class="token punctuation">.</span></span>Serializable</span><span class="token punctuation">,</span> <span class="token class-name">Comparable</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">></span></span><span class="token punctuation">,</span> <span class="token class-name">CharSequence</span> <span class="token punctuation">&#123;</span>   <span class="token comment">//final修饰，不可变</span>
     <span class="token annotation punctuation">@Stable</span>
@@ -2816,7 +2918,7 @@ map<span class="token punctuation">.</span><span class="token function">put</spa
         <span class="token keyword">return</span> result<span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h2 id="九、IO流与File类"><a href="#九、IO流与File类" class="headerlink" title="九、IO流与File类"></a>九、IO流与File类</h2><h3 id="File类"><a href="#File类" class="headerlink" title="File类"></a>File类</h3><h4 id="1-构造方法"><a href="#1-构造方法" class="headerlink" title="1.构造方法"></a>1.构造方法</h4><table>
+<h2 id="九、IO流与File类"><a href="#九、IO流与File类" class="headerlink" title="九、IO流与File类"></a>九、IO流与File类</h2><h3 id="File类"><a href="#File类" class="headerlink" title="File类"></a>File类</h3><h4 id="1-构造方法-1"><a href="#1-构造方法-1" class="headerlink" title="1.构造方法"></a>1.构造方法</h4><table>
 <thead>
 <tr>
 <th></th>
@@ -3594,7 +3696,7 @@ map<span class="token punctuation">.</span><span class="token function">put</spa
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">61.7k</span>
+                        class="white-color">62.6k</span>
             
             
             
