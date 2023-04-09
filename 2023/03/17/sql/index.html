@@ -918,7 +918,7 @@ SELECT 字段 FROM 表2...;<span aria-hidden="true" class="line-numbers-rows"><s
 <li>原子性： 事务是一个基本的操作单位，一起成功，一起失败。</li>
 <li>一致性：事务完成时，所有的数据保持一致。（转账失败，用户的账户余额综总和不变，守恒）</li>
 <li>隔离性：一个事务的执行不被另一个事务的执行干扰。</li>
-<li>持久性：事务提交或回滚，数据的改变是永久的。</li>
+<li>持久性：事务提交或回滚，数据的改变是永久的。    （Read Log （重做日志）实现）</li>
 </ol>
 <h2 id="4-并发下的事务问题"><a href="#4-并发下的事务问题" class="headerlink" title="4.并发下的事务问题"></a>4.并发下的事务问题</h2><ol>
 <li><p>脏读</p>
@@ -1365,7 +1365,7 @@ SELECT 字段 FROM 表2...;<span aria-hidden="true" class="line-numbers-rows"><s
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">59.9k</span>
+                        class="white-color">61.7k</span>
             
             
             
