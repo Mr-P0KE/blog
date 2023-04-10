@@ -4,8 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="innoDB的MVCC（多版本并发）, Mr_poke">
-    <meta name="description" content="多版本并发控制">
+    <meta name="keywords" content="SpringBoot, Mr_poke">
+    <meta name="description" content="SpringBoot知识点总结">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>innoDB的MVCC（多版本并发） | Mr_poke</title>
+    <title>SpringBoot | Mr_poke</title>
     <link rel="icon" type="image/png" href="/blog/favicon.png">
     
 
@@ -208,7 +208,7 @@
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">innoDB的MVCC（多版本并发）</h1>
+                    <h1 class="description center-align post-title">SpringBoot</h1>
                 </div>
             </div>
         </div>
@@ -232,8 +232,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/blog/tags/SQL%E9%AB%98%E7%BA%A7/">
-                                <span class="chip bg-color">SQL高级</span>
+                            <a href="/blog/tags/SpringBoot/">
+                                <span class="chip bg-color">SpringBoot</span>
                             </a>
                         
                     </div>
@@ -244,8 +244,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/blog/categories/SQL/" class="post-category">
-                                SQL
+                            <a href="/blog/categories/SpringBoot/" class="post-category">
+                                SpringBoot
                             </a>
                         
                     </div>
@@ -257,7 +257,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2023-04-08
+                    2023-04-10
                 </div>
                 
 
@@ -266,14 +266,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.1k
+                    1.5k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    7 分
+                    6 分
                 </div>
                 
 
@@ -296,116 +296,215 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="MVCC"><a href="#MVCC" class="headerlink" title="MVCC"></a>MVCC</h1><h1 id="1-什么是MVCC？"><a href="#1-什么是MVCC？" class="headerlink" title="1.什么是MVCC？"></a>1.什么是MVCC？</h1><p>MVCC （Multiversion Concurrency Control），多版本并发控制。顾名思义，MVCC 是通过数据行的多个版本管理来实现数据库的<code>并发控制</code>。这项技术使得在InnoDB的事务隔离级别下执行<code>一致性读</code>操作有了保证。换言之，就是为了<strong>查询一些正在被另一个事务更新的行，并且可以看到它们被更新之前的值，这样在做查询的时候就不用等待另一个事务释放锁。</strong></p>
-<p><strong>处理读写冲突，快照读</strong></p>
-<h1 id="2-快照读与当前读"><a href="#2-快照读与当前读" class="headerlink" title="2.快照读与当前读"></a>2.快照读与当前读</h1><p>MVCC在MySQL InnoDB中的实现主要是为了提高数据库并发性能，用更好的方式去<strong>处理<code>读-写冲突</code><strong>，做到即使有读写冲突时，也能做到<code>不加锁</code>，<code>非阻塞并发读</code>，而这个读指的就是<code>快照读</code>, 而非<code>当前读</code>。当前读实际上是一种加锁的操作，是悲观锁的实现。而</strong>MVCC本质是采用乐观锁思想的一种方式。</strong></p>
-<h2 id="1-快照读"><a href="#1-快照读" class="headerlink" title="1.快照读"></a>1.快照读</h2><p>快照读又叫一致性读，读取的是快照数据。<strong>不加锁的简单的</strong> <strong>SELECT</strong> <strong>都属于快照读</strong>，即不加锁的非阻塞读。</p>
-<p>基于提高并发性能的考虑，快照读的实现是基于MVCC，它在很多情况下，避免了加锁操作，降低了开销</p>
-<p>既然是基于多版本，那么快照读可能读到的并不一定是数据的最新版本，而有可能是之前的历史版本。</p>
-<p>快照读的<strong>前提是隔离级别不是串行级别，串行级别下的快照读会退化成当前读。</strong></p>
-<h2 id="2-当前读"><a href="#2-当前读" class="headerlink" title="2.当前读"></a>2.当前读</h2><p><strong>当前读读取的是记录的最新版本</strong>（最新数据，而不是历史版本的数据），<strong>读取时还要保证其他并发事务不能修改当前记录，会对读取的记录进行加锁</strong>。<strong>加锁的 SELECT，或者对数据进行增删改都会进行当前读。</strong></p>
-<h2 id="3-再谈隔离级别"><a href="#3-再谈隔离级别" class="headerlink" title="3.再谈隔离级别"></a>3.再谈隔离级别</h2><p><img src="https://gitee.com/mr-poke/picture/raw/master/img/image-20230409153251557.png"></p>
-<p>MySQL默认事务隔离级别为<strong>可重复读</strong>，可解决脏读、不可重复读问题，不能解决幻读问题，但是InnoDB引擎提供了MVCC来解决幻读问题。</p>
-<p>MVCC可以不采用锁机制，而是<strong>通过乐观锁来解决不可重复读和幻读问题。它在大多数情况下可以代替行级锁，降低系统开销。</strong></p>
-<p><img src="https://gitee.com/mr-poke/picture/raw/master/img/image-20230409153621404.png"></p>
-<h2 id="4-再谈隐藏字段、Undo-Log版本链"><a href="#4-再谈隐藏字段、Undo-Log版本链" class="headerlink" title="4.再谈隐藏字段、Undo Log版本链"></a>4.再谈隐藏字段、Undo Log版本链</h2><p>undo_log</p>
-<p><strong>回滚日志</strong>，用于记录数据被修改前的信息 , 作用包含两个 : 提供回滚(保证事务的原子性) 和 MVCC(多版本并发控制) 。</p>
-<p>回顾一下undo日志的版本链，对于使用<code>InnoDB</code>存储引擎的表来说，它的聚簇索引记录中都包含两个必要的隐藏列。</p>
-<ul>
-<li>row_id: 与MVCC无关</li>
-<li><code>trx_id</code>：每次一个事务对某条聚簇索引记录进行改动时，都会把该事务的<code>事务id</code>赋值给trx_id 隐藏列。</li>
-<li><code>roll_pointer</code>：每次对某条聚簇索引记录进行改动时，都会把旧的版本写入到 undo日志 中，然后这个隐藏列就相当于一个指针，可以通过它来找到该记录修改前的信息。</li>
+                <h1 id="SpringBoot"><a href="#SpringBoot" class="headerlink" title="SpringBoot"></a>SpringBoot</h1><h1 id="SpringBoot的两大优点"><a href="#SpringBoot的两大优点" class="headerlink" title="SpringBoot的两大优点"></a>SpringBoot的两大优点</h1><h2 id="1-依赖管理"><a href="#1-依赖管理" class="headerlink" title="1.依赖管理"></a>1.依赖管理</h2><ul>
+<li><strong>父项目做依赖管理</strong></li>
 </ul>
-<p><img src="https://gitee.com/mr-poke/picture/raw/master/img/image-20230409154013125.png"></p>
-<p><img src="https://gitee.com/mr-poke/picture/raw/master/img/image-20230409154201674.png"></p>
-<p><strong>InnoDB使用锁机制来保证不会脏写，也就是说：第一个事务更新了某条记录，会给这个事务加锁，另一个事务必须更新时等待第一个事务提交，释放锁后才可以更新。</strong></p>
-<p><img src="https://gitee.com/mr-poke/picture/raw/master/img/image-20230409154418383.png"></p>
-<h1 id="3-MVCC实现原理（ReadView）"><a href="#3-MVCC实现原理（ReadView）" class="headerlink" title="3.MVCC实现原理（ReadView）"></a>3.MVCC实现原理（ReadView）</h1><p>MVCC 的实现依赖于：<strong>隐藏字段、Undo Log、Read View</strong>。</p>
-<h2 id="1-什么是ReadView？"><a href="#1-什么是ReadView？" class="headerlink" title="1.什么是ReadView？"></a>1.什么是ReadView？</h2><p>在MVCC机制中，多事务对同一行记录的更新会产生多个历史快照，这些快照存储在Undo Log中，若<strong>事务想要查询行记录，则使用ReadView</strong>。</p>
-<p>ReadView就是事务在使用MVCC机制进行快照读操作时产生的读视图。当事务启动时，会生成数据库系统当前的一个快照，InnoDB为每个事务构造了一个数组，用来记录并维护系统当前<code>活跃事务</code>的ID（“活跃”指的就是，启动了但还没提交）。</p>
-<h2 id="2-不同隔离级别的ReadView"><a href="#2-不同隔离级别的ReadView" class="headerlink" title="2.不同隔离级别的ReadView"></a>2.不同隔离级别的ReadView</h2><p>使用<code>READ UNCOMMITTED</code>隔离级别的事务，由于可以读到未提交事务修改过的记录，所以直接读取记录的最新版本就好了。</p>
-<p>使用<code>SERIALIZABLE</code>隔离级别的事务，InnoDB规定使用加锁的方式来访问记录。</p>
-<p><strong>使用<code>READ COMMITTED</code>和<code>REPEATABLE READ</code>隔离级别的事务</strong>，都必须保证读到<code>已经提交了的</code>事务修改过的记录。假如另一个事务已经修改了记录但是尚未提交，是不能直接读取最新版本的记录的，核心问题就是需要判断一下版本链中的哪个版本是当前事务可见的，这是ReadView要解决的主要问题。</p>
-<h2 id="3-ReadView的内容"><a href="#3-ReadView的内容" class="headerlink" title="3.ReadView的内容"></a>3.ReadView的内容</h2><ol>
-<li><code>creator_trx_id</code>，创建这个 Read View 的事务 ID。</li>
-</ol>
-<blockquote>
-<p>说明：只有在对表中的记录做改动时（执行INSERT、DELETE、UPDATE这些语句时）才会为事务分配单独事务id，否则在一个只读事务中的事务id值都默认为0。 </p>
-</blockquote>
-<ol start="2">
-<li><p><code>trx_ids</code>，表示在生成ReadView时当前系统中活跃的读写事务的<code>事务id列表</code>。 </p>
-</li>
-<li><p><code>up_limit_id</code>，活跃的事务中最小的事务 ID。 </p>
-</li>
-<li><p><code>low_limit_id</code>，表示<strong>生成ReadView时系统中应该分配给下一个事务的<code>id</code>值</strong>。low_limit_id 是系统最大的事务id值，这里要注意是系统中的事务id，需要区别于正在活跃的事务ID。</p>
-</li>
-</ol>
-<blockquote>
-<p>注意：low_limit_id并不是trx_ids中的最大值，事务id是递增分配的。比如，现在有id为1， 2，3这三个事务，之后id为3的事务提交了。那么一个新的读事务在生成ReadView时，trx_ids就包括1和2，up_limit_id的值就是1，low_limit_id的值就是4。</p>
-</blockquote>
-<table>
-<thead>
-<tr>
-<th>属性</th>
-<th>说明</th>
-<th></th>
-</tr>
-</thead>
-<tbody><tr>
-<td>creator_trx_id</td>
-<td>创建ReadView的事务ID</td>
-<td></td>
-</tr>
-<tr>
-<td>trx_ids</td>
-<td>当前生成ReadView未提交的所有事务ID</td>
-<td></td>
-</tr>
-<tr>
-<td>up_limit_id</td>
-<td>当前生成ReadView未提交的事务ID的最小值</td>
-<td></td>
-</tr>
-<tr>
-<td>low_limit_id</td>
-<td>当前<strong>所有事务ID</strong>的最大值（不是ReadView活跃的id）</td>
-<td></td>
-</tr>
-</tbody></table>
-<h2 id="4-ReadView的规则"><a href="#4-ReadView的规则" class="headerlink" title="4.ReadView的规则"></a>4.ReadView的规则</h2><p>有了这个ReadView，这样在访问某条记录时，只需要按照下边的步骤判断记录的某个版本是否可见。</p>
+<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup">&lt;/--依赖管理/-->
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>parent</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.springframework.boot<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>spring-boot-starter-parent<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>2.7.5<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>relativePath</span><span class="token punctuation">/></span></span> <span class="token comment">&lt;!-- lookup parent from repository --></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>parent</span><span class="token punctuation">></span></span>
+&lt;/--他的父项目：声明了所有开发常用的依赖版本号，自动版本控制/-->
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>parent</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.springframework.boot<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>spring-boot-dependencies<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>2.7.5<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>parent</span><span class="token punctuation">></span></span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <ul>
-<li><p>如果被<strong>访问版本的trx_id（活跃的事务id（未提交的事务id））属性值与ReadView中的<code>creator_trx_id</code>（增删改的事务id）值相同</strong>，意味着当前事务在<strong>访问它自己修改过的记录，所以该版本可以被当前事务访问</strong>。</p>
-<p><strong>总结</strong>：<strong>当前事务进行了增删改，未提交时仍可读取到</strong></p>
-</li>
-<li><p>如果被访问版本的<strong>trx_id属性值小于ReadView中的<code>up_limit_id</code>（活跃的最小事务id）值</strong>，表明<strong>生成该版本的事务在当前事务生成ReadView前已经提交</strong>，所以<strong>该版本可以被当前事务访问</strong>。</p>
-<p><strong>总结：一个事务提交完成，可以读取到最新版本</strong></p>
-</li>
-<li><p>如果被<strong>访问版本的trx_id属性值大于或等于ReadView中的<code>low_limit_id</code>（新开的事务id）值</strong>，<strong>表明生成该版本的事务在当前事务生成ReadView后才开启，所以该版本不可以被当前事务访问。</strong></p>
-<p><strong>总结：一个新事务创建，不可以读取到当前的最新版本</strong></p>
-</li>
-<li><p>如果<strong>被访问版本的trx_id属性值在ReadView的<code>up_limit_id</code>和<code>low_limit_id</code>之间</strong>，那就<strong>需要判断一下trx_id属性值是不是在 trx_ids 列表中</strong>。</p>
-<ul>
-<li>如果<strong>在，说明创建ReadView时生成该版本的事务还是活跃的</strong>，该版本不可以被访问。</li>
-<li>如果<strong>不在，说明创建ReadView时生成该版本的事务已经被提交</strong>，该版本可以被访问。</li>
+<li><strong>starter场景启动器（简化依赖问题）</strong></li>
 </ul>
+<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup">1、见到很多 spring-boot-starter-* ： *就某种场景
+2、只要引入starter，这个场景的所有常规需要的依赖我们都自动引入
+3、SpringBoot所有支持的场景
+https://docs.spring.io/spring-boot/docs/current/reference/html/using-spring-boot.html#using-boot-starter
+4、见到的  *-spring-boot-starter： 第三方为我们提供的简化开发的场景启动器。
+5、所有场景启动器最底层的依赖
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.springframework.boot<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>spring-boot-starter<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>2.3.4.RELEASE<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>scope</span><span class="token punctuation">></span></span>compile<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>scope</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li><p><strong>无需关注版本号，自动版本仲裁</strong></p>
+<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup">1、引入依赖默认都可以不写版本
+2、引入非版本仲裁的jar，要写版本号。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+</li>
+<li><p><strong>可以修改默认版本号</strong></p>
 </li>
 </ul>
-<h2 id="5-整体流程"><a href="#5-整体流程" class="headerlink" title="5.整体流程"></a>5.整体流程</h2><ol>
-<li><p>首先获取事务自己的版本号，也就是事务 ID； </p>
+<h2 id="2-自动配置"><a href="#2-自动配置" class="headerlink" title="2.自动配置"></a>2.自动配置</h2><ul>
+<li><p>自动配好Tomcat</p>
 </li>
-<li><p>获取 ReadView； </p>
+<li><ul>
+<li>引入Tomcat依赖。</li>
+<li>配置Tomcat</li>
+</ul>
 </li>
-<li><p>查询得到的数据，然后与 ReadView 中的事务版本号进行比较；</p>
+<li><p>自动配好SpringMVC</p>
 </li>
-<li><p>如果不符合 ReadView 规则，就需要从 Undo Log 中获取历史快照；</p>
+<li><ul>
+<li>引入SpringMVC全套组件</li>
+<li>自动配好SpringMVC常用组件（功能）</li>
+</ul>
 </li>
-<li><p>最后返回符合规则的数据。</p>
+<li><p>自动配好Web常见功能，如：字符编码问题</p>
 </li>
+<li><ul>
+<li>SpringBoot帮我们配置好了所有web开发的常见场景</li>
+</ul>
+</li>
+<li><p>默认的包结构</p>
+</li>
+<li><ul>
+<li><strong>主程序所在包及其下面的所有子包里面的组件都会被默认扫描进来</strong></li>
+<li>无需以前的包扫描配置</li>
+<li>想要改变扫描路径，@SpringBootApplication(scanBasePackages&#x3D;<strong>“com.atguigu”</strong>)</li>
+</ul>
+</li>
+<li><ul>
+<li><ul>
+<li><p>或者@ComponentScan 指定扫描路径</p>
+</li>
+<li><pre><code class="java">@Target(ElementType.TYPE)
+@Retention(RetentionPolicy.RUNTIME)
+@Documented
+@Inherited
+@SpringBootConfiguration
+@EnableAutoConfiguration
+@ComponentScan(excludeFilters = &#123; @Filter(type = FilterType.CUSTOM, classes = TypeExcludeFilter.class),
+      @Filter(type = FilterType.CUSTOM, classes = AutoConfigurationExcludeFilter.class) &#125;)
+<pre class="line-numbers language-none"><code class="language-none">
+- 各种配置拥有默认值
+
+- - 默认配置最终都是映射到某个类上，如：MultipartProperties
+  - 配置文件的值最终会绑定每个类上，这个类会在容器中创建对象
+
+- 按需加载所有自动配置项
+
+- - 非常多的starter
+  - 引入了哪些场景这个场景的自动配置才会开启
+  - SpringBoot所有的自动配置功能都在 spring-boot-autoconfigure 包里面
+  - 
+
+- ......
+
+# SpringBoot添加组件
+
+## 1. 组件添加
+
+### @Configuration
+
+&#96;&#96;&#96;java
+@Configuration(value &#x3D; &quot;&quot;,proxyBeanMethods &#x3D; true)
+public class MyConfig &#123;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>value：设置别名</p>
+<p>proxyBeanMethods：代理Bean的方法（默认：true使用代理）：保证单例</p>
+<h3 id="Bean、-Component、-Controller、-Service、-Repository"><a href="#Bean、-Component、-Controller、-Service、-Repository" class="headerlink" title="@Bean、@Component、@Controller、@Service、@Repository"></a>@Bean、@Component、@Controller、@Service、@Repository</h3><h3 id="ComponentScan、-Import"><a href="#ComponentScan、-Import" class="headerlink" title="@ComponentScan、@Import"></a>@ComponentScan、@Import</h3><p>@ComponentScan：导入包扫描范围</p>
+<p>@Import：导入类（导入不在容器中的Bean）（必须在使用了导入Bean注解的类上使用）</p>
+<h3 id="Conditional-：按照条件装配"><a href="#Conditional-：按照条件装配" class="headerlink" title="@Conditional ：按照条件装配"></a>@Conditional ：按照条件装配</h3><p><img src="https://gitee.com/mr-poke/picture/raw/master/img/1602835786727-28b6f936-62f5-4fd6-a6c5-ae690bd1e31d.png"></p>
+<h2 id="2-原生的配置文件导入"><a href="#2-原生的配置文件导入" class="headerlink" title="2. 原生的配置文件导入"></a>2. 原生的配置文件导入</h2><h3 id="ImportResource：导入原生的xml文件"><a href="#ImportResource：导入原生的xml文件" class="headerlink" title="@ImportResource：导入原生的xml文件"></a>@ImportResource：导入原生的xml文件</h3><h2 id="3-配置绑定："><a href="#3-配置绑定：" class="headerlink" title="3. 配置绑定："></a>3. 配置绑定：</h2><p><strong>读取配置文件的属内容绑定到属性中</strong></p>
+<h3 id="ConfigurationProperties-Component"><a href="#ConfigurationProperties-Component" class="headerlink" title="@ConfigurationProperties+@Component"></a>@ConfigurationProperties+@Component</h3><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@ConfigurationProperties</span><span class="token punctuation">(</span>prefix <span class="token operator">=</span> <span class="token string">"mycar"</span><span class="token punctuation">)</span>
+<span class="token annotation punctuation">@Component</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token function">mycar</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p><strong>作用等同于多个@Value的单个属性赋值</strong></p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Userss</span> <span class="token punctuation">&#123;</span>
+    <span class="token annotation punctuation">@Value</span><span class="token punctuation">(</span><span class="token string">"$&#123;mycar.id&#125;"</span><span class="token punctuation">)</span>
+    <span class="token keyword">private</span> <span class="token keyword">int</span> id<span class="token punctuation">;</span>
+    <span class="token annotation punctuation">@Value</span><span class="token punctuation">(</span><span class="token string">"$&#123;mycar.name&#125;"</span><span class="token punctuation">)</span>
+    <span class="token keyword">private</span> <span class="token class-name">String</span> name<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="EnableConfigurationProperties-ConfigurationProperties"><a href="#EnableConfigurationProperties-ConfigurationProperties" class="headerlink" title="@EnableConfigurationProperties + @ConfigurationProperties"></a>@EnableConfigurationProperties + @ConfigurationProperties</h3><p><strong>让使用了 @ConfigurationProperties 注解的类生效,并且将该类注入到 IOC 容器中,交由 IOC 容器进行管理</strong></p>
+<h1 id="SpringBoot的自动配置"><a href="#SpringBoot的自动配置" class="headerlink" title="SpringBoot的自动配置"></a>SpringBoot的自动配置</h1><h2 id="1-引导类"><a href="#1-引导类" class="headerlink" title="1. 引导类"></a>1. 引导类</h2><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Target</span><span class="token punctuation">(</span><span class="token class-name">ElementType</span><span class="token punctuation">.</span><span class="token constant">TYPE</span><span class="token punctuation">)</span>
+<span class="token annotation punctuation">@Retention</span><span class="token punctuation">(</span><span class="token class-name">RetentionPolicy</span><span class="token punctuation">.</span><span class="token constant">RUNTIME</span><span class="token punctuation">)</span>
+<span class="token annotation punctuation">@Documented</span>
+<span class="token annotation punctuation">@Inherited</span>
+<span class="token annotation punctuation">@SpringBootConfiguration</span>
+<span class="token annotation punctuation">@EnableAutoConfiguration</span>
+<span class="token annotation punctuation">@ComponentScan</span><span class="token punctuation">(</span>excludeFilters <span class="token operator">=</span> <span class="token punctuation">&#123;</span> <span class="token annotation punctuation">@Filter</span><span class="token punctuation">(</span>type <span class="token operator">=</span> <span class="token class-name">FilterType</span><span class="token punctuation">.</span><span class="token constant">CUSTOM</span><span class="token punctuation">,</span> classes <span class="token operator">=</span> <span class="token class-name">TypeExcludeFilter</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+		<span class="token annotation punctuation">@Filter</span><span class="token punctuation">(</span>type <span class="token operator">=</span> <span class="token class-name">FilterType</span><span class="token punctuation">.</span><span class="token constant">CUSTOM</span><span class="token punctuation">,</span> classes <span class="token operator">=</span> <span class="token class-name">AutoConfigurationExcludeFilter</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span> <span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token annotation punctuation">@interface</span> <span class="token class-name">SpringBootApplication</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="1、-SpringBootConfiguration"><a href="#1、-SpringBootConfiguration" class="headerlink" title="1、@SpringBootConfiguration"></a>1、@SpringBootConfiguration</h3><p>@Configuration。代表当前是一个配置类</p>
+<h3 id="2、-ComponentScan"><a href="#2、-ComponentScan" class="headerlink" title="2、@ComponentScan"></a>2、@ComponentScan</h3><p>指定扫描哪些，Spring注解；</p>
+<h3 id="3、-EnableAutoConfiguration"><a href="#3、-EnableAutoConfiguration" class="headerlink" title="3、@EnableAutoConfiguration"></a>3、@EnableAutoConfiguration</h3><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Target</span><span class="token punctuation">(</span><span class="token class-name">ElementType</span><span class="token punctuation">.</span><span class="token constant">TYPE</span><span class="token punctuation">)</span>
+<span class="token annotation punctuation">@Retention</span><span class="token punctuation">(</span><span class="token class-name">RetentionPolicy</span><span class="token punctuation">.</span><span class="token constant">RUNTIME</span><span class="token punctuation">)</span>
+<span class="token annotation punctuation">@Documented</span>
+<span class="token annotation punctuation">@Inherited</span>
+<span class="token annotation punctuation">@AutoConfigurationPackage</span>
+<span class="token annotation punctuation">@Import</span><span class="token punctuation">(</span><span class="token class-name">AutoConfigurationImportSelector</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token annotation punctuation">@interface</span> <span class="token class-name">EnableAutoConfiguration</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="3-1-AutoConfigurationPackage"><a href="#3-1-AutoConfigurationPackage" class="headerlink" title="3.1@AutoConfigurationPackage"></a>3.1@AutoConfigurationPackage</h4><p>作用：给Spring容器中导入一个Registrar注册器组件</p>
+<p>@AutoConfigurationPackage扫描@Enitity、@MapperScan等第三方依赖的注解</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Import</span><span class="token punctuation">(</span><span class="token class-name">AutoConfigurationPackages<span class="token punctuation">.</span>Registrar</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span>  <span class="token comment">//给容器中导入一个组件</span>
+<span class="token keyword">public</span> <span class="token annotation punctuation">@interface</span> <span class="token class-name">AutoConfigurationPackage</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>
+
+<span class="token comment">//利用Registrar给容器中导入一系列组件</span>
+<span class="token comment">//将指定的一个包下的所有组件导入进来？启动类所在包下</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="3-2-Import-AutoConfigurationImportSelector-class"><a href="#3-2-Import-AutoConfigurationImportSelector-class" class="headerlink" title="3.2 @Import(AutoConfigurationImportSelector.class)"></a>3.2 @Import(AutoConfigurationImportSelector.class)</h4><ul>
+<li><p>作用：通过import导入第三方提供的bean的配置类：AutoConfigurationImportSelector：给容器中导入组件</p>
+</li>
+<li><p>该类中有selectImports()方法，调用了getAutoConfigurationEntry(）</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">protected</span> <span class="token class-name">AutoConfigurationEntry</span> <span class="token function">getAutoConfigurationEntry</span><span class="token punctuation">(</span><span class="token class-name">AnnotationMetadata</span> annotationMetadata<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+		<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">isEnabled</span><span class="token punctuation">(</span>annotationMetadata<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+			<span class="token keyword">return</span> <span class="token constant">EMPTY_ENTRY</span><span class="token punctuation">;</span>
+		<span class="token punctuation">&#125;</span>
+		<span class="token class-name">AnnotationAttributes</span> attributes <span class="token operator">=</span> <span class="token function">getAttributes</span><span class="token punctuation">(</span>annotationMetadata<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">></span></span> configurations <span class="token operator">=</span> <span class="token function">getCandidateConfigurations</span><span class="token punctuation">(</span>annotationMetadata<span class="token punctuation">,</span> attributes<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+</li>
+<li><p>getCandidateConfigurations()中SpringFactoriesLoader.loadFactoryNames()方法</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">protected</span> <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">></span></span> <span class="token function">getCandidateConfigurations</span><span class="token punctuation">(</span><span class="token class-name">AnnotationMetadata</span> metadata<span class="token punctuation">,</span> <span class="token class-name">AnnotationAttributes</span> attributes<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+   <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">></span></span> configurations <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">></span></span><span class="token punctuation">(</span>
+         <span class="token class-name">SpringFactoriesLoader</span><span class="token punctuation">.</span><span class="token function">loadFactoryNames</span><span class="token punctuation">(</span><span class="token function">getSpringFactoriesLoaderFactoryClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">getBeanClassLoader</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>SpringFactoriesLoader.loadFactoryNames()中传入参数EnableAutoConfiguration.class</p>
+<p>作用：扫描所有jar包类路径下的META-INF&#x2F;spring.factories文件，将扫描到的这些文件包装成properties对象，从properties中获取到EnableAutoConfiguration.class类名对应的值，将这些值添加到容器中，用这些类做自动配置功能</p>
+</li>
+</ul>
+<h2 id="2-按需开启自动配置"><a href="#2-按需开启自动配置" class="headerlink" title="2.按需开启自动配置"></a>2.按需开启自动配置</h2><p>按照条件装配规则（@Conditional），最终会按需配置。</p>
+<h2 id="3-总结"><a href="#3-总结" class="headerlink" title="3.总结"></a>3.总结</h2><p>SpringBoot默认会在底层配好所有的组件。但是如果用户自己配置了以用户的优先</p>
+<p><strong>自动装配过程</strong></p>
+<ol>
+<li>通过各种注解实现了类与类之间的依赖关系，容器在启动的时候SpringApplication.run()，调用EnableAutoConfigurationImportSelector.class的selectImports方法</li>
+<li>selectImports方法调用SpringFactoriesLoader.loadFactoryNames方法扫描jar包类路径下的META-INF&#x2F;spring.factories文件下，获取BeanConfiguration列表</li>
+<li>loadFactoryNames方法会读取spring.factories中EnableAutoConfiguration.class类名对应的值<br>根据这些类上的注解判断，若条件满足，则该配置类生效，将配置文件中自己设置的属性值配置到对应的配置类中，最后注入到IOC容器中实现自动配置</li>
 </ol>
-<blockquote>
-<p>InnoDB中，使用Undo Log+ReadView进行读取，Undo Log保存了历史快照，ReadView规则帮我们判断当前版本的数据是否可见。</p>
-</blockquote>
-<h4 id="读已提交级别：每次Select都会获取Read-View"><a href="#读已提交级别：每次Select都会获取Read-View" class="headerlink" title="读已提交级别：每次Select都会获取Read View"></a>读已提交级别：每次Select都会获取Read View</h4><h4 id="可重复读级别：只在第一次-SELECT-的时候会获取一次-Read-View，而后面所有的-SELECT-都会复用这个-Read"><a href="#可重复读级别：只在第一次-SELECT-的时候会获取一次-Read-View，而后面所有的-SELECT-都会复用这个-Read" class="headerlink" title="可重复读级别：只在第一次 SELECT 的时候会获取一次 Read View，而后面所有的 SELECT 都会复用这个 Read"></a>可重复读级别：只在第一次 SELECT 的时候会获取一次 Read View，而后面所有的 SELECT 都会复用这个 Read</h4>
+<ul>
+<li><p>SpringBoot先加载所有的自动配置类  xxxxxAutoConfiguration</p>
+</li>
+<li><p>每个自动配置类按照条件进行生效，默认都会绑定配置文件指定的值。xxxxProperties里面拿。xxxProperties和配置文件进行了绑定</p>
+</li>
+<li><p>生效的配置类就会给容器中装配很多组件</p>
+</li>
+<li><p>只要容器中有这些组件，相当于这些功能就有了</p>
+</li>
+<li><p>定制化配置</p>
+</li>
+<li><ul>
+<li>用户直接自己@Bean替换底层的组件</li>
+<li>用户去看这个组件是获取的配置文件什么值就去修改。</li>
+</ul>
+</li>
+</ul>
+
                 
             </div>
             <hr/>
@@ -431,7 +530,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://gitee.com/mr-poke/blog.git/blog/2023/04/08/innodb-de-mvcc/">https://gitee.com/mr-poke/blog.git/blog/2023/04/08/innodb-de-mvcc/</a>
+                    <a href="https://gitee.com/mr-poke/blog.git/blog/2023/04/10/springboot/">https://gitee.com/mr-poke/blog.git/blog/2023/04/10/springboot/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -469,8 +568,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/blog/tags/SQL%E9%AB%98%E7%BA%A7/">
-                                    <span class="chip bg-color">SQL高级</span>
+                                <a href="/blog/tags/SpringBoot/">
+                                    <span class="chip bg-color">SpringBoot</span>
                                 </a>
                             
                         </div>
@@ -517,19 +616,19 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/blog/2023/04/10/springboot/">
+                <a href="/blog/2023/04/10/redis-ru-men/">
                     <div class="card-image">
                         
                         
-                        <img src="/blog/medias/featureimages/17.jpg" class="responsive-img" alt="SpringBoot">
+                        <img src="/blog/medias/featureimages/2.jpg" class="responsive-img" alt="Redis入门">
                         
-                        <span class="card-title">SpringBoot</span>
+                        <span class="card-title">Redis入门</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            SpringBoot知识点总结
+                            Redis，缓存中间件
                         
                     </div>
                     <div class="publish-info">
@@ -540,8 +639,8 @@
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/blog/categories/SpringBoot/" class="post-category">
-                                    SpringBoot
+                            <a href="/blog/categories/Redis/" class="post-category">
+                                    Redis
                                 </a>
                             
                             
@@ -551,8 +650,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/blog/tags/SpringBoot/">
-                        <span class="chip bg-color">SpringBoot</span>
+                    <a href="/blog/tags/Redis%E5%85%A5%E9%97%A8/">
+                        <span class="chip bg-color">Redis入门</span>
                     </a>
                     
                 </div>
@@ -566,19 +665,19 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/blog/2023/04/08/mysql-suo/">
+                <a href="/blog/2023/04/08/innodb-de-mvcc/">
                     <div class="card-image">
                         
                         
-                        <img src="/blog/medias/featureimages/1.jpg" class="responsive-img" alt="Mysql锁">
+                        <img src="/blog/medias/featureimages/17.jpg" class="responsive-img" alt="innoDB的MVCC（多版本并发）">
                         
-                        <span class="card-title">Mysql锁</span>
+                        <span class="card-title">innoDB的MVCC（多版本并发）</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Mysql锁介绍：表级锁、行级锁、页锁等等
+                            多版本并发控制
                         
                     </div>
                     <div class="publish-info">

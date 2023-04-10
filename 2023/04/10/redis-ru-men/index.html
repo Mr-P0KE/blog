@@ -4,8 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="反射, Mr_poke">
-    <meta name="description" content="反射，框架的基石">
+    <meta name="keywords" content="Redis入门, Mr_poke">
+    <meta name="description" content="Redis，缓存中间件">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>反射 | Mr_poke</title>
+    <title>Redis入门 | Mr_poke</title>
     <link rel="icon" type="image/png" href="/blog/favicon.png">
     
 
@@ -203,12 +203,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/blog/medias/featureimages/15.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/blog/medias/featureimages/2.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">反射</h1>
+                    <h1 class="description center-align post-title">Redis入门</h1>
                 </div>
             </div>
         </div>
@@ -232,8 +232,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/blog/tags/java%E9%AB%98%E7%BA%A7/">
-                                <span class="chip bg-color">java高级</span>
+                            <a href="/blog/tags/Redis%E5%85%A5%E9%97%A8/">
+                                <span class="chip bg-color">Redis入门</span>
                             </a>
                         
                     </div>
@@ -244,8 +244,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/blog/categories/java%E9%AB%98%E7%BA%A7/" class="post-category">
-                                java高级
+                            <a href="/blog/categories/Redis/" class="post-category">
+                                Redis
                             </a>
                         
                     </div>
@@ -257,7 +257,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2023-04-06
+                    2023-04-10
                 </div>
                 
 
@@ -266,14 +266,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.2k
+                    88
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    4 分
+                    1 分
                 </div>
                 
 
@@ -296,171 +296,28 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="反射"><a href="#反射" class="headerlink" title="反射"></a>反射</h1><h1 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h1><h2 id="1-为什么要有反射？"><a href="#1-为什么要有反射？" class="headerlink" title="1. 为什么要有反射？"></a>1. 为什么要有反射？</h2><p>java程序中，所有的对象都有两种类型：<code>编译时类型</code>和<code>运行时类型</code>，而很多时候对象的编译时类型和运行时类型<code>不一致</code>。 Object obj &#x3D; new String(“hello”); obj.getClass()</p>
-<p>例如：某些变量或形参的声明类型是Object类型，但是程序却需要调用该对象运行时类型的方法，该方法不是Object中的方法，那么如何解决呢？</p>
-<p>解决这个问题，有两种方案：</p>
-<p>方案1：在编译和运行时都完全知道类型的具体信息，在这种情况下，我们可以直接先使用<code>instanceof</code>运算符进行判断，再利用强制类型转换符将其转换成运行时类型的变量即可。</p>
-<p>方案2：编译时根本无法预知该对象和类的真实信息，程序只能依靠<code>运行时信息</code>来发现该对象和类的真实信息，这就必须使用反射。</p>
-<h2 id="2-概述"><a href="#2-概述" class="headerlink" title="2.概述"></a>2.概述</h2><p>Reflection（反射）是被视为<code>动态语言</code>的关键，反射机制允许程序在<code>运行期间</code>借助于Reflection API取得任何类的内部信息，并能直接操作任意对象的内部属性及方法。</p>
-<p>加载完类之后，在堆内存的方法区中就产生了一个Class类型的对象（一个类只有一个Class对象），这个对象就包含了完整的类的结构信息。我们可以通过这个对象看到类的结构。<code>这个对象就像一面镜子，透过这个镜子看到类的结构，所以，我们形象的称之为：反射。</code></p>
-<h2 id="3-反射的优缺点"><a href="#3-反射的优缺点" class="headerlink" title="3.反射的优缺点"></a>3.反射的优缺点</h2><p><strong>优点：</strong></p>
-<ul>
-<li>提高了Java程序的灵活性和扩展性，<code>降低了耦合性</code>，提高<code>自适应</code>能力</li>
-<li>允许程序创建和控制任何类的对象，无需提前<code>硬编码</code>目标类</li>
-</ul>
-<p><strong>缺点：</strong></p>
-<ul>
-<li>反射的<code>性能较低</code>。<ul>
-<li>反射机制主要应用在对灵活性和扩展性要求很高的系统框架上</li>
-</ul>
+                <h1 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a>Redis</h1><h1 id="一、安装"><a href="#一、安装" class="headerlink" title="一、安装"></a>一、安装</h1><h2 id="1-docker下的安装"><a href="#1-docker下的安装" class="headerlink" title="1.docker下的安装"></a>1.docker下的安装</h2><p>请看docker章节</p>
+<h2 id="2-Linux安装"><a href="#2-Linux安装" class="headerlink" title="2.Linux安装"></a>2.Linux安装</h2><p>使用yum安装</p>
+<ol>
+<li><p>安装Redis依赖</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">yum <span class="token function">install</span> <span class="token parameter variable">-y</span> gcc tcl<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 </li>
-<li>反射会<code>模糊</code>程序内部逻辑，<code>可读性较差</code>。</li>
-</ul>
-<h1 id="二、Class类"><a href="#二、Class类" class="headerlink" title="二、Class类"></a>二、Class类</h1><h2 id="1-特点"><a href="#1-特点" class="headerlink" title="1.特点"></a>1.特点</h2><ul>
-<li>Class本身也是一个类</li>
-<li>Class 对象只能由系统建立对象</li>
-<li>一个加载的类在 JVM 中只会有一个Class实例</li>
-<li>一个Class对象对应的是一个加载到JVM中的一个.class文件</li>
-<li>每个类的实例都会记得自己是由哪个 Class 实例所生成</li>
-<li>通过Class可以完整地得到一个类中的所有被加载的结构</li>
-<li>Class类是Reflection的根源，针对任何你想动态加载、运行的类，唯有先获得相应的Class对象</li>
-</ul>
-<p><strong>在JVM中存储在方法区</strong></p>
-<h2 id="2-获取Class实例"><a href="#2-获取Class实例" class="headerlink" title="2.获取Class实例"></a>2.获取Class实例</h2><ol>
-<li><p>调用对象的class()</p>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">Son</span> s <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Son</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token class-name">Class</span> c <span class="token operator">=</span> s<span class="token punctuation">.</span><span class="token function">getClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-</li>
-<li><p>调用类的class属性</p>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">Class</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Main</span><span class="token punctuation">></span></span> mainClass <span class="token operator">=</span> <span class="token class-name">Son</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-</li>
-<li><p>使用Class.forName(“”) ,可能抛出ClassNotFoundException</p>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">Class</span> clazz <span class="token operator">=</span> <span class="token class-name">Class</span><span class="token punctuation">.</span><span class="token function">forName</span><span class="token punctuation">(</span><span class="token string">"java.lang.String"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<li><p>安装Redis</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">yum <span class="token function">install</span> redis<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
 </ol>
-<h2 id="3-常用方法"><a href="#3-常用方法" class="headerlink" title="3.常用方法"></a>3.常用方法</h2><table>
-<thead>
-<tr>
-<th><strong>方法名</strong></th>
-<th align="center"><strong>功能说明</strong></th>
-</tr>
-</thead>
-<tbody><tr>
-<td>static Class forName(String name)</td>
-<td align="center">返回指定类名 name 的 Class 对象</td>
-</tr>
-<tr>
-<td>Object newInstance()</td>
-<td align="center">返回对象实例</td>
-</tr>
-<tr>
-<td>getName()</td>
-<td align="center">返回此Class对象所表示的实体（类、接口、数组类、基本类型或void）名称</td>
-</tr>
-<tr>
-<td>Class getSuperClass()</td>
-<td align="center">返回当前Class对象的父类的Class对象</td>
-</tr>
-<tr>
-<td>Class [] getInterfaces()</td>
-<td align="center">获取当前Class对象的接口</td>
-</tr>
-<tr>
-<td>ClassLoader getClassLoader()</td>
-<td align="center">返回该类的类加载器</td>
-</tr>
-<tr>
-<td></td>
-<td align="center"></td>
-</tr>
-<tr>
-<td>getConstructors()</td>
-<td align="center">返回所有的构造方法</td>
-</tr>
-<tr>
-<td>getDeclaredConstructors（）</td>
-<td align="center">返回所有的public构造方法</td>
-</tr>
-<tr>
-<td>getDeclaredConstructor（Class c…)</td>
-<td align="center">获取指定参数的构造方法</td>
-</tr>
-<tr>
-<td></td>
-<td align="center"></td>
-</tr>
-<tr>
-<td>getDeclaredFields()</td>
-<td align="center">返回所有成员的属性</td>
-</tr>
-<tr>
-<td>getFields()</td>
-<td align="center">返回所有的public属性</td>
-</tr>
-<tr>
-<td>getDeclaredField(“id”);</td>
-<td align="center">获取指定的属性</td>
-</tr>
-<tr>
-<td></td>
-<td align="center"></td>
-</tr>
-<tr>
-<td>getDeclaredMethods()</td>
-<td align="center">返回所有方法</td>
-</tr>
-<tr>
-<td>getMethods()</td>
-<td align="center">返回所有的public方法</td>
-</tr>
-<tr>
-<td>getMethod(String name,Class c)</td>
-<td align="center">返回一个指定方法名和返回值的方法</td>
-</tr>
-<tr>
-<td></td>
-<td align="center"></td>
-</tr>
-<tr>
-<td>getDeclaredAnnotations()</td>
-<td align="center">返回所有注解</td>
-</tr>
-<tr>
-<td>get Annotation(Class<T> c)</td>
-<td align="center">返回指定注解</td>
-</tr>
-</tbody></table>
-<h2 id="4-创建对象"><a href="#4-创建对象" class="headerlink" title="4.创建对象"></a>4.创建对象</h2><ol>
-<li><p>使用空参构造器</p>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">Class</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token operator">?</span><span class="token punctuation">></span></span> main <span class="token operator">=</span> <span class="token class-name">Class</span><span class="token punctuation">.</span><span class="token function">forName</span><span class="token punctuation">(</span><span class="token string">"Main"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token comment">//被弃用</span>
-        <span class="token comment">//main.newInstance();</span>
-  <span class="token class-name">Main</span> m1 <span class="token operator">=</span> main<span class="token punctuation">.</span><span class="token function">getDeclaredConstructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">newInstance</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-</li>
-<li><p>使用有参构造器</p>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">Class</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token operator">?</span><span class="token punctuation">></span></span> main <span class="token operator">=</span> <span class="token class-name">Class</span><span class="token punctuation">.</span><span class="token function">forName</span><span class="token punctuation">(</span><span class="token string">"Main"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token class-name">Main</span> m2 <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token class-name">Main</span><span class="token punctuation">)</span> main<span class="token punctuation">.</span><span class="token function">getDeclaredConstructor</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">newInstance</span><span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li>
-</ol>
-<h2 id="5-调用方法"><a href="#5-调用方法" class="headerlink" title="5.调用方法"></a>5.调用方法</h2><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">//1.创建Class对象</span>
-<span class="token class-name">Class</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token operator">?</span><span class="token punctuation">></span></span> main <span class="token operator">=</span> <span class="token class-name">Class</span><span class="token punctuation">.</span><span class="token function">forName</span><span class="token punctuation">(</span><span class="token string">"Main"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">//创建对象</span>
- <span class="token class-name">Main</span>  m1 <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token class-name">Main</span><span class="token punctuation">)</span> main<span class="token punctuation">.</span><span class="token function">getDeclaredConstructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">newInstance</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">//获取方法    方法名，参数类型</span>
-<span class="token class-name">Method</span> method <span class="token operator">=</span> main<span class="token punctuation">.</span><span class="token function">getMethod</span><span class="token punctuation">(</span><span class="token string">"method"</span><span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<h2 id="3-启动命令"><a href="#3-启动命令" class="headerlink" title="3.启动命令"></a>3.启动命令</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 启动redis</span>
+<span class="token function">service</span> redis start
+<span class="token comment"># 停止redis</span>
+<span class="token function">service</span> redis stop
+<span class="token comment"># 查看redis运行状态</span>
+<span class="token function">service</span> redis status
+<span class="token comment"># 查看redis进程</span>
+<span class="token function">ps</span> <span class="token parameter variable">-ef</span> <span class="token operator">|</span> <span class="token function">grep</span> redis
+<span class="token comment">#设置开机启动</span>
+<span class="token function">chkconfig</span> redis on
+<span class="token comment">#进入Redis</span>
+redis-cli<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
- <span class="token comment">//调用方法     方法的对象，参数</span>
-method<span class="token punctuation">.</span><span class="token function">invoke</span><span class="token punctuation">(</span>m1<span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h1 id="三、反射的强大"><a href="#三、反射的强大" class="headerlink" title="三、反射的强大"></a>三、反射的强大</h1><p><strong>关于setAccessible方法的使用：</strong></p>
-<ul>
-<li>Method和Field、Constructor对象都有setAccessible()方法。</li>
-<li>setAccessible<strong>启动和禁用访问安全检查的开关</strong>。</li>
-<li>参数值为<strong>true则指示反射的对象在使用时应该取消Java语言访问检查</strong>。<ul>
-<li>提高反射的效率。如果代码中必须用反射，而该句代码需要频繁的被调用，那么请设置为true。</li>
-<li>使得原<strong>本无法访问的私有成员也可以访问</strong></li>
-</ul>
-</li>
-<li>参数值为<strong>false则指示反射的对象应该实施Java语言访问检查</strong>。</li>
-</ul>
 
                 
             </div>
@@ -487,7 +344,7 @@ method<span class="token punctuation">.</span><span class="token function">invok
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://gitee.com/mr-poke/blog.git/blog/2023/04/06/fan-she/">https://gitee.com/mr-poke/blog.git/blog/2023/04/06/fan-she/</a>
+                    <a href="https://gitee.com/mr-poke/blog.git/blog/2023/04/10/redis-ru-men/">https://gitee.com/mr-poke/blog.git/blog/2023/04/10/redis-ru-men/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -525,8 +382,8 @@ method<span class="token punctuation">.</span><span class="token function">invok
                     
                         <div class="article-tag">
                             
-                                <a href="/blog/tags/java%E9%AB%98%E7%BA%A7/">
-                                    <span class="chip bg-color">java高级</span>
+                                <a href="/blog/tags/Redis%E5%85%A5%E9%97%A8/">
+                                    <span class="chip bg-color">Redis入门</span>
                                 </a>
                             
                         </div>
@@ -569,46 +426,48 @@ method<span class="token punctuation">.</span><span class="token function">invok
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/blog/2023/04/06/java-ji-chu/">
+                <a href="/blog/2023/04/10/redis-ru-men/">
                     <div class="card-image">
                         
                         
-                        <img src="/blog/medias/featureimages/0.jpg" class="responsive-img" alt="Java基础">
+                        <img src="/blog/medias/featureimages/2.jpg" class="responsive-img" alt="Redis入门">
                         
-                        <span class="card-title">Java基础</span>
+                        <span class="card-title">Redis入门</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            欲行其事，必利其器，请不要忽视任何基础
+                            Redis，缓存中间件
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-04-06
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-04-10
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/blog/categories/java%E5%9F%BA%E7%A1%80/" class="post-category">
-                                    java基础
+                            <a href="/blog/categories/Redis/" class="post-category">
+                                    Redis
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/blog/tags/java%E5%9F%BA%E7%A1%80/">
-                        <span class="chip bg-color">java基础</span>
+                    <a href="/blog/tags/Redis%E5%85%A5%E9%97%A8/">
+                        <span class="chip bg-color">Redis入门</span>
                     </a>
                     
                 </div>
@@ -622,31 +481,31 @@ method<span class="token punctuation">.</span><span class="token function">invok
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/blog/2023/04/05/bo-ke-she-zhi/">
+                <a href="/blog/2023/04/10/springboot/">
                     <div class="card-image">
                         
                         
-                        <img src="/blog/medias/featureimages/11.jpg" class="responsive-img" alt="Hexo创建博客">
+                        <img src="/blog/medias/featureimages/17.jpg" class="responsive-img" alt="SpringBoot">
                         
-                        <span class="card-title">Hexo创建博客</span>
+                        <span class="card-title">SpringBoot</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            基于Hexo+Gitee创建自己的博客
+                            SpringBoot知识点总结
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-04-05
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-04-10
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/blog/categories/%E5%8D%9A%E5%AE%A2/" class="post-category">
-                                    博客
+                            <a href="/blog/categories/SpringBoot/" class="post-category">
+                                    SpringBoot
                                 </a>
                             
                             
@@ -656,8 +515,8 @@ method<span class="token punctuation">.</span><span class="token function">invok
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/blog/tags/%E5%8D%9A%E5%AE%A2/">
-                        <span class="chip bg-color">博客</span>
+                    <a href="/blog/tags/SpringBoot/">
+                        <span class="chip bg-color">SpringBoot</span>
                     </a>
                     
                 </div>

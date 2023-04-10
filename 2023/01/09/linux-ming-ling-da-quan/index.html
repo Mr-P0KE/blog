@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="Linux, Mr_poke">
-    <meta name="description" content="Linux常用命令">
+    <meta name="description" content="Linux">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -266,14 +266,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    584
+                    1.1k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    2 分
+                    5 分
                 </div>
                 
 
@@ -296,7 +296,37 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="Linux-命令大全"><a href="#Linux-命令大全" class="headerlink" title="Linux 命令大全"></a>Linux 命令大全</h1><h2 id="一、文件夹"><a href="#一、文件夹" class="headerlink" title="一、文件夹"></a>一、文件夹</h2><ol>
+                <h1 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h1><h1 id="防火墙设置"><a href="#防火墙设置" class="headerlink" title="防火墙设置"></a>防火墙设置</h1><ol>
+<li>查看防火墙的状态：</li>
+</ol>
+<pre class="line-numbers language-none"><code class="language-none">firewall-cmd --state
+1<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>或者：</p>
+<pre class="line-numbers language-none"><code class="language-none">systemctl status firewalld<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<ol start="2">
+<li>开启防火墙：</li>
+</ol>
+<pre class="line-numbers language-none"><code class="language-none">systemctl start firewalld
+1<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<ol start="3">
+<li>查看已开放的端口：</li>
+</ol>
+<pre class="line-numbers language-none"><code class="language-none">firewall-cmd --list-ports<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<ol start="4">
+<li>开放单个端口：(开放后需要要重启防火墙才生效)</li>
+</ol>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F;开启22端口
+firewall-cmd --zone&#x3D;public --add-port&#x3D;22&#x2F;tcp --permanent<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<ol start="5">
+<li><p>重启防火墙：</p>
+<pre class="line-numbers language-none"><code class="language-none">firewall-cmd --reload<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+</ol>
+<h1 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h1><h2 id="一、文件夹"><a href="#一、文件夹" class="headerlink" title="一、文件夹"></a>一、文件夹</h2><ol>
 <li><pre><code class="c">cd  ~/文件             //从根目录查看文件
     /文件              //从当前目录查看文件
 <pre class="line-numbers language-none"><code class="language-none">
@@ -304,8 +334,14 @@
 
 ## 二、文件
 
-### 1.创建
+### 查找文件
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+whereis 文件/软件
+<pre class="line-numbers language-none"><code class="language-none">
+
+
+### 1.创建
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 touch [文件名]
 <pre class="line-numbers language-none"><code class="language-none">
 
@@ -347,9 +383,27 @@ touch [文件名]
 </ol>
 <h3 id=""><a href="#" class="headerlink" title=""></a></h3><h2 id="三、进程"><a href="#三、进程" class="headerlink" title="三、进程"></a>三、进程</h2><ol>
 <li><pre><code class="c"> ps -ef | grep 进程关键字         //查看进程
+<pre class="line-numbers language-none"><code class="language-none">
+   
+
+# 常用设置
+
+## 一、设置yum源
+
+yum用来下载软件，但是官方自带的连接不上，需要修改。
+
+此为设置文件
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </code></pre>
 </li>
 </ol>
+<h1 id="CentOS-Base-repo"><a href="#CentOS-Base-repo" class="headerlink" title="CentOS-Base.repo"></a>CentOS-Base.repo</h1><h1 id="-1"><a href="#-1" class="headerlink" title=""></a></h1><h1 id="The-mirror-system-uses-the-connecting-IP-address-of-the-client-and-the"><a href="#The-mirror-system-uses-the-connecting-IP-address-of-the-client-and-the" class="headerlink" title="The mirror system uses the connecting IP address of the client and the"></a>The mirror system uses the connecting IP address of the client and the</h1><h1 id="update-status-of-each-mirror-to-pick-mirrors-that-are-updated-to-and"><a href="#update-status-of-each-mirror-to-pick-mirrors-that-are-updated-to-and" class="headerlink" title="update status of each mirror to pick mirrors that are updated to and"></a>update status of each mirror to pick mirrors that are updated to and</h1><h1 id="geographically-close-to-the-client-You-should-use-this-for-CentOS-updates"><a href="#geographically-close-to-the-client-You-should-use-this-for-CentOS-updates" class="headerlink" title="geographically close to the client.  You should use this for CentOS updates"></a>geographically close to the client.  You should use this for CentOS updates</h1><h1 id="unless-you-are-manually-picking-other-mirrors"><a href="#unless-you-are-manually-picking-other-mirrors" class="headerlink" title="unless you are manually picking other mirrors."></a>unless you are manually picking other mirrors.</h1><h1 id="-2"><a href="#-2" class="headerlink" title=""></a></h1><h1 id="If-the-mirrorlist-x3D-does-not-work-for-you-as-a-fall-back-you-can-try-the"><a href="#If-the-mirrorlist-x3D-does-not-work-for-you-as-a-fall-back-you-can-try-the" class="headerlink" title="If the mirrorlist&#x3D; does not work for you, as a fall back you can try the"></a>If the mirrorlist&#x3D; does not work for you, as a fall back you can try the</h1><h1 id="remarked-out-baseurl-x3D-line-instead"><a href="#remarked-out-baseurl-x3D-line-instead" class="headerlink" title="remarked out baseurl&#x3D; line instead."></a>remarked out baseurl&#x3D; line instead.</h1><h1 id="-3"><a href="#-3" class="headerlink" title=""></a></h1><h1 id="-4"><a href="#-4" class="headerlink" title=""></a></h1><p>[base]<br>name&#x3D;CentOS-8.5.2111 - Base - mirrors.aliyun.com<br>baseurl&#x3D;<a target="_blank" rel="noopener" href="http://mirrors.aliyun.com/centos-vault/8.5.2111/BaseOS/$basearch/os/">http://mirrors.aliyun.com/centos-vault/8.5.2111/BaseOS/$basearch/os/</a><br>        <a target="_blank" rel="noopener" href="http://mirrors.aliyuncs.com/centos-vault/8.5.2111/BaseOS/$basearch/os/">http://mirrors.aliyuncs.com/centos-vault/8.5.2111/BaseOS/$basearch/os/</a><br>        <a target="_blank" rel="noopener" href="http://mirrors.cloud.aliyuncs.com/centos-vault/8.5.2111/BaseOS/$basearch/os/">http://mirrors.cloud.aliyuncs.com/centos-vault/8.5.2111/BaseOS/$basearch/os/</a><br>gpgcheck&#x3D;0<br>gpgkey&#x3D;<a target="_blank" rel="noopener" href="http://mirrors.aliyun.com/centos/RPM-GPG-KEY-CentOS-Official">http://mirrors.aliyun.com/centos/RPM-GPG-KEY-CentOS-Official</a></p>
+<p>#additional packages that may be useful<br>[extras]<br>name&#x3D;CentOS-8.5.2111 - Extras - mirrors.aliyun.com<br>baseurl&#x3D;<a target="_blank" rel="noopener" href="http://mirrors.aliyun.com/centos-vault/8.5.2111/extras/$basearch/os/">http://mirrors.aliyun.com/centos-vault/8.5.2111/extras/$basearch/os/</a><br>        <a target="_blank" rel="noopener" href="http://mirrors.aliyuncs.com/centos-vault/8.5.2111/extras/$basearch/os/">http://mirrors.aliyuncs.com/centos-vault/8.5.2111/extras/$basearch/os/</a><br>        <a target="_blank" rel="noopener" href="http://mirrors.cloud.aliyuncs.com/centos-vault/8.5.2111/extras/$basearch/os/">http://mirrors.cloud.aliyuncs.com/centos-vault/8.5.2111/extras/$basearch/os/</a><br>gpgcheck&#x3D;0<br>gpgkey&#x3D;<a target="_blank" rel="noopener" href="http://mirrors.aliyun.com/centos/RPM-GPG-KEY-CentOS-Official">http://mirrors.aliyun.com/centos/RPM-GPG-KEY-CentOS-Official</a></p>
+<p>#additional packages that extend functionality of existing packages<br>[centosplus]<br>name&#x3D;CentOS-8.5.2111 - Plus - mirrors.aliyun.com<br>baseurl&#x3D;<a target="_blank" rel="noopener" href="http://mirrors.aliyun.com/centos-vault/8.5.2111/centosplus/$basearch/os/">http://mirrors.aliyun.com/centos-vault/8.5.2111/centosplus/$basearch/os/</a><br>        <a target="_blank" rel="noopener" href="http://mirrors.aliyuncs.com/centos-vault/8.5.2111/centosplus/$basearch/os/">http://mirrors.aliyuncs.com/centos-vault/8.5.2111/centosplus/$basearch/os/</a><br>        <a target="_blank" rel="noopener" href="http://mirrors.cloud.aliyuncs.com/centos-vault/8.5.2111/centosplus/$basearch/os/">http://mirrors.cloud.aliyuncs.com/centos-vault/8.5.2111/centosplus/$basearch/os/</a><br>gpgcheck&#x3D;0<br>enabled&#x3D;0<br>gpgkey&#x3D;<a target="_blank" rel="noopener" href="http://mirrors.aliyun.com/centos/RPM-GPG-KEY-CentOS-Official">http://mirrors.aliyun.com/centos/RPM-GPG-KEY-CentOS-Official</a></p>
+<p>[PowerTools]<br>name&#x3D;CentOS-8.5.2111 - PowerTools - mirrors.aliyun.com<br>baseurl&#x3D;<a target="_blank" rel="noopener" href="http://mirrors.aliyun.com/centos-vault/8.5.2111/PowerTools/$basearch/os/">http://mirrors.aliyun.com/centos-vault/8.5.2111/PowerTools/$basearch/os/</a><br>        <a target="_blank" rel="noopener" href="http://mirrors.aliyuncs.com/centos-vault/8.5.2111/PowerTools/$basearch/os/">http://mirrors.aliyuncs.com/centos-vault/8.5.2111/PowerTools/$basearch/os/</a><br>        <a target="_blank" rel="noopener" href="http://mirrors.cloud.aliyuncs.com/centos-vault/8.5.2111/PowerTools/$basearch/os/">http://mirrors.cloud.aliyuncs.com/centos-vault/8.5.2111/PowerTools/$basearch/os/</a><br>gpgcheck&#x3D;0<br>enabled&#x3D;0<br>gpgkey&#x3D;<a target="_blank" rel="noopener" href="http://mirrors.aliyun.com/centos/RPM-GPG-KEY-CentOS-Official">http://mirrors.aliyun.com/centos/RPM-GPG-KEY-CentOS-Official</a></p>
+<p>[AppStream]<br>name&#x3D;CentOS-8.5.2111 - AppStream - mirrors.aliyun.com<br>baseurl&#x3D;<a target="_blank" rel="noopener" href="http://mirrors.aliyun.com/centos-vault/8.5.2111/AppStream/$basearch/os/">http://mirrors.aliyun.com/centos-vault/8.5.2111/AppStream/$basearch/os/</a><br>        <a target="_blank" rel="noopener" href="http://mirrors.aliyuncs.com/centos-vault/8.5.2111/AppStream/$basearch/os/">http://mirrors.aliyuncs.com/centos-vault/8.5.2111/AppStream/$basearch/os/</a><br>        <a target="_blank" rel="noopener" href="http://mirrors.cloud.aliyuncs.com/centos-vault/8.5.2111/AppStream/$basearch/os/">http://mirrors.cloud.aliyuncs.com/centos-vault/8.5.2111/AppStream/$basearch/os/</a><br>gpgcheck&#x3D;0<br>gpgkey&#x3D;<a target="_blank" rel="noopener" href="http://mirrors.aliyun.com/centos/RPM-GPG-KEY-CentOS-Official">http://mirrors.aliyun.com/centos/RPM-GPG-KEY-CentOS-Official</a></p>
+<pre><code>
+</code></pre>
 
                 
             </div>
@@ -727,7 +781,7 @@ touch [文件名]
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">62.6k</span>
+                        class="white-color">64.7k</span>
             
             
             
