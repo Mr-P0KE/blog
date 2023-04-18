@@ -266,14 +266,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    3.3k
+                    3.6k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    13 分
+                    14 分
                 </div>
                 
 
@@ -582,6 +582,32 @@
  <span class="token keyword">private</span> <span class="token keyword">final</span> <span class="token class-name">Map</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">Object</span><span class="token punctuation">></span></span> earlySingletonObjects <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ConcurrentHashMap</span><span class="token punctuation">(</span><span class="token number">16</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p><img src="https://gitee.com/mr-poke/picture/raw/master/img/%E4%B8%89%E7%BA%A7%E7%BC%93%E5%AD%98.png" alt=" "></p>
+<h4 id="2023年4月13日-面试真题"><a href="#2023年4月13日-面试真题" class="headerlink" title="2023年4月13日 面试真题"></a>2023年4月13日 面试真题</h4><p> 今天被问到了项目中的循环依赖解决问题，之前看过的博客依稀记得是使用一个类，然后注入单个他们，这样循环依赖解决了，很模糊，也很笼统，接下面完整介绍循环依赖的问题。</p>
+<p>循环依赖问题的出现是因为两个类互相注入对方，导致无法注入Bean（就像死锁，两个都等待对方），接下来介绍具体出现的场景。</p>
+<p><img src="https://gitee.com/mr-poke/picture/raw/master/img/z9cdgtm7dm.png"></p>
+<h5 id="1-单例的setter注入"><a href="#1-单例的setter注入" class="headerlink" title="1.单例的setter注入"></a>1.单例的setter注入</h5><p>这个在spring中很多（经典），且spring自己解决了(三级缓存)</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Service</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">TestService1</span> <span class="token punctuation">&#123;</span>
+
+    <span class="token annotation punctuation">@Autowired</span>
+    <span class="token keyword">private</span> <span class="token class-name">TestService2</span> testService2<span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">test1</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token annotation punctuation">@Service</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">TestService2</span> <span class="token punctuation">&#123;</span>
+
+    <span class="token annotation punctuation">@Autowired</span>
+    <span class="token keyword">private</span> <span class="token class-name">TestService1</span> testService1<span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">test2</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>二级缓存的存在主要是为了解决：代理问题，当出现循环依赖时，代理对象的创建会提前到二级缓存创建。</p>
+<h5 id="2-多例setter的注入"><a href="#2-多例setter的注入" class="headerlink" title="2.多例setter的注入"></a>2.多例setter的注入</h5><p>这种注入方法偶然会有，特别是在多线程的场景下，具体代码如下：</p>
 <h3 id="3-初始化"><a href="#3-初始化" class="headerlink" title="3.初始化"></a>3.初始化</h3><p>半成品，进行<strong>属性注入、Aware接口方法、Bean后处理器的before（）、InitializingBean接口的初始化方法、自定义的初始化方法init（），Bean后处理器的aftrer（）等</strong></p>
 <table>
 <thead>
@@ -770,7 +796,7 @@
 <tr>
 <td>@Mapper</td>
 <td>Dao</td>
-<td></td>
+<td>！！！不在Spring中是实现</td>
 </tr>
 <tr>
 <td>@Controller</td>
@@ -1590,7 +1616,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">65.2k</span>
+                        class="white-color">70.2k</span>
             
             
             
