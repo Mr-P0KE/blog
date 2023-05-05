@@ -1,0 +1,1697 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="Node.js, Mr_poke">
+    <meta name="description" content="Node.js">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>Node.js | Mr_poke</title>
+    <link rel="icon" type="image/png" href="/blog/favicon.png">
+    
+
+
+    <!-- bg-cover style     -->
+
+
+
+<link rel="stylesheet" type="text/css" href="/blog/libs/awesome/css/all.min.css">
+<link rel="stylesheet" type="text/css" href="/blog/libs/materialize/materialize.min.css">
+<link rel="stylesheet" type="text/css" href="/blog/libs/aos/aos.css">
+<link rel="stylesheet" type="text/css" href="/blog/libs/animate/animate.min.css">
+<link rel="stylesheet" type="text/css" href="/blog/libs/lightGallery/css/lightgallery.min.css">
+<link rel="stylesheet" type="text/css" href="/blog/css/matery.css">
+<link rel="stylesheet" type="text/css" href="/blog/css/my.css">
+<link rel="stylesheet" type="text/css" href="/blog/css/dark.css" media="none" onload="if(media!='all')media='all'">
+
+
+
+
+    <link rel="stylesheet" href="/blog/libs/tocbot/tocbot.css">
+    <link rel="stylesheet" href="/blog/css/post.css">
+
+
+
+
+    
+
+
+
+    <script src="/blog/libs/jquery/jquery-3.6.0.min.js"></script>
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/blog/" class="waves-effect waves-light">
+                    
+                    <img src="/blog/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Mr_poke</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/blog/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/blog/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/blog/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/blog/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+  <li>
+    <a href="javascript:;" class="waves-effect waves-light" onclick="switchNightMode()" title="深色/浅色模式" >
+      <i id="sum-moon-icon" class="fas fa-sun" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/blog/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Mr_poke</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/blog/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/blog/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/blog/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/blog/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/blog/medias/featureimages/11.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">Node.js</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/blog/tags/%E5%89%8D%E7%AB%AF/">
+                                <span class="chip bg-color">前端</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/blog/categories/%E5%89%8D%E7%AB%AF/" class="post-category">
+                                前端
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2023-04-29
+                </div>
+                
+
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    4.1k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    19 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/blog/libs/prism/prism.min.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="Node-js"><a href="#Node-js" class="headerlink" title="Node.js"></a>Node.js</h1><p>思考：</p>
+<ul>
+<li><p>为什么JS可以在浏览器中被执行？</p>
+<p>通过JS解析引擎。</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>浏览器</th>
+<th>执行引擎</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Chrome</td>
+<td>V8 （！<strong>Best</strong>   ！）</td>
+</tr>
+<tr>
+<td>Firefox</td>
+<td>OdinMonkey(奥丁猴)</td>
+</tr>
+<tr>
+<td>Safri</td>
+<td>JSCore</td>
+</tr>
+<tr>
+<td>Edge</td>
+<td>Chakra （查克拉）</td>
+</tr>
+</tbody></table>
+<ul>
+<li>为什么 JS 可以操作DOM（<strong>文档对象模型</strong>） 和BOM（<strong>浏览器对象模型</strong>）？</li>
+</ul>
+<p>每个浏览器内置了DOM、BOM这样的API函数，因此JS可以调用。</p>
+<ul>
+<li><p>浏览器中的 JS 运行环境？</p>
+<p><strong>V8引擎负责解析和执行JS代码</strong></p>
+<p><strong>内置API由运行环境提供的特殊接口，只能在所属的运行环境中被调用</strong></p>
+</li>
+</ul>
+<p><img src="https://gitee.com/mr-poke/picture/raw/master/img/image-20230429231937831.png"></p>
+<h2 id="一、什么是Node-JS"><a href="#一、什么是Node-JS" class="headerlink" title="一、什么是Node.JS ?"></a>一、什么是Node.JS ?</h2><p>一个基于Chrome V8引擎的 JavaScript 运行环境</p>
+<p>Node.JS 是Js的后端环境，无法调用DOM和BOM等浏览器内置API</p>
+<h2 id="二、它可以做什么？"><a href="#二、它可以做什么？" class="headerlink" title="二、它可以做什么？"></a>二、它可以做什么？</h2><ol>
+<li>基于Express框架，快速构建Web应用</li>
+<li>基于Electron框架，构建跨平台的桌面应用</li>
+<li>基于restify框架，快速构建API接口项目</li>
+<li>读写和操作数据库、创建使用的命令行开发工具辅助前端开发、etc等</li>
+</ol>
+<h2 id="三、常用命令"><a href="#三、常用命令" class="headerlink" title="三、常用命令"></a>三、常用命令</h2><p>查看版本号</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">node</span> <span class="token parameter variable">-v</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>执行JS</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">node</span> 文件.js<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>清空cmd</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">cls<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h2 id="四、fs文件系统模块"><a href="#四、fs文件系统模块" class="headerlink" title="四、fs文件系统模块"></a>四、fs文件系统模块</h2><h3 id="1-概念"><a href="#1-概念" class="headerlink" title="1.概念"></a>1.概念</h3><p><strong>fs模块</strong> 是官方提供的、<strong>用来操作文件的模块</strong>。他提供了一系列的方法和属性，用来满足用户对文件的需求。</p>
+<h3 id="2-使用"><a href="#2-使用" class="headerlink" title="2.使用"></a>2.使用</h3><p>导入fs模块</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">const</span> fs <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'fs'</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h3 id="2-常用方法"><a href="#2-常用方法" class="headerlink" title="2.常用方法"></a>2.常用方法</h3><ul>
+<li><p>fs.readFile( )</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">fs<span class="token punctuation">.</span><span class="token function">readFile</span><span class="token punctuation">(</span>path<span class="token punctuation">[</span><span class="token punctuation">,</span>options<span class="token punctuation">]</span><span class="token punctuation">,</span>callback<span class="token punctuation">)</span>
+<span class="token comment">//path: 文件路径 必选</span>
+<span class="token comment">//options ： 编码格式 可选</span>
+<span class="token comment">//callback ： 通过回调函数拿到读取结果 必选</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">const</span> fs <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'fs'</span><span class="token punctuation">)</span>
+<span class="token comment">// err 错误对象</span>
+<span class="token comment">// dataStr 成功的结果</span>
+<span class="token comment">//读取成功，err 值为 null</span>
+<span class="token comment">//读取失败 ， err 值为 错误对象 ，dataStr 为 undefined</span>
+fs<span class="token punctuation">.</span><span class="token function">readFile</span><span class="token punctuation">(</span><span class="token string">'F:/Code_Vue/code/2.txt'</span><span class="token punctuation">,</span><span class="token string">'utf8'</span><span class="token punctuation">,</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">err<span class="token punctuation">,</span>dataStr</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+
+    <span class="token keyword">if</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"读取失败"</span><span class="token operator">+</span>err<span class="token punctuation">.</span>message<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"读取成功，文件 = "</span><span class="token operator">+</span>dataStr<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>fs.writeFile( )</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">fs<span class="token punctuation">.</span><span class="token function">writeFile</span><span class="token punctuation">(</span>file<span class="token punctuation">,</span>data<span class="token punctuation">[</span><span class="token punctuation">,</span>options<span class="token punctuation">]</span><span class="token punctuation">,</span>callback<span class="token punctuation">)</span>
+<span class="token comment">//file: 文件路径的字符串 必选</span>
+<span class="token comment">//data : 写入内容 必选</span>
+<span class="token comment">//options ：  编码格式 可选</span>
+<span class="token comment">//callback ： 通过回调函数拿到读取结果 必选</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">const</span> fs <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"fs"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+fs<span class="token punctuation">.</span><span class="token function">writeFile</span><span class="token punctuation">(</span><span class="token string">'F:/Code_Vue/code/3.txt'</span><span class="token punctuation">,</span><span class="token string">'abcd123'</span><span class="token punctuation">,</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">err<span class="token punctuation">,</span>dataStr</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"写入失败"</span><span class="token operator">+</span>err<span class="token punctuation">.</span>message<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"写入成功，文件 = "</span><span class="token operator">+</span>dataStr<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+</ul>
+<h4 id="案例：读取文件，输出文件"><a href="#案例：读取文件，输出文件" class="headerlink" title="案例：读取文件，输出文件"></a>案例：读取文件，输出文件</h4><p>旧文件：</p>
+<pre class="line-numbers language-none"><code class="language-none">小红&#x3D;99 小白&#x3D;100 小李&#x3D;29 小绿&#x3D;69<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>新文件：</p>
+<pre class="line-numbers language-none"><code class="language-none">小红: 99
+小白: 100
+小李: 29
+小绿: 69<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>代码：</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">const</span> fs <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"fs"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+fs<span class="token punctuation">.</span><span class="token function">readFile</span><span class="token punctuation">(</span><span class="token string">'F:/Code_Vue/code/成绩.txt'</span><span class="token punctuation">,</span><span class="token string">'utf8'</span><span class="token punctuation">,</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">err<span class="token punctuation">,</span>dataStr</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"读取失败"</span><span class="token operator">+</span>err<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token comment">// console.log("读取成功 = "+dataStr);</span>
+    <span class="token comment">//	根据分隔符，把字符串转换为数组</span>
+    <span class="token keyword">const</span> arr <span class="token operator">=</span> dataStr<span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span><span class="token string">' '</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">//使用数组接收</span>
+    <span class="token keyword">const</span> arrNew <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+    <span class="token comment">//使用forEach操作每个元素，push更改，replace替换</span>
+    arr<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token parameter">item</span> <span class="token operator">=></span><span class="token punctuation">&#123;</span>
+        arrNew<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>item<span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span><span class="token string">'='</span><span class="token punctuation">,</span><span class="token string">': '</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+    <span class="token comment">//join合并字符串，\r\n回车换行</span>
+    <span class="token keyword">const</span> newStr <span class="token operator">=</span> arrNew<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token string">'\r\n'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>newStr<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    fs<span class="token punctuation">.</span><span class="token function">writeFile</span><span class="token punctuation">(</span><span class="token string">'F:/Code_Vue/code/成绩-ok.txt'</span><span class="token punctuation">,</span>newStr<span class="token punctuation">,</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">err<span class="token punctuation">,</span>dataStr</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+            <span class="token keyword">return</span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"写入失败"</span><span class="token operator">+</span>err<span class="token punctuation">.</span>message<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"写入成功，文件 = "</span><span class="token operator">+</span>dataStr<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="3-路径问题（路径拼接）"><a href="#3-路径问题（路径拼接）" class="headerlink" title="3.路径问题（路径拼接）"></a>3.路径问题（路径拼接）</h3><pre class="line-numbers language-JS" data-language="JS"><code class="language-JS">const fs &#x3D; require(&#39;fs&#39;)
+&#x2F;&#x2F;相对路径，与运行的cmd窗口的文件目录有关（node 命令所在的文件目录），不一致报错
+&#x2F;&#x2F;.&#x2F;自动拼接cmd窗口的文件目录
+&#x2F;&#x2F;使用绝对路径,但是移植性差，建议使用__dirname
+fs.readFile(&#39;.&#x2F;成绩.txt&#39;,&#39;utf8&#39;,function(err,dataStr)&#123;
+    console.log(err);
+    console.log(dataStr);
+&#125;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><strong>使用绝对路径,但是移植性差，可使用__dirname</strong>，建议使用path模块</p>
+<pre class="line-numbers language-JS" data-language="JS"><code class="language-JS">const fs &#x3D; require(&#39;fs&#39;);
+
+fs.readFile(__dirname+&#39;&#x2F;成绩.txt&#39;,&#39;utf8&#39;,function(err,dataStr)&#123;
+    console.log(err);
+    console.log(dataStr);
+&#125;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h2 id="五、path路径模块"><a href="#五、path路径模块" class="headerlink" title="五、path路径模块"></a>五、path路径模块</h2><h3 id="1-概念-1"><a href="#1-概念-1" class="headerlink" title="1.概念"></a>1.概念</h3><p><strong>path模块</strong>由官方提供，<strong>用来处理路径的模块</strong>，提供了一系列的的方法和属性，满足用户对路径的处理需求。</p>
+<h3 id="2-使用-1"><a href="#2-使用-1" class="headerlink" title="2.使用"></a>2.使用</h3><p>导入path模块</p>
+<pre class="line-numbers language-none"><code class="language-none">const path &#x3D; require(&#39;path&#39;)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h3 id="3-常用方法"><a href="#3-常用方法" class="headerlink" title="3.常用方法"></a>3.常用方法</h3><ul>
+<li><p>path.join()   拼接路径</p>
+<pre class="line-numbers language-JS" data-language="JS"><code class="language-JS">const path &#x3D; require(&#39;path&#39;)
+
+&#x2F;&#x2F;注意 ..&#x2F; 会抵消前一个层径
+const pathStr &#x3D; path.join(&#39;&#x2F;a&#39;,&#39;&#x2F;b&#x2F;c&#39;,&#39;..&#x2F;&#39;,&#39;.&#x2F;d&#39;,&#39;&#x2F;e&#39;)
+&#x2F;&#x2F;\a\b\d\e
+console.log(pathStr);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+</ul>
+<blockquote>
+<p>!!! 注意： 在进行路径拼接时，使用 path.join（），不要使用 + 进行字符串拼接</p>
+</blockquote>
+<pre class="line-numbers language-JS" data-language="JS"><code class="language-JS">const path &#x3D; require(&#39;path&#39;)
+const fs &#x3D; require(&#39;fs&#39;)
+
+fs.readFile(path.join(__dirname,&#39;&#x2F;成绩.txt&#39;,),&#39;utf8&#39;,function(err,dataStr)&#123;
+    if(err)&#123;&#125;
+    console.log(dataStr);
+&#125;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li><p>path.basename()   获取路径中的文件名</p>
+<pre class="line-numbers language-JS" data-language="JS"><code class="language-JS">path.basename(path[,ext]);
+&#x2F;&#x2F;path 路径字符串 必选
+&#x2F;&#x2F;ext 文件扩展名 可选<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></li>
+</ul>
+<pre class="line-numbers language-JS" data-language="JS"><code class="language-JS">const path &#x3D; require(&#39;path&#39;)
+
+var fpath &#x3D; &#39;a&#x2F;b&#x2F;c&#x2F;index.html&#39;
+console.log(fpath)
+&#x2F;&#x2F;a&#x2F;b&#x2F;c&#x2F;index.html
+var pp &#x3D; path.basename(fpath,&#39;.html&#39;)
+console.log(pp)
+&#x2F;&#x2F;index	<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li><p>path.extname() 获取路径中的文件扩展名</p>
+<pre class="line-numbers language-JS" data-language="JS"><code class="language-JS">path.extname(path)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+</ul>
+<pre class="line-numbers language-JS" data-language="JS"><code class="language-JS">const path &#x3D; require(&#39;path&#39;)
+
+
+var fpath &#x3D; &#39;a&#x2F;b&#x2F;c&#x2F;index.html&#39;
+console.log(fpath)
+&#x2F;&#x2F;a&#x2F;b&#x2F;c&#x2F;index.html
+var pp &#x3D; path.extname(fpath)
+console.log(pp)
+&#x2F;&#x2F;.html	<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="六、Http模块"><a href="#六、Http模块" class="headerlink" title="六、Http模块"></a>六、Http模块</h2><h3 id="1-使用"><a href="#1-使用" class="headerlink" title="1.使用"></a>1.使用</h3><pre class="line-numbers language-JS" data-language="JS"><code class="language-JS">const http &#x3D; require(&#39;http&#39;)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h3 id="2-常用方法-1"><a href="#2-常用方法-1" class="headerlink" title="2.常用方法"></a>2.常用方法</h3><ul>
+<li><p>http.createServer()  创建web服务器实例</p>
+<pre class="line-numbers language-JS" data-language="JS"><code class="language-JS">const server &#x3D; http.createServer()<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+<li><p>server.on()     为服务器绑定request事件，监听客户端请求</p>
+<pre class="line-numbers language-JS" data-language="JS"><code class="language-JS">server.on(&#39;request&#39;,function(req,res)&#123;
+
+&#125;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>server.listen() 启动服务器，监听指定端口</p>
+<pre class="line-numbers language-JS" data-language="JS"><code class="language-JS">server.listen(80,function()&#123;
+   
+&#125;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></li>
+</ul>
+<h3 id="简单整合"><a href="#简单整合" class="headerlink" title="简单整合"></a>简单整合</h3><pre class="line-numbers language-JS" data-language="JS"><code class="language-JS">const http &#x3D; require(&#39;http&#39;)
+
+const server &#x3D; http.createServer()
+
+server.listen(8080,function()&#123;
+    console.log(&#39;启动成功,http:&#x2F;127.0.0.1:8080&#39;)
+&#125;)
+
+server.on(&#39;request&#39;,function(req,res)&#123;
+    console.log(&#39;开始监听&#39;)
+&#125;)
+&#x2F;&#x2F;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;
+server.on(&#39;request&#39;,(req,res)&#x3D;&gt;&#123;
+    console.log(&#39;开始监听&#39;)
+   
+&#125;)
+server.listen(8080,()&#x3D;&gt;&#123;
+    console.log(&#39;Success&#39;)
+&#125;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="多模块整合"><a href="#多模块整合" class="headerlink" title="多模块整合"></a>多模块整合</h3><pre class="line-numbers language-JS" data-language="JS"><code class="language-JS">const http &#x3D; require(&#39;http&#39;)
+const fs &#x3D; require(&#39;fs&#39;)
+const path &#x3D; require(&#39;path&#39;)
+
+
+const server &#x3D; http.createServer()
+
+server.listen(8080,()&#x3D;&gt;&#123;
+    console.log(&#39;启动成功&#39;)
+&#125;)
+
+server.on(&#39;request&#39;,(req,res)&#x3D;&gt;&#123;
+    const url &#x3D; req.url
+    const fpath &#x3D; path.join(__dirname,url)
+    fs.readFile(fpath,&#39;utf8&#39;,(err,dataStr)&#x3D;&gt;&#123;
+        if(err)&#123;
+            return res.end(&#39;&lt;h1&gt;404 NOT FIND&lt;&#x2F;h1&gt;&#39;)
+        &#125;
+        res.end(dataStr);
+    &#125;);
+&#125;)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="七、Node-js-模块化"><a href="#七、Node-js-模块化" class="headerlink" title="七、Node.js 模块化"></a>七、Node.js 模块化</h2><h3 id="1-作用域"><a href="#1-作用域" class="headerlink" title="1.作用域"></a>1.作用域</h3><p>和<strong>函数作用域</strong>类似，在<strong>自定义模块中定义的变量、方法等成员</strong>，<strong>只能在当前模块访问</strong></p>
+<h3 id="2-如何向外共享成员"><a href="#2-如何向外共享成员" class="headerlink" title="2.如何向外共享成员"></a>2.如何向外共享成员</h3><h4 id="1-module对象"><a href="#1-module对象" class="headerlink" title="1.module对象"></a>1.module对象</h4><pre class="line-numbers language-json" data-language="json"><code class="language-json">Module <span class="token punctuation">&#123;</span>
+  id<span class="token operator">:</span> '.'<span class="token punctuation">,</span>
+  path<span class="token operator">:</span> 'F<span class="token operator">:</span>\\Code_Vue\\code'<span class="token punctuation">,</span>
+  exports<span class="token operator">:</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+  filename<span class="token operator">:</span> 'F<span class="token operator">:</span>\\Code_Vue\\code\\t1.js'<span class="token punctuation">,</span>
+  loaded<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+  children<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+  paths<span class="token operator">:</span> <span class="token punctuation">[</span>
+    'F<span class="token operator">:</span>\\Code_Vue\\code\\node_modules'<span class="token punctuation">,</span>
+    'F<span class="token operator">:</span>\\Code_Vue\\node_modules'<span class="token punctuation">,</span>
+    'F<span class="token operator">:</span>\\node_modules'
+  <span class="token punctuation">]</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="2-module-exports-对象"><a href="#2-module-exports-对象" class="headerlink" title="2.module.exports 对象"></a>2.module.exports 对象</h4><p>自定义模块中，使用module.exports对象，<strong>将模块中的成员共享出去，供外界使用</strong></p>
+<p>外界使用<code>require（）</code> 导入自定义模块时，得到的是<strong>module.exports所指向的对象</strong></p>
+<pre class="line-numbers language-JS" data-language="JS"><code class="language-JS">const age &#x3D; 20
+
+&#x2F;&#x2F;为module.exports对象挂载username属性
+module.exports.username &#x3D; &#39;zs&#39;
+&#x2F;&#x2F;为module.exports对象挂载 sayHello 方法
+module.exports.sayHello &#x3D; function()&#123;
+    console.log(&#39;Hello&#39;)
+&#125;
+module.exports.age &#x3D; age
+&#x2F;&#x2F;优先显示
+module.exports &#x3D; &#123;
+    nickname: &#39;123&#39;,
+    sayHi()&#123;
+        console.log(&#39;111&#39;);
+    &#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="3-exports对象"><a href="#3-exports对象" class="headerlink" title="3.exports对象"></a>3.exports对象</h4><p><code>exports</code>与 <code>module.exports</code>指向同一对象，但是最终结果以 <code>module.exports</code>指向的对象为准</p>
+<pre class="line-numbers language-JS" data-language="JS"><code class="language-JS">&#x2F;&#x2F;输出
+module.exports &#x3D; &#123;
+    nickname: &#39;123&#39;,
+    sayHi()&#123;
+        console.log(&#39;111&#39;);
+    &#125;
+&#125;
+
+exports &#x3D; &#123;
+    nickname: &#39;456&#39;,
+    sayHi()&#123;
+        console.log(&#39;111&#39;);
+    &#125;
+&#125;
+
+console.log(exports &#x3D;&#x3D;&#x3D; module.exports) &#x2F;&#x2F;false<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="3-模块化规范"><a href="#3-模块化规范" class="headerlink" title="3.模块化规范"></a>3.模块化规范</h3><ul>
+<li>模块内部，module变量代表当前模块</li>
+<li>module变量是一个对象，<code>module.exports</code> 是对外的接口</li>
+<li>加载某个模块，其实是加载该模块的<code>module.exports</code> 属性，<code>require（）</code>用于加载模块</li>
+</ul>
+<h2 id="八、npm与包"><a href="#八、npm与包" class="headerlink" title="八、npm与包"></a>八、npm与包</h2><h3 id="1-是什么是包？"><a href="#1-是什么是包？" class="headerlink" title="1.是什么是包？"></a>1.是什么是包？</h3><p>Node.js 中的<strong>第三方模块也叫 包</strong></p>
+<h3 id="2-为什么需要包？"><a href="#2-为什么需要包？" class="headerlink" title="2.为什么需要包？"></a>2.为什么需要包？</h3><p>Node.js提供了底层API，开发效率低。</p>
+<p><strong>包基于内置模块封装，提供了更方便的API，提高了开发效率</strong></p>
+<h3 id="3-下载包"><a href="#3-下载包" class="headerlink" title="3.下载包"></a>3.下载包</h3><p><strong>全球最大的包共享平台</strong>：<a target="_blank" rel="noopener" href="https://www.npmjs.com/">https://www.npmjs.com/</a></p>
+<p><strong>服务器地址</strong> ：<a target="_blank" rel="noopener" href="https://registry.npmjs.org/">https://registry.npmjs.org/</a></p>
+<p><strong>包管理工具</strong>：Node Package Manager(npm 包管理工具)，下载Node.js自带</p>
+<h3 id="4-npm包的使用"><a href="#4-npm包的使用" class="headerlink" title="4.npm包的使用"></a>4.npm包的使用</h3><h4 id="1-不使用npm包，格式化时间"><a href="#1-不使用npm包，格式化时间" class="headerlink" title="1.不使用npm包，格式化时间"></a>1.不使用npm包，格式化时间</h4><pre class="line-numbers language-JS" data-language="JS"><code class="language-JS">&#x2F;&#x2F;clock.js
+function dataFormat(deStr)&#123;
+    const dt &#x3D; new Date(deStr);
+
+    const y &#x3D; dt.getFullYear();
+    const m &#x3D; padZero(dt.getMonth() +1);
+    const d &#x3D; padZero(dt.getDate());
+
+    const hh &#x3D; padZero(dt.getHours());
+    const mm &#x3D; padZero(dt.getHours());
+    const ss &#x3D; padZero(dt.getSeconds());
+    return &#96;$&#123;y&#125;-$&#123;m&#125;-$&#123;d&#125;-$&#123;hh&#125;-$&#123;mm&#125;-$&#123;ss&#125;&#96;
+&#125;
+&#x2F;&#x2F;补零
+function padZero(n)&#123;
+    return n &gt; 9 ?  n : &#39;0&#39;+n;
+&#125;
+module.exports  &#x3D; &#123;
+    dataFormat
+&#125;		<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<pre class="line-numbers language-JS" data-language="JS"><code class="language-JS">&#x2F;&#x2F;t1.js 
+const m &#x3D; require(&#39;.&#x2F;clock&#39;)
+
+ const dt &#x3D; new Date()
+ console.log(dt)
+
+ const date &#x3D; m.dataFormat(dt)
+ console.log(date)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="2-使用npm包"><a href="#2-使用npm包" class="headerlink" title="2.使用npm包"></a>2.使用npm包</h4><h5 id="1-下载包"><a href="#1-下载包" class="headerlink" title="1.下载包"></a>1.下载包</h5><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">// 安装moment包
+<span class="token function">npm</span> <span class="token function">install</span> moment <span class="token parameter variable">--save</span>   <span class="token comment"># npm</span>
+//简化
+<span class="token function">npm</span> i moment <span class="token parameter variable">-S</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h5 id="2-开发"><a href="#2-开发" class="headerlink" title="2.开发"></a>2.开发</h5><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">const</span> moment <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'moment'</span><span class="token punctuation">)</span>
+
+<span class="token keyword">const</span> dt <span class="token operator">=</span> <span class="token function">moment</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">format</span><span class="token punctuation">(</span><span class="token string">'MMMM Do YYYY, h:mm:ss a'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>dt<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="3-目录结构"><a href="#3-目录结构" class="headerlink" title="3.目录结构"></a>3.目录结构</h4><p><img src="https://gitee.com/mr-poke/picture/raw/master/img/image-20230430202049249.png"></p>
+<p><code>node_modules 文件夹:</code> 存放所有安装到项目的包</p>
+<p><code>package-lock- json 配置文件</code>： 记录node_modules 目录下的每个包下载信息，</p>
+<p>eg： 包名，版本号，下载地址</p>
+<blockquote>
+<p>注意： 不要手动修改node_modules或 package-lock-json 文件中的任何代码，npm包管理工具会自动维护</p>
+</blockquote>
+<h3 id="5-package-json"><a href="#5-package-json" class="headerlink" title="5.package.json"></a>5.package.json</h3><pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token punctuation">&#123;</span>
+  <span class="token property">"dependencies"</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span>
+    <span class="token property">"moment"</span><span class="token operator">:</span> <span class="token string">"^2.29.4"</span>
+  <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+  <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"code"</span><span class="token punctuation">,</span>
+  <span class="token property">"version"</span><span class="token operator">:</span> <span class="token string">"1.0.0"</span><span class="token punctuation">,</span>
+  <span class="token property">"main"</span><span class="token operator">:</span> <span class="token string">"index.js"</span><span class="token punctuation">,</span>
+  <span class="token property">"devDependencies"</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+  <span class="token property">"scripts"</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span>
+    <span class="token property">"test"</span><span class="token operator">:</span> <span class="token string">"echo \"Error: no test specified\" &amp;&amp; exit 1"</span>
+  <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+  <span class="token property">"keywords"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>          <span class="token comment">//关键字检索</span>
+  <span class="token property">"author"</span><span class="token operator">:</span> <span class="token string">""</span><span class="token punctuation">,</span>           
+  <span class="token property">"license"</span><span class="token operator">:</span> <span class="token string">"ISC"</span><span class="token punctuation">,</span>        <span class="token comment">//开源许可协议</span>
+  <span class="token property">"description"</span><span class="token operator">:</span> <span class="token string">""</span>       <span class="token comment">//描述信息</span>
+<span class="token punctuation">&#125;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<table>
+<thead>
+<tr>
+<th>名字</th>
+<th>作用</th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>name</td>
+<td>包名</td>
+<td></td>
+</tr>
+<tr>
+<td>version</td>
+<td>版本号</td>
+<td></td>
+</tr>
+<tr>
+<td>main</td>
+<td>包的入口</td>
+<td></td>
+</tr>
+</tbody></table>
+<h4 id="1-快速创建package-json"><a href="#1-快速创建package-json" class="headerlink" title="1.快速创建package.json"></a>1.快速创建package.json</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">//作用： 快速创建 package.json
+<span class="token function">npm</span> init <span class="token parameter variable">-y</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h4 id="2-一次性下载所有包"><a href="#2-一次性下载所有包" class="headerlink" title="2.一次性下载所有包"></a>2.一次性下载所有包</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">//读取package.json，下载所有包
+<span class="token function">npm</span> <span class="token function">install</span>
+//简化
+<span class="token function">npm</span> i<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="3-dependencies节点"><a href="#3-dependencies节点" class="headerlink" title="3.dependencies节点"></a>3.dependencies节点</h4><p>记录<code>npm install</code> 安装的包</p>
+<h4 id="4-卸载包"><a href="#4-卸载包" class="headerlink" title="4.卸载包"></a>4.卸载包</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">// 卸载包，并清除dependencies节点中的信息
+<span class="token function">npm</span> uninstall <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h4 id="5-devDependencies节点"><a href="#5-devDependencies节点" class="headerlink" title="5.devDependencies节点"></a>5.devDependencies节点</h4><p><strong>在项目开发阶段用的包，但是上线不会用到</strong>，使用此节点记录。</p>
+<p><strong>在项目开发阶段和上线都需要用的包</strong>，使用dependencies节点保存。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">//安装包，并保存到devDependencies节点中
+<span class="token function">npm</span> <span class="token function">install</span> 包名 --save-dev
+//简写
+<span class="token function">npm</span> i 包名 <span class="token parameter variable">-D</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="6-更改npm镜像"><a href="#6-更改npm镜像" class="headerlink" title="6.更改npm镜像"></a>6.更改npm镜像</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">//查看当前下包的镜像源
+<span class="token function">npm</span> config get registry
+//切换镜像为淘宝镜像源
+<span class="token function">npm</span> config <span class="token builtin class-name">set</span> registry <span class="token operator">=</span> https://registry.npm.taobao.org/
+//检查镜像源是否更改
+<span class="token function">npm</span> config get registry<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="7-包的分类"><a href="#7-包的分类" class="headerlink" title="7.包的分类"></a>7.包的分类</h3><h4 id="1-项目包"><a href="#1-项目包" class="headerlink" title="1.项目包"></a>1.项目包</h4><p>开发依赖包（在devDependencies）：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">npm</span> i 包名 <span class="token parameter variable">-D</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>核心依赖包（在dependencies）：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">npm</span> i 包名<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h4 id="2-全局包"><a href="#2-全局包" class="headerlink" title="2.全局包"></a>2.全局包</h4><p>默认安装在C盘：C:\Users\56207\AppData\Roaming\npm\node_modules</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">npm</span> <span class="token function">install</span> 包名 <span class="token parameter variable">-g</span>
+//卸载
+<span class="token function">npm</span> uninstall  包名 <span class="token parameter variable">-g</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="x3D-x3D-x3D-举例："><a href="#x3D-x3D-x3D-举例：" class="headerlink" title="&#x3D;&#x3D;&#x3D;举例："></a>&#x3D;&#x3D;&#x3D;举例：</h3><table>
+<thead>
+<tr>
+<th>包名</th>
+<th>作用</th>
+<th>命令</th>
+<th>安装</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>i5ting_toc</td>
+<td>md转化html</td>
+<td>i5ting-toc -f <code>md文档路径</code> -o</td>
+<td></td>
+</tr>
+<tr>
+<td>nodemon</td>
+<td>热部署服务器</td>
+<td></td>
+<td>npm install -g nodemon</td>
+</tr>
+</tbody></table>
+<h3 id="8-开发自己的包"><a href="#8-开发自己的包" class="headerlink" title="8.开发自己的包"></a>8.开发自己的包</h3><h4 id="1-基本结构"><a href="#1-基本结构" class="headerlink" title="1.基本结构"></a>1.基本结构</h4><ul>
+<li><p>package.json（包管理配置文件）</p>
+</li>
+<li><p>index.js（包的入口文件）</p>
+</li>
+<li><p>README.md （说明文档）</p>
+</li>
+</ul>
+<h4 id="2-发布"><a href="#2-发布" class="headerlink" title="2.发布"></a>2.发布</h4><p>1.注册账号</p>
+<p>2.登录账号</p>
+<pre class="line-numbers language-none"><code class="language-none">npm login    &#x2F;&#x2F;需要切换源<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h2 id="九、express"><a href="#九、express" class="headerlink" title="九、express"></a>九、express</h2><h3 id="1-什么是Express？"><a href="#1-什么是Express？" class="headerlink" title="1.什么是Express？"></a>1.什么是Express？</h3><p>基于Node.js平台创建的Web开发框架。</p>
+<h3 id="2-基本使用"><a href="#2-基本使用" class="headerlink" title="2.基本使用"></a>2.基本使用</h3><ul>
+<li><p>安装</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">npm</span> i express<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+<li><p>创建基本的Web服务器</p>
+<pre class="line-numbers language-JS" data-language="JS"><code class="language-JS">const express &#x3D; require(&#39;express&#39;)
+
+const app &#x3D; express();
+
+app.listen(8080,()&#x3D;&gt;&#123;
+    console.log(&quot;App is Running at http:127.0.0.1:8080&quot;);
+&#125;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>监听Get和Post请求</p>
+<pre class="line-numbers language-JS" data-language="JS"><code class="language-JS">app.get(&#39;&#x2F;user&#39;,(req,res)&#x3D;&gt;&#123;
+    res.send(&#123;name:&#39;张三&#39;,age: 20,gender:&#39;男&#39;&#125;)
+&#125;)
+app.post(&#39;&#x2F;user&#39;,(req,res)&#x3D;&gt;&#123;
+    res.send(&#39;请求成功&#39;)
+&#125;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>获取URL请求参数（@RequestParam）</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">req.query  //获取到对象<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+<li><p>获取动态参数（@PathVariable）</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">req.params //获取到对象
+//<span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">=</span>
+app.get<span class="token punctuation">(</span><span class="token string">'/user/:id'</span>,<span class="token punctuation">(</span>req,res<span class="token punctuation">)</span><span class="token operator">=</span><span class="token operator">></span><span class="token punctuation">&#123;</span>
+    console.log<span class="token punctuation">(</span>req.params<span class="token punctuation">)</span>
+    res.send<span class="token punctuation">(</span><span class="token string">"获取到"</span>+req.params<span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+</ul>
+<h3 id="3-托管静态资源"><a href="#3-托管静态资源" class="headerlink" title="3.托管静态资源"></a>3.托管静态资源</h3><ul>
+<li><p>express.static()</p>
+<p>创建一个静态资源服务器</p>
+<pre class="line-numbers language-JS" data-language="JS"><code class="language-JS">&#x2F;&#x2F;将public文件夹下的资源对外开放，！！！资源访问路径中不会显示public
+&#x2F;&#x2F;http:&#x2F;&#x2F;localhost:8080&#x2F;index.html ，但是index.html在public文件夹下
+app.use(express.static(&#39;public&#39;)) <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>添加路径前缀</p>
+<pre class="line-numbers language-JS" data-language="JS"><code class="language-JS">&#x2F;&#x2F;http:&#x2F;&#x2F;localhost:8080&#x2F;public&#x2F;index.html
+app.use(&#39;&#x2F;public&#39;,express.static(&#39;public&#39;)) <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li>
+</ul>
+<h3 id="4-热部署"><a href="#4-热部署" class="headerlink" title="4.热部署"></a>4.热部署</h3><p>nodemon</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">npm</span> <span class="token function">install</span> <span class="token parameter variable">-g</span> nodemon	<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<pre class="line-numbers language-JS" data-language="JS"><code class="language-JS">&#x2F;&#x2F;启动项目命令
+nodemon app.js<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h3 id="5-路由"><a href="#5-路由" class="headerlink" title="5.路由"></a>5.路由</h3><h4 id="1-概念-2"><a href="#1-概念-2" class="headerlink" title="1.概念"></a>1.概念</h4><p>路由： 映射关系。</p>
+<h4 id="2-Express的路由"><a href="#2-Express的路由" class="headerlink" title="2.Express的路由"></a>2.Express的路由</h4><p>组成： 请求类型、URL、处理函数。</p>
+<p>格式：</p>
+<pre class="line-numbers language-JS" data-language="JS"><code class="language-JS">const express &#x3D; require(&#39;express&#39;);
+
+const app &#x3D; express();
+
+
+app.listen(8080,()&#x3D;&gt;&#123;
+    console.log(&#39;Server Success!&#39;)
+&#125;)
+
+app.get(&#39;&#x2F;&#39;,(req,res)&#x3D;&gt;&#123;
+    res.send(&#39;Hello World&#39;)
+    console.log(&#39;sssssss&#39;);
+&#125;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="3-模块化路由"><a href="#3-模块化路由" class="headerlink" title="3.模块化路由"></a>3.模块化路由</h4><p>方便对路由的管理，将路由抽离为独立的模块。</p>
+<ol>
+<li><p>步骤</p>
+<ul>
+<li>创建JS文件</li>
+<li>调用 <code>express.Router()</code>函数创建路由对象</li>
+<li>向路由对象挂载路由</li>
+<li>使用<code>module.exports</code> 向外共享路由对象</li>
+<li>使用<code>app.use()</code>函数注册路由模块</li>
+</ul>
+</li>
+<li><p>实现案例</p>
+</li>
+</ol>
+<pre class="line-numbers language-JS" data-language="JS"><code class="language-JS">&#x2F;&#x2F;index.js
+const express &#x3D; require(&#39;express&#39;)
+const t1 &#x3D; require(&#39;.&#x2F;t1&#39;)
+const app &#x3D; express();
+
+
+app.listen(8080,()&#x3D;&gt;&#123;
+    console.log(&quot;App is Running at http:127.0.0.1:8080&quot;);
+&#125;)
+
+
+app.use(t1)
+app.use(&#39;&#x2F;public&#39;,express.static(&#39;public&#39;)) <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-JS" data-language="JS"><code class="language-JS">&#x2F;&#x2F;t1.js
+&#x2F;&#x2F;路由模块
+const express &#x3D; require(&#39;express&#39;);
+
+const router &#x3D; express.Router();
+
+
+router.get(&#39;&#x2F;user&#39;,(req,res)&#x3D;&gt;&#123;
+    res.send(&#123;name:&#39;张三&#39;,age: 20,gender:&#39;男&#39;&#125;)
+&#125;)
+router.post(&#39;&#x2F;user&#39;,(req,res)&#x3D;&gt;&#123;
+    res.send(&#39;请求成功&#39;)
+&#125;)
+router.get(&#39;&#x2F;&#39;,(req,res)&#x3D;&gt;&#123;
+    console.log(req.query)
+    res.send(req.query)
+&#125;)
+router.get(&#39;&#x2F;user&#x2F;:id&#39;,(req,res)&#x3D;&gt;&#123;
+    console.log(req.params)
+    res.send(req.params)
+&#125;)
+
+module.exports &#x3D;  router
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="6-中间件"><a href="#6-中间件" class="headerlink" title="6.中间件"></a>6.中间件</h3><h4 id="1-概念："><a href="#1-概念：" class="headerlink" title="1.概念："></a>1.概念：</h4><p>业务流程的中间处理环节。</p>
+<p>本质：function()函数,里面有next属性</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">app<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">,</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span>res<span class="token punctuation">,</span>next</span><span class="token punctuation">)</span><span class="token operator">=></span><span class="token punctuation">&#123;</span>
+         <span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="2-next函数的作用"><a href="#2-next函数的作用" class="headerlink" title="2.next函数的作用"></a>2.next函数的作用</h4><p>实现<strong>多个中间件连续调用</strong>的关键，表示把<strong>流转关系转交给下一个中间件或路由</strong>。</p>
+<p><img src="https://gitee.com/mr-poke/picture/raw/master/img/image-20230503110601488.png"></p>
+<h4 id="3-定义中间件函数"><a href="#3-定义中间件函数" class="headerlink" title="3.定义中间件函数"></a>3.定义中间件函数</h4><p><strong>1.全局中间件：</strong></p>
+<p>每次请求都调用</p>
+<pre class="line-numbers language-JS" data-language="JS"><code class="language-JS">&#x2F;&#x2F;定义中间件函数
+const mw &#x3D; function(req,res,next)&#123;
+    console.log(&#39;中间件函数&#39;)
+    next();
+&#125;
+&#x2F;&#x2F;注册为全局中间件
+app.use(mw)
+&#x2F;&#x2F;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;
+
+&#x2F;&#x2F;定义并注册为全局中间件
+app.use(function(req,res,next)&#123;
+    console.log(&#39;中间件函数&#39;)
+    next();
+&#125;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>案例：</p>
+<pre class="line-numbers language-JS" data-language="JS"><code class="language-JS">const express &#x3D; require(&#39;express&#39;)
+
+const app &#x3D; express();
+
+&#x2F;&#x2F;定义中间件函数
+const mw &#x3D; function(req,res,next)&#123;
+    console.log(&#39;中间件函数&#39;)
+    next();
+&#125;
+&#x2F;&#x2F;注册为全局中间件
+app.use(mw)
+
+app.get(&#39;&#x2F;&#39;,(req,res)&#x3D;&gt;&#123;
+    res.send(&#39;Home page&#39;)
+&#125;)
+app.get(&#39;&#x2F;user&#39;,(req,res)&#x3D;&gt;&#123;
+    res.send(&#39;User Page.&#39;)
+&#125;)
+app.listen(8080,()&#x3D;&gt;&#123;
+    console.log(&#39;App is Running At 127.0.0.1:8080&#39;)
+&#125;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><strong>2.局部中间件</strong>：</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">//定义中间件函数</span>
+<span class="token keyword">const</span> <span class="token function-variable function">mw</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span>res<span class="token punctuation">,</span>next</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'中间件函数'</span><span class="token punctuation">)</span>
+    <span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token comment">//可写多个</span>
+app<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">,</span>mw<span class="token punctuation">,</span><span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span>res</span><span class="token punctuation">)</span><span class="token operator">=></span><span class="token punctuation">&#123;</span>
+    res<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token string">'Home page'</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h4 id="4-中间件的作用和特点："><a href="#4-中间件的作用和特点：" class="headerlink" title="4.中间件的作用和特点："></a>4.中间件的作用和特点：</h4><p>特点：多个中间件共享同一份req和res。</p>
+<p>作用：类似于（代码块）</p>
+<h4 id="5-使用注意事项"><a href="#5-使用注意事项" class="headerlink" title="5.使用注意事项"></a>5.使用注意事项</h4><ul>
+<li>在<strong>路由之前注册中间件</strong></li>
+<li>请求可以通过多个中间件处理</li>
+<li>执行完中间件的业务代码，不要忘记调用<code>next()</code>函数</li>
+<li><strong>防止代码逻辑混乱，调用next() 之后不要写任何代码</strong></li>
+<li>连续调用多个中间件，req，res共享的</li>
+</ul>
+<h4 id="6-中间件分类"><a href="#6-中间件分类" class="headerlink" title="6.中间件分类"></a>6.中间件分类</h4><ul>
+<li><p>应用级别的中间件</p>
+<p><code>app.use()</code>,<code>app.get()</code>,<code>app.post()</code></p>
+</li>
+<li><p>路由级别的中间件 </p>
+<p><code>express.Router()</code></p>
+</li>
+<li><p>错误级别的中间件</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">const</span> express <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'express'</span><span class="token punctuation">)</span>
+
+<span class="token keyword">const</span> app <span class="token operator">=</span> <span class="token function">express</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+app<span class="token punctuation">.</span><span class="token function">listen</span><span class="token punctuation">(</span><span class="token number">8080</span><span class="token punctuation">,</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">=></span><span class="token punctuation">&#123;</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'App is Running'</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+app<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">,</span><span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span>res</span><span class="token punctuation">)</span><span class="token operator">=></span><span class="token punctuation">&#123;</span>
+    <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">Error</span><span class="token punctuation">(</span><span class="token string">'is Error!!!'</span><span class="token punctuation">)</span>
+    res<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token string">'Hello Page'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+<span class="token comment">//错误级别的中间件</span>
+app<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">err<span class="token punctuation">,</span>req<span class="token punctuation">,</span>res<span class="token punctuation">,</span>next</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'发生错误:'</span><span class="token operator">+</span> err<span class="token punctuation">.</span>message<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    res<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token string">'Error'</span> <span class="token operator">+</span> err<span class="token punctuation">.</span>message<span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+</li>
+<li><p>Express内置的中间件</p>
+<p><code>express.static()</code> :托管静态资源</p>
+<p><code>express.json()</code>:解析Json格式的请求体数据。</p>
+<p><code>express.urlencoded()</code>: 解析URL-encoded格式的请求体数据。（x-www-form-urlencoded）</p>
+<pre class="line-numbers language-JS" data-language="JS"><code class="language-JS">app.use(express.urlencoded( &#123;extended: false &#125; ))<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>案例：</p>
+<pre class="line-numbers language-JS" data-language="JS"><code class="language-JS">const express &#x3D; require(&#39;express&#39;)
+
+const app &#x3D; express();
+
+app.use(express.json())
+app.use(express.urlencoded(&#123;extended: false&#125;))
+app.listen(8080,()&#x3D;&gt;&#123;
+    console.log(&#39;App is Running&#39;)
+&#125;)
+&#x2F;&#x2F;json
+app.post(&#39;&#x2F;user&#39;,(req,res)&#x3D;&gt;&#123;
+   &#x2F;&#x2F;默认情况下。不配置解析表单数据的中间件，req.body默认为：undefined
+    console.log(req.body)
+    res.send(&#39;OK&#39;)
+&#125;)
+&#x2F;&#x2F;x-www-form-urlencoded
+app.post(&#39;&#x2F;book&#39;,(req,res)&#x3D;&gt;&#123;
+    
+    &#x2F;&#x2F;默认情况下。不配置解析表单数据的中间件，req.body默认为：undefined
+     console.log(req.body)
+     res.send(&#39;OK&#39;)
+ &#125;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+</li>
+<li><p>第三方的中间件</p>
+<p>很多，举例一个</p>
+<p>举例： body-parser中间件</p>
+<pre class="line-numbers language-JS" data-language="JS"><code class="language-JS">&#x2F;&#x2F;安装中间件
+npm install body-parser 
+&#x2F;&#x2F;导入
+require()
+&#x2F;&#x2F;调用
+app.use() <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+</ul>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/blog/about" rel="external nofollow noreferrer">Mr_poke</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://gitee.com/mr-poke/blog.git/blog/2023/04/29/node.js/">https://gitee.com/mr-poke/blog.git/blog/2023/04/29/node.js/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/blog/about" target="_blank">Mr_poke</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/blog/tags/%E5%89%8D%E7%AB%AF/">
+                                    <span class="chip bg-color">前端</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/blog/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/blog/2023/05/03/suan-fa/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/blog/medias/featureimages/22.jpg" class="responsive-img" alt="算法">
+                        
+                        <span class="card-title">算法</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            硬肝算法（JAVA版本）
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2023-05-03
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/blog/categories/%E7%AE%97%E6%B3%95/" class="post-category">
+                                    算法
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/blog/tags/%E7%AE%97%E6%B3%95/">
+                        <span class="chip bg-color">算法</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/blog/2023/04/29/vue/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/blog/medias/featureimages/22.jpg" class="responsive-img" alt="Vue">
+                        
+                        <span class="card-title">Vue</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            Vue
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-04-29
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/blog/categories/%E5%89%8D%E7%AB%AF/" class="post-category">
+                                    前端
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/blog/tags/%E5%89%8D%E7%AB%AF/">
+                        <span class="chip bg-color">前端</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('50')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE' || selection.getRangeAt(0).commonAncestorContainer.nodeName === 'CODE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: Mr_poke<br />'
+            + '文章作者: Mr_poke<br />'
+            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。 ---Mr_poke';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/blog/libs/codeBlock/codeBlockFuction.js"></script>
+
+
+  <!-- 是否加载使用自带的 prismjs. -->
+  <script type="text/javascript" src="/blog/libs/prism/prism.min.js"></script>
+
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/blog/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/blog/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/blog/libs/codeBlock/codeShrink.js"></script>
+
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/blog/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2023</span>
+            
+            <a href="/blog/about" target="_blank">Mr_poke</a>
+            <!-- |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a> -->
+            
+            <br>
+            
+                &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                        class="white-color">86.7k</span>
+            
+            
+            
+                
+            
+            
+                <span id="busuanzi_container_site_pv">
+                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;
+                    <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+                <span id="busuanzi_container_site_uv">
+                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;
+                    <span id="busuanzi_value_site_uv" class="white-color"></span>
+            </span>
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/Mr-P0KE/" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:mr_poke@163.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=562073889" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 562073889" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/blog/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 白天和黑夜主题 -->
+<div class="stars-con">
+    <div id="stars"></div>
+    <div id="stars2"></div>
+    <div id="stars3"></div>  
+</div>
+
+<script>
+    function switchNightMode() {
+        $('<div class="Cuteen_DarkSky"><div class="Cuteen_DarkPlanet"></div></div>').appendTo($('body')),
+        setTimeout(function () {
+            $('body').hasClass('DarkMode') 
+            ? ($('body').removeClass('DarkMode'), localStorage.setItem('isDark', '0'), $('#sum-moon-icon').removeClass("fa-sun").addClass('fa-moon')) 
+            : ($('body').addClass('DarkMode'), localStorage.setItem('isDark', '1'), $('#sum-moon-icon').addClass("fa-sun").removeClass('fa-moon')),
+            
+            setTimeout(function () {
+            $('.Cuteen_DarkSky').fadeOut(1e3, function () {
+                $(this).remove()
+            })
+            }, 2e3)
+        })
+    }
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/blog/libs/materialize/materialize.min.js"></script>
+    <script src="/blog/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/blog/libs/aos/aos.js"></script>
+    <script src="/blog/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/blog/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/blog/js/matery.js"></script>
+
+    
+
+    
+    
+    
+
+    <!-- 雪花特效 -->
+    
+
+    <!-- 鼠标星星特效 -->
+     
+        <script type="text/javascript">
+            // 只在桌面版网页启用特效
+            var windowWidth = $(window).width();
+            if (windowWidth > 768) {
+                document.write('<script type="text/javascript" src="/blog/libs/others/star.js"><\/script>');
+            }
+        </script>
+    
+
+     
+        <script src="https://ssl.captcha.qq.com/TCaptcha.js"></script>
+        <script src="/blog/libs/others/TencentCaptcha.js"></script>
+        <button id="TencentCaptcha" data-appid="xxxxxxxxxx" data-cbfn="callback" type="button" hidden></button>
+    
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/blog/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/blog/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/blog/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
