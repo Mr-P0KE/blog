@@ -266,14 +266,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1k
+                    1.2k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    4 分
+                    5 分
                 </div>
                 
 
@@ -358,7 +358,7 @@
 <p><strong>算数右移：</strong>高位补符号位，低位溢出（<strong>有符号数</strong>）</p>
 <p>eg： -45 &#x3D; 1010 1101&gt;&gt;3</p>
 <p>-117 &#x3D; 1111 0101</p>
-<h1 id="加减乘除"><a href="#加减乘除" class="headerlink" title="加减乘除"></a>加减乘除</h1><h2 id="加法"><a href="#加法" class="headerlink" title="加法"></a>加法</h2><p>举个例子：求4+5？</p>
+<h1 id="加减乘除"><a href="#加减乘除" class="headerlink" title="加减乘除"></a>加减乘除</h1><h2 id="加法（异或-与-左移-异或-与（结果不0，继续异或））"><a href="#加法（异或-与-左移-异或-与（结果不0，继续异或））" class="headerlink" title="加法（异或+与+左移+异或+与（结果不0，继续异或））"></a>加法（异或+与+左移+异或+与（结果不0，继续异或））</h2><p>举个例子：求4+5？</p>
 <pre class="line-numbers language-text" data-language="text"><code class="language-text">计算机是如何操作的呢？
 0000 0100
 0000 0101
@@ -437,6 +437,45 @@
 1111 1111 (十六进制的ff，十进制的-1)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>举个例子：<br><strong>乘法：</strong> x * y，本质就是y个x相加，还是加法。<br><strong>除法：</strong> x &#x2F; y，本质就是减法，就是x能减去多少个y。</p>
+<h2 id="除法："><a href="#除法：" class="headerlink" title="除法："></a>除法：</h2><h3 id="除数是2的n次方"><a href="#除数是2的n次方" class="headerlink" title="除数是2的n次方"></a>除数是2的n次方</h3><p>除数是2的n次方，则 </p>
+<p>商 &#x3D;  被除数 &gt;&gt;&gt; n </p>
+<p>余数的 &#x3D; 被除数的右移的值</p>
+<p>计算余数： 被除数  ^ ($2^n$ -1)</p>
+<pre class="line-numbers language-text" data-language="text"><code class="language-text">111 /  8 = 13  余 7
+被除数：  0110 1111  = 111
+去除数：  0000 1000  =  8
+----------------
+去商值：  0000 1101  =  13（右移三位）
+去余数：  0000 0111  =   7
+
+=========================
+
+111 / 16 = 6  余  15
+被除数：  0110 1111  = 111
+去除数：  0001 0000  =  16
+----------------
+去商值：  0000 0110  =  6
+去余数：  0000 1111  =  15
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="实现过程："><a href="#实现过程：" class="headerlink" title="实现过程："></a>实现过程：</h4><pre class="line-numbers language-text" data-language="text"><code class="language-text">111 /  8 = 13  余 7
+被除数：  0110 1111  = 111
+去除数：  0000 1000  =  8
+----------------
+去商值：  0000 1101  =  13（右移三位）
+去余数：  0000 0111  =   7
+======================
+被除数：  0110 1111做与运算,(看要保留几位数字，3位数字，则 ^2的3次方-1)
+      ^  0000 0111 
+------------------
+        0000  0111  = 7<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="除数不是2的n次方"><a href="#除数不是2的n次方" class="headerlink" title="除数不是2的n次方"></a>除数不是2的n次方</h3><p>转换为2的n次方。</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">//求n为多少，具体对数看换底公式: log2(n) = log10(n)/log10(2)</span>
+            <span class="token keyword">int</span> temp <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token class-name">Math</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>capacity<span class="token punctuation">)</span> <span class="token operator">/</span><span class="token class-name">Math</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">;</span>
+<span class="token comment">//位运算解决：</span>
+<span class="token class-name">Loading</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
 
                 
             </div>
@@ -814,7 +853,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">86.7k</span>
+                        class="white-color">91k</span>
             
             
             
