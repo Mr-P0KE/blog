@@ -4,8 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Linux, Mr_poke">
-    <meta name="description" content="Linux">
+    <meta name="keywords" content="Git, Mr_poke">
+    <meta name="description" content="版本控制工具GIT">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Linux | Mr_poke</title>
+    <title>Git | Mr_poke</title>
     <link rel="icon" type="image/png" href="/blog/favicon.png">
     
 
@@ -203,12 +203,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/blog/medias/featureimages/12.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/blog/medias/featureimages/10.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Linux</h1>
+                    <h1 class="description center-align post-title">Git</h1>
                 </div>
             </div>
         </div>
@@ -232,8 +232,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/blog/tags/Linux/">
-                                <span class="chip bg-color">Linux</span>
+                            <a href="/blog/tags/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6%E5%B7%A5%E5%85%B7/">
+                                <span class="chip bg-color">版本控制工具</span>
                             </a>
                         
                     </div>
@@ -244,8 +244,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/blog/categories/Linux/" class="post-category">
-                                Linux
+                            <a href="/blog/categories/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6%E5%B7%A5%E5%85%B7/" class="post-category">
+                                版本控制工具
                             </a>
                         
                     </div>
@@ -257,7 +257,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2023-01-09
+                    2023-05-10
                 </div>
                 
 
@@ -266,14 +266,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.9k
+                    627
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    8 分
+                    2 分
                 </div>
                 
 
@@ -296,221 +296,114 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h1><h1 id="防火墙设置"><a href="#防火墙设置" class="headerlink" title="防火墙设置"></a>防火墙设置</h1><ol>
-<li>查看防火墙的状态：</li>
-</ol>
-<pre class="line-numbers language-none"><code class="language-none">firewall-cmd --state
-1<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-
-<p>或者：</p>
-<pre class="line-numbers language-none"><code class="language-none">systemctl status firewalld<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<ol start="2">
-<li>开启防火墙：</li>
-</ol>
-<pre class="line-numbers language-none"><code class="language-none">systemctl start firewalld
-1<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-
-<ol start="3">
-<li>查看已开放的端口：</li>
-</ol>
-<pre class="line-numbers language-none"><code class="language-none">firewall-cmd --list-ports<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<ol start="4">
-<li>开放单个端口：(开放后需要要重启防火墙才生效)</li>
-</ol>
-<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F;开启22端口
-firewall-cmd --zone&#x3D;public --add-port&#x3D;22&#x2F;tcp --permanent<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-
-<ol start="5">
-<li><p>重启防火墙：</p>
-<pre class="line-numbers language-none"><code class="language-none">firewall-cmd --reload<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
-</ol>
-<h1 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h1><h2 id="一、文件夹"><a href="#一、文件夹" class="headerlink" title="一、文件夹"></a>一、文件夹</h2><h3 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h3><table>
-<thead>
-<tr>
-<th>选项</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>-p</td>
-<td>需要时创建目标目录的上层目录，但即使这些目录已存在也不当作错误处理</td>
-</tr>
-<tr>
-<td>-m</td>
-<td>设置权限模式(类似chmod)，而不是rwxrwxrwx 减umask</td>
-</tr>
-<tr>
-<td>-v</td>
-<td>每次创建目录，并显示详细信息</td>
-</tr>
-<tr>
-<td>-Z</td>
-<td>将每个创建的目录的SELinux 安全环境设置为CTX</td>
-</tr>
-</tbody></table>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">mkdir</span> <span class="token parameter variable">-p</span> /ms/<span class="token punctuation">&#123;</span>sales,hr,web<span class="token punctuation">&#125;</span>    <span class="token comment">#创建一个名为/ms的目录，其中有sales、hr、web的子目录 </span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-
-
-<h3 id="进入"><a href="#进入" class="headerlink" title="进入"></a>进入</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">cd</span>  ~/文件             //从根目录查看文件
-    /文件              //从当前目录查看文件<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-
-<h3 id="复制"><a href="#复制" class="headerlink" title="复制"></a>复制</h3><table>
-<thead>
-<tr>
-<th>-f</th>
-<th>覆盖目标同名文件或目录时不进行提醒，而直接强制复制。</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>-i</td>
-<td>覆盖目标同名文件或目录时提醒用户确认。</td>
-</tr>
-<tr>
-<td>-p</td>
-<td>复制时保持源文件的权限、属主及时间标记等属性不变（<strong>默认权限属主是变化的</strong>）。</td>
-</tr>
-<tr>
-<td>-r</td>
-<td><strong>复制目录时必须使用此选项</strong>，表示递归复制所有文件及子目录。</td>
-</tr>
-</tbody></table>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">cp</span> <span class="token parameter variable">-p</span> test.rb /home/test   <span class="token comment">#将test.rb copy到test目录，并且保留原文件的属性</span>
-
-<span class="token function">cp</span> <span class="token parameter variable">-p</span> test.rb /home/test/haha.rp   <span class="token comment">#将test.rb copy到test目录，并将文件名修改为haha.rp</span>
-
-<span class="token function">cp</span> <span class="token parameter variable">-r</span> Dir/ /home/test      <span class="token comment">#将Dir目录copy到test目录下</span>
-
-<span class="token function">cp</span> <span class="token parameter variable">-fr</span> Dir/* /home/test    <span class="token comment">#将Dir下面的所有文件强制copy到test目录下</span>
-
-<span class="token function">cp</span> /root/<span class="token punctuation">&#123;</span><span class="token number">1,2</span>,3<span class="token punctuation">&#125;</span>.txt ./    <span class="token comment">#批量复制三个同扩展文件到当前目录</span>
-
-<span class="token function">cp</span> test.rb<span class="token punctuation">&#123;</span>,.bak<span class="token punctuation">&#125;</span>          <span class="token comment">#备份test.rb，并在尾部加上.bak后缀</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h3 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h3><table>
-<thead>
-<tr>
-<th>选项</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>-f</td>
-<td>删除文件或目录时不进行提醒，而直接强制删除。</td>
-</tr>
-<tr>
-<td>-i</td>
-<td>删除文件或目录时提醒用户确认。( y表示删除，n表示不删除）</td>
-</tr>
-<tr>
-<td>-r</td>
-<td>删除目录时必须使用此选项，表示<strong>递归删除</strong>整个目录树（应谨慎使用</td>
-</tr>
-</tbody></table>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">rm</span> test.php        <span class="token comment">#删除文件需要确认</span>
-
-<span class="token function">rm</span> <span class="token parameter variable">-f</span> test.php     <span class="token comment">#强制删除文件不确认</span>
-
-<span class="token function">rm</span> <span class="token parameter variable">-rfv</span> ./test     <span class="token comment">#递归强制删除当前的test目录，并显示删除的详细过程</span>
-
-<span class="token function">rm</span> <span class="token parameter variable">-rf</span> aa/         <span class="token comment">#递归强制删除aa目录下的所有</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h3 id="移动"><a href="#移动" class="headerlink" title="移动"></a>移动</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">mv</span> <span class="token punctuation">[</span>选项<span class="token punctuation">]</span> 源文件或目录 目标文件或目录<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<h3 id="重命名"><a href="#重命名" class="headerlink" title="重命名"></a>重命名</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">rename</span> abc def abc    <span class="token comment"># 修改 abc 名字为 dec</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-
-
-<h2 id="二、文件"><a href="#二、文件" class="headerlink" title="二、文件"></a>二、文件</h2><h3 id="查找文件"><a href="#查找文件" class="headerlink" title="查找文件"></a>查找文件</h3><pre class="line-numbers language-none"><code class="language-none">whereis 文件&#x2F;软件<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-
-
-<h3 id="1-创建"><a href="#1-创建" class="headerlink" title="1.创建"></a>1.创建</h3><pre class="line-numbers language-none"><code class="language-none">touch [文件名]<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-
-
-<h3 id="2-查看"><a href="#2-查看" class="headerlink" title="2.查看"></a>2.查看</h3><ol>
-<li><pre><code class="c">cat [文件名]            //快速查看内容
-<pre class="line-numbers language-none"><code class="language-none">
-2. &#96;&#96;&#96;c
-   tail [参数] [文件]         &#x2F;&#x2F;查看文件的内容，有一个常用的参数 -f 常用于查阅正在改变的日志文件。   使用 ctrl+c退出
-   参数：
-   -f 循环读取
-   -q 不显示处理信息
-   -v 显示详细的处理信息
-   -c&lt;数目&gt; 显示的字节数
-   -n&lt;行数&gt; 显示文件的尾部 n 行内容
-   --pid&#x3D;PID 与-f合用,表示在进程ID,PID死掉之后结束
-   -q, --quiet, --silent 从不输出给出文件名的首部
-   -s, --sleep-interval&#x3D;S 与-f合用,表示在每次反复的间隔休眠S秒<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-</code></pre>
+                <h1 id="Git分布式版本控制工具"><a href="#Git分布式版本控制工具" class="headerlink" title="Git分布式版本控制工具"></a>Git分布式版本控制工具</h1><p><img src="https://gitee.com/mr-poke/picture/raw/master/img/image-20230511001410758.png"></p>
+<h2 id="1-为什么需要Git？"><a href="#1-为什么需要Git？" class="headerlink" title="1.为什么需要Git？"></a>1.为什么需要Git？</h2><ul>
+<li>备份</li>
+<li>代码还原</li>
+<li>协同开发</li>
+<li>追溯代码编写人和编写代码的时间</li>
+</ul>
+<h2 id="2-版本控制器的方式"><a href="#2-版本控制器的方式" class="headerlink" title="2.版本控制器的方式"></a>2.版本控制器的方式</h2><ul>
+<li>集中式版本控制工具<ul>
+<li>版本库集中存放在<strong>中央服务器</strong>，team中每个人在工作时，都需要从中央服务器下载代码，必须联网（局域网，互联网），个人修改后提交到中央版本库。</li>
+<li>SVN,CVS</li>
+</ul>
 </li>
-<li><pre><code class="c">more [-dlfpcsu] [-num] [+/pattern] [+linenum] [fileNames..] 
-    //类似 cat ，不过会以一页一页的形式显示，更方便使用者逐页阅读，而最基本的指令就是按空白键（space）就往下一页显示，按 b 键就会往回（back）一页显示，而且还有搜寻字串的功能（与 vi 相似）
-参数：
--num 一次显示的行数
--d 提示使用者，在画面下方显示 [Press space to continue, &#39;q&#39; to quit.] ，如果使用者按错键，则会显示 [Press &#39;h&#39; for instructions.] 而不是 &#39;哔&#39; 声
--l 取消遇见特殊字元 ^L（送纸字元）时会暂停的功能
--f 计算行数时，以实际上的行数，而非自动换行过后的行数（有些单行字数太长的会被扩展为两行或两行以上）
--p 不以卷动的方式显示每一页，而是先清除萤幕后再显示内容
--c 跟 -p 相似，不同的是先显示内容再清除其他旧资料
--s 当遇到有连续两行以上的空白行，就代换为一行的空白行
--u 不显示下引号 （根据环境变数 TERM 指定的 terminal 而有所不同）
-+/pattern 在每个文档显示前搜寻该字串（pattern），然后从该字串之后开始显示
-+num 从第 num 行开始显示
-fileNames 欲显示内容的文档，可为复数个数 
-<pre class="line-numbers language-none"><code class="language-none">
-### 3.复制
-
-| -f   | 覆盖目标同名文件或目录时不进行提醒，而直接强制复制。         |
-| ---- | ------------------------------------------------------------ |
-| -i   | 覆盖目标同名文件或目录时提醒用户确认。                       |
-| -p   | 复制时保持源文件的权限、属主及时间标记等属性不变（**默认权限属主是变化的**）。 |
-| -r   | **复制目录时必须使用此选项**，表示递归复制所有文件及子目录。 |
-
-&#96;&#96;&#96;bash
-cp -p test.rb &#x2F;home&#x2F;test   #将test.rb copy到test目录，并且保留原文件的属性
-
-cp -p test.rb &#x2F;home&#x2F;test&#x2F;haha.rp   #将test.rb copy到test目录，并将文件名修改为haha.rp
-
-cp -r Dir&#x2F; &#x2F;home&#x2F;test      #将Dir目录copy到test目录下
-
-cp -fr Dir&#x2F;* &#x2F;home&#x2F;test    #将Dir下面的所有文件强制copy到test目录下
-
-cp &#x2F;root&#x2F;&#123;1,2,3&#125;.txt .&#x2F;    #批量复制三个同扩展文件到当前目录
-
-cp test.rb&#123;,.bak&#125;          #备份test.rb，并在尾部加上.bak后缀
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-</code></pre>
+<li>分布式管理控制工具<ul>
+<li>没有<strong>中央服务器</strong>，<strong>每个电脑都是一个完整的版本库</strong>，工作时不需要联网。版本库在自己电脑上，多人协作只需要将代码推送对方（很少）。</li>
+<li>Git</li>
+</ul>
 </li>
-</ol>
-<h2 id="三、进程"><a href="#三、进程" class="headerlink" title="三、进程"></a>三、进程</h2><ol>
-<li><pre><code class="c"> ps -ef | grep 进程关键字         //查看进程
-<pre class="line-numbers language-none"><code class="language-none">
-   
+</ul>
+<h2 id="3-工作流程"><a href="#3-工作流程" class="headerlink" title="3.工作流程"></a>3.工作流程</h2><h3 id="总流程："><a href="#总流程：" class="headerlink" title="总流程："></a>总流程：</h3><p><img src="https://gitee.com/mr-poke/picture/raw/master/img/image-20230510221534765.png" alt="Git工作流程"></p>
+<h3 id="分步流程："><a href="#分步流程：" class="headerlink" title="分步流程："></a>分步流程：</h3><h4 id="本地仓库："><a href="#本地仓库：" class="headerlink" title="本地仓库："></a>本地仓库：</h4><p><img src="https://gitee.com/mr-poke/picture/raw/master/img/image-20230510222521735.png"></p>
+<h5 id="工作区-gt-暂存区"><a href="#工作区-gt-暂存区" class="headerlink" title="*工作区 -&gt; 暂存区"></a>*工作区 -&gt; 暂存区</h5><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> <span class="token function">add</span> 文件名
+<span class="token function">git</span> <span class="token function">add</span> <span class="token builtin class-name">.</span>  <span class="token comment">#添加所有文件到暂存区</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
-# 常用设置
+<h5 id="暂存区-gt-本地仓库"><a href="#暂存区-gt-本地仓库" class="headerlink" title="*暂存区 -&gt; 本地仓库"></a>*暂存区 -&gt; 本地仓库</h5><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> commit 
+<span class="token function">git</span> commit <span class="token parameter variable">-m</span> <span class="token string">"add xx.xx"</span>  <span class="token comment">#设置备注</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
-## 一、设置yum源
+<h5 id="查看状态"><a href="#查看状态" class="headerlink" title="*查看状态"></a>*查看状态</h5><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> status<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-yum用来下载软件，但是官方自带的连接不上，需要修改。
-
-此为设置文件
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-</code></pre>
+<h5 id="查看提交日志"><a href="#查看提交日志" class="headerlink" title="**查看提交日志"></a>**查看提交日志</h5><ul>
+<li>命令形式：git log [option]</li>
+<li>options<ul>
+<li>–all                显示所有分支</li>
+<li>–pretty&#x3D;oneline       将提交信息显示为一行</li>
+<li>–abbrev-commit       让输出的commitID更简短</li>
+<li>–graph                           以图的形式展示</li>
+</ul>
 </li>
-</ol>
-<h1 id="CentOS-Base-repo"><a href="#CentOS-Base-repo" class="headerlink" title="CentOS-Base.repo"></a>CentOS-Base.repo</h1><h1 id=""><a href="#" class="headerlink" title=""></a></h1><h1 id="The-mirror-system-uses-the-connecting-IP-address-of-the-client-and-the"><a href="#The-mirror-system-uses-the-connecting-IP-address-of-the-client-and-the" class="headerlink" title="The mirror system uses the connecting IP address of the client and the"></a>The mirror system uses the connecting IP address of the client and the</h1><h1 id="update-status-of-each-mirror-to-pick-mirrors-that-are-updated-to-and"><a href="#update-status-of-each-mirror-to-pick-mirrors-that-are-updated-to-and" class="headerlink" title="update status of each mirror to pick mirrors that are updated to and"></a>update status of each mirror to pick mirrors that are updated to and</h1><h1 id="geographically-close-to-the-client-You-should-use-this-for-CentOS-updates"><a href="#geographically-close-to-the-client-You-should-use-this-for-CentOS-updates" class="headerlink" title="geographically close to the client.  You should use this for CentOS updates"></a>geographically close to the client.  You should use this for CentOS updates</h1><h1 id="unless-you-are-manually-picking-other-mirrors"><a href="#unless-you-are-manually-picking-other-mirrors" class="headerlink" title="unless you are manually picking other mirrors."></a>unless you are manually picking other mirrors.</h1><h1 id="-1"><a href="#-1" class="headerlink" title=""></a></h1><h1 id="If-the-mirrorlist-x3D-does-not-work-for-you-as-a-fall-back-you-can-try-the"><a href="#If-the-mirrorlist-x3D-does-not-work-for-you-as-a-fall-back-you-can-try-the" class="headerlink" title="If the mirrorlist&#x3D; does not work for you, as a fall back you can try the"></a>If the mirrorlist&#x3D; does not work for you, as a fall back you can try the</h1><h1 id="remarked-out-baseurl-x3D-line-instead"><a href="#remarked-out-baseurl-x3D-line-instead" class="headerlink" title="remarked out baseurl&#x3D; line instead."></a>remarked out baseurl&#x3D; line instead.</h1><h1 id="-2"><a href="#-2" class="headerlink" title=""></a></h1><h1 id="-3"><a href="#-3" class="headerlink" title=""></a></h1><p>[base]<br>name&#x3D;CentOS-8.5.2111 - Base - mirrors.aliyun.com<br>baseurl&#x3D;<a target="_blank" rel="noopener" href="http://mirrors.aliyun.com/centos-vault/8.5.2111/BaseOS/$basearch/os/">http://mirrors.aliyun.com/centos-vault/8.5.2111/BaseOS/$basearch/os/</a><br>        <a target="_blank" rel="noopener" href="http://mirrors.aliyuncs.com/centos-vault/8.5.2111/BaseOS/$basearch/os/">http://mirrors.aliyuncs.com/centos-vault/8.5.2111/BaseOS/$basearch/os/</a><br>        <a target="_blank" rel="noopener" href="http://mirrors.cloud.aliyuncs.com/centos-vault/8.5.2111/BaseOS/$basearch/os/">http://mirrors.cloud.aliyuncs.com/centos-vault/8.5.2111/BaseOS/$basearch/os/</a><br>gpgcheck&#x3D;0<br>gpgkey&#x3D;<a target="_blank" rel="noopener" href="http://mirrors.aliyun.com/centos/RPM-GPG-KEY-CentOS-Official">http://mirrors.aliyun.com/centos/RPM-GPG-KEY-CentOS-Official</a></p>
-<p>#additional packages that may be useful<br>[extras]<br>name&#x3D;CentOS-8.5.2111 - Extras - mirrors.aliyun.com<br>baseurl&#x3D;<a target="_blank" rel="noopener" href="http://mirrors.aliyun.com/centos-vault/8.5.2111/extras/$basearch/os/">http://mirrors.aliyun.com/centos-vault/8.5.2111/extras/$basearch/os/</a><br>        <a target="_blank" rel="noopener" href="http://mirrors.aliyuncs.com/centos-vault/8.5.2111/extras/$basearch/os/">http://mirrors.aliyuncs.com/centos-vault/8.5.2111/extras/$basearch/os/</a><br>        <a target="_blank" rel="noopener" href="http://mirrors.cloud.aliyuncs.com/centos-vault/8.5.2111/extras/$basearch/os/">http://mirrors.cloud.aliyuncs.com/centos-vault/8.5.2111/extras/$basearch/os/</a><br>gpgcheck&#x3D;0<br>gpgkey&#x3D;<a target="_blank" rel="noopener" href="http://mirrors.aliyun.com/centos/RPM-GPG-KEY-CentOS-Official">http://mirrors.aliyun.com/centos/RPM-GPG-KEY-CentOS-Official</a></p>
-<p>#additional packages that extend functionality of existing packages<br>[centosplus]<br>name&#x3D;CentOS-8.5.2111 - Plus - mirrors.aliyun.com<br>baseurl&#x3D;<a target="_blank" rel="noopener" href="http://mirrors.aliyun.com/centos-vault/8.5.2111/centosplus/$basearch/os/">http://mirrors.aliyun.com/centos-vault/8.5.2111/centosplus/$basearch/os/</a><br>        <a target="_blank" rel="noopener" href="http://mirrors.aliyuncs.com/centos-vault/8.5.2111/centosplus/$basearch/os/">http://mirrors.aliyuncs.com/centos-vault/8.5.2111/centosplus/$basearch/os/</a><br>        <a target="_blank" rel="noopener" href="http://mirrors.cloud.aliyuncs.com/centos-vault/8.5.2111/centosplus/$basearch/os/">http://mirrors.cloud.aliyuncs.com/centos-vault/8.5.2111/centosplus/$basearch/os/</a><br>gpgcheck&#x3D;0<br>enabled&#x3D;0<br>gpgkey&#x3D;<a target="_blank" rel="noopener" href="http://mirrors.aliyun.com/centos/RPM-GPG-KEY-CentOS-Official">http://mirrors.aliyun.com/centos/RPM-GPG-KEY-CentOS-Official</a></p>
-<p>[PowerTools]<br>name&#x3D;CentOS-8.5.2111 - PowerTools - mirrors.aliyun.com<br>baseurl&#x3D;<a target="_blank" rel="noopener" href="http://mirrors.aliyun.com/centos-vault/8.5.2111/PowerTools/$basearch/os/">http://mirrors.aliyun.com/centos-vault/8.5.2111/PowerTools/$basearch/os/</a><br>        <a target="_blank" rel="noopener" href="http://mirrors.aliyuncs.com/centos-vault/8.5.2111/PowerTools/$basearch/os/">http://mirrors.aliyuncs.com/centos-vault/8.5.2111/PowerTools/$basearch/os/</a><br>        <a target="_blank" rel="noopener" href="http://mirrors.cloud.aliyuncs.com/centos-vault/8.5.2111/PowerTools/$basearch/os/">http://mirrors.cloud.aliyuncs.com/centos-vault/8.5.2111/PowerTools/$basearch/os/</a><br>gpgcheck&#x3D;0<br>enabled&#x3D;0<br>gpgkey&#x3D;<a target="_blank" rel="noopener" href="http://mirrors.aliyun.com/centos/RPM-GPG-KEY-CentOS-Official">http://mirrors.aliyun.com/centos/RPM-GPG-KEY-CentOS-Official</a></p>
-<p>[AppStream]<br>name&#x3D;CentOS-8.5.2111 - AppStream - mirrors.aliyun.com<br>baseurl&#x3D;<a target="_blank" rel="noopener" href="http://mirrors.aliyun.com/centos-vault/8.5.2111/AppStream/$basearch/os/">http://mirrors.aliyun.com/centos-vault/8.5.2111/AppStream/$basearch/os/</a><br>        <a target="_blank" rel="noopener" href="http://mirrors.aliyuncs.com/centos-vault/8.5.2111/AppStream/$basearch/os/">http://mirrors.aliyuncs.com/centos-vault/8.5.2111/AppStream/$basearch/os/</a><br>        <a target="_blank" rel="noopener" href="http://mirrors.cloud.aliyuncs.com/centos-vault/8.5.2111/AppStream/$basearch/os/">http://mirrors.cloud.aliyuncs.com/centos-vault/8.5.2111/AppStream/$basearch/os/</a><br>gpgcheck&#x3D;0<br>gpgkey&#x3D;<a target="_blank" rel="noopener" href="http://mirrors.aliyun.com/centos/RPM-GPG-KEY-CentOS-Official">http://mirrors.aliyun.com/centos/RPM-GPG-KEY-CentOS-Official</a></p>
-<pre><code>
-</code></pre>
+</ul>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> log <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h5 id="查看所有日志"><a href="#查看所有日志" class="headerlink" title="*查看所有日志"></a>*查看所有日志</h5><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> relog<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+
+<h2 id="4-基本配置"><a href="#4-基本配置" class="headerlink" title="4.基本配置"></a>4.基本配置</h2><ul>
+<li><p>打开Git Bash（就是右键打开嘛）</p>
+</li>
+<li><p>设置用户信息</p>
+<ul>
+<li>git config –global user.name “name”</li>
+<li>git config –global user.email “email”</li>
+</ul>
+</li>
+<li><p>查看配置信息</p>
+<ul>
+<li>git config –global user.name</li>
+<li>git config –global user.email</li>
+</ul>
+</li>
+</ul>
+<h2 id="5-获取本地仓库"><a href="#5-获取本地仓库" class="headerlink" title="5.获取本地仓库"></a>5.获取本地仓库</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> init<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h2 id="6-查看文件状态"><a href="#6-查看文件状态" class="headerlink" title="6.查看文件状态"></a>6.查看文件状态</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> status<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h2 id="7-版本控制"><a href="#7-版本控制" class="headerlink" title="*7.版本控制"></a>*7.版本控制</h2><p>命令形式：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> reset <span class="token parameter variable">--hard</span> commitID<span class="token punctuation">(</span>使用log日志查看<span class="token punctuation">)</span>									<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h2 id="8-设置忽略的文件"><a href="#8-设置忽略的文件" class="headerlink" title="8.设置忽略的文件"></a>8.设置忽略的文件</h2><ul>
+<li>创建 <code>.gitignore</code>  文件</li>
+<li>里边设置文件或 <code>&amp;.a</code> 设置后缀</li>
+</ul>
+<h2 id="分支"><a href="#分支" class="headerlink" title="*分支"></a>*分支</h2><h3 id="查看分支、创建分支"><a href="#查看分支、创建分支" class="headerlink" title="查看分支、创建分支"></a>查看分支、创建分支</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> branch        <span class="token comment">#查看分支</span>
+<span class="token function">git</span> branch 分支名  <span class="token comment">#创建分支</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h3 id="切换分支"><a href="#切换分支" class="headerlink" title="切换分支"></a>切换分支</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> checkout 分支名  <span class="token comment">#切换分支</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h3 id="创建并切换分支"><a href="#创建并切换分支" class="headerlink" title="创建并切换分支"></a>创建并切换分支</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> checkout <span class="token parameter variable">-b</span> 分支名<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h3 id="合并分支"><a href="#合并分支" class="headerlink" title="*合并分支"></a>*合并分支</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> merge 分支名	<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h3 id="删除分支"><a href="#删除分支" class="headerlink" title="删除分支"></a>删除分支</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> branch <span class="token parameter variable">-d</span> 分支名 
+<span class="token function">git</span> branch <span class="token parameter variable">-D</span> 分支名 <span class="token comment">#强制删除</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h3 id="合并分支出现的冲突问题"><a href="#合并分支出现的冲突问题" class="headerlink" title="*合并分支出现的冲突问题"></a>*合并分支出现的冲突问题</h3><ul>
+<li><p>确定自己想要的</p>
+</li>
+<li><p>add .</p>
+</li>
+<li><p>commit</p>
+</li>
+</ul>
+<h3 id="分支名规范定义："><a href="#分支名规范定义：" class="headerlink" title="分支名规范定义："></a>分支名规范定义：</h3><ul>
+<li>master : 生产分支</li>
+<li>develop: 开发分支<ul>
+<li>从master 创建的分支，开发部门使用，开发完成合并master</li>
+</ul>
+</li>
+<li>feture&#x2F;xxx ：<ul>
+<li>从develop创建的分支，一般同时并行开发，但是上线时不同，开发完成合并develop分支。</li>
+</ul>
+</li>
+<li>hotfix&#x2F;xxx<ul>
+<li>从master派生的分支，一般用于bug修复，修复完成合并到上面三个分支。</li>
+</ul>
+</li>
+</ul>
 
                 
             </div>
@@ -537,7 +430,7 @@ yum用来下载软件，但是官方自带的连接不上，需要修改。
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://gitee.com/mr-poke/blog.git/blog/2023/01/09/linux-ming-ling-da-quan/">https://gitee.com/mr-poke/blog.git/blog/2023/01/09/linux-ming-ling-da-quan/</a>
+                    <a href="https://gitee.com/mr-poke/blog.git/blog/2023/05/10/git-fen-bu-shi-ban-ben-kong-zhi-gong-ju/">https://gitee.com/mr-poke/blog.git/blog/2023/05/10/git-fen-bu-shi-ban-ben-kong-zhi-gong-ju/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -575,8 +468,8 @@ yum用来下载软件，但是官方自带的连接不上，需要修改。
                     
                         <div class="article-tag">
                             
-                                <a href="/blog/tags/Linux/">
-                                    <span class="chip bg-color">Linux</span>
+                                <a href="/blog/tags/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6%E5%B7%A5%E5%85%B7/">
+                                    <span class="chip bg-color">版本控制工具</span>
                                 </a>
                             
                         </div>
@@ -619,46 +512,48 @@ yum用来下载软件，但是官方自带的连接不上，需要修改。
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/blog/2023/03/14/jvm/">
+                <a href="/blog/2023/05/10/git-fen-bu-shi-ban-ben-kong-zhi-gong-ju/">
                     <div class="card-image">
                         
                         
-                        <img src="/blog/medias/featureimages/12.jpg" class="responsive-img" alt="JVM虚拟机">
+                        <img src="/blog/medias/featureimages/10.jpg" class="responsive-img" alt="Git">
                         
-                        <span class="card-title">JVM虚拟机</span>
+                        <span class="card-title">Git</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            JVM内存结构及GC等
+                            版本控制工具GIT
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-03-14
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-05-10
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/blog/categories/JVM/" class="post-category">
-                                    JVM
+                            <a href="/blog/categories/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6%E5%B7%A5%E5%85%B7/" class="post-category">
+                                    版本控制工具
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/blog/tags/JVM/">
-                        <span class="chip bg-color">JVM</span>
+                    <a href="/blog/tags/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6%E5%B7%A5%E5%85%B7/">
+                        <span class="chip bg-color">版本控制工具</span>
                     </a>
                     
                 </div>
@@ -672,31 +567,31 @@ yum用来下载软件，但是官方自带的连接不上，需要修改。
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/blog/2023/01/08/nginx/">
+                <a href="/blog/2023/05/04/java-chang-jian-api/">
                     <div class="card-image">
                         
                         
-                        <img src="/blog/medias/featureimages/18.jpg" class="responsive-img" alt="Nginx">
+                        <img src="/blog/medias/featureimages/14.jpg" class="responsive-img" alt="Java新特性——常用Api">
                         
-                        <span class="card-title">Nginx</span>
+                        <span class="card-title">Java新特性——常用Api</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Nginx
+                            Java中常用的Api及使用
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-01-08
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-05-04
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/blog/categories/Nginx/" class="post-category">
-                                    Nginx
+                            <a href="/blog/categories/JAVA-API/" class="post-category">
+                                    JAVA_API
                                 </a>
                             
                             
@@ -706,8 +601,8 @@ yum用来下载软件，但是官方自带的连接不上，需要修改。
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/blog/tags/Nginx/">
-                        <span class="chip bg-color">Nginx</span>
+                    <a href="/blog/tags/api/">
+                        <span class="chip bg-color">api</span>
                     </a>
                     
                 </div>
